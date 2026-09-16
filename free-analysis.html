@@ -149,6 +149,7 @@
 .skip-list li::before{content:"\2713";position:absolute;left:0;top:0;font-size:13px}
 .skip .btn{margin-top:6px}
 </style>
+<script src="assets/track.js"></script>
 </head>
 <body>
 
@@ -719,7 +720,14 @@
      that is not live yet would show "sent" for a lead that never
      arrived, which is worse than asking the visitor to press send.
      ------------------------------------------------------------------ */
-  window.RGM_FORM_ENDPOINT = window.RGM_FORM_ENDPOINT || "";
+  /* LIVE. Needs one activation click: submit this form once yourself, then
+     open the email FormSubmit sends to roham@rghiasi.com and click the link
+     in it. Until that is done the endpoint answers with a not-activated body,
+     the handler above refuses to show the success state, and the visitor gets
+     the prefilled email and WhatsApp buttons instead. No lead is lost either
+     way; before activation they just arrive by hand rather than silently. */
+  window.RGM_FORM_ENDPOINT = window.RGM_FORM_ENDPOINT
+    || "https://formsubmit.co/ajax/roham@rghiasi.com";
 
   var form     = document.getElementById("faForm");
   var steps    = Array.prototype.slice.call(form.querySelectorAll(".fstep"));
@@ -905,23 +913,10 @@
       doneWrap.focus();
     }
 
-    var endpoint = window.RGM_FORM_ENDPOINT;
-    if (endpoint) {
-      nextBtn.disabled = true;
-      fetch(endpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-      }).then(function (r) {
-        if (!r.ok) { throw new Error(r.status); }
-        reveal(true);
-      }).catch(function () {
-        nextBtn.disabled = false;
-        reveal(false);
-      });
-      return;
-    }
-
+    /* Arm the handoff buttons FIRST, unconditionally. They were being armed
+       only on the no-endpoint path, after an early return, so when a POST
+       failed the fallback screen appeared with two dead href="#" buttons and
+       the lead had nowhere to go. Whatever happens below, these work. */
     var mail = document.getElementById("sendMail");
     var wa   = document.getElementById("sendWa");
     if (mail) {
@@ -932,6 +927,56 @@
     if (wa) {
       wa.href = "https://wa.me/19022790345?text=" + encodeURIComponent(lines);
     }
+
+    /* A handoff only becomes a lead when they actually send it. Counting it at
+       the moment the screen appears would report a conversion for someone who
+       looked at two buttons and closed the tab. */
+    function armHandoffLead(el, how) {
+      if (!el || el.dataset.leadWired) { return; }
+      el.dataset.leadWired = "1";
+      el.addEventListener("click", function () {
+        RGM.track("generate_lead", "lead", { method: how, timing: data.timing || null });
+      });
+    }
+    armHandoffLead(mail, "handoff_email");
+    armHandoffLead(wa, "handoff_whatsapp");
+
+    var endpoint = window.RGM_FORM_ENDPOINT;
+    if (endpoint) {
+      nextBtn.disabled = true;
+      fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(data)
+      }).then(function (r) {
+        /* A 2xx is NOT enough. Relay services answer 200 with a body saying the
+           address is not activated yet, and treating that as sent would show a
+           visitor "we have it" for a lead that never arrived. That is worse than
+           not posting at all, because the fallback buttons never get shown. So
+           the body has to agree before the success state is allowed. */
+        if (!r.ok) { throw new Error("http " + r.status); }
+        return r.text().then(function (t) {
+          var ok = true;
+          try {
+            var j = JSON.parse(t);
+            if (j && (j.success === false || j.success === "false" || j.error)) { ok = false; }
+          } catch (e) { /* not JSON, a 2xx is the only signal available */ }
+          if (!ok) { throw new Error("endpoint rejected"); }
+        });
+      }).then(function () {
+        RGM.track("generate_lead", "lead", {
+          method: "form_post",
+          timing: data.timing || null
+        });
+        reveal(true);
+      }).catch(function (err) {
+        if (window.console) { console.warn("[RGM] lead POST failed, handing off instead:", err); }
+        nextBtn.disabled = false;
+        reveal(false);
+      });
+      return;
+    }
+
     reveal(false);
   });
 
