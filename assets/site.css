@@ -585,7 +585,11 @@ textarea:focus-visible,select:focus-visible{
      including the handful of inline padding-block:var(--sect) styles that a
      separate .hero / section override would have left stranded at 80px. */
   :root{--sect:40px;--hero-top:48px;--head-gap:16px;--head-end:32px}
-  .grid-3,.grid-2,.cmp,.step{grid-template-columns:1fr}
+  /* minmax(0,1fr), not 1fr. .cmp holds a 1400px LeadSnap export and .step holds
+     prose, and a bare 1fr keeps a floor of min-content, so the widest child sets
+     the track and the page scrolls sideways. Same defect that put 4px of
+     horizontal scroll under the homepage hero at 375px. */
+  .grid-3,.grid-2,.cmp,.step{grid-template-columns:minmax(0,1fr)}
   /* 0,2,0 so a page-scoped `.x .step` cannot keep two columns on a phone */
   .rows .step,.row .step{grid-template-columns:minmax(0,1fr)}
   /* stacked: the rail and its mirror are gone, so the vertical divider goes

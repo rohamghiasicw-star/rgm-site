@@ -72,7 +72,7 @@
 .faq-list{display:grid;gap:var(--list-gap)}
 
 @media (max-width:880px){
-  .letter-wrap{grid-template-columns:1fr}
+  .letter-wrap{grid-template-columns:minmax(0,1fr)}
   .letter{padding:30px 22px}
   /* the card loses 22px of side padding here, so the watermark comes in with it
      and shrinks. Flush to the corner, never past it: a bleed at 352px of card
