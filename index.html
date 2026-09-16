@@ -735,7 +735,13 @@
       for (var i = 0; i < cueData.length; i++) {
         tt.addCue(new VTTCue(cueData[i][0], cueData[i][1], cueData[i][2]));
       }
-      tt.mode = "showing";
+      /* hidden, NOT showing. The words are already burned into the video pixels,
+         so a showing track makes the browser paint its own sentence-level caption
+         box on top of them: two captions at two granularities at once. hidden keeps
+         the 45 cues loaded and still exposes them to assistive tech, to the captions
+         menu in the native controls, and to anything reading the page, it just stops
+         the browser drawing them. disabled would be wrong, that unloads the cues. */
+      tt.mode = "hidden";
     } catch (e) { /* burned-in captions still carry the video */ }
   }
 
