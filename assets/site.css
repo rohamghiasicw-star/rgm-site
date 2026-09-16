@@ -92,12 +92,24 @@ h1,h2,h3,h4{
   margin:0;font-family:var(--sans);font-weight:500;
   line-height:1.1;letter-spacing:-.06em;text-wrap:balance;
 }
-.t70{font-size:clamp(40px,5.6vw,70px)}
-.t56{font-size:clamp(36px,4.6vw,56px)}
-.t48{font-size:clamp(32px,4vw,48px)}
-.t40{font-size:clamp(28px,3.3vw,40px)}
-.t32{font-size:clamp(24px,2.6vw,32px)}
-.t26{font-size:clamp(20px,2.1vw,26px)}
+/* ---- The clamp MINIMUMS are the mobile design, not a fallback. Measured on
+   profresults.com at a 375px viewport: their hero runs 32px, their section
+   headings run 56px and 70px, and their body copy runs 18px. They do not scale
+   display type down for phones at all, and that is most of why the page reads
+   confident on a device rather than like a shrunk desktop site.
+
+   Ours bottomed out at 28px for a section heading and 16px for body, which is
+   generic next to it. Minimums raised to sit in their register while still
+   wrapping sanely: a 26-character heading like "Frequently Asked Questions"
+   takes two lines at 34px in a 327px rail, which is exactly what theirs does
+   with "Meet the team". Most of the traffic here is a business owner on a
+   phone, so this is the case that matters. ---- */
+.t70{font-size:clamp(48px,5.6vw,70px)}
+.t56{font-size:clamp(40px,4.6vw,56px)}
+.t48{font-size:clamp(36px,4vw,48px)}
+.t40{font-size:clamp(34px,3.3vw,40px)}
+.t32{font-size:clamp(28px,2.6vw,32px)}
+.t26{font-size:clamp(22px,2.1vw,26px)}
 
 /* THE signature move: payoff word swaps to italic serif at the same size,
    tracking loosened from -0.06em to -0.08em. */
@@ -272,6 +284,13 @@ main>.csbar:first-child{padding-block:var(--hero-top) 0}
    34px also multiplies stroke-width 1.7 to 2.4 effective pixels, which is
    what read as bold. Stated once here so no page can drift again. ---- */
 .ico svg{width:18px;height:18px;display:block}
+
+/* ---- Anything an in-page link can land on has to clear the sticky nav.
+   The nav is 73px and scroll-margin-top was 0, so a jump to #booking or
+   #signup put the target's first line underneath it, which reads to a
+   visitor as the page having scrolled to the wrong place. Costs nothing
+   when nothing is scrolling to the element. ---- */
+[id]{scroll-margin-top:88px}
 
 /* ---- forms: 8px radius, never pills ---- */
 .field{
@@ -853,6 +872,18 @@ footer,.foot,.foot-col,.foot-brand,.foot-btm,
     max-width:none;height:auto;aspect-ratio:auto;min-width:0}
   .panx img:not([hidden]){position:static;width:auto;max-width:none;
     height:auto;object-fit:fill}
+  /* A persistent scrollbar, because the pan is useless if nobody knows it is
+     there. iOS and macOS hide overlay scrollbars until a scroll is already in
+     progress, so the export just reads as a cropped image and the reader never
+     swipes it. -webkit-appearance:none is what forces a real, always-drawn bar
+     rather than the overlay one. This is the only affordance on the box: no
+     caption, no "swipe" label, because the client does not want text under
+     these images. */
+  .panx{scrollbar-width:thin;scrollbar-color:var(--ink-24) var(--ink-08);
+    padding-bottom:10px}
+  .panx::-webkit-scrollbar{height:6px;-webkit-appearance:none}
+  .panx::-webkit-scrollbar-track{background:var(--ink-08);border-radius:3px}
+  .panx::-webkit-scrollbar-thumb{background:var(--ink-24);border-radius:3px}
 }
 /* a scrollable region is a keyboard stop, so it gets the same ring every
    other focusable element on the site gets */
