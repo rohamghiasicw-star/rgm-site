@@ -727,7 +727,13 @@
      the prefilled email and WhatsApp buttons instead. No lead is lost either
      way; before activation they just arrive by hand rather than silently. */
   window.RGM_FORM_ENDPOINT = window.RGM_FORM_ENDPOINT
-    || "https://formsubmit.co/ajax/roham@rghiasi.com";
+    || "https://formsubmit.co/ajax/rohamghiasicw@gmail.com";
+  /* Deliberately the gmail, NOT roham@rghiasi.com which the site shows publicly.
+     The RGM lead watcher already polls this inbox for website form submissions
+     and pushes a Telegram alert per lead. Sending here means a new lead pings
+     the phone through infrastructure that already exists, instead of sitting in
+     a mailbox nothing is watching. The public contact address on the site is
+     unchanged; this is only where the form posts. */
 
   var form     = document.getElementById("faForm");
   var steps    = Array.prototype.slice.call(form.querySelectorAll(".fstep"));

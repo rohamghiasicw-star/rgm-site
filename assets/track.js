@@ -20,10 +20,11 @@ RGM.CONFIG = {
 
   /* Google Ads conversion ID, looks like "AW-123456789".
      Google Ads > Goals > Conversions > Google tag. */
-  /* Read live from Google Ads account 935-967-8835 on 2026-09-16. If the UK
-     campaign runs from a DIFFERENT Ads account, replace this with that
-     account's tag ID or nothing will report. */
-  ADS_ID: "AW-17959289121",
+  /* OFF on purpose. He is running Facebook, not Google, so loading gtag would
+     be a third-party request for nothing. The account's real tag ID is
+     AW-17959289121 (account 935-967-8835, read live 2026-09-16) - paste it back
+     in if a Google campaign ever points here. */
+  ADS_ID: "",
 
   /* Conversion LABELS, one per action, from each conversion action's tag
      snippet. The value in send_to looks like "AW-123456789/AbC-D_efGh12".
@@ -35,6 +36,12 @@ RGM.CONFIG = {
     whatsapp: "",  /* tapped through to WhatsApp */
     call: ""       /* tapped the phone number */
   },
+
+  /* META PIXEL, the one that matters here because the campaign is Facebook,
+     not Google. Looks like a 15 or 16 digit number. Events Manager > Data
+     sources > your pixel, the ID sits under the name. With this set the
+     pixel loads and reports PageView plus Lead automatically. */
+  META_PIXEL_ID: "835961859444225",   /* pixel named "RG", Events Manager, 2026-09-16 */
 
   /* Set true to print every event to the console instead of guessing whether
      it fired. Turn off once you have seen what you need. */
@@ -69,8 +76,27 @@ RGM.CONFIG = {
     if (hasAds) { gtag("config", C.ADS_ID); }
     log("gtag booted", { ga4: C.GA4_ID || null, ads: C.ADS_ID || null });
   } else {
-    log("no IDs configured, tracking is inert");
+    log("no Google IDs configured");
   }
+
+  /* ---- Meta pixel ------------------------------------------------------ */
+  var hasMeta = /^\d{10,20}$/.test(C.META_PIXEL_ID);
+  if (hasMeta) {
+    /* Meta's standard loader, unmodified except for being guarded. */
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = "2.0";
+      n.queue = []; t = b.createElement(e); t.async = !0; t.src = v;
+      s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
+    }(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+    fbq("init", C.META_PIXEL_ID);
+    fbq("track", "PageView");
+    log("meta pixel booted", C.META_PIXEL_ID);
+  }
+
+  if (!hasGA4 && !hasAds && !hasMeta) { log("no IDs configured, tracking is inert"); }
 
   /* ---- one entry point for every lead event --------------------------- */
   /* name  : the GA4 event name
@@ -86,6 +112,21 @@ RGM.CONFIG = {
     var label = kind && C.ADS_LABELS[kind];
     if (hasAds && label) {
       gtag("event", "conversion", { send_to: C.ADS_ID + "/" + label });
+    }
+
+    /* Meta: map our event names onto its standard events, so the campaign can
+       optimise for Lead rather than a custom event nothing is trained on. */
+    if (hasMeta) {
+      var META = {
+        generate_lead: "Lead",
+        booking_complete: "Schedule",
+        whatsapp_click: "Contact",
+        phone_click: "Contact",
+        email_click: "Contact"
+      };
+      var std = META[name];
+      if (std) { fbq("track", std, { content_name: name }); }
+      else { fbq("trackCustom", name, p); }
     }
   };
 
