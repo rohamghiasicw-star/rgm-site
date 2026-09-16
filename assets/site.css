@@ -527,7 +527,16 @@ footer{border-top:1px solid var(--ink-10);padding-block:var(--sect) 24px}
   grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1.25fr) minmax(0,1fr) minmax(0,1.2fr);
   gap:48px 24px;align-items:start}
 .foot-brand,.foot-col{display:grid;gap:12px;align-content:start;justify-items:start;min-width:0}
-.foot-brand{max-width:30ch}
+/* ---- The brand stack is a logo, a 26px headline and a 14px line, three
+   different sizes in a row, so the 12px that suits a list of 14px links is
+   not enough air for it. Measured before this: 7px between the mark and the
+   headline and 8px between the headline and the tagline, because the type
+   scale trims heading leading with negative block margins (-4px top and
+   bottom) and that trim eats straight out of the grid gap. The trim exists
+   so a heading sits optically right inside a text flow; here the gap is
+   doing that job, so it is zeroed and the gap is stated once. ---- */
+.foot-brand{max-width:30ch;gap:20px}
+.foot-brand>.foot-tag{margin-block:0}
 .foot-tag{max-width:16ch}
 .foot h4{font-size:14px;font-weight:500;line-height:1.5;letter-spacing:-.04em;margin:0}
 .foot ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
