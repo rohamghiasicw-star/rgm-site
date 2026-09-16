@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="../assets/logos/marquee/rg-favicon.png" sizes="any">
+<title>Serve Ninja Legal Support case study | RG Marketing</title>
+<meta name="description" content="How RG Marketing ran local search for Serve Ninja Legal Support, a process serving and legal support business in Calgary, Alberta. Google Business Profile, service and area pages, citations and interlinking.">
+<link rel="canonical" href="https://rgresults.ca/case-studies/serve-ninja">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="RG Marketing">
+<meta property="og:title" content="Serve Ninja Legal Support case study">
+<meta property="og:description" content="The local search build for a Calgary process server.">
+<meta property="og:url" content="https://rgresults.ca/case-studies/serve-ninja">
+<meta property="og:image" content="https://rgresults.ca/assets/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Source+Serif+4:ital,wght@1,500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../assets/site.css">
+
+<style>
+/* ---- page-specific only. everything else comes from site.css ---- */
+
+/* top utility row: back link + pager (COMPONENTS 13b) */
+.pager{display:flex;gap:8px}
+.pager a{display:inline-flex;align-items:center;gap:7px;
+  text-decoration:underline;text-underline-offset:3px}
+
+/* centred CMS detail hero */
+.logotile{display:inline-flex;align-items:center;justify-content:center;
+  background:var(--card);border:0;border-radius:12px;
+  padding:18px 26px}
+/* the mark is near square (151 x 140), so it is capped on height alone and
+   left to find its own width, the way the marquee sizes optically. */
+.logotile img{max-height:64px;width:auto;display:block}
+.metaline{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+
+/* ---- the proof on this page is two real LeadSnap exports of the same
+   keyword, the same listing, the same ranking source and the same 13 by 13
+   grid of 169 points: 25 April 2026 and 22 June 2026, both Local pack.
+   A comparison only holds if all four of those match, so the April Local
+   pack read is paired with the June Local pack read. It is NOT paired with
+   the 2 July Google Maps export, which is a different search and is not
+   referenced on this page at all.
+   The one thing that does differ is the ground covered, 665.37 km2 against
+   706.28 km2, so the after read covers 6.15% MORE area, not less. Both areas
+   are printed on the exports and both are stated in the copy below. Every
+   figure anywhere on this page is legible inside one of those two images.
+   Nothing is drawn, nothing is redrawn, and no caption sits under a shot.
+   The shell is .toggle / .cmp / .cmp-l / .mrow / .badge from site.css, the
+   same widget the home page uses. Only the two pieces it does not own are
+   below. ---- */
+
+/* business identity at the top of the left panel, same block as the home page */
+.biz{display:flex;align-items:center;gap:11px;padding-bottom:16px}
+.biz-mk{width:36px;height:36px;border-radius:8px;flex:none;overflow:hidden;
+  border:1px solid var(--ink-12);display:grid;place-items:center}
+.biz-mk img{max-width:30px;max-height:30px;width:auto;height:auto;display:block}
+.biz-n{font-size:16px;font-weight:500;line-height:1.25}
+/* the read date sits with the rows it belongs to and swaps with them, so it is
+   never a caption under the screenshot */
+.scan-src{margin-top:10px;font-size:14px;line-height:1.45;color:var(--ink-48)}
+.scan-when{margin-top:16px;font-size:14px;color:var(--ink-48);
+  font-variant-numeric:tabular-nums}
+
+/* ---- ROOT CAUSE. A 1400px LeadSnap export cannot live in .cmp's middle
+   column. At 1440 that column is 544px, so the export rendered 500px wide -
+   a 35.7% linear scale - and the figures this page publishes came out 3.6 to
+   5.0px tall in the source's own pixels. Illegible at 1x is the same thing as
+   unsourced, and the rule on this site is that every published figure is
+   legible in the screenshot beside it.
+
+   The card is .cmp-wide now (site.css): the panel stacks above at its own
+   width and the export takes the whole rail, 1024px, a 73.1% linear scale -
+   the same read co-painting, everfinish, local-movers and picasshome already
+   get. .shot-box is the shared white plate and .panx hands the export its own
+   horizontal scroll under 700px, so the phone reads it at 100% instead of
+   312px (22.3%).
+
+   The frame carries NO aspect-ratio. It used to be pinned to the taller of
+   the two exports with object-fit:contain, which letterboxed the shorter one
+   - the 1400x831 June export letterboxed inside the 1400x920 frame. Only one export is in flow at a time (the other
+   carries [hidden]), so the frame simply takes the height of the export on
+   screen. Nothing is cropped, nothing is letterboxed, nothing is scaled to a
+   ratio that is not its own. ---- */
+.shot-fig{margin:0;width:100%}
+.shot-frame{width:100%}
+.shot-frame img{display:block;width:100%;height:auto;border-radius:6px}
+
+
+/* 3-cell details strip with dividers (COMPONENTS 13b.2) */
+.details{display:grid;grid-template-columns:repeat(3,1fr);
+  border:0;border-radius:12px;background:var(--card);overflow:hidden}
+.details div{padding:22px 24px}
+.details div+div{border-left:1px solid var(--ink-10)}
+.details dt{font-size:14px;color:var(--ink-48);margin:0 0 7px}
+.details dd{margin:0;font-size:16px;line-height:1.45}
+
+/* labelled content blocks */
+.prose{max-width:64ch;display:grid;gap:16px}
+.prose p{color:var(--ink-56);font-size:18px}
+.prose p strong{color:var(--ink);font-weight:500}
+
+/* 3-up stats row, value / suffix / label / caption (COMPONENTS 8) */
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}
+.stat{background:var(--card);border:0;border-radius:12px;
+  padding:26px 22px;display:grid;gap:8px;justify-items:center;align-content:start;text-align:center}
+/* value and suffix share one baseline row so a suffix cannot make a tile taller
+   than its neighbours. Same fix the Local Movers page carries. */
+.stat-val{display:flex;align-items:baseline;gap:3px;min-height:52px}
+.stat-num{font-size:48px;font-weight:500;line-height:52px;letter-spacing:-.06em;
+  font-variant-numeric:tabular-nums}
+.stat-suf{font-size:30px;font-weight:500;line-height:52px;letter-spacing:-.06em;color:var(--ink-24)}
+.stat h3{font-size:18px}
+.stat .cap{font-size:14px;color:var(--ink-48);max-width:28ch}
+
+.band-in img{height:30px;width:auto}
+
+@media (max-width:880px){
+  .details,.stats-row{grid-template-columns:1fr}
+  .details div+div{border-left:0;border-top:1px solid var(--ink-10)}
+}
+@media (max-width:460px){
+  .csbar{gap:12px}
+  .logotile{padding:14px 18px}
+  .logotile img{max-height:48px}
+  .stats-row{gap:10px}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="nav-in">
+    <a class="mark" href="../index.html">
+      <img src="../assets/logos/marquee/rg-mark-dark.png" alt="RG" width="404" height="260">
+      <span>Marketing</span>
+    </a>
+    <a class="btn btn-sm" href="../free-analysis.html">Get my free analysis</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- 1. back link -->
+  <div class="rail csbar">
+    <a href="../case-studies.html">&#8592; All case studies</a>
+    <nav class="pager" aria-label="Case study pagination">
+      <a href="local-movers.html">Local Movers Ltd &#8594;</a>
+    </nav>
+  </div>
+
+  <!-- 2. centred CMS detail hero -->
+  <section class="cshero">
+    <div class="rail">
+      <div class="logotile">
+        <img src="../assets/logos/marquee/serve-ninja.png"
+             alt="Serve Ninja Legal Support Calgary Alberta logo"
+             width="151" height="140">
+      </div>
+      <div class="metaline">
+        <span class="pill">Legal support</span>
+        <span class="pill">Calgary, Alberta</span>
+      </div>
+      <h1 class="t56">The local search build for a Calgary <em>process server</em></h1>
+      <p class="lede">Serve Ninja Legal Support is a process serving and legal support business in Calgary.
+        Here is the problem we started with, the work we ran, and what a 13 by 13 grid of 169
+        points read in April and again in June 2026.</p>
+    </div>
+  </section>
+
+  <!-- 3. THE RESULT. One widget, two real LeadSnap exports, same keyword, same
+       listing, same Local pack ranking source and same 13 by 13 grid. The
+       toggle swaps the screenshot and the rows together. Row order is
+       position, share, top 3, average rank last, per content/PUBLISH-STATS.md. -->
+  <section>
+    <div class="rail">
+      <div class="head mid">
+        <span class="pill">Before / After</span>
+        <h2 class="t40">Sixth to third in <em>Calgary</em></h2>
+        <p>LeadSnap scanned the keyword process server calgary on a 13 by 13 grid, 169 points
+          across Calgary. Flip the toggle to see it read on 25 April 2026 and again on 22 June
+          2026, 58 days apart. Same keyword, same listing, same Local pack layer, same 169
+          point grid at both ends. The one thing that moved is the ground covered: April covers
+          665.37 km&sup2; and June covers 706.28 km&sup2;, so the after read is a 6.15%
+          <strong>larger</strong> area. The gain was measured over more ground, not less. Both
+          areas and both layers are printed on the exports below.</p>
+      </div>
+
+      <div class="toggle" role="tablist" aria-label="Before or after scan">
+        <button type="button" role="tab" id="tabBefore" aria-selected="true" tabindex="0" aria-controls="cmpPanel">Before</button>
+        <button type="button" role="tab" id="tabAfter" aria-selected="false" tabindex="-1" aria-controls="cmpPanel">After</button>
+      </div>
+
+      <div class="cmp cmp-wide" id="cmpPanel" role="tabpanel" aria-labelledby="tabBefore">
+        <div class="cmp-l">
+          <div class="biz">
+            <span class="biz-mk">
+              <img src="../assets/logos/marquee/serve-ninja.png" alt="" width="151" height="140">
+            </span>
+            <span>
+              <span class="biz-n">Serve Ninja Legal Support</span><br>
+              <span class="tiny muted">639 5 Ave SW, Calgary, Alberta</span>
+            </span>
+          </div>
+
+          <div class="mrow"><span class="mrow-l">Position in market</span><span class="badge" data-metric="pos">6th</span></div>
+          <div class="mrow"><span class="mrow-l">Market share</span><span class="badge" data-metric="share">11.97%</span></div>
+          <div class="mrow"><span class="mrow-l">Grid in the top 3</span><span class="badge" data-metric="top3">11.83%</span></div>
+          <div class="mrow"><span class="mrow-l">Average rank</span><span class="badge" data-metric="avg">5.52</span></div>
+
+          <p class="scan-when" id="scanWhen">Scanned 25 April 2026, Local pack</p>
+          <p class="scan-src">Position in market is the place LeadSnap prints beside market share
+            and top 3 coverage: 6th in April, 3rd in June. The June export lists 33 process servers
+            on this keyword, so third is third of 33. The April export is cut off above its own
+            entries line, so April's field size is not claimed here.</p>
+        </div>
+
+        <figure class="shot-fig shot-box panx" tabindex="0">
+          <div class="shot-frame">
+              <img id="shotBefore" src="../assets/leadsnap/serve-ninja-BEFORE-2026-04-25.jpg"
+                   alt="LeadSnap heatmap export for Serve Ninja Legal Support, keyword process server calgary, 25 April 2026, search type Local pack. Market share 11.97 percent and top 3 coverage 11.83 percent both placing 6th, average ranking 5.52, on a 13 by 13 grid of 169 points covering 665.37 square kilometres across Calgary."
+                   width="1400" height="920" decoding="async">
+              <img id="shotAfter" src="../assets/leadsnap/serve-ninja-2026-06-22.jpg"
+                   alt="LeadSnap heatmap export for Serve Ninja Legal Support, keyword process server calgary, 22 June 2026, ranking source Local Pack. Market share 39.64 percent and top 3 coverage 39.64 percent both placing 3rd, average ranking 4.11, on a 13 by 13 grid of 169 points covering 706.28 square kilometres, showing 1 to 25 of 33 entries."
+                   width="1400" height="831" decoding="async" hidden>
+          </div>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. the move in three figures. Every one legible in the two exports above. -->
+  <section>
+    <div class="rail">
+      <div class="head mid">
+        <p class="pill">In numbers</p>
+        <h2 class="t40">The move, in <em>three figures</em></h2>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat">
+          <p class="stat-val"><span class="stat-num">3rd</span></p>
+          <h3>Position in market</h3>
+          <p class="cap">Third of the 33 process servers the 22 June export lists on this
+            keyword, up from 6th on the 25 April read</p>
+        </div>
+        <div class="stat">
+          <p class="stat-val"><span class="stat-num">39.64</span><span class="stat-suf">%</span></p>
+          <h3>Market share</h3>
+          <p class="cap">Up from 11.97% on 25 April, on the same 169 points read over a 6.15%
+            larger area, 665.37 km&sup2; to 706.28 km&sup2;</p>
+        </div>
+        <div class="stat">
+          <p class="stat-val"><span class="stat-num">39.64</span><span class="stat-suf">%</span></p>
+          <h3>Of the grid in the top 3</h3>
+          <p class="cap">Up from 11.83% on the 25 April read, both scans Local pack</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. details strip -->
+  <section>
+    <div class="rail">
+      <dl class="details">
+        <div>
+          <dt>Services engaged</dt>
+          <dd>Local SEO, Google Business Profile</dd>
+        </div>
+        <div>
+          <dt>Service area</dt>
+          <dd>Calgary, Alberta</dd>
+        </div>
+        <div>
+          <dt>Scans compared</dt>
+          <dd>25 April 2026 against 22 June 2026, both Local pack</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- 6. content blocks -->
+  <section>
+    <div class="rail">
+
+      <div class="block">
+        <p class="pill lbl">The challenge</p>
+        <h2 class="t40">Legal support is a <em>map pack</em> category</h2>
+        <div class="prose">
+          <p>Somebody who needs papers served is not browsing. They have a deadline, they search
+            once, and they call one of the businesses sitting in the top block of the map.
+            Everything under that block competes for what is left. For a small legal support
+            business that top block is not a nice to have, it is the channel.</p>
+          <p>Calgary makes that harder than a compact city does. A profile can look healthy at
+            its own address and disappear entirely for somebody searching from a quadrant across
+            the city. Local rank is not one number. It is measured cell by cell across a grid,
+            and the holes only show up once you actually scan it.</p>
+          <p>The category is also crowded and hard to tell apart. Process servers, paralegals,
+            court agents and national filing services all answer the same searches, and the
+            listings read almost identically to anyone skimming. That leaves relevance, proximity
+            and prominence doing the work, because there is no budget lever that fixes it.</p>
+        </div>
+      </div>
+
+      <div class="block">
+        <p class="pill lbl">What we did</p>
+        <h2 class="t40">The same four levers, in the <em>same order</em></h2>
+        <div class="prose">
+          <p><strong>Google Business Profile first.</strong> Primary category, secondary
+            categories, service list, service area, hours, description. All of it set the way
+            Google read it, not the way an owner would write it. Photos went up on
+            a schedule. Posts went out on a schedule. The profile was worked every week instead of
+            being filled in once and left alone. On a category this tight, the profile is the
+            single biggest input into where a pin lands.</p>
+          <p><strong>The website second.</strong> A page for every service actually sold, and a
+            page for every part of the city actually covered. Area pages were written from real
+            research into the area. Never spun from one template with the name swapped out. Near
+            duplicate pages do not rank and do not convert. Schema, headings and
+            index submission were part of the build, not a cleanup pass afterwards.</p>
+          <p><strong>Interlinking third.</strong> Services and areas were wired into a clean silo. Every page had a route in from above and a route across to the pages beside it. A page nothing links to is a page Google has to find twice and trust
+            once.</p>
+          <p><strong>Citations fourth.</strong> Name, address and phone were matched across the
+            directory set so nothing on the open web contradicted the profile. Inconsistent
+            listings are quiet drag, and they are cheap to settle once the profile itself is
+            correct.</p>
+          <p><strong>Google Ads when a client wants them.</strong> Exact match only, tightly
+            themed ad groups, calls tracked, judged on booked work rather than clicks.
+            <a href="https://wa.me/19022790345" target="_blank" rel="noopener">Message us
+            on WhatsApp</a> if that is the piece you need.</p>
+        </div>
+      </div>
+
+    </div>
+    <!-- back to the index. One markup for one job on all seven case studies.
+         It lives INSIDE the last content section, not between two sections:
+         as a bare top-level rail it made that one boundary 176px against the
+         page's 112 (VISUAL-QA root cause 6). Attached, it reads --stack under
+         its own section and the section's own --sect still pays half of the
+         112 into the CTA band. -->
+    <div class="rail csbar">
+      <a href="../case-studies.html">&#8592; Back to all case studies</a>
+    </div>
+  </section>
+
+  <!-- 7. CTA band -->
+  <section>
+    <div class="rail">
+      <div class="band">
+        <div class="band-in">
+          <img src="../assets/logos/marquee/rg-mark-dark.png" alt="" width="404" height="260">
+          <span class="pill">Get started</span>
+          <h2 class="t56">Stop being invisible on <em>Google</em></h2>
+          <p class="muted">Send us your business. You get back a free three minute video: where you
+            sit on the local map, and what is holding the position down.</p>
+          <div class="band-btns">
+            <a class="btn" href="../free-analysis.html">Get my free analysis</a>
+            <a class="btn btn-wa" href="https://wa.me/19022790345" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2.01a9.9 9.9 0 0 0-8.53 14.86L2 22.06l5.33-1.4a9.9 9.9 0 0 0 4.71 1.2h.01a9.9 9.9 0 0 0 9.9-9.9 9.84 9.84 0 0 0-2.9-7.01 9.84 9.84 0 0 0-7.01-2.94Zm0 18.15h-.01a8.22 8.22 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1 12.73-10.1 8.15 8.15 0 0 1 2.4 5.81 8.23 8.23 0 0 1-8.15 8.15Zm4.5-6.15c-.24-.12-1.46-.72-1.69-.8-.22-.09-.39-.13-.55.12-.17.25-.64.81-.78.97-.15.17-.29.19-.53.07-.25-.13-1.05-.39-1.99-1.24-.74-.65-1.24-1.46-1.38-1.71-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.09-.16.04-.31-.02-.43-.06-.13-.55-1.35-.76-1.84-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.55c.13.16 1.74 2.66 4.22 3.73.59.25 1.05.4 1.4.52.59.18 1.13.16 1.56.1.47-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.17-.47-.29Z"/></svg>
+              <span>WhatsApp us</span><span class="wa-num">902 279 0345</span>
+            </a>
+          </div>
+          <p class="small muted">One business per category per service area. No long term contract.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER (identical on every page, styles in assets/site.css) ============ -->
+<footer>
+  <div class="rail">
+
+    <div class="foot">
+
+      <div class="foot-brand">
+        <a class="mark" href="../index.html" aria-label="RG Marketing home">
+          <img src="../assets/logos/marquee/rg-mark-dark.png" alt="RG" width="404" height="260">
+          <span>Marketing</span>
+        </a>
+        <h2 class="t26 foot-tag">Dominate Your Local <em>Market</em>.</h2>
+        <p class="small muted">Built for local businesses in Canada.</p>
+      </div>
+
+      <div class="foot-col">
+        <h3>Navigate</h3>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../case-studies.html">Case studies</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h3>Case studies</h3>
+        <ul>
+          <li><a href="../case-studies/local-movers.html">Local Movers Ltd</a></li>
+          <li><a href="../case-studies/co-painting.html">Co Painting</a></li>
+          <li><a href="../case-studies/everfinish.html">Everfinish</a></li>
+          <li><a href="../case-studies/mamba-drainage.html">Mamba Drainage</a></li>
+          <li><a href="../case-studies/always-best-moving.html">Always Best Moving</a></li>
+          <li><a href="../case-studies/picasshome.html">Picasshome Painting</a></li>
+          <li><a href="../case-studies/serve-ninja.html">Serve Ninja Legal Support</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h3>Get started</h3>
+        <ul>
+          <li><a href="../free-analysis.html">Free analysis</a></li>
+          <li><a href="../book-a-call.html">Book a call</a></li>
+          <li><a href="../terms.html">Terms and privacy</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h3>Contact</h3>
+        <a class="btn btn-wa btn-wa-sm" href="https://wa.me/19022790345" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2.01a9.9 9.9 0 0 0-8.53 14.86L2 22.06l5.33-1.4a9.9 9.9 0 0 0 4.71 1.2h.01a9.9 9.9 0 0 0 9.9-9.9 9.84 9.84 0 0 0-2.9-7.01 9.84 9.84 0 0 0-7.01-2.94Zm0 18.15h-.01a8.22 8.22 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1 12.73-10.1 8.15 8.15 0 0 1 2.4 5.81 8.23 8.23 0 0 1-8.15 8.15Zm4.5-6.15c-.24-.12-1.46-.72-1.69-.8-.22-.09-.39-.13-.55.12-.17.25-.64.81-.78.97-.15.17-.29.19-.53.07-.25-.13-1.05-.39-1.99-1.24-.74-.65-1.24-1.46-1.38-1.71-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.09-.16.04-.31-.02-.43-.06-.13-.55-1.35-.76-1.84-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.55c.13.16 1.74 2.66 4.22 3.73.59.25 1.05.4 1.4.52.59.18 1.13.16 1.56.1.47-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.17-.47-.29Z"/></svg>
+          <span>WhatsApp us</span>
+        </a>
+        <p class="foot-num">902 279 0345</p>
+        <ul>
+          <li><a href="mailto:roham@rghiasi.com">roham@rghiasi.com</a></li>
+          <li><a href="https://rgresults.ca">rgresults.ca</a></li>
+          <li>Canada</li>
+        </ul>
+      </div>
+
+    </div>
+
+
+    <div class="foot-btm">
+      <p class="tiny">&copy; <span id="yr">2026</span> RG Marketing. All rights reserved.</p>
+      <p class="tiny">Canada</p>
+    </div>
+
+  </div>
+</footer>
+
+<!-- sticky mobile CTA, shown under 880px by site.css -->
+<div class="tapbar">
+  <a class="btn btn-wa" href="https://wa.me/19022790345" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2.01a9.9 9.9 0 0 0-8.53 14.86L2 22.06l5.33-1.4a9.9 9.9 0 0 0 4.71 1.2h.01a9.9 9.9 0 0 0 9.9-9.9 9.84 9.84 0 0 0-2.9-7.01 9.84 9.84 0 0 0-7.01-2.94Zm0 18.15h-.01a8.22 8.22 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1 12.73-10.1 8.15 8.15 0 0 1 2.4 5.81 8.23 8.23 0 0 1-8.15 8.15Zm4.5-6.15c-.24-.12-1.46-.72-1.69-.8-.22-.09-.39-.13-.55.12-.17.25-.64.81-.78.97-.15.17-.29.19-.53.07-.25-.13-1.05-.39-1.99-1.24-.74-.65-1.24-1.46-1.38-1.71-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.09-.16.04-.31-.02-.43-.06-.13-.55-1.35-.76-1.84-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.55c.13.16 1.74 2.66 4.22 3.73.59.25 1.05.4 1.4.52.59.18 1.13.16 1.56.1.47-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.17-.47-.29Z"/></svg>
+    <span>WhatsApp us</span><span class="wa-num">902 279 0345</span>
+  </a>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://rgresults.ca/"},
+        {"@type":"ListItem","position":2,"name":"Case studies","item":"https://rgresults.ca/case-studies"},
+        {"@type":"ListItem","position":3,"name":"Serve Ninja Legal Support"}
+      ]
+    },
+    {
+      "@type": "Article",
+      "headline": "The local search build for a Calgary process server",
+      "description": "How RG Marketing ran local search for Serve Ninja Legal Support, a legal support business in Calgary, Alberta.",
+      "datePublished": "2026-09-15",
+      "mainEntityOfPage": "https://rgresults.ca/case-studies/serve-ninja",
+      "author": {
+        "@type": "Organization",
+        "name": "RG Marketing",
+        "url": "https://rgresults.ca"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "RG Marketing",
+        "url": "https://rgresults.ca"
+      },
+      "about": {
+        "@type": "LegalService",
+        "name": "Serve Ninja Legal Support",
+        "areaServed": "Calgary, Alberta, Canada"
+      }
+    }
+  ]
+}
+</script>
+
+<script>
+(function () {
+  "use strict";
+
+  var yr = document.getElementById("yr");
+  if (yr) { yr.textContent = String(new Date().getFullYear()); }
+
+  /* ---- before / after toggle.
+     Both states are read straight off the two LeadSnap exports shown beside
+     them, 25 April 2026 and 22 June 2026, both Local pack. Same widget as the
+     home page. Row order is position, share, top 3, average rank last, per
+     PUBLISH-STATS. ---- */
+  var tabB  = document.getElementById("tabBefore");
+  var tabA  = document.getElementById("tabAfter");
+  var panel = document.getElementById("cmpPanel");
+  var when  = document.getElementById("scanWhen");
+  var shotB = document.getElementById("shotBefore");
+  var shotA = document.getElementById("shotAfter");
+
+  var SCAN = {
+    before: {
+      val:  { pos: "6th", share: "11.97%", top3: "11.83%", avg: "5.52" },
+      when: "Scanned 25 April 2026, Local pack"
+    },
+    after: {
+      val:  { pos: "3rd of 33", share: "39.64%", top3: "39.64%", avg: "4.11" },
+      when: "Scanned 22 June 2026, Local pack"
+    }
+  };
+
+  function show(el, on) {
+    if (!el) { return; }
+    if (on) { el.removeAttribute("hidden"); } else { el.setAttribute("hidden", ""); }
+  }
+
+  function paint(state) {
+    var d = SCAN[state] || SCAN.before;
+    var after = state === "after";
+    var rows = document.querySelectorAll("#cmpPanel .badge[data-metric]");
+    for (var i = 0; i < rows.length; i++) {
+      var key = rows[i].getAttribute("data-metric");
+      if (d.val[key]) { rows[i].textContent = d.val[key]; }
+      rows[i].className = after ? "badge good" : "badge";
+    }
+    show(shotB, !after);
+    show(shotA, after);
+    if (when) { when.textContent = d.when; }
+    tabB.setAttribute("aria-selected", after ? "false" : "true");
+    tabA.setAttribute("aria-selected", after ? "true" : "false");
+    tabB.setAttribute("tabindex", after ? "-1" : "0");
+    tabA.setAttribute("tabindex", after ? "0" : "-1");
+    panel.setAttribute("aria-labelledby", after ? "tabAfter" : "tabBefore");
+  }
+
+  if (tabB && tabA) {
+    paint("before");            /* explicit initial state, never inherit the markup */
+    tabB.addEventListener("click", function () { paint("before"); });
+    tabA.addEventListener("click", function () { paint("after"); });
+    [tabB, tabA].forEach(function (t) {
+      t.addEventListener("keydown", function (e) {
+        if (e.key !== "ArrowRight" && e.key !== "ArrowLeft" &&
+            e.key !== "Home" && e.key !== "End") { return; }
+        e.preventDefault();
+        var next = (e.key === "Home") ? tabB
+                 : (e.key === "End")  ? tabA
+                 : (t === tabB ? tabA : tabB);
+        paint(next === tabA ? "after" : "before");
+        next.focus();
+      });
+    });
+  }
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="../assets/logos/marquee/rg-favicon.png" sizes="any">
+<title>Everfinish case study | RG Marketing</title>
+<meta name="description" content="How RG Marketing runs local search for Everfinish, a cabinet refinishing company in Vaughan, Ontario. Google Business Profile, service and area pages, citations and interlinking, with the table of the LeadSnap scan results of 10 September 2026.">
+<link rel="canonical" href="https://rgresults.ca/case-studies/everfinish">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="RG Marketing">
+<meta property="og:title" content="Everfinish case study">
+<meta property="og:description" content="The local search build for a Vaughan cabinet refinisher. First on both core Vaughan keywords in the LeadSnap scan results of 10 September 2026.">
+<meta property="og:url" content="https://rgresults.ca/case-studies/everfinish">
+<meta property="og:image" content="https://rgresults.ca/assets/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Source+Serif+4:ital,wght@1,500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../assets/site.css">
+
+<style>
+/* ---- page-specific only. everything else comes from site.css ---- */
+
+/* centred CMS detail hero (COMPONENTS 4d) */
+.logotile{display:inline-flex;align-items:center;justify-content:center;
+  background:var(--card);border:0;border-radius:12px;
+  padding:18px 26px}
+.logotile img{max-height:52px;width:auto;display:block}
+.metaline{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+
+/* 3-cell details strip with dividers (COMPONENTS 13b.2) */
+/* the strip sits inside the centred hero, so it has to reset the inherited
+   text-align, and it has to out-specify `.cshero .rail>*+*` to set its own
+   top margin rather than inherit the 24px hero gap. */
+.details{display:grid;grid-template-columns:repeat(3,1fr);
+  border:0;border-radius:12px;background:var(--card);overflow:hidden;
+  text-align:left}
+.details div{padding:22px 24px}
+.details div+div{border-left:1px solid var(--ink-10)}
+.details dt{font-size:14px;color:var(--ink-48);margin:0 0 7px}
+.details dd{margin:0;font-size:16px;line-height:1.45}
+
+/* labelled content blocks */
+.prose{max-width:64ch;display:grid;gap:16px}
+.prose p{color:var(--ink-56);font-size:18px}
+.prose p strong{color:var(--ink);font-weight:500}
+
+/* 3-up stats row, value / suffix / label / caption (COMPONENTS 8).
+   Identical to co-painting's: one component, one size, on every case study.
+   .stat sits on site.css's read-left opt-out list, so it carries --jc:normal
+   and .stat-val has to state its own axis. Without that line the three values
+   measured 23.6 to 36.2px left of their tile centres (VISUAL-QA root cause 5). */
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.stat{background:var(--card);border:0;border-radius:12px;
+  padding:26px 22px;display:grid;gap:8px;justify-items:center;align-content:start;text-align:center}
+.stat-val{display:flex;align-items:baseline;justify-content:center;gap:2px;
+  font-size:clamp(26px,3vw,34px);font-weight:500;line-height:45px;letter-spacing:-.06em}
+.stat-suf{font-size:22px;font-weight:500;letter-spacing:-.06em;color:var(--ink-24)}
+.stat h3{font-size:18px}
+.stat .cap{font-size:14px;color:var(--ink-48);max-width:28ch}
+
+/* The rendered SVG coverage map and every rule that painted it were deleted on
+   2026-09-16. Its viewBox was 640x541 inside a 732x408 box, a +52.0% aspect
+   mismatch that letterboxed 124.7px of dead white onto each side and dropped
+   its labels to 4.70px at 400px wide (VISUAL-QA root cause 15). What replaces
+   it is the real thing: the table of the LeadSnap scan results of 10 September
+   2026. Do not draw a substitute map and do not reuse another client's.
+
+   That image is a TABLE of the scan results. It does not imitate the LeadSnap
+   interface and it must never be called a screenshot, a scan image or a
+   heatmap anywhere on the page. No grid, no pins, no coverage percentage, no
+   point count is published, because none of those appear in the table.
+
+   The scan stack reads as one unit: table, scan metadata, figures. Held at
+   12px so the three pieces sit together instead of floating apart. */
+.shot-box+.details{margin-top:12px}
+
+/* A results TABLE is words, not pins, so a 640px floor was put on it to keep
+   its rows near 11px on a phone, with .shot-box taking the sideways scroll.
+   REMOVED 2026-09-16. The floor only ever engaged below about 712px, which is
+   the exact width where it made the export 640px wide inside a 352px box: at
+   400px, 300px of the table sat outside the frame. A reader on a phone sees an
+   image with its right-hand side missing, and a cut-off image is the complaint
+   this pass exists to clear.
+
+   Nothing is lost by dropping it. Every figure the page publishes is written
+   out in the prose beside it (1st, 100%, 2.32, 2.10), so the image is the
+   receipt, not the only copy. It now scales to whatever the column gives it
+   and is whole at every width. */
+
+.band-in img{height:30px;width:auto}
+
+@media (max-width:880px){
+  .details,.stats-row{grid-template-columns:1fr}
+  .details div+div{border-left:0;border-top:1px solid var(--ink-10)}
+}
+@media (max-width:460px){
+  .csbar{gap:12px}
+  .logotile{padding:14px 18px}
+  .logotile img{max-height:40px}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="nav-in">
+    <a class="mark" href="../index.html">
+      <img src="../assets/logos/marquee/rg-mark-dark.png" alt="RG" width="404" height="260">
+      <span>Marketing</span>
+    </a>
+    <a class="btn btn-sm" href="../free-analysis.html">Get my free analysis</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- 1. back link + pager -->
+  <div class="rail csbar">
+    <a href="../case-studies.html">&#8592; All case studies</a>
+    <a href="../book-a-call.html">Book a call &#8594;</a>
+  </div>
+
+  <!-- 2. centred CMS detail hero -->
+  <section class="cshero">
+    <div class="rail">
+      <div class="logotile">
+        <img src="../assets/logos/marquee/everfinish.png"
+             alt="Everfinish cabinet refinishing Vaughan Ontario logo"
+             width="358" height="140">
+      </div>
+      <div class="metaline">
+        <span class="pill">Cabinet refinishing</span>
+        <span class="pill">Vaughan, Ontario</span>
+        <span class="pill">Local SEO</span>
+      </div>
+      <h1 class="t56">The local search build for a Vaughan <em>refinisher</em></h1>
+      <p class="lede">Everfinish refinishes kitchen cabinets across Vaughan. This page shows the
+        local search build behind the profile and the work that holds its position on the
+        Vaughan map.</p>
+
+      <dl class="details">
+        <div>
+          <dt>Services engaged</dt>
+          <dd>Local SEO, Google Business Profile, citations</dd>
+        </div>
+        <div>
+          <dt>Service area</dt>
+          <dd>Vaughan, Ontario</dd>
+        </div>
+        <div>
+          <dt>Published scan</dt>
+          <dd>10 September 2026</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- 3. THE RESULT: one real LeadSnap read, then the figures taken off it.
+       The image is a TABLE of the scan results, never a screenshot, a scan
+       image or a heatmap. Call it anything else and the page is lying about
+       its own evidence.
+
+       Every figure printed below is legible in that image and nowhere else:
+       1st, 100%, 2.32, 2.10. Nothing else gets a number. The grid size, the
+       point count and the top-3 coverage percentage live in the JSON export,
+       not in the image beside them, so they are not published here. The
+       rendered SVG map that used to sit here was pulled on 2026-09-16 along
+       with the 86% / 135 of 157 / 157 point figures it carried, for that
+       reason. Do not draw a substitute map and do not reuse another client's.
+
+       VAUGHAN ONLY. The scan covers a grid clipped to the Vaughan municipal
+       boundary. On the same scan set Richmond Hill and Markham read 0% share,
+       so no sentence here may read as a GTA-wide or York Region result. The
+       GTA and near-me rows visible in the table were published as figures
+       until 2026-09-16 and were cut for exactly that reason. Do not put them
+       back.
+
+       No "1st of N" anywhere. The export carries the position but no
+       competitor count, so there is no denominator on disk.
+
+       Everfinish is Vaughan cabinet refinishing only. No Toronto, no North York,
+       no painting as a service, and nothing shared with Co Painting. -->
+  <section>
+    <div class="rail">
+      <div class="block">
+        <p class="pill lbl">The result</p>
+        <h2 class="t40">First on both core Vaughan <em>keywords</em></h2>
+        <div class="prose">
+          <p>Rank is not one number, and it is not one map either. A profile can own the
+            searches that name its own city and sit well down the list on terms that reach past
+            it, so the honest read is keyword by keyword, inside the area the scan actually
+            covered.</p>
+          <p>Below is the table of the LeadSnap scan results for Everfinish. The scan runs on a
+            grid clipped to the Vaughan municipal boundary, so every figure on this page is a
+            Vaughan figure. <strong>Kitchen cabinet refinishing Vaughan</strong> places 1st with
+            100% of the market and averages 2.32. <strong>Kitchen cabinet painting Vaughan</strong>
+            places 1st with 100% of the market and averages 2.10.</p>
+          <p>The rest of the rows are terms that reach outside the city, and none of them is a
+            result. They sit on the same read because that is where the next work goes, not
+            because they have been won. This is where the profile stands on 10 September
+            2026.</p>
+        </div>
+      </div>
+
+      <div class="shot-box panx" tabindex="0">
+        <img class="shot" src="../assets/leadsnap/everfinish-rankings-2026-09-11.jpg"
+             alt="Table of the LeadSnap scan results for Everfinish, 10 September 2026, from a grid clipped to the Vaughan municipal boundary. Kitchen cabinet refinishing Vaughan, average rank 2.32, position 1st, 100 percent share. Kitchen cabinet painting Vaughan, average rank 2.10, position 1st, 100 percent share. Six further rows below them cover terms that reach outside Vaughan and are not counted as a result."
+             width="1400" height="575" decoding="async">
+      </div>
+
+      <dl class="details">
+        <div>
+          <dt>Scan area</dt>
+          <dd>Grid clipped to the Vaughan municipal boundary</dd>
+        </div>
+        <div>
+          <dt>Read</dt>
+          <dd>Table of the LeadSnap scan results</dd>
+        </div>
+        <div>
+          <dt>Scan date</dt>
+          <dd>10 September 2026</dd>
+        </div>
+      </dl>
+
+      <!-- Order is the one content/PUBLISH-STATS.md sets: market position, market
+           share, then supporting detail. Average rank never leads. -->
+      <div class="stats-row">
+        <div class="stat">
+          <p class="stat-val">1st</p>
+          <h3>Position in market</h3>
+          <p class="cap">On both core Vaughan keywords</p>
+        </div>
+        <div class="stat">
+          <p class="stat-val">100<span class="stat-suf">%</span></p>
+          <h3>Market share</h3>
+          <p class="cap">Share of the Vaughan market, placed 1st</p>
+        </div>
+        <div class="stat">
+          <p class="stat-val">2.32</p>
+          <h3>Average rank</h3>
+          <p class="cap">Kitchen cabinet refinishing Vaughan, the supporting read</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 5-6. the challenge, what we did -->
+  <section>
+    <div class="rail">
+
+      <div class="block">
+        <p class="pill lbl">The challenge</p>
+        <h2 class="t40">Refinishing is won inside the <em>map pack</em></h2>
+        <div class="prose">
+          <p>Somebody decides to refinish the kitchen instead of replacing it. They search, look at the three businesses at the top of the map, and call one. Everything
+            below that block gets a fraction of the attention. For a trade that sells a single high
+            consideration job rather than repeat small ones, those three slots are most of the
+            channel.</p>
+          <p>Cabinet refinishing also has a category problem. It sits next to general painting,
+            kitchen renovation and cabinet supply in Google's eyes, and searchers use all of those
+            words for the same job. A profile filed under the wrong primary category competes for the wrong searches. So does one that never says the work in the words customers type.</p>
+          <p>Then there is the geography. Vaughan covers a lot of ground and the population is
+            spread across communities that behave like separate towns. Ranking near the shop proves
+            very little. The only honest read is to scan the whole municipal area point by point. Then look at where the coverage thins out.</p>
+        </div>
+      </div>
+
+      <div class="block">
+        <p class="pill lbl">What we did</p>
+        <h2 class="t40">The levers we actually <em>pulled</em></h2>
+        <div class="prose">
+          <p><strong>Google Business Profile first.</strong> Primary category, secondary categories, service list, service area, hours, description. All of it set the way Google reads it, not the way an owner would write it. The services
+            are named as the jobs customers search for. Photos go up on a schedule. Posts go out on a schedule. The profile gets worked every week, not filled in once and left alone.</p>
+          <p><strong>Service pages second.</strong> A page for every job the company actually
+            sells, written so each one targets a distinct search rather than restating the page
+            beside it. Near duplicate pages do not rank and do not convert, so the copy is built
+            from the real scope of the work.</p>
+          <p><strong>Area pages third.</strong> A page for each community inside the service area,
+            researched from real local sources rather than spun from a template with the name
+            swapped out. This is the part that moves coverage in the corners of a grid, and it is
+            the part most often skipped.</p>
+          <p><strong>Citations fourth.</strong> Name, address and phone matched across the
+            directory set so nothing on the open web contradicts the profile. Inconsistent listings
+            are quiet drag, and they are cheap to fix once the profile is settled.</p>
+          <p><strong>Interlinking and indexing throughout.</strong> Schema on every page. A clean internal link silo
+            from the home page down to each service and each area page. An XML sitemap. Index
+            submission every time a page ships. A page Google has not indexed cannot rank, so
+            this runs as part of the build rather than as a later cleanup.</p>
+          <p><strong>Google Ads when a client wants them.</strong> Exact match only, tightly
+            themed ad groups, calls tracked, judged on booked work rather than clicks.
+            <a href="https://wa.me/19022790345" target="_blank" rel="noopener">Message us on
+            WhatsApp</a> if that is the piece you need.</p>
+        </div>
+      </div>
+
+    </div>
+    <!-- back to the index. One markup for one job on all seven case studies.
+         It lives INSIDE the last content section, not between two sections:
+         as a bare top-level rail it made that one boundary 176px against the
+         page's 112 (VISUAL-QA root cause 6). Attached, it reads --stack under
+         its own section and the section's own --sect still pays half of the
+         112 into the CTA band. -->
+    <div class="rail csbar">
+      <a href="../case-studies.html">&#8592; Back to all case studies</a>
+    </div>
+  </section>
+
+  <!-- 7. CTA band -->
+  <section>
+    <div class="rail">
+      <div class="band">
+        <div class="band-in">
+          <img src="../assets/logos/marquee/rg-mark-dark.png" alt="" width="404" height="260">
+          <span class="pill">Get started</span>
+          <h2 class="t56">Stop being invisible on <em>Google</em></h2>
+          <p class="muted">Send us your business. You get back a free three minute video: where you
+            sit on the local map, and what is holding the position down.</p>
+          <div class="band-btns">
+            <a class="btn" href="../free-analysis.html">Get my free analysis</a>
+            <a class="btn btn-wa" href="https://wa.me/19022790345" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2.01a9.9 9.9 0 0 0-8.53 14.86L2 22.06l5.33-1.4a9.9 9.9 0 0 0 4.71 1.2h.01a9.9 9.9 0 0 0 9.9-9.9 9.84 9.84 0 0 0-2.9-7.01 9.84 9.84 0 0 0-7.01-2.94Zm0 18.15h-.01a8.22 8.22 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1 12.73-10.1 8.15 8.15 0 0 1 2.4 5.81 8.23 8.23 0 0 1-8.15 8.15Zm4.5-6.15c-.24-.12-1.46-.72-1.69-.8-.22-.09-.39-.13-.55.12-.17.25-.64.81-.78.97-.15.17-.29.19-.53.07-.25-.13-1.05-.39-1.99-1.24-.74-.65-1.24-1.46-1.38-1.71-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.09-.16.04-.31-.02-.43-.06-.13-.55-1.35-.76-1.84-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.55c.13.16 1.74 2.66 4.22 3.73.59.25 1.05.4 1.4.52.59.18 1.13.16 1.56.1.47-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.17-.47-.29Z"/></svg>
+              <span>WhatsApp us</span><span class="wa-num">902 279 0345</span>
+            </a>
+          </div>
+          <p class="small muted">One business per category per service area. No long term contract.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER (identical on every page, styles in assets/site.css) ============ -->
+<footer>
+  <div class="rail">
+
+    <div class="foot">
+
+      <div class="foot-brand">
+        <a class="mark" href="../index.html" aria-label="RG Marketing home">
+          <img src="../assets/logos/marquee/rg-mark-dark.png" alt="RG" width="404" height="260">
+          <span>Marketing</span>
+        </a>
+        <h2 class="t26 foot-tag">Dominate Your Local <em>Market</em>.</h2>
+        <p class="small muted">Built for local businesses in Canada.</p>
+      </div>
+
+      <div class="foot-col">
+        <h3>Navigate</h3>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../case-studies.html">Case studies</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h3>Case studies</h3>
+        <ul>
+          <li><a href="../case-studies/local-movers.html">Local Movers Ltd</a></li>
+          <li><a href="../case-studies/co-painting.html">Co Painting</a></li>
+          <li><a href="../case-studies/everfinish.html">Everfinish</a></li>
+          <li><a href="../case-studies/mamba-drainage.html">Mamba Drainage</a></li>
+          <li><a href="../case-studies/always-best-moving.html">Always Best Moving</a></li>
+          <li><a href="../case-studies/picasshome.html">Picasshome Painting</a></li>
+          <li><a href="../case-studies/serve-ninja.html">Serve Ninja Legal Support</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h3>Get started</h3>
+        <ul>
+          <li><a href="../free-analysis.html">Free analysis</a></li>
+          <li><a href="../book-a-call.html">Book a call</a></li>
+          <li><a href="../terms.html">Terms and privacy</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h3>Contact</h3>
+        <a class="btn btn-wa btn-wa-sm" href="https://wa.me/19022790345" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2.01a9.9 9.9 0 0 0-8.53 14.86L2 22.06l5.33-1.4a9.9 9.9 0 0 0 4.71 1.2h.01a9.9 9.9 0 0 0 9.9-9.9 9.84 9.84 0 0 0-2.9-7.01 9.84 9.84 0 0 0-7.01-2.94Zm0 18.15h-.01a8.22 8.22 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1 12.73-10.1 8.15 8.15 0 0 1 2.4 5.81 8.23 8.23 0 0 1-8.15 8.15Zm4.5-6.15c-.24-.12-1.46-.72-1.69-.8-.22-.09-.39-.13-.55.12-.17.25-.64.81-.78.97-.15.17-.29.19-.53.07-.25-.13-1.05-.39-1.99-1.24-.74-.65-1.24-1.46-1.38-1.71-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.09-.16.04-.31-.02-.43-.06-.13-.55-1.35-.76-1.84-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.55c.13.16 1.74 2.66 4.22 3.73.59.25 1.05.4 1.4.52.59.18 1.13.16 1.56.1.47-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.17-.47-.29Z"/></svg>
+          <span>WhatsApp us</span>
+        </a>
+        <p class="foot-num">902 279 0345</p>
+        <ul>
+          <li><a href="mailto:roham@rghiasi.com">roham@rghiasi.com</a></li>
+          <li><a href="https://rgresults.ca">rgresults.ca</a></li>
+          <li>Canada</li>
+        </ul>
+      </div>
+
+    </div>
+
+
+    <div class="foot-btm">
+      <p class="tiny">&copy; <span id="yr">2026</span> RG Marketing. All rights reserved.</p>
+      <p class="tiny">Canada</p>
+    </div>
+
+  </div>
+</footer>
+
+<!-- sticky mobile CTA, shown under 880px by site.css -->
+<div class="tapbar">
+  <a class="btn btn-wa" href="https://wa.me/19022790345" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2.01a9.9 9.9 0 0 0-8.53 14.86L2 22.06l5.33-1.4a9.9 9.9 0 0 0 4.71 1.2h.01a9.9 9.9 0 0 0 9.9-9.9 9.84 9.84 0 0 0-2.9-7.01 9.84 9.84 0 0 0-7.01-2.94Zm0 18.15h-.01a8.22 8.22 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1 12.73-10.1 8.15 8.15 0 0 1 2.4 5.81 8.23 8.23 0 0 1-8.15 8.15Zm4.5-6.15c-.24-.12-1.46-.72-1.69-.8-.22-.09-.39-.13-.55.12-.17.25-.64.81-.78.97-.15.17-.29.19-.53.07-.25-.13-1.05-.39-1.99-1.24-.74-.65-1.24-1.46-1.38-1.71-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.09-.16.04-.31-.02-.43-.06-.13-.55-1.35-.76-1.84-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.55c.13.16 1.74 2.66 4.22 3.73.59.25 1.05.4 1.4.52.59.18 1.13.16 1.56.1.47-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.17-.47-.29Z"/></svg>
+    <span>WhatsApp us</span><span class="wa-num">902 279 0345</span>
+  </a>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://rgresults.ca/"},
+        {"@type":"ListItem","position":2,"name":"Case studies","item":"https://rgresults.ca/case-studies"},
+        {"@type":"ListItem","position":3,"name":"Everfinish"}
+      ]
+    },
+    {
+      "@type": "Article",
+      "headline": "The local search build for a Vaughan refinisher",
+      "description": "How RG Marketing runs local search for Everfinish, a cabinet refinishing company in Vaughan, Ontario.",
+      "datePublished": "2026-09-15",
+      "mainEntityOfPage": "https://rgresults.ca/case-studies/everfinish",
+      "author": {
+        "@type": "Organization",
+        "name": "RG Marketing",
+        "url": "https://rgresults.ca"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "RG Marketing",
+        "url": "https://rgresults.ca"
+      },
+      "about": {
+        "@type": "HomeAndConstructionBusiness",
+        "name": "Everfinish",
+        "areaServed": "Vaughan, Ontario, Canada"
+      }
+    }
+  ]
+}
+</script>
+
+<script>
+(function () {
+  "use strict";
+  var yr = document.getElementById("yr");
+  if (yr) { yr.textContent = String(new Date().getFullYear()); }
+})();
+</script>
+
+</body>
+</html>

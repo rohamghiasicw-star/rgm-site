@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="assets/logos/marquee/rg-favicon.png" sizes="any">
+<title>About | RG Marketing</title>
+<meta name="description" content="RG Marketing is one person, Roham Ghiasi, working local search for service businesses across Canada. One business per category per service area, month to month.">
+<link rel="canonical" href="https://rgresults.ca/about">
+<meta property="og:title" content="RG Marketing | About">
+<meta property="og:description" content="One operator, a short client list, and the three levers that move a local ranking. Movers, painters, drainage and cabinet refinishing across BC, Ontario and Alberta.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rgresults.ca/about">
+<meta property="og:image" content="https://rgresults.ca/assets/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Source+Serif+4:ital,wght@1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* page-specific only. everything else comes from assets/site.css */
+.hero .lede{max-width:56ch}
+.hero-cta{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.tlink{font-size:14px;color:var(--ink-56);text-decoration:underline;text-underline-offset:3px}
+.tlink:hover{color:var(--ink)}
+
+/* ROOT CAUSE 17. This row used to be one 860px letter beside one 413.6px
+   facts card, leaving 446.4px of empty right column under the short one. The
+   row is rebalanced three ways, all with content that was already on the
+   page: the mission chip and heading are promoted out of the card into a
+   normal .head mid, the same section head sections 4 to 7 already use; the
+   signature is promoted out of the letter body into its own card at the top
+   of the right column; and the split moves to 1.9fr/1fr so the letter reads
+   at the site's own 62ch measure instead of 58ch. The two columns now end
+   within a few px of each other. */
+.letter-wrap{display:grid;grid-template-columns:1.9fr 1fr;gap:32px;align-items:start}
+.side-col{display:grid;gap:24px;align-content:start}
+/* in the letter the signature was a rule under the last paragraph. As its own
+   card it does not need to draw that rule again. */
+.author .sign{margin-top:0;padding-top:0;border-top:0}
+.letter{position:relative;overflow:hidden;background:var(--card);
+  border:0;border-radius:16px;padding:44px}
+/* the watermark sits fully inside the card. It used to be bled -14/-8 past the
+   corner, and .letter clips (overflow:hidden), so the R and the G both lost an
+   edge: the one place on the site where the RG mark rendered cut. No glyph on
+   this site is allowed to read as cropped, watermark included. */
+.letter .wm{position:absolute;right:28px;top:28px;width:180px;height:auto;opacity:.06;pointer-events:none}
+.letter-in{position:relative;z-index:1;display:grid;gap:var(--stack);max-width:62ch}
+.letter-in p{color:var(--ink-56);font-size:16px}
+.sign{display:flex;align-items:center;gap:13px;margin-top:8px;padding-top:22px;
+  border-top:1px solid var(--ink-10)}
+.sign img{height:30px;width:auto;display:block}
+.sign b{display:block;font-size:16px;font-weight:500}
+.facts .mrow:first-of-type{border-top:0}
+.facts .mrow{flex-wrap:wrap}
+.mval{font-size:14px;font-weight:500;text-align:right}
+
+.clist{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.clist li{display:flex;gap:11px;font-size:16px;line-height:1.45;color:var(--ink-56)}
+.clist li::before{content:"";flex:none;width:7px;height:7px;margin-top:8px;
+  border-radius:50%;background:var(--ink-24)}
+.card-mine{background:var(--card)}
+.card-mine .clist li{color:var(--ink)}
+.card-mine .clist li::before{background:var(--ink)}
+.card-head{display:flex;align-items:center;gap:10px;margin-bottom:20px}
+.card-head img{height:19px;width:auto}
+.card-head span{font-size:16px;font-weight:500}
+
+.roster{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:7px}
+.roster li{font-size:14px;color:var(--ink-56)}
+.note{margin-top:14px;font-size:14px;color:var(--ink-48);max-width:70ch}
+.faq-list{display:grid;gap:var(--list-gap)}
+
+@media (max-width:880px){
+  .letter-wrap{grid-template-columns:1fr}
+  .letter{padding:30px 22px}
+  /* the card loses 22px of side padding here, so the watermark comes in with it
+     and shrinks. Flush to the corner, never past it: a bleed at 352px of card
+     cropped the 130px mark against the "Our mission" pill and made
+     article.letter the only scrollable content box on the site
+     (scrollWidth 366 against clientWidth 352). */
+  .letter .wm{width:130px;height:auto;right:14px;top:14px}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <a class="mark" href="index.html" aria-label="RG Marketing home">
+      <img src="assets/logos/marquee/rg-mark-dark.png" alt="RG" width="404" height="260">
+      <span>Marketing</span>
+    </a>
+    <a class="btn btn-sm" href="free-analysis.html">Get my free analysis</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- 1. HERO -->
+  <section class="hero">
+    <div class="rail">
+      <div class="stack">
+        <div><span class="pill">About us</span></div>
+        <h1 class="t56">The ONLY Two Things You Need To Know About <em>Marketing</em>.</h1>
+        <p class="lede">Get into the top 3. Stay there. That's the whole job, and RG Marketing is
+        one person doing it for local service businesses across Canada: movers, painters, drainage
+        crews. Most people searching for your services never look past the top 3 results. If you're
+        not there, you're invisible.</p>
+        <div class="hero-cta">
+          <a class="btn" href="free-analysis.html">Get your free analysis</a>
+          <a class="tlink" href="book-a-call.html">Or book a call</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. CLIENT LOGO MARQUEE -->
+  <div class="rail">
+    <div class="marq-wrap">
+      <span class="marq-lbl">Working with...</span>
+      <div class="marq">
+        <div class="marq-track">
+          <div class="marq-item"><img src="assets/logos/marquee/local-movers.png" alt="Local Movers Ltd logo" width="287" height="140" decoding="async"></div>
+          <div class="marq-item"><img src="assets/logos/marquee/always-best-moving.png" alt="Always Best Moving logo" width="472" height="140" decoding="async"></div>
+          <div class="marq-item"><img src="assets/logos/marquee/co-painting.png" alt="Co Painting logo" width="126" height="140" decoding="async"></div>
+          <div class="marq-item"><img src="assets/logos/marquee/picasshome-painting.png" alt="Picasshome Painting logo" width="140" height="140" decoding="async"></div>
+          <div class="marq-item"><img src="assets/logos/marquee/mamba-drainage.png" alt="Mamba Drainage logo" width="121" height="140" decoding="async"></div>
+          <div class="marq-item"><img src="assets/logos/marquee/western-provincial-movers.png" alt="Western Provincial Movers logo" width="305" height="140" decoding="async"></div>
+          <div class="marq-item"><img src="assets/logos/marquee/everfinish.png" alt="Everfinish logo" width="358" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/local-movers.png" alt="" width="287" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/always-best-moving.png" alt="" width="472" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/co-painting.png" alt="" width="126" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/picasshome-painting.png" alt="" width="140" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/mamba-drainage.png" alt="" width="121" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/western-provincial-movers.png" alt="" width="305" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/everfinish.png" alt="" width="358" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/local-movers.png" alt="" width="287" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/always-best-moving.png" alt="" width="472" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/co-painting.png" alt="" width="126" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/picasshome-painting.png" alt="" width="140" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/mamba-drainage.png" alt="" width="121" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/western-provincial-movers.png" alt="" width="305" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/everfinish.png" alt="" width="358" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/local-movers.png" alt="" width="287" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/always-best-moving.png" alt="" width="472" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/co-painting.png" alt="" width="126" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/picasshome-painting.png" alt="" width="140" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/mamba-drainage.png" alt="" width="121" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/western-provincial-movers.png" alt="" width="305" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/everfinish.png" alt="" width="358" height="140" decoding="async"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. LETTER / MISSION + QUICK FACTS -->
+  <section>
+    <div class="rail">
+      <div class="head mid">
+        <div><span class="pill">Our mission</span></div>
+        <h2 class="t40">Why I Only Work With Local <em>Service Businesses</em>.</h2>
+      </div>
+
+      <div class="letter-wrap">
+
+        <article class="letter">
+          <img class="wm" src="assets/logos/marquee/rg-mark-dark.png" alt="" width="404" height="260">
+          <div class="letter-in">
+            <p>I kept seeing the same thing. A good local company, real crews, real reviews, and a
+            map pin sitting below the fold while a worse company took the calls all week.</p>
+
+            <p>That gap isn't a mystery. It's a ranking problem, and ranking problems are fixable.
+            Google picks the map pack off signals you can work on: the Google Business Profile, the
+            website, the citations, and how your listing performs across the map grid around your
+            address.</p>
+
+            <p>So that's the job. I scan your service area as a grid, find the cells where you're
+            already close to the top 3, and build for those first. The winnable ones move first.
+            The harder cells follow once the profile has weight behind it. As soon as you're in the
+            top 3, you usually stay there for years, without an ad budget holding the spot.</p>
+
+            <p>You're not hiring a department. You get me, one operator, working a short client
+            list so the work actually ships. No account manager passing notes to someone you'll
+            never meet.</p>
+
+            <p>The work runs month to month. No long contract and no lock-in. Everything I build
+            sits on your own profile and your own website, so if you leave, it leaves with you.</p>
+          </div>
+        </article>
+
+        <div class="side-col">
+
+          <div class="card author">
+            <div class="sign">
+              <img src="assets/logos/marquee/rg-mark-dark.png" alt="RG" width="404" height="260">
+              <span><b>Roham Ghiasi</b><span class="tiny">RG Marketing, Canada</span></span>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. WHO THIS IS FOR -->
+  <section>
+    <div class="rail">
+      <div class="head mid">
+        <div><span class="pill">Who we serve</span></div>
+        <h2 class="t40">Built For Local <em>Businesses</em>.</h2>
+        <p class="lede">Companies that get booked by phone, in one metro area. One category per
+        service area. If I'm already working with a mover in your city, I'll say so instead of
+        taking your money.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="ico" aria-hidden="true">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 16V7h10v9M13 10h4l4 4v2h-8"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+          </div>
+          <h3>Movers</h3>
+          <p class="muted small">Long booking windows, high job value, and a
+          service radius that lives or dies on the map pack.</p>
+        </div>
+
+        <div class="card">
+          <div class="ico" aria-hidden="true">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h13v5H4zM10 10v3M8 13h4v8H8z"/></svg>
+          </div>
+          <h3>Painters and finishers</h3>
+          <p class="muted small">Estimate driven work. The top 3 listings get
+          the estimate request. Everyone below gets ignored.</p>
+        </div>
+
+        <div class="card">
+          <div class="ico" aria-hidden="true">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3s5 5.5 5 9a5 5 0 0 1-10 0c0-3.5 5-9 5-9z"/></svg>
+          </div>
+          <h3>Trades and home services</h3>
+          <p class="muted small">Urgent searches, short decision windows.
+          Whoever sits in the top 3 when the problem starts gets the call.</p>
+          <p class="note">The same pattern fits plumbers, roofers, cleaners and HVAC. The category
+          has to be open in your area.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHAT WE RUN: the three levers ============ -->
+  <section id="levers">
+    <div class="rail">
+      <div class="head mid">
+        <span class="pill">What we run</span>
+        <h2 class="t40">Three Ways To Get <em>Found</em>.</h2>
+      </div>
+      <div class="grid-3">
+
+        <article class="card">
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="6.6"></circle><path d="M20 20l-4.4-4.4"></path>
+            </svg>
+          </span>
+          <h3>Organic top 3</h3>
+          <p>Your Google Business Profile, your website and your citations, all pushed at the
+            same target. That's the three results Google shows in the map pack, and you don't
+            pay for the clicks.</p>
+        </article>
+
+        <article class="card">
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 20V5"></path><path d="M6.4 10.6 12 5l5.6 5.6"></path>
+            </svg>
+          </span>
+          <h3>Google Ads</h3>
+          <p>Ranking takes time. Ads sit above the organic results while it builds, so
+            you're not waiting to get found. Budget, keywords and the calls they produce
+            are all managed in your own account.</p>
+        </article>
+
+        <article class="card">
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 10v4a1 1 0 0 0 1 1h2.2L13 18.5v-13L7.2 9H5a1 1 0 0 0-1 1z"></path>
+              <path d="M16.6 9.2a4 4 0 0 1 0 5.6"></path>
+            </svg>
+          </span>
+          <h3>Facebook and Instagram Ads</h3>
+          <p>Search only catches the people already looking for you. Meta ads put you in front
+            of them before they start, so the name is familiar when they do.</p>
+        </article>
+
+      </div>
+      <div class="grid-note">
+        <a class="btn btn-wa btn-wa-sm" href="https://wa.me/19022790345" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2.01a9.9 9.9 0 0 0-8.53 14.86L2 22.06l5.33-1.4a9.9 9.9 0 0 0 4.71 1.2h.01a9.9 9.9 0 0 0 9.9-9.9 9.84 9.84 0 0 0-2.9-7.01 9.84 9.84 0 0 0-7.01-2.94Zm0 18.15h-.01a8.22 8.22 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1 12.73-10.1 8.15 8.15 0 0 1 2.4 5.81 8.23 8.23 0 0 1-8.15 8.15Zm4.5-6.15c-.24-.12-1.46-.72-1.69-.8-.22-.09-.39-.13-.55.12-.17.25-.64.81-.78.97-.15.17-.29.19-.53.07-.25-.13-1.05-.39-1.99-1.24-.74-.65-1.24-1.46-1.38-1.71-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.09-.16.04-.31-.02-.43-.06-.13-.55-1.35-.76-1.84-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.55c.13.16 1.74 2.66 4.22 3.73.59.25 1.05.4 1.4.52.59.18 1.13.16 1.56.1.47-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.17-.47-.29Z"/></svg>
+          <span>Ask about ads</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. HOW THE WORK RUNS -->
+  <section>
+    <div class="rail">
+      <div class="head mid">
+        <div><span class="pill">How does it work?</span></div>
+        <h2 class="t40">It's Pretty <em>Easy</em>.</h2>
+      </div>
+
+      <div class="rows">
+        <div class="row step">
+          <div class="step-t"><span class="num">01.</span>Grid scan of your area</div>
+          <p class="muted">Before anything is promised, I scan your service area as a grid and read
+          your position in every square, not just standing at your own front door. The squares you
+          can realistically win set the order of the work.</p>
+        </div>
+        <div class="row step">
+          <div class="step-t"><span class="num">02.</span>Google Business Profile</div>
+          <p class="muted">Categories, services, description, photos and posts, set against what the
+          businesses already sitting in the top 3 are filed under. This is the part that moves the
+          map fastest, so it goes first.</p>
+        </div>
+        <div class="row step">
+          <div class="step-t"><span class="num">03.</span>Website and citations</div>
+          <p class="muted">A page for every service on your profile, filed under the same category,
+          plus a page for each area you actually serve, written with real local detail instead of
+          the city name swapped in. Then your name, address and phone confirmed across the
+          directories so Google stops seeing three versions of you.</p>
+        </div>
+        <div class="row step">
+          <div class="step-t"><span class="num">04.</span>The same grid, again</div>
+          <p class="muted">Not a traffic chart. The identical grid re-run on the same keyword, so you
+          watch red squares turn green in the places your customers really search from. You keep
+          running your crews the whole time. You don't get a homework list.</p>
+        </div>
+      </div>
+
+      <p class="note">Organic comes first because it keeps working after you stop paying for it.
+      Ads run when there's a reason for them, not by default.</p>
+    </div>
+  </section>
+
+  <!-- 6. THE DIFFERENCE -->
+  <section>
+    <div class="rail">
+      <div class="head mid">
+        <div><span class="pill">The advantage</span></div>
+        <h2 class="t40">The <em>difference</em>.</h2>
+        <p class="lede">Most people searching for your services never look past the top 3. Get
+        there and you usually stay, with no ad budget holding the spot. Then there's how the work
+        gets bought.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-head"><span class="muted">Most agencies</span></div>
+          <ul class="clist">
+            <li>Six or twelve month contracts signed before any work starts</li>
+            <li>A template dropped on your site with the city name swapped in</li>
+            <li>An ad budget you have to keep paying to hold the spot</li>
+            <li>A traffic report that never says whether you rank where it counts</li>
+            <li>An account manager between you and whoever does the work</li>
+            <li>The same package sold to two competitors in one city</li>
+          </ul>
+        </div>
+
+        <div class="card card-mine">
+          <div class="card-head">
+            <img src="assets/logos/marquee/rg-mark-dark.png" alt="" width="404" height="260">
+            <span>Marketing</span>
+          </div>
+          <ul class="clist">
+            <li>Month to month. Leave whenever it stops being worth it</li>
+            <li>Pages built off real local research, not a find and replace</li>
+            <li>No pay per click and no ad budget to keep the spot once it's yours</li>
+            <li>A map grid you can read yourself, scanned before and after</li>
+            <li>You talk to the person doing the work, because that's the whole company</li>
+            <li>One business per category per service area, no exceptions</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. FAQ -->
+  <section>
+    <div class="rail">
+      <div class="head mid">
+        <div><span class="pill">FAQs</span></div>
+        <h2 class="t40">Frequently Asked <em>Questions</em></h2>
+      </div>
+
+      <div class="faq-list">
+        <details open>
+          <summary>What is the difference between SEO and Google Ads?</summary>
+          <p>Ads rent the spot. Stop paying and you're gone the same day. Organic earns it. No pay
+          per click, no ad budget holding the position, and once you're in the top 3 you usually
+          stay there for years without an ad budget holding the spot. I run ads too, but only
+          when there's a reason for them.</p>
+        </details>
+
+        <details open>
+          <summary>Which companies do you work with?</summary>
+          <p>Local service businesses that get booked by phone. Right now that's movers, painters,
+          cabinet refinishers and a drainage crew across British Columbia, Ontario and Alberta.
+          Seven clients. I'm in Canada and the work is remote, because your map grid doesn't care
+          where I sit.</p>
+        </details>
+
+        <details open>
+          <summary>Will you work with my competitor?</summary>
+          <p>No. One business per category per service area. If your city is already taken in your
+          category, I'll tell you before you pay for anything.</p>
+        </details>
+
+        <details open>
+          <summary>How much time will I need to invest?</summary>
+          <p>Very little. Access to your Google profile, your website and your photos, plus a
+          straight answer when I ask something only you can know, like which jobs you actually want
+          more of. The building is on me.</p>
+        </details>
+
+        <details open>
+          <summary>Am I locked into a contract?</summary>
+          <p>No. It runs month to month and you cancel whenever. Everything built lives on your
+          Google profile and your website, so it stays with you if you go.</p>
+        </details>
+
+        <details open>
+          <summary>How can we get started?</summary>
+          <p>Send your business name and your service area. I pull your profile and your map grid,
+          record a free 3 minute video of what I see, and send it over. No call required, no pitch
+          attached to it.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. CTA BAND -->
+  <section>
+    <div class="rail">
+      <div class="band">
+        <div class="band-in">
+          <img src="assets/logos/marquee/rg-mark-dark.png" alt="" width="404" height="260" style="height:30px;width:auto">
+          <span class="pill">Get started</span>
+          <h2 class="t56">Get Your <em>Free</em> Analysis.</h2>
+          <p class="muted">If this sounds like what your business needs, let's talk. I'll audit your
+          Google Business Profile free of charge with no strings attached and send you a 3 minute
+          video walking your map grid and the gaps holding you down.</p>
+          <div class="band-btns">
+            <a class="btn" href="free-analysis.html">Get your free analysis</a>
+            <a class="btn btn-wa" href="https://wa.me/19022790345" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2.01a9.9 9.9 0 0 0-8.53 14.86L2 22.06l5.33-1.4a9.9 9.9 0 0 0 4.71 1.2h.01a9.9 9.9 0 0 0 9.9-9.9 9.84 9.84 0 0 0-2.9-7.01 9.84 9.84 0 0 0-7.01-2.94Zm0 18.15h-.01a8.22 8.22 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1 12.73-10.1 8.15 8.15 0 0 1 2.4 5.81 8.23 8.23 0 0 1-8.15 8.15Zm4.5-6.15c-.24-.12-1.46-.72-1.69-.8-.22-.09-.39-.13-.55.12-.17.25-.64.81-.78.97-.15.17-.29.19-.53.07-.25-.13-1.05-.39-1.99-1.24-.74-.65-1.24-1.46-1.38-1.71-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.09-.16.04-.31-.02-.43-.06-.13-.55-1.35-.76-1.84-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.55c.13.16 1.74 2.66 4.22 3.73.59.25 1.05.4 1.4.52.59.18 1.13.16 1.56.1.47-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.17-.47-.29Z"/></svg>
+              <span>WhatsApp us</span><span class="wa-num">902 279 0345</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER (identical on every page, styles in assets/site.css) ============ -->
+<footer>
+  <div class="rail">
+
+    <div class="foot">
+
+      <div class="foot-brand">
+        <a class="mark" href="index.html" aria-label="RG Marketing home">
+          <img src="assets/logos/marquee/rg-mark-dark.png" alt="RG" width="404" height="260">
+          <span>Marketing</span>
+        </a>
+        <h2 class="t26 foot-tag">Dominate Your Local <em>Market</em>.</h2>
+        <p class="small muted">Built for local businesses in Canada.</p>
+      </div>
+
+      <div class="foot-col">
+        <h3>Navigate</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="case-studies.html">Case studies</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h3>Case studies</h3>
+        <ul>
+          <li><a href="case-studies/local-movers.html">Local Movers Ltd</a></li>
+          <li><a href="case-studies/co-painting.html">Co Painting</a></li>
+          <li><a href="case-studies/everfinish.html">Everfinish</a></li>
+          <li><a href="case-studies/mamba-drainage.html">Mamba Drainage</a></li>
+          <li><a href="case-studies/always-best-moving.html">Always Best Moving</a></li>
+          <li><a href="case-studies/picasshome.html">Picasshome Painting</a></li>
+          <li><a href="case-studies/serve-ninja.html">Serve Ninja Legal Support</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h3>Get started</h3>
+        <ul>
+          <li><a href="free-analysis.html">Free analysis</a></li>
+          <li><a href="book-a-call.html">Book a call</a></li>
+          <li><a href="terms.html">Terms and privacy</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h3>Contact</h3>
+        <a class="btn btn-wa btn-wa-sm" href="https://wa.me/19022790345" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2.01a9.9 9.9 0 0 0-8.53 14.86L2 22.06l5.33-1.4a9.9 9.9 0 0 0 4.71 1.2h.01a9.9 9.9 0 0 0 9.9-9.9 9.84 9.84 0 0 0-2.9-7.01 9.84 9.84 0 0 0-7.01-2.94Zm0 18.15h-.01a8.22 8.22 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1 12.73-10.1 8.15 8.15 0 0 1 2.4 5.81 8.23 8.23 0 0 1-8.15 8.15Zm4.5-6.15c-.24-.12-1.46-.72-1.69-.8-.22-.09-.39-.13-.55.12-.17.25-.64.81-.78.97-.15.17-.29.19-.53.07-.25-.13-1.05-.39-1.99-1.24-.74-.65-1.24-1.46-1.38-1.71-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.09-.16.04-.31-.02-.43-.06-.13-.55-1.35-.76-1.84-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.55c.13.16 1.74 2.66 4.22 3.73.59.25 1.05.4 1.4.52.59.18 1.13.16 1.56.1.47-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.17-.47-.29Z"/></svg>
+          <span>WhatsApp us</span>
+        </a>
+        <p class="foot-num">902 279 0345</p>
+        <ul>
+          <li><a href="mailto:roham@rghiasi.com">roham@rghiasi.com</a></li>
+          <li><a href="https://rgresults.ca">rgresults.ca</a></li>
+          <li>Canada</li>
+        </ul>
+      </div>
+
+    </div>
+
+
+    <div class="foot-btm">
+      <p class="tiny">&copy; <span id="yr">2026</span> RG Marketing. All rights reserved.</p>
+      <p class="tiny">Canada</p>
+    </div>
+
+  </div>
+</footer>
+
+<!-- sticky mobile CTA, shown under 880px by site.css -->
+<div class="tapbar">
+  <a class="btn btn-wa" href="https://wa.me/19022790345" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2.01a9.9 9.9 0 0 0-8.53 14.86L2 22.06l5.33-1.4a9.9 9.9 0 0 0 4.71 1.2h.01a9.9 9.9 0 0 0 9.9-9.9 9.84 9.84 0 0 0-2.9-7.01 9.84 9.84 0 0 0-7.01-2.94Zm0 18.15h-.01a8.22 8.22 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1 12.73-10.1 8.15 8.15 0 0 1 2.4 5.81 8.23 8.23 0 0 1-8.15 8.15Zm4.5-6.15c-.24-.12-1.46-.72-1.69-.8-.22-.09-.39-.13-.55.12-.17.25-.64.81-.78.97-.15.17-.29.19-.53.07-.25-.13-1.05-.39-1.99-1.24-.74-.65-1.24-1.46-1.38-1.71-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.09-.16.04-.31-.02-.43-.06-.13-.55-1.35-.76-1.84-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.55c.13.16 1.74 2.66 4.22 3.73.59.25 1.05.4 1.4.52.59.18 1.13.16 1.56.1.47-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.17-.47-.29Z"/></svg>
+    <span>WhatsApp us</span><span class="wa-num">902 279 0345</span>
+  </a>
+</div>
+
+<script>
+(function(){
+  var y = document.getElementById('yr');
+  if (y) { y.textContent = new Date().getFullYear(); }
+
+})();
+</script>
+
+</body>
+</html>

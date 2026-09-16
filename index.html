@@ -1,0 +1,764 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="assets/logos/marquee/rg-favicon.png" sizes="any">
+<title>RG Marketing - Stop Being Invisible on Google</title>
+<meta name="description" content="RG Marketing puts local service businesses in front of people already searching. Google Business Profile, website and citations, Google Ads, Facebook and Instagram Ads. Start with a free 3 minute video analysis.">
+<meta property="og:title" content="RG Marketing | Stop Being Invisible on Google">
+<meta property="og:description" content="Local service businesses put in front of people already searching. Google Business Profile, website and citations. Start with a free 3 minute video analysis.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rgresults.ca/">
+<meta property="og:image" content="https://rgresults.ca/assets/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://rgresults.ca/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;family=Source+Serif+4:ital,wght@1,500&amp;display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* ---------------------------------------------------------------
+   PAGE-SPECIFIC ONLY. The shared system lives in assets/site.css.
+   Nothing below restates a token, a type step or a component there.
+   --------------------------------------------------------------- */
+
+/* flush band: the marquee carries its own padding-block */
+
+/* hero: two columns, text left, VSL slot right */
+.hero-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,440px);gap:48px;align-items:center}
+.hero-copy{display:grid;justify-items:start;--jc:normal;--mi:0}
+.hero-copy h1{max-width:13ch}
+.hero-sub{max-width:46ch}
+.signup-line{font-weight:500;font-size:16px;max-width:42ch}
+.hero-form{width:100%;max-width:440px}
+.form-note{font-size:14px;color:var(--ink-48);margin-top:10px}
+
+/* hero figure: the grid the analysis hands over. Replaced the player shell,
+   which had no video behind it. */
+
+/* REMOVED BY THE CLIENT, do not re-add: the credibility strip that sat under
+   the hero form, and the "who does the work" / team card that sat between
+   section 3 and section 4. Both were added by an earlier pass and both were
+   deleted. No .cred markup exists on any page and no .cred rule exists in
+   assets/site.css; the orphan @media block that styled it is gone too. */
+
+/* section headers */
+/* .card h3 lives in site.css now - one rule for the whole site */
+.card p{color:var(--ink-56);font-size:16px}
+.ico svg{width:18px;height:18px;display:block}
+
+/* comparison */
+.biz{display:flex;align-items:center;gap:11px;padding-bottom:16px}
+.biz-mk{width:36px;height:36px;border-radius:8px;flex:none;
+  border:1px solid var(--ink-12);display:grid;place-items:center;
+  font-size:14px;color:var(--ink-36)}
+.biz-mk img{max-width:26px;max-height:26px;width:auto;height:auto;display:block}
+.biz-n{font-size:16px;font-weight:500;line-height:1.25}
+
+/* real heatmap panel.
+   The box used to be a full-width 718x430 rectangle holding a 398x398 map, which
+   left a band of dead white either side and made the map look cropped inside its
+   own card. The scans are square, so the box is square now: it hugs the map, and
+   the map grows to whatever the column allows instead of being pinned to the
+   short side. Both states are the same 500-unit grid, so the height still does
+   not move when the toggle flips.
+   No fill of its own any more. .heat used to be cream and this box white, which
+   stacked a second surface inside the card for no reason. The card is one white
+   sheet now, so the map sits straight on it. */
+.heat-fig{margin:0;width:100%;justify-self:stretch;display:grid;gap:14px;justify-items:center}
+.heat-box{position:relative;aspect-ratio:1;height:auto;max-width:560px;
+  /* justify-self:center, NOT margin-inline:auto. assets/site.css gives this
+     box justify-self:stretch so it can fill its column; a stretch that cannot
+     apply because of max-width falls back to START, not to centre, and auto
+     margins never run on a stretched grid item. The map therefore painted
+     30px left of the card's axis while the legend under it sat on the axis,
+     which is the off-centre the eye reads before it reads anything else.
+     Centring the item puts map, legend and card on one vertical centreline. */
+  justify-self:center;
+  background:transparent;border-radius:12px;overflow:hidden}
+/* the scans carry a viewBox but no intrinsic pixel size, so the box has to give them
+   one. Square box, square viewBox, so this inset is exact and nothing letterboxes.
+   object-fit does nothing on an inline <svg> (it is not a replaced element) - the
+   fitting is preserveAspectRatio's job, and the viewBox below is what has to be
+   right for it. */
+.heat-img{position:absolute;top:16px;left:16px;width:calc(100% - 32px);height:calc(100% - 32px);
+  display:block}
+.heat-img[hidden]{display:none}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;justify-content:center;
+  font-size:14px;color:var(--ink-48)}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.legend i{width:11px;height:11px;border-radius:50%;flex:none}
+
+/* process */
+.step-d{color:var(--ink-56)}
+
+/* faq + band spacing */
+.faq-list{display:grid;gap:var(--list-gap)}
+.band-note{font-size:14px;color:var(--ink-56)}
+/* the .band mark height override is gone: it duplicated the shared .mark img
+   rule and would have held the CTA band at the old 22px box while the nav and
+   footer moved to 24px. One source of truth in assets/site.css. */
+
+@media (max-width:980px){
+  .hero-in{grid-template-columns:1fr;gap:32px}
+  .hero-copy{justify-items:start}
+  .hero-copy h1{max-width:none}
+}
+@media (max-width:430px){
+  .inline-form .field{min-width:0}
+  .hero-form .btn{width:100%}
+}
+
+/* ---- Real calls: the Google Business Profile dashboards, unretouched -----
+   Dark Google chrome on a cream page, so each chart sits in a white card that
+   frames it rather than fighting it. The number under the chart repeats what
+   the chart already says, which is the point: the figure and its source are
+   in the same object. Cards stretch like every other card on the site. */
+.gbp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gutter);align-items:stretch}
+.gbp-card{background:var(--card);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.gbp-shot{display:block;width:100%;height:auto;background:#202124;border-bottom:1px solid var(--ink-10)}
+.gbp-body{padding:20px 22px 22px}
+.gbp-n{font-size:34px;font-weight:500;letter-spacing:-.06em;line-height:1.05;color:var(--stat-good)}
+.gbp-n span{color:var(--ink);font-size:22px}
+.gbp-l{margin-top:6px;font-size:15px;color:var(--ink-56)}
+.gbp-w{margin-top:2px;font-size:14px;color:var(--ink-36)}
+@media (max-width:880px){.gbp-grid{grid-template-columns:1fr}}
+
+/* The VSL. The poster carries the "Click To Watch" treatment baked in, the same
+   geometry ProfResults uses, so the shell no longer draws its own label, fake
+   scrub bar or slot chip. What is left is the red play affordance over the
+   poster; one click hands over to the native player and the overlay retires. */
+.vsl{position:relative;aspect-ratio:16/9;width:100%;border-radius:12px;overflow:hidden;
+  background:#141210;box-shadow:0 18px 44px rgba(0,0,0,.14)}
+/* the scrim sits under the play button and above the poster, and goes as soon as
+   playback starts so it never dims the video itself */
+.vsl::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:radial-gradient(120% 90% at 50% 34%,rgba(247,242,234,.06),rgba(0,0,0,.30))}
+.vsl.playing::after{display:none}
+.vsl video{position:absolute;inset:0;width:100%;height:100%;z-index:1;
+  display:block;object-fit:cover;background:#141210;border-radius:12px}
+.vsl-mid{position:absolute;inset:0;z-index:3;display:grid;place-items:center;align-content:center;
+  gap:14px;justify-items:center;background:transparent;border:0;cursor:pointer;width:100%;
+  padding:0 20px;font-family:var(--sans)}
+.vsl-play{width:68px;height:68px;border-radius:50%;background:var(--stat-bad);
+  display:grid;place-items:center;box-shadow:0 8px 26px rgba(0,0,0,.42);transition:transform .2s}
+.vsl-mid:hover .vsl-play{transform:scale(1.06)}
+.vsl-play i{display:block;width:0;height:0;margin-left:5px;
+  border-top:12px solid transparent;border-bottom:12px solid transparent;border-left:19px solid #fff}
+.vsl-mid[hidden]{display:none}
+@media (max-width:880px){.vsl-play{width:56px;height:56px}}
+</style>
+</head>
+<body>
+
+<!-- ============ 1. NAV: wordmark pill + one black pill. No link list. ============ -->
+<header class="nav">
+  <div class="nav-in">
+    <a class="mark" href="./" aria-label="RG Marketing home">
+      <img src="assets/logos/marquee/rg-mark-dark.png" alt="RG" width="404" height="260">
+      <span>Marketing</span>
+    </a>
+    <a class="btn btn-sm" href="free-analysis.html">Get my free analysis</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ 2. HERO: copy left, VSL slot right ============ -->
+<section class="hero" id="signup">
+  <div class="rail hero-in">
+
+    <div class="hero-copy">
+      <h1 class="t56">Is Your Business <em>Invisible</em> on Google?</h1>
+      <p class="lede hero-sub">Watch this short video to learn why you're not ranking in the top 3.</p>
+      <p class="signup-line">Sign up below to get three FREE tips you can implement today to start climbing.</p>
+
+      <form class="inline-form hero-form" id="optin" novalidate="">
+        <input class="field" id="email" name="email" type="email" inputmode="email" autocomplete="email" aria-label="Your email address" placeholder="name@email.com" required="">
+        <button class="btn btn-form" type="submit">Sign Up</button>
+        <p class="form-note" id="formNote">No costs, no obligations, no annoying sales pitch. Guaranteed.</p>
+      </form>
+    </div>
+
+    <div>
+      <!-- Self hosted, no provider. preload="none" so the hero never pulls the
+           12MB file before someone asks for it; the 125KB poster does the selling. -->
+      <div class="vsl" id="vsl">
+        <video id="vslVideo" playsinline preload="none" poster="assets/vsl/vsl-poster.jpg"
+               width="1280" height="720">
+          <source src="assets/vsl/rgm-vsl-720.mp4" type="video/mp4">
+        </video>
+        <script type="application/json" id="vslCues">[[0.13,3.14,"Hey, my name is Roham from RG Marketing and if you're watching"],[3.14,6.21,"this and you run a local business there's like a 99% chance"],[6.21,9.52,"that you're not ranking the top three on Google when people are"],[9.52,12.58,"searching for your service in your area and it kind of sucks"],[12.58,15.49,"because the top three get all the calls, they get all the"],[15.49,18.3,"traffic and they're getting all the clicks to their website as well"],[18.3,22.25,"and what's kind of even more sad is that your competitors are"],[22.25,25.58,"outranking you but you know you could easily be there so let's"],[25.58,26.09,"fix it."],[26.09,29.01,"Now to give you an idea for an average business owner in"],[29.01,32.16,"an average city ranking in the top three is worth around a"],[32.16,33.82,"hundred thousand dollars."],[33.82,36.14,"Now I don't know how much that would be in you know"],[36.14,38.86,"pounds or euros you can do the math on that but it's"],[38.86,42.0,"a pretty big value and you know there's two ways to get"],[42.0,43.76,"there so I'm going to get into those."],[43.76,47.67,"One is by paying Google basically running ads and Google basically takes"],[47.67,51.08,"your top three makes it a top four and places your business"],[51.08,51.81,"at the top."],[51.81,54.65,"It sounds kind of weird just trust me on it so there's"],[54.65,57.94,"one spot that's paid and that if you pay Google thousands and"],[57.94,60.73,"thousands of dollars every month they will put you up at that"],[60.73,62.46,"spot that is the good news."],[62.46,65.05,"The only bad news is that as soon as you stop paying"],[65.05,67.54,"Google your ranking is removed immediately."],[67.54,70.96,"So that's the first option and that's exactly why we help businesses"],[70.96,73.3,"rank in the top three so you can get there in the"],[73.3,76.13,"organic top three and once you get there you don't have to"],[76.13,77.39,"pay Google to stay there."],[77.39,80.08,"Now what I've done is I've put together a video specifically for"],[80.08,83.23,"your business and basically it has three things and I'll show you"],[83.23,84.86,"how to rank higher on Google."],[84.86,87.68,"You don't need any technical know-how it's pretty easy to do and"],[87.68,90.06,"you could probably implement these immediately."],[90.06,92.58,"So the only thing that you have to do is that somewhere"],[92.58,94.76,"on this page there's a little sign up box and you put"],[94.76,95.74,"your email in there."],[95.74,98.2,"Basically in the email I'll send you the video and show you"],[98.2,100.79,"exactly what you need to do the three things you need to"],[100.79,102.28,"do to rank higher on Google."],[102.28,105.27,"It's free doesn't cost any money so if you like that just"],[105.27,105.69,"sign up."],[105.69,108.7,"So I'm looking forward to seeing you in the next video and"],[108.7,111.24,"just fill out the form and let's get you ranking higher on"],[111.24,111.64,"Google."]]</script>
+        <button class="vsl-mid" type="button" id="vslPlay" aria-label="Play the video">
+          <span class="vsl-play"><i></i></span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ 3. LOGO MARQUEE ============ -->
+<section aria-label="Clients we work with">
+  <div class="rail">
+    <div class="marq-wrap">
+      <span class="marq-lbl">Working with...</span>
+      <div class="marq">
+        <div class="marq-track">
+          <div class="marq-item"><img src="assets/logos/marquee/local-movers.png" alt="Local Movers Ltd logo" width="287" height="140" decoding="async"></div>
+          <div class="marq-item"><img src="assets/logos/marquee/always-best-moving.png" alt="Always Best Moving logo" width="472" height="140" decoding="async"></div>
+          <div class="marq-item"><img src="assets/logos/marquee/co-painting.png" alt="Co Painting logo" width="126" height="140" decoding="async"></div>
+          <div class="marq-item"><img src="assets/logos/marquee/picasshome-painting.png" alt="Picasshome Painting logo" width="140" height="140" decoding="async"></div>
+          <div class="marq-item"><img src="assets/logos/marquee/mamba-drainage.png" alt="Mamba Drainage logo" width="121" height="140" decoding="async"></div>
+          <div class="marq-item"><img src="assets/logos/marquee/western-provincial-movers.png" alt="Western Provincial Movers logo" width="305" height="140" decoding="async"></div>
+          <div class="marq-item"><img src="assets/logos/marquee/everfinish.png" alt="Everfinish logo" width="358" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/local-movers.png" alt="" width="287" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/always-best-moving.png" alt="" width="472" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/co-painting.png" alt="" width="126" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/picasshome-painting.png" alt="" width="140" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/mamba-drainage.png" alt="" width="121" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/western-provincial-movers.png" alt="" width="305" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/everfinish.png" alt="" width="358" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/local-movers.png" alt="" width="287" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/always-best-moving.png" alt="" width="472" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/co-painting.png" alt="" width="126" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/picasshome-painting.png" alt="" width="140" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/mamba-drainage.png" alt="" width="121" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/western-provincial-movers.png" alt="" width="305" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/everfinish.png" alt="" width="358" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/local-movers.png" alt="" width="287" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/always-best-moving.png" alt="" width="472" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/co-painting.png" alt="" width="126" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/picasshome-painting.png" alt="" width="140" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/mamba-drainage.png" alt="" width="121" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/western-provincial-movers.png" alt="" width="305" height="140" decoding="async"></div>
+          <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/everfinish.png" alt="" width="358" height="140" decoding="async"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. THE ADVANTAGE (3 cards) ============ -->
+<section id="services">
+  <div class="rail">
+    <div class="head mid">
+      <span class="pill">The Advantage</span>
+      <h2 class="t40"><em>But</em>, Is This Even Worth It?</h2>
+    </div>
+    <div class="grid-3">
+
+      <article class="card">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"></path>
+            <circle cx="12" cy="10" r="2.6"></circle>
+          </svg>
+        </span>
+        <h3>Visibility</h3>
+        <p>Three results. That is what Google shows in the map pack, and that is where the
+          calls go. If you're not there, you're invisible.</p>
+      </article>
+
+      <article class="card">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3v18"></path><path d="M16.5 7.2C15.6 6.2 14 5.6 12 5.6c-2.4 0-4.2 1-4.2 2.8 0 4.3 8.7 2.3 8.7 6.8 0 1.9-1.9 3-4.5 3-2.1 0-3.8-.7-4.7-1.8"></path>
+          </svg>
+        </span>
+        <h3>Free</h3>
+        <p>No pay per click and no ad budget holding the spot. Once you're in the top 3 you
+          stay there whether you spend that month or not.</p>
+      </article>
+
+      <article class="card">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3.5 17.5 9 11l3.4 3.4L20 6.6"></path>
+            <path d="M15.4 6.6H20v4.6"></path>
+          </svg>
+        </span>
+        <h3>Long Term Strategy</h3>
+        <p>As soon as you're in the top 3, you usually stay there for years. No paying for
+          every click to keep the spot.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT WE RUN: the three levers ============ -->
+<section id="levers">
+  <div class="rail">
+    <div class="head mid">
+      <span class="pill">What we run</span>
+      <h2 class="t40">Three Ways To Get <em>Found</em>.</h2>
+    </div>
+    <div class="grid-3">
+
+      <article class="card">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="6.6"></circle><path d="M20 20l-4.4-4.4"></path>
+          </svg>
+        </span>
+        <h3>Organic top 3</h3>
+        <p>Your Google Business Profile, your website and your citations, all pushed at the
+          same target. That's the three results Google shows in the map pack, and you don't
+          pay for the clicks.</p>
+      </article>
+
+      <article class="card">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 20V5"></path><path d="M6.4 10.6 12 5l5.6 5.6"></path>
+          </svg>
+        </span>
+        <h3>Google Ads</h3>
+        <p>Ranking takes time. Ads sit above the organic results while it builds, so
+            you're not waiting to get found. Budget, keywords and the calls they produce
+            are all managed in your own account.</p>
+      </article>
+
+      <article class="card">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 10v4a1 1 0 0 0 1 1h2.2L13 18.5v-13L7.2 9H5a1 1 0 0 0-1 1z"></path>
+            <path d="M16.6 9.2a4 4 0 0 1 0 5.6"></path>
+          </svg>
+        </span>
+        <h3>Facebook and Instagram Ads</h3>
+        <p>Search only catches the people already looking for you. Meta ads put you in front
+          of them before they start, so the name is familiar when they do.</p>
+      </article>
+
+    </div>
+    <div class="grid-note">
+      <a class="btn btn-wa btn-wa-sm" href="https://wa.me/19022790345" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2.01a9.9 9.9 0 0 0-8.53 14.86L2 22.06l5.33-1.4a9.9 9.9 0 0 0 4.71 1.2h.01a9.9 9.9 0 0 0 9.9-9.9 9.84 9.84 0 0 0-2.9-7.01 9.84 9.84 0 0 0-7.01-2.94Zm0 18.15h-.01a8.22 8.22 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1 12.73-10.1 8.15 8.15 0 0 1 2.4 5.81 8.23 8.23 0 0 1-8.15 8.15Zm4.5-6.15c-.24-.12-1.46-.72-1.69-.8-.22-.09-.39-.13-.55.12-.17.25-.64.81-.78.97-.15.17-.29.19-.53.07-.25-.13-1.05-.39-1.99-1.24-.74-.65-1.24-1.46-1.38-1.71-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.09-.16.04-.31-.02-.43-.06-.13-.55-1.35-.76-1.84-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.55c.13.16 1.74 2.66 4.22 3.73.59.25 1.05.4 1.4.52.59.18 1.13.16 1.56.1.47-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.17-.47-.29Z"/></svg>
+        <span>Ask about ads</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ REAL CALLS: GBP dashboards ============ -->
+<!-- Unretouched Google Business Profile performance screens from two client
+     profiles. Nothing here is redrawn and no number is typed that the chart
+     beside it does not print. Only two clients are shown because only two
+     could be traced to their own profile with certainty. -->
+<section id="calls">
+  <div class="rail">
+    <div class="head mid">
+      <span class="pill">Straight off Google</span>
+      <h2 class="t40">Real Businesses, <em>Real Calls</em></h2>
+      <p class="lede">These are the Google Business Profile dashboards for two of the businesses
+        on this page, exactly as Google shows them. Not a chart we drew.</p>
+    </div>
+
+    <div class="gbp-grid">
+
+      <article class="gbp-card">
+        <img class="gbp-shot" src="assets/gbp/local-movers-interactions.jpg" width="1200" height="715"
+             alt="Google Business Profile performance screen for Local Movers Ltd showing 325 Business Profile interactions from January to June 2026" loading="lazy" decoding="async">
+        <div class="gbp-body">
+          <p class="gbp-n">325</p>
+          <p class="gbp-l">Business Profile interactions</p>
+          <p class="gbp-w">Surrey mover &middot; Jan to Jun 2026</p>
+        </div>
+      </article>
+
+      <article class="gbp-card">
+        <img class="gbp-shot" src="assets/gbp/local-movers-calls.jpg" width="1200" height="716"
+             alt="Google Business Profile Calls tab for Local Movers Ltd showing 70 calls made from the profile between January and June 2026" loading="lazy" decoding="async">
+        <div class="gbp-body">
+          <p class="gbp-n">70</p>
+          <p class="gbp-l">Calls made from the profile</p>
+          <p class="gbp-w">Same Surrey mover &middot; Jan to Jun 2026</p>
+        </div>
+      </article>
+
+      <article class="gbp-card">
+        <img class="gbp-shot" src="assets/gbp/serve-ninja-calls.jpg" width="1200" height="469"
+             alt="Google Business Profile Calls tab showing 43 calls made from the profile between February and June 2026 for a Calgary process server" loading="lazy" decoding="async">
+        <div class="gbp-body">
+          <p class="gbp-n">43</p>
+          <p class="gbp-l">Calls made from the profile</p>
+          <p class="gbp-w">Calgary process server &middot; Feb to Jun 2026</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. BEFORE / AFTER COMPARISON ============ -->
+<!-- Generic example panel, same shape as ProfResults /gbp. Real client scans live on the case study pages. -->
+<section id="difference">
+  <div class="rail">
+    <div class="head mid">
+      <span class="pill">Before / After</span>
+      <h2 class="t40">The <em>Difference</em></h2>
+    </div>
+
+    <div class="toggle" role="tablist" aria-label="Before or after scan">
+      <button type="button" role="tab" id="tabBefore" aria-selected="true" tabindex="0" aria-controls="cmpPanel">Before</button>
+      <button type="button" role="tab" id="tabAfter" aria-selected="false" tabindex="-1" aria-controls="cmpPanel">After</button>
+    </div>
+
+    <div class="cmp" id="cmpPanel" role="tabpanel" aria-labelledby="tabBefore">
+      <div class="cmp-l">
+        <div class="biz">
+          <span class="biz-mk" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+          </span>
+          <span>
+            <span class="biz-n">Your Company</span><br>
+            <span class="tiny muted">Alphabet Street 123, 12345 New York</span>
+          </span>
+        </div>
+
+        <div class="mrow"><span class="mrow-l">Market Share</span><span class="badge" data-metric="share">1%</span></div>
+        <div class="mrow"><span class="mrow-l">Average Rank</span><span class="badge" data-metric="rank">86</span></div>
+        <div class="mrow"><span class="mrow-l">Clicks Per Month</span><span class="badge" data-metric="clicks">5</span></div>
+        <div class="mrow"><span class="mrow-l">Clients Per Month</span><span class="badge" data-metric="clients">1-2</span></div>
+      </div>
+
+      <div class="heat">
+        <figure class="heat-fig">
+          <div class="heat-box">
+            <svg class="heat-img" id="heatBefore" viewBox="-4 -4 508 508" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"><circle cx="176" cy="28" r="31" fill="#8d8d8d"/><text x="176" y="33" font-size="16" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">20+</text><circle cx="250" cy="28" r="31" fill="#8d8d8d"/><text x="250" y="33" font-size="16" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">20+</text><circle cx="324" cy="28" r="31" fill="#8d8d8d"/><text x="324" y="33" font-size="16" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">20+</text><circle cx="102" cy="102" r="31" fill="#8d8d8d"/><text x="102" y="107" font-size="16" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">20+</text><circle cx="176" cy="102" r="31" fill="#8d8d8d"/><text x="176" y="107" font-size="16" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">20+</text><circle cx="250" cy="102" r="31" fill="#c0392b"/><text x="250" y="107" font-size="16" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">14</text><circle cx="324" cy="102" r="31" fill="#8d8d8d"/><text x="324" y="107" font-size="16" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">20+</text><circle cx="398" cy="102" r="31" fill="#8d8d8d"/><text x="398" y="107" font-size="16" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">20+</text><circle cx="28" cy="176" r="31" fill="#8d8d8d"/><text x="28" y="181" font-size="16" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">20+</text><circle cx="102" cy="176" r="31" fill="#8d8d8d"/><text x="102" y="181" font-size="16" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">20+</text><circle cx="176" cy="176" r="31" fill="#c0392b"/><text x="176" y="181" font-size="16" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">14</text><circle cx="250" cy="176" r="31" fill="#e08b2f"/><text x="250" y="183" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">8</text><circle cx="324" cy="176" r="31" fill="#c0392b"/><text x="324" y="181" font-size="16" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">14</text><circle cx="398" cy="176" r="31" fill="#8d8d8d"/><text x="398" y="181" font-size="16" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">20+</text><circle cx="472" cy="176" r="31" fill="#8d8d8d"/><text x="472" y="181" font-size="16" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">20+</text><circle cx="28" cy="250" r="31" fill="#8d8d8d"/><text x="28" y="255" font-size="16" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">20+</text><circle cx="102" cy="250" r="31" fill="#c0392b"/><text x="102" y="255" font-size="16" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">14</text><circle cx="176" cy="250" r="31" fill="#e08b2f"/><text x="176" y="257" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">8</text><circle cx="250" cy="250" r="31" fill="#e08b2f"/><text x="250" y="257" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">8</text><circle cx="324" cy="250" r="31" fill="#e08b2f"/><text x="324" y="257" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">8</text><circle cx="398" cy="250" r="31" fill="#c0392b"/><text x="398" y="255" font-size="16" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">14</text><circle cx="472" cy="250" r="31" fill="#8d8d8d"/><text x="472" y="255" font-size="16" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">20+</text><circle cx="28" cy="324" r="31" fill="#8d8d8d"/><text x="28" y="329" font-size="16" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">20+</text><circle cx="102" cy="324" r="31" fill="#8d8d8d"/><text x="102" y="329" font-size="16" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">20+</text><circle cx="176" cy="324" r="31" fill="#c0392b"/><text x="176" y="329" font-size="16" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">14</text><circle cx="250" cy="324" r="31" fill="#e08b2f"/><text x="250" y="331" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">8</text><circle cx="324" cy="324" r="31" fill="#c0392b"/><text x="324" y="329" font-size="16" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">14</text><circle cx="398" cy="324" r="31" fill="#8d8d8d"/><text x="398" y="329" font-size="16" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">20+</text><circle cx="472" cy="324" r="31" fill="#8d8d8d"/><text x="472" y="329" font-size="16" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">20+</text><circle cx="102" cy="398" r="31" fill="#8d8d8d"/><text x="102" y="403" font-size="16" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">20+</text><circle cx="176" cy="398" r="31" fill="#8d8d8d"/><text x="176" y="403" font-size="16" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">20+</text><circle cx="250" cy="398" r="31" fill="#c0392b"/><text x="250" y="403" font-size="16" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">14</text><circle cx="324" cy="398" r="31" fill="#8d8d8d"/><text x="324" y="403" font-size="16" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">20+</text><circle cx="398" cy="398" r="31" fill="#8d8d8d"/><text x="398" y="403" font-size="16" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">20+</text><circle cx="176" cy="472" r="31" fill="#8d8d8d"/><text x="176" y="477" font-size="16" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">20+</text><circle cx="250" cy="472" r="31" fill="#8d8d8d"/><text x="250" y="477" font-size="16" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">20+</text><circle cx="324" cy="472" r="31" fill="#8d8d8d"/><text x="324" y="477" font-size="16" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">20+</text></svg>
+            <svg class="heat-img" id="heatAfter" viewBox="-4 -4 508 508" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true" hidden><circle cx="176" cy="28" r="31" fill="#e08b2f"/><text x="176" y="35" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">5</text><circle cx="250" cy="28" r="31" fill="#e08b2f"/><text x="250" y="35" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">5</text><circle cx="324" cy="28" r="31" fill="#e08b2f"/><text x="324" y="35" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">5</text><circle cx="102" cy="102" r="31" fill="#e08b2f"/><text x="102" y="109" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">5</text><circle cx="176" cy="102" r="31" fill="#239452"/><text x="176" y="109" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">3</text><circle cx="250" cy="102" r="31" fill="#239452"/><text x="250" y="109" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">2</text><circle cx="324" cy="102" r="31" fill="#239452"/><text x="324" y="109" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">3</text><circle cx="398" cy="102" r="31" fill="#e08b2f"/><text x="398" y="109" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">5</text><circle cx="28" cy="176" r="31" fill="#e08b2f"/><text x="28" y="183" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">5</text><circle cx="102" cy="176" r="31" fill="#239452"/><text x="102" y="183" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">3</text><circle cx="176" cy="176" r="31" fill="#239452"/><text x="176" y="183" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">2</text><circle cx="250" cy="176" r="31" fill="#239452"/><text x="250" y="183" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">1</text><circle cx="324" cy="176" r="31" fill="#239452"/><text x="324" y="183" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">2</text><circle cx="398" cy="176" r="31" fill="#239452"/><text x="398" y="183" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">3</text><circle cx="472" cy="176" r="31" fill="#e08b2f"/><text x="472" y="183" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">5</text><circle cx="28" cy="250" r="31" fill="#e08b2f"/><text x="28" y="257" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">5</text><circle cx="102" cy="250" r="31" fill="#239452"/><text x="102" y="257" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">2</text><circle cx="176" cy="250" r="31" fill="#239452"/><text x="176" y="257" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">1</text><circle cx="250" cy="250" r="31" fill="#239452"/><text x="250" y="257" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">1</text><circle cx="324" cy="250" r="31" fill="#239452"/><text x="324" y="257" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">1</text><circle cx="398" cy="250" r="31" fill="#239452"/><text x="398" y="257" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">2</text><circle cx="472" cy="250" r="31" fill="#e08b2f"/><text x="472" y="257" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">5</text><circle cx="28" cy="324" r="31" fill="#e08b2f"/><text x="28" y="331" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">5</text><circle cx="102" cy="324" r="31" fill="#239452"/><text x="102" y="331" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">3</text><circle cx="176" cy="324" r="31" fill="#239452"/><text x="176" y="331" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">2</text><circle cx="250" cy="324" r="31" fill="#239452"/><text x="250" y="331" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">1</text><circle cx="324" cy="324" r="31" fill="#239452"/><text x="324" y="331" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">2</text><circle cx="398" cy="324" r="31" fill="#239452"/><text x="398" y="331" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">3</text><circle cx="472" cy="324" r="31" fill="#e08b2f"/><text x="472" y="331" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">5</text><circle cx="102" cy="398" r="31" fill="#e08b2f"/><text x="102" y="405" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">5</text><circle cx="176" cy="398" r="31" fill="#239452"/><text x="176" y="405" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">3</text><circle cx="250" cy="398" r="31" fill="#239452"/><text x="250" y="405" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">2</text><circle cx="324" cy="398" r="31" fill="#239452"/><text x="324" y="405" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">3</text><circle cx="398" cy="398" r="31" fill="#e08b2f"/><text x="398" y="405" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">5</text><circle cx="176" cy="472" r="31" fill="#e08b2f"/><text x="176" y="479" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">5</text><circle cx="250" cy="472" r="31" fill="#e08b2f"/><text x="250" y="479" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">5</text><circle cx="324" cy="472" r="31" fill="#e08b2f"/><text x="324" y="479" font-size="21" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600">5</text></svg>
+          </div>
+          <div class="legend" aria-hidden="true">
+            <span><i style="background:#239452"></i>Top 3</span>
+            <span><i style="background:#e08b2f"></i>4 to 10</span>
+            <span><i style="background:#c0392b"></i>11 to 19</span>
+            <span><i style="background:#8d8d8d"></i>20 or worse</span>
+          </div>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. PROCESS ============ -->
+<section id="process">
+  <div class="rail">
+    <div class="head mid">
+      <span class="pill">How Does It Work?</span>
+      <h2 class="t40">It's Pretty <em>easy</em>.</h2>
+    </div>
+    <div class="rows">
+
+      <div class="row step">
+        <p class="step-t"><span class="num">01.</span>Grid scan of your area</p>
+        <p class="step-d">Before anything is promised, we scan your service area as a grid and
+          read your position in every square, not just standing at your own front door. The
+          squares you can realistically win set the order of the work.</p>
+      </div>
+
+      <div class="row step">
+        <p class="step-t"><span class="num">02.</span>Google Business Profile</p>
+        <p class="step-d">Categories, services, description, photos and posts, set against what
+          the businesses already sitting in the top 3 are filed under. This is the part that
+          moves the map fastest, so it goes first.</p>
+      </div>
+
+      <div class="row step">
+        <p class="step-t"><span class="num">03.</span>Website and citations</p>
+        <p class="step-d">A page for every service on your profile, filed under the same
+          category, plus a page for each area you actually serve. Then your name, address and
+          phone confirmed across the directories so Google stops seeing three versions of you.</p>
+      </div>
+
+      <div class="row step">
+        <p class="step-t"><span class="num">04.</span>The same grid, again</p>
+        <p class="step-d">Not a traffic chart. The identical grid re-run on the same keyword, so
+          you can see which squares turned green and where the calls are coming from now.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. FAQ, open by default ============ -->
+<section id="faq">
+  <div class="rail">
+    <div class="head mid">
+      <span class="pill">Questions</span>
+      <h2 class="t40">Frequently Asked <em>Questions</em></h2>
+    </div>
+    <div class="faq-list">
+
+      <details open="">
+        <summary>What is the difference between SEO and Google Ads?</summary>
+        <p>Ads put you at the top for as long as you keep paying for every click. SEO puts you
+          in the top 3 of the map and the clicks stop costing you. We run both. For most local
+          businesses the organic work is the one that keeps paying after you stop.</p>
+      </details>
+
+      <details open="">
+        <summary>Which companies do you work with?</summary>
+        <p>Local service businesses. Right now that is movers, painters, drainage and cabinet
+          refinishing, across British Columbia, Alberta and Ontario. If people find you by
+          searching a service plus a city, the system fits.</p>
+      </details>
+
+      <details open="">
+        <summary>How much time will I need to invest?</summary>
+        <p>Almost none. One onboarding where we get access to your Google Business Profile and
+          the basics about your business. After that we handle it. You keep running the
+          business and answering the phone.</p>
+      </details>
+
+      <details open="">
+        <summary>Am I locked into a contract?</summary>
+        <p>No. The work runs month to month, so you can leave whenever it stops being worth
+          it. Everything gets built on your own Google Business Profile and your own website,
+          so the profile, the pages and the citations stay with you either way.</p>
+      </details>
+
+      <details open="">
+        <summary>How can we get started?</summary>
+        <p>Send your business name and get the free 3 minute video analysis. If it looks like a
+          fit, we book a call. Nothing to pay to find out.</p>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8. CTA BAND ============ -->
+<section>
+  <div class="rail">
+    <div class="band">
+      <div class="band-in">
+        <span class="mark" aria-hidden="true">
+          <img src="assets/logos/marquee/rg-mark-dark.png" alt="" width="404" height="260">
+          <span>Marketing</span>
+        </span>
+        <span class="pill">Free stuff</span>
+        <h2 class="t56">3 Minutes to See Where You <em>Rank</em></h2>
+        <p class="muted">Fill out the form and we'll record your personal analysis with the
+          exact things that need to happen for you to rank in the top 3 in your area. No
+          technical know-how needed.</p>
+        <div class="band-btns">
+          <a class="btn" href="#signup">Get my free analysis</a>
+          <a class="btn btn-wa" href="https://wa.me/19022790345" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2.01a9.9 9.9 0 0 0-8.53 14.86L2 22.06l5.33-1.4a9.9 9.9 0 0 0 4.71 1.2h.01a9.9 9.9 0 0 0 9.9-9.9 9.84 9.84 0 0 0-2.9-7.01 9.84 9.84 0 0 0-7.01-2.94Zm0 18.15h-.01a8.22 8.22 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1 12.73-10.1 8.15 8.15 0 0 1 2.4 5.81 8.23 8.23 0 0 1-8.15 8.15Zm4.5-6.15c-.24-.12-1.46-.72-1.69-.8-.22-.09-.39-.13-.55.12-.17.25-.64.81-.78.97-.15.17-.29.19-.53.07-.25-.13-1.05-.39-1.99-1.24-.74-.65-1.24-1.46-1.38-1.71-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.09-.16.04-.31-.02-.43-.06-.13-.55-1.35-.76-1.84-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.55c.13.16 1.74 2.66 4.22 3.73.59.25 1.05.4 1.4.52.59.18 1.13.16 1.56.1.47-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.17-.47-.29Z"/></svg>
+            <span>WhatsApp us</span><span class="wa-num">902 279 0345</span>
+          </a>
+        </div>
+        <p class="band-note">Stop being invisible on Google. It takes 3 minutes and the fix
+          list is yours to keep.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER (identical on every page, styles in assets/site.css) ============ -->
+<footer>
+  <div class="rail">
+
+    <div class="foot">
+
+      <div class="foot-brand">
+        <a class="mark" href="index.html" aria-label="RG Marketing home">
+          <img src="assets/logos/marquee/rg-mark-dark.png" alt="RG" width="404" height="260">
+          <span>Marketing</span>
+        </a>
+        <h2 class="t26 foot-tag">Dominate Your Local <em>Market</em>.</h2>
+        <p class="small muted">Built for local businesses in Canada.</p>
+      </div>
+
+      <div class="foot-col">
+        <h3>Navigate</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="case-studies.html">Case studies</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h3>Case studies</h3>
+        <ul>
+          <li><a href="case-studies/local-movers.html">Local Movers Ltd</a></li>
+          <li><a href="case-studies/co-painting.html">Co Painting</a></li>
+          <li><a href="case-studies/everfinish.html">Everfinish</a></li>
+          <li><a href="case-studies/mamba-drainage.html">Mamba Drainage</a></li>
+          <li><a href="case-studies/always-best-moving.html">Always Best Moving</a></li>
+          <li><a href="case-studies/picasshome.html">Picasshome Painting</a></li>
+          <li><a href="case-studies/serve-ninja.html">Serve Ninja Legal Support</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h3>Get started</h3>
+        <ul>
+          <li><a href="free-analysis.html">Free analysis</a></li>
+          <li><a href="book-a-call.html">Book a call</a></li>
+          <li><a href="terms.html">Terms and privacy</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h3>Contact</h3>
+        <a class="btn btn-wa btn-wa-sm" href="https://wa.me/19022790345" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2.01a9.9 9.9 0 0 0-8.53 14.86L2 22.06l5.33-1.4a9.9 9.9 0 0 0 4.71 1.2h.01a9.9 9.9 0 0 0 9.9-9.9 9.84 9.84 0 0 0-2.9-7.01 9.84 9.84 0 0 0-7.01-2.94Zm0 18.15h-.01a8.22 8.22 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1 12.73-10.1 8.15 8.15 0 0 1 2.4 5.81 8.23 8.23 0 0 1-8.15 8.15Zm4.5-6.15c-.24-.12-1.46-.72-1.69-.8-.22-.09-.39-.13-.55.12-.17.25-.64.81-.78.97-.15.17-.29.19-.53.07-.25-.13-1.05-.39-1.99-1.24-.74-.65-1.24-1.46-1.38-1.71-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.09-.16.04-.31-.02-.43-.06-.13-.55-1.35-.76-1.84-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.55c.13.16 1.74 2.66 4.22 3.73.59.25 1.05.4 1.4.52.59.18 1.13.16 1.56.1.47-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.17-.47-.29Z"/></svg>
+          <span>WhatsApp us</span>
+        </a>
+        <p class="foot-num">902 279 0345</p>
+        <ul>
+          <li><a href="mailto:roham@rghiasi.com">roham@rghiasi.com</a></li>
+          <li><a href="https://rgresults.ca">rgresults.ca</a></li>
+          <li>Canada</li>
+        </ul>
+      </div>
+
+    </div>
+
+
+    <div class="foot-btm">
+      <p class="tiny">&copy; <span id="yr">2026</span> RG Marketing. All rights reserved.</p>
+      <p class="tiny">Canada</p>
+    </div>
+
+  </div>
+</footer>
+
+<!-- sticky mobile CTA, shown under 880px by site.css -->
+<div class="tapbar">
+  <a class="btn btn-wa" href="https://wa.me/19022790345" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2.01a9.9 9.9 0 0 0-8.53 14.86L2 22.06l5.33-1.4a9.9 9.9 0 0 0 4.71 1.2h.01a9.9 9.9 0 0 0 9.9-9.9 9.84 9.84 0 0 0-2.9-7.01 9.84 9.84 0 0 0-7.01-2.94Zm0 18.15h-.01a8.22 8.22 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1 12.73-10.1 8.15 8.15 0 0 1 2.4 5.81 8.23 8.23 0 0 1-8.15 8.15Zm4.5-6.15c-.24-.12-1.46-.72-1.69-.8-.22-.09-.39-.13-.55.12-.17.25-.64.81-.78.97-.15.17-.29.19-.53.07-.25-.13-1.05-.39-1.99-1.24-.74-.65-1.24-1.46-1.38-1.71-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.09-.16.04-.31-.02-.43-.06-.13-.55-1.35-.76-1.84-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.55c.13.16 1.74 2.66 4.22 3.73.59.25 1.05.4 1.4.52.59.18 1.13.16 1.56.1.47-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.17-.47-.29Z"/></svg>
+    <span>WhatsApp us</span><span class="wa-num">902 279 0345</span>
+  </a>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* year */
+  var yr = document.getElementById("yr");
+  if (yr) { yr.textContent = String(new Date().getFullYear()); }
+
+
+  var tabB  = document.getElementById("tabBefore");
+  var tabA  = document.getElementById("tabAfter");
+  var panel = document.getElementById("cmpPanel");
+  var scan  = document.getElementById("cmpScan");
+  var cap   = document.getElementById("heatCap");
+  var imgB  = document.getElementById("heatBefore");
+  var imgA  = document.getElementById("heatAfter");
+
+  /* Generic example panel, the same shape ProfResults uses on their English /gbp page. */
+  var SCAN = {
+    before: {
+      val:  { rank: "86", share: "1%", clicks: "5", clients: "1-2" },
+      tone: { rank: "badge", share: "badge", clicks: "badge", clients: "badge" }
+    },
+    after: {
+      val:  { rank: "3", share: "42%", clicks: "180", clients: "14-18" },
+      tone: { rank: "badge good", share: "badge good", clicks: "badge good", clients: "badge good" }
+    }
+  };
+
+  function show(el, on) {
+    if (!el) { return; }
+    if (on) { el.removeAttribute("hidden"); } else { el.setAttribute("hidden", ""); }
+  }
+
+  function paint(state) {
+    var d = SCAN[state] || SCAN.before;
+    var after = state === "after";
+    var rows = document.querySelectorAll("#cmpPanel .badge[data-metric]");
+    for (var i = 0; i < rows.length; i++) {
+      var key = rows[i].getAttribute("data-metric");
+      if (d.val[key]) { rows[i].textContent = d.val[key]; }
+      rows[i].className = after ? "badge good" : "badge";
+    }
+    show(imgB, !after);
+    show(imgA, after);
+    if (scan) { scan.textContent = d.scan; }
+    if (cap)  { cap.textContent  = d.cap; }
+    tabB.setAttribute("aria-selected", after ? "false" : "true");
+    tabA.setAttribute("aria-selected", after ? "true" : "false");
+    tabB.setAttribute("tabindex", after ? "-1" : "0");
+    tabA.setAttribute("tabindex", after ? "0" : "-1");
+    panel.setAttribute("aria-labelledby", after ? "tabAfter" : "tabBefore");
+  }
+
+  if (tabB && tabA) {
+    paint("before");            /* explicit initial state, never inherit the markup */
+    tabB.addEventListener("click", function () { paint("before"); });
+    tabA.addEventListener("click", function () { paint("after"); });
+    [tabB, tabA].forEach(function (t) {
+      t.addEventListener("keydown", function (e) {
+        if (e.key !== "ArrowRight" && e.key !== "ArrowLeft" &&
+            e.key !== "Home" && e.key !== "End") { return; }
+        e.preventDefault();
+        var next = (e.key === "Home") ? tabB
+                 : (e.key === "End")  ? tabA
+                 : (t === tabB ? tabA : tabB);
+        paint(next === tabA ? "after" : "before");
+        next.focus();
+      });
+    });
+  }
+
+  /* ---- VSL ------------------------------------------------------
+     One click hands over to the native player: show its controls, drop the
+     overlay and the scrim, play. Everything degrades to a plain poster with
+     controls if the script never runs.                                 */
+  var vsl   = document.getElementById("vsl");
+  var video = document.getElementById("vslVideo");
+  var play  = document.getElementById("vslPlay");
+  if (vsl && video && play) {
+    play.addEventListener("click", function () {
+      video.controls = true;
+      vsl.classList.add("playing");
+      play.hidden = true;
+      var p = video.play();
+      if (p && p.catch) { p.catch(function () { video.controls = true; }); }
+    });
+    video.addEventListener("pause", function () { video.controls = true; });
+    try {
+      var cueData = JSON.parse(document.getElementById("vslCues").textContent);
+      var tt = video.addTextTrack("captions", "English", "en");
+      for (var i = 0; i < cueData.length; i++) {
+        tt.addCue(new VTTCue(cueData[i][0], cueData[i][1], cueData[i][2]));
+      }
+      tt.mode = "showing";
+    } catch (e) { /* burned-in captions still carry the video */ }
+  }
+
+  /* ---- opt-in form -------------------------------------------- */
+  /* Validates, then hands off to the real intake page. When the list
+     provider is wired, post there instead of navigating.            */
+  var form = document.getElementById("optin");
+  var note = document.getElementById("formNote");
+  if (form && note) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var v = (document.getElementById("email").value || "").trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) {
+        note.textContent = "That email does not look right. Check it and try again.";
+        return;
+      }
+      window.location.href = "free-analysis.html?email=" + encodeURIComponent(v);
+    });
+  }
+})();
+</script>
+
+
+
+</body>
+</html>

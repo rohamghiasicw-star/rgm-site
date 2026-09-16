@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="assets/logos/marquee/rg-favicon.png" sizes="any">
+<title>Thanks for booking | RG Marketing</title>
+<meta name="description" content="Your call with RG Marketing is confirmed. Check your inbox for the invite and the call link.">
+<link rel="canonical" href="https://rgresults.ca/booked">
+<meta property="og:title" content="RG Marketing | You're Booked">
+<meta property="og:description" content="Your strategy call is confirmed. Here is what happens next.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rgresults.ca/booked">
+<meta property="og:image" content="https://rgresults.ca/assets/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Source+Serif+4:ital,opsz,wght@1,8..60,500&display=swap">
+
+<link rel="stylesheet" href="assets/site.css">
+
+<style>
+  /* booked.html only. Everything else comes from assets/site.css.
+
+     ROOT CAUSE 16. This page used to wrap every one of its three sections in
+     .narrow, a 640px column, while the footer under it spans the full 1072
+     rail: a 432px width jump at the footer boundary, on the one page where
+     nothing else was 1072 wide. The .narrow wrappers are gone. The page now
+     resolves to the same two widths every other page uses - a 640 centred
+     head for the text, the full rail for the content it introduces - so the
+     body column and the footer are the same object width. */
+  .confirm{padding-block:var(--hero-top) var(--sect)}
+  .tick{width:48px;height:48px;border-radius:50%;background:var(--ink);
+    display:grid;place-items:center}
+  .tick svg{display:block}
+  .confirm .head p{max-width:52ch}
+  .close p{max-width:62ch}
+
+  /* ROOT CAUSE 16, second half. The detail card was width:100% of that 640
+     column holding one space-between row, so a 40.9px label and a 182.4px
+     value sat 368.8px apart with nothing between them, and two of its three
+     rows shipped as display:none placeholders. The empty rows are not in the
+     DOM any more - the script below builds a row only when the scheduler
+     actually supplies one - and the card is its own content wide and centres
+     on the page axis, so there is no slack left for space-between to open. */
+  .det{width:max-content;max-width:100%;margin-inline:auto}
+  .det .mrow{justify-content:normal;gap:48px;padding:9px 0}
+  .det .mrow:first-child{border-top:0}
+  /* "How long" was wrapping to two lines at 400px because the label could shrink */
+  .det .mrow-l{flex:none;white-space:nowrap;min-width:92px}
+  .dv{font-size:16px;font-weight:500}
+  .close .stack{gap:var(--stack);justify-items:center}
+  @media (max-width:880px){
+    .det{width:100%}
+    .det .mrow{align-items:flex-start;gap:24px}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <a class="mark" href="index.html">
+      <img src="assets/logos/marquee/rg-mark-dark.png" alt="RG" width="404" height="260">
+      <span>Marketing</span>
+    </a>
+    <a class="btn btn-sm" href="free-analysis.html">Get my free analysis</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- 1. Confirmation -->
+  <section class="confirm">
+    <div class="rail">
+      <div class="head mid">
+        <span class="tick" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#f7f2ea"
+               stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 10.5 L8 14.5 L16 5.5"></path>
+          </svg>
+        </span>
+        <span class="pill">Confirmed</span>
+        <h1 class="t56">Thanks for booking your <em>strategy call</em><span id="who"></span>.</h1>
+        <p class="lede">Check your inbox. The invite and the call link are on their way,
+          and your time is held.</p>
+      </div>
+
+      <!-- Only rows that carry a real value exist. The script inserts When and
+           How long ahead of Where when the scheduler redirect supplies them. -->
+      <div class="card det" id="det">
+        <div class="mrow" data-row="where">
+          <span class="mrow-l">Where</span>
+          <span class="dv">In your confirmation email</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. What happens next, 3 steps -->
+  <section class="next">
+    <div class="rail">
+      <div class="head mid">
+        <h2 class="t32">What happens <em>next</em></h2>
+      </div>
+      <div class="rows">
+
+        <div class="row">
+          <div class="step">
+            <p class="step-t"><span class="num">01.</span>Check your inbox</p>
+            <p class="step-d">The confirmation is landing now with the time and the call
+              link. Add it to your calendar so it does not get buried. If it is not there
+              in a few minutes, look in spam and promotions.</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="step">
+            <p class="step-t"><span class="num">02.</span>We look before we talk</p>
+            <p class="step-d">Before the call we go through your Google Business Profile,
+              the website behind it, and the local authority that makes the two agree.
+              Those are the three levers. The call starts with findings, not questions.</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="step">
+            <p class="step-t"><span class="num">03.</span>You get the plan in writing</p>
+            <p class="step-d">On the call we walk through what is holding your ranking
+              back and what we would do about it. After, you get it written down. Run it
+              yourself for free, or we handle all of it. No pressure either way.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Back home -->
+  <section class="close">
+    <div class="rail">
+      <div class="stack center">
+        <p class="lede">Nothing to prepare between now and then. Just have your business
+          name ready and we will take it from there.</p>
+        <div class="band-btns">
+          <a class="btn" href="index.html">Back to the home page</a>
+          <a class="btn btn-wa" href="https://wa.me/19022790345" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2.01a9.9 9.9 0 0 0-8.53 14.86L2 22.06l5.33-1.4a9.9 9.9 0 0 0 4.71 1.2h.01a9.9 9.9 0 0 0 9.9-9.9 9.84 9.84 0 0 0-2.9-7.01 9.84 9.84 0 0 0-7.01-2.94Zm0 18.15h-.01a8.22 8.22 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1 12.73-10.1 8.15 8.15 0 0 1 2.4 5.81 8.23 8.23 0 0 1-8.15 8.15Zm4.5-6.15c-.24-.12-1.46-.72-1.69-.8-.22-.09-.39-.13-.55.12-.17.25-.64.81-.78.97-.15.17-.29.19-.53.07-.25-.13-1.05-.39-1.99-1.24-.74-.65-1.24-1.46-1.38-1.71-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.09-.16.04-.31-.02-.43-.06-.13-.55-1.35-.76-1.84-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.55c.13.16 1.74 2.66 4.22 3.73.59.25 1.05.4 1.4.52.59.18 1.13.16 1.56.1.47-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.17-.47-.29Z"/></svg>
+            <span>WhatsApp us</span><span class="wa-num">902 279 0345</span>
+          </a>
+        </div>
+        <p class="tiny">Need to move it or cancel? Reply to your confirmation email, or write
+          to <a href="mailto:roham@rghiasi.com">roham@rghiasi.com</a>.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER (identical on every page, styles in assets/site.css) ============ -->
+<footer>
+  <div class="rail">
+
+    <div class="foot">
+
+      <div class="foot-brand">
+        <a class="mark" href="index.html" aria-label="RG Marketing home">
+          <img src="assets/logos/marquee/rg-mark-dark.png" alt="RG" width="404" height="260">
+          <span>Marketing</span>
+        </a>
+        <h2 class="t26 foot-tag">Dominate Your Local <em>Market</em>.</h2>
+        <p class="small muted">Built for local businesses in Canada.</p>
+      </div>
+
+      <div class="foot-col">
+        <h3>Navigate</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="case-studies.html">Case studies</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h3>Case studies</h3>
+        <ul>
+          <li><a href="case-studies/local-movers.html">Local Movers Ltd</a></li>
+          <li><a href="case-studies/co-painting.html">Co Painting</a></li>
+          <li><a href="case-studies/everfinish.html">Everfinish</a></li>
+          <li><a href="case-studies/mamba-drainage.html">Mamba Drainage</a></li>
+          <li><a href="case-studies/always-best-moving.html">Always Best Moving</a></li>
+          <li><a href="case-studies/picasshome.html">Picasshome Painting</a></li>
+          <li><a href="case-studies/serve-ninja.html">Serve Ninja Legal Support</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h3>Get started</h3>
+        <ul>
+          <li><a href="free-analysis.html">Free analysis</a></li>
+          <li><a href="book-a-call.html">Book a call</a></li>
+          <li><a href="terms.html">Terms and privacy</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h3>Contact</h3>
+        <a class="btn btn-wa btn-wa-sm" href="https://wa.me/19022790345" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2.01a9.9 9.9 0 0 0-8.53 14.86L2 22.06l5.33-1.4a9.9 9.9 0 0 0 4.71 1.2h.01a9.9 9.9 0 0 0 9.9-9.9 9.84 9.84 0 0 0-2.9-7.01 9.84 9.84 0 0 0-7.01-2.94Zm0 18.15h-.01a8.22 8.22 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1 12.73-10.1 8.15 8.15 0 0 1 2.4 5.81 8.23 8.23 0 0 1-8.15 8.15Zm4.5-6.15c-.24-.12-1.46-.72-1.69-.8-.22-.09-.39-.13-.55.12-.17.25-.64.81-.78.97-.15.17-.29.19-.53.07-.25-.13-1.05-.39-1.99-1.24-.74-.65-1.24-1.46-1.38-1.71-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.09-.16.04-.31-.02-.43-.06-.13-.55-1.35-.76-1.84-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.55c.13.16 1.74 2.66 4.22 3.73.59.25 1.05.4 1.4.52.59.18 1.13.16 1.56.1.47-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.17-.47-.29Z"/></svg>
+          <span>WhatsApp us</span>
+        </a>
+        <p class="foot-num">902 279 0345</p>
+        <ul>
+          <li><a href="mailto:roham@rghiasi.com">roham@rghiasi.com</a></li>
+          <li><a href="https://rgresults.ca">rgresults.ca</a></li>
+          <li>Canada</li>
+        </ul>
+      </div>
+
+    </div>
+
+
+    <div class="foot-btm">
+      <p class="tiny">&copy; <span id="yr">2026</span> RG Marketing. All rights reserved.</p>
+      <p class="tiny">Canada</p>
+    </div>
+
+  </div>
+</footer>
+
+
+<script>
+/* Footer year, same two lines every other page runs. */
+(function () {
+  var yr = document.getElementById("yr");
+  if (yr) { yr.textContent = String(new Date().getFullYear()); }
+})();
+
+/* Fills the booking slots from the scheduler redirect, when it passes them.
+   Calendly-style names first, then generic fallbacks. A row the redirect did
+   not supply is never built, so the card holds only rows that carry a value
+   and never ships hidden placeholders. Nothing here invents a value. */
+(function () {
+  var params;
+  try { params = new URLSearchParams(window.location.search); } catch (e) { return; }
+
+  function pick() {
+    for (var i = 0; i < arguments.length; i++) {
+      var v = params.get(arguments[i]);
+      if (v && v.trim()) return v.trim();
+    }
+    return null;
+  }
+
+  var det = document.getElementById('det');
+  var whereRow = det && det.querySelector('[data-row="where"]');
+
+  function addRow(label, value) {
+    if (!value || !det || !whereRow) return;
+    var row = document.createElement('div');
+    row.className = 'mrow';
+    var l = document.createElement('span');
+    l.className = 'mrow-l';
+    l.textContent = label;
+    var v = document.createElement('span');
+    v.className = 'dv';
+    v.textContent = value;
+    row.appendChild(l);
+    row.appendChild(v);
+    det.insertBefore(row, whereRow);
+  }
+
+  var name = pick('invitee_first_name', 'first_name', 'name');
+  if (name) {
+    var who = document.getElementById('who');
+    if (who) who.textContent = ', ' + name.split(' ')[0];
+  }
+
+  var start = pick('event_start_time', 'start_time', 'start', 'date');
+  var when = null;
+  if (start) {
+    var d = new Date(start);
+    when = isNaN(d.getTime()) ? start : d.toLocaleString(undefined, {
+      weekday: 'long', month: 'long', day: 'numeric',
+      hour: 'numeric', minute: '2-digit', timeZoneName: 'short'
+    });
+  }
+
+  addRow('When', when);
+  addRow('How long', pick('duration', 'length', 'event_duration'));
+})();
+</script>
+
+<!-- sticky mobile CTA, shown under 880px by site.css -->
+<div class="tapbar">
+  <a class="btn btn-wa" href="https://wa.me/19022790345" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2.01a9.9 9.9 0 0 0-8.53 14.86L2 22.06l5.33-1.4a9.9 9.9 0 0 0 4.71 1.2h.01a9.9 9.9 0 0 0 9.9-9.9 9.84 9.84 0 0 0-2.9-7.01 9.84 9.84 0 0 0-7.01-2.94Zm0 18.15h-.01a8.22 8.22 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1 12.73-10.1 8.15 8.15 0 0 1 2.4 5.81 8.23 8.23 0 0 1-8.15 8.15Zm4.5-6.15c-.24-.12-1.46-.72-1.69-.8-.22-.09-.39-.13-.55.12-.17.25-.64.81-.78.97-.15.17-.29.19-.53.07-.25-.13-1.05-.39-1.99-1.24-.74-.65-1.24-1.46-1.38-1.71-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.09-.16.04-.31-.02-.43-.06-.13-.55-1.35-.76-1.84-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.55c.13.16 1.74 2.66 4.22 3.73.59.25 1.05.4 1.4.52.59.18 1.13.16 1.56.1.47-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.17-.47-.29Z"/></svg>
+    <span>WhatsApp us</span><span class="wa-num">902 279 0345</span>
+  </a>
+</div>
+
+</body>
+</html>

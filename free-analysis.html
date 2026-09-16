@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="assets/logos/marquee/rg-favicon.png" sizes="any">
+<title>RG Marketing | Free Analysis</title>
+<meta name="description" content="Fill out the form and we will record your personalized analysis with the exact things that need to happen so you can rank in the top 3 within your area. No costs, no obligations, no annoying sales pitch.">
+<link rel="canonical" href="https://rgresults.ca/free-analysis">
+<meta property="og:title" content="RG Marketing | Free Analysis">
+<meta property="og:description" content="Fill out the form and we will record your personalized analysis with the exact things that need to happen so you can rank in the top 3 within your area.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rgresults.ca/free-analysis">
+<meta property="og:image" content="https://rgresults.ca/assets/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Source+Serif+4:ital,wght@1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+
+<style>
+/* free-analysis only. Everything else comes from assets/site.css. */
+
+/* the step panels set display:grid, which outranks the UA [hidden] rule. */
+[hidden]{display:none!important}
+
+.hero-2{display:grid;grid-template-columns:1fr minmax(0,462px);gap:48px;align-items:start}
+/* a left-reading column, like index's .hero-copy: it states its own axis so
+   the shared centring rule in site.css leaves it alone */
+.hero-l{display:grid;align-content:start;--jc:normal;--mi:0}
+
+/* .stack and .hero-l are grids, so an inline-block eyebrow would stretch to the column */
+.stack>.pill,.hero-l>.pill{justify-self:start}
+.stack>.lede,.stack>p{max-width:62ch}
+
+.ticks{list-style:none;margin:0;padding:0;display:grid;gap:11px}
+.ticks li{display:grid;grid-template-columns:20px 1fr;gap:11px;align-items:start;font-size:16px}
+.tick{width:20px;height:20px;border-radius:50%;background:var(--ink);color:#fff;
+  display:grid;place-items:center;font-size:11px;line-height:1;margin-top:1px}
+
+/* ---- the form card ---- */
+.fcard{background:var(--card);border:0;border-radius:12px;
+  padding:26px;scroll-margin-top:96px;--jc:normal;--mi:0}
+.fhead{display:grid;gap:8px;margin-bottom:20px}
+
+.prog{display:grid;gap:9px;margin-bottom:20px}
+.prog-track{height:3px;border-radius:3px;background:var(--ink-10);overflow:hidden}
+.prog-fill{height:100%;width:25%;background:var(--ink);border-radius:3px;transition:width .3s ease}
+.prog-lbl{display:flex;justify-content:space-between;gap:12px;font-size:14px;color:var(--ink-48)}
+
+.fstep{display:grid;gap:16px}
+.fgrid{display:grid;gap:16px}
+.lbl{display:block;font-size:14px;font-weight:500;margin-bottom:7px}
+.hint{font-size:14px;color:var(--ink-48);margin-top:7px}
+
+/* radio group, 8px radius like every other form control */
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.choice{position:relative;display:flex;align-items:center;gap:10px;cursor:pointer;
+  background:var(--card);border:1px solid var(--ink-12);border-radius:var(--field);
+  padding:13px 15px;font-size:14px;letter-spacing:-.04em;transition:border-color .18s,background .18s}
+.choice input{position:absolute;opacity:0;width:0;height:0}
+.dot{flex:none;width:16px;height:16px;border-radius:50%;border:1px solid var(--ink-24);
+  display:grid;place-items:center;transition:border-color .18s}
+.dot::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--ink);
+  transform:scale(0);transition:transform .18s}
+.choice.is-on{border-color:var(--ink);background:var(--ink-04)}
+.choice.is-on .dot{border-color:var(--ink)}
+.choice.is-on .dot::after{transform:scale(1)}
+.choice:focus-within{outline:2px solid var(--ink);outline-offset:3px}
+
+/* error state carries no colour. the system has no accent, so weight does the work. */
+.field.bad,.choices.bad .choice{border-color:var(--ink)}
+.err{font-size:14px;font-weight:500;margin-top:7px}
+.err:empty{display:none}
+
+.fnav{display:flex;align-items:center;justify-content:space-between;gap:14px;
+  margin-top:4px;flex-wrap:wrap}
+.back{font-family:var(--sans);font-size:14px;font-weight:500;letter-spacing:-.04em;color:var(--ink-56);background:none;border:0;
+  padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.back:hover{color:var(--ink)}
+.fnav .btn{margin-left:auto}
+.consent{font-size:14px;color:var(--ink-48);margin-top:14px;line-height:1.45}
+
+/* ---- success state ---- */
+.done{display:grid;gap:16px;justify-items:start}
+.done:focus{outline:none}
+.done-ico{width:44px;height:44px;border-radius:50%;background:var(--ink);color:#fff;
+  display:grid;place-items:center;font-size:18px;line-height:1}
+.recap{display:grid;gap:0;width:100%;border:0;
+  border-radius:var(--field);overflow:hidden;background:var(--ink-04)}
+.recap div{display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+  padding:11px 15px;font-size:14px;border-top:1px solid var(--ink-10)}
+.recap div:first-child{border-top:0}
+.recap dt{color:var(--ink-56)}
+.recap dd{margin:0;text-align:right;word-break:break-word}
+
+/* ---- the real before/after LeadSnap pair (section 4) ----------------
+   Replaced the drawn SVG grid on 2026-09-16, so .heat-img went with it.
+
+   These were two panes side by side, which sounds right - before against
+   after in one move - and was the one page where the evidence could not be
+   read. Half a 1072px rail is 484px, so a 1400px export rendered at a 34.6%
+   linear scale on desktop and 22.3% at 400px, with no pan and no zoom on
+   either. The figures this section publishes (1st, 100.00%, 42.6%) were
+   physically unreadable in the screenshot that is supposed to source them,
+   which is the whole point of publishing the screenshot.
+
+   One pane per row now. Each export gets the full rail, 1024px, a 73.1%
+   linear scale - the same read every case study gives - and .panx hands it
+   its own scroll under 700px so the phone reads it at 100%. Before and
+   after still read in one move, down the page instead of across it, and
+   each pane still carries its own dated header.
+
+   No aspect-ratio on the shot. The pair is 1400x1079 and 1400x869, and one
+   shared ratio box meant the shorter July export painted 484x300 inside a
+   484x373 box: 72.6px of dead card under it, 19.5% of the box. Each export
+   is now its own height, which is also the only honest way to show two
+   scans that genuinely are different shapes. */
+.scans{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--gutter)}
+.scan-pane{display:grid;grid-template-rows:auto auto auto auto 1fr;
+  padding:20px;min-width:0}
+/* The header and the three rows used to size themselves to half a rail. Now
+   that a pane is the full rail they would be 1032px wide holding a 108px
+   label and a 50.8px badge, i.e. 873px of nothing between them - the exact
+   shape of the space-between void this build already fixed on booked.html.
+   They keep their own measure and centre on the pane, the same 336px column
+   .cmp-wide gives the case-study panels, so the whole site reads one way. */
+.scan-hd,.scan-pane .mrow{max-width:336px;margin-inline:auto;width:100%}
+.scan-hd{display:flex;align-items:baseline;justify-content:space-between;
+  gap:12px;flex-wrap:wrap;margin-bottom:5px}
+.scan-tag{font-size:16px;font-weight:500;letter-spacing:-.05em}
+.scan-shot{display:grid;align-content:start;min-width:0;margin-top:16px}
+.scan-shot .shot{border-radius:6px}
+
+@media (max-width:980px){
+  .hero-2{grid-template-columns:1fr;gap:32px}
+}
+@media (max-width:520px){
+  .fcard{padding:20px}
+  .choices{grid-template-columns:1fr}
+}
+.done-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.skip{margin-top:28px;padding-top:24px;border-top:1px solid var(--ink-10);
+  display:grid;gap:10px;justify-items:start}
+.skip h3{margin:0}
+.skip-list{list-style:none;margin:2px 0;padding:0;display:grid;gap:7px}
+.skip-list li{font-size:15px;padding-left:24px;position:relative}
+.skip-list li::before{content:"\2713";position:absolute;left:0;top:0;font-size:13px}
+.skip .btn{margin-top:6px}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="nav-in">
+    <a class="mark" href="index.html" aria-label="RG Marketing home">
+      <img src="assets/logos/marquee/rg-mark-dark.png" alt="RG" width="404" height="260">
+      <span>Marketing</span>
+    </a>
+    <a class="btn btn-sm" href="free-analysis.html">Get my free analysis</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ 1. HERO + FORM ============ -->
+<section class="hero">
+  <div class="rail hero-2">
+
+    <div class="hero-l">
+      <span class="pill">Free analysis</span>
+      <h1 class="t56">Find out why you are not in the <em>top 3</em>.</h1>
+      <p class="lede">Fill out the form and we will record your personalized analysis with the
+        exact things that need to happen so you can rank in the top 3 within your area.</p>
+
+      <ul class="ticks">
+        <li><span class="tick" aria-hidden="true">&#10003;</span>
+          <span>Your rank at every point across the area you actually serve, not one search from one spot.</span></li>
+        <li><span class="tick" aria-hidden="true">&#10003;</span>
+          <span>The businesses holding the top 3 above you, and what they have that you do not.</span></li>
+        <li><span class="tick" aria-hidden="true">&#10003;</span>
+          <span>The exact things that need to happen, in the order they need to happen.</span></li>
+      </ul>
+
+      <p class="small muted">Recorded by hand, one business at a time. Not a tool export.</p>
+    </div>
+
+    <!-- form card -->
+    <div class="fcard" id="start">
+      <div id="formWrap">
+        <div class="fhead">
+          <h2 class="t26">Get Your Profile <em>Analyzed</em>.</h2>
+          <p class="small muted">No costs, no obligations, no annoying sales pitch. Guaranteed.</p>
+        </div>
+
+        <div class="prog">
+          <div class="prog-track"><div class="prog-fill" id="progFill"></div></div>
+          <div class="prog-lbl">
+            <span id="stepNow">Step 1 of 4</span>
+            <span id="stepName">Your details</span>
+          </div>
+        </div>
+
+        <!-- No server on this build. Rather than swallow the lead, the last step hands
+             the filled details to the visitor's own email or WhatsApp client, prefilled and
+             addressed to roham@rghiasi.com. To move to a real endpoint, set
+             window.RGM_FORM_ENDPOINT before this page's script runs: the handler then POSTs
+             there and only shows the success state on a 2xx. -->
+        <form id="faForm" novalidate>
+
+          <!-- step 1 -->
+          <div class="fstep" data-step="1" data-name="Your details">
+            <div class="fgrid">
+              <div>
+                <label class="lbl" for="fullname">Full Name</label>
+                <input class="field" id="fullname" name="fullname" type="text"
+                  autocomplete="name" placeholder="Full Name *">
+                <p class="err" data-err="fullname" aria-live="polite"></p>
+              </div>
+              <div>
+                <label class="lbl" for="bemail">Business Email</label>
+                <input class="field" id="bemail" name="email" type="email"
+                  autocomplete="email" placeholder="Business Email *">
+                <p class="hint">This is where the video lands. One email, nothing else.</p>
+                <p class="err" data-err="bemail" aria-live="polite"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- step 2 -->
+          <div class="fstep" data-step="2" data-name="Your number" hidden>
+            <div class="fgrid">
+              <div>
+                <label class="lbl" for="code">Code</label>
+                <input class="field" id="code" name="code" type="text" inputmode="tel"
+                  autocomplete="tel-country-code" placeholder="+1 *">
+                <p class="err" data-err="code" aria-live="polite"></p>
+              </div>
+              <div>
+                <label class="lbl" for="phone">Phone Number</label>
+                <input class="field" id="phone" name="phone" type="tel"
+                  autocomplete="tel-national" placeholder="Phone Number *">
+                <p class="hint">Only used if something on your profile needs a straight answer.</p>
+                <p class="err" data-err="phone" aria-live="polite"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- step 3 -->
+          <div class="fstep" data-step="3" data-name="Your business" hidden>
+            <div class="fgrid">
+              <div>
+                <label class="lbl" for="site">Website</label>
+                <input class="field" id="site" name="website" type="text" inputmode="url"
+                  autocomplete="url" placeholder="Website *">
+                <p class="err" data-err="site" aria-live="polite"></p>
+              </div>
+              <div>
+                <label class="lbl" for="biz">Company Name</label>
+                <input class="field" id="biz" name="company" type="text"
+                  autocomplete="organization" placeholder="Company Name *">
+                <p class="err" data-err="biz" aria-live="polite"></p>
+              </div>
+              <div>
+                <label class="lbl" for="gmaps">Google Maps URL</label>
+                <input class="field" id="gmaps" name="gmaps" type="text" inputmode="url"
+                  placeholder="Your Google Maps URL *">
+                <p class="hint">Find your business on Google Maps, hit share, paste the link.
+                  That is the profile we scan.</p>
+                <p class="err" data-err="gmaps" aria-live="polite"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- step 4 -->
+          <div class="fstep" data-step="4" data-name="Your timing" hidden>
+            <div>
+              <span class="lbl" id="timeLbl">By when do you want to solve this problem? *</span>
+              <div class="choices" role="radiogroup" aria-labelledby="timeLbl" id="timeGroup">
+                <label class="choice"><input type="radio" name="timing" value="Today"><span class="dot" aria-hidden="true"></span><span>Today</span></label>
+                <label class="choice"><input type="radio" name="timing" value="Tomorrow"><span class="dot" aria-hidden="true"></span><span>Tomorrow</span></label>
+                <label class="choice"><input type="radio" name="timing" value="In a few weeks"><span class="dot" aria-hidden="true"></span><span>In a few weeks</span></label>
+              </div>
+              <p class="err" data-err="timing" aria-live="polite"></p>
+            </div>
+          </div>
+
+          <div class="fnav">
+            <button type="button" class="back" id="backBtn" hidden>Back</button>
+            <button type="submit" class="btn btn-form" id="nextBtn">Continue</button>
+          </div>
+        </form>
+
+        <p class="consent">We use these details to run the analysis and send it back to you.
+          Nothing else, and we never pass them on. Full detail on the
+          <a href="terms.html" style="text-decoration:underline;text-underline-offset:3px">terms and privacy page</a>.</p>
+      </div>
+
+      <!-- success state. Two shapes: #sendWrap when the details still have to be
+           sent from the visitor's own client, #sentWrap once a real endpoint has
+           taken them. The script picks one, never both. -->
+      <div class="done" id="doneWrap" hidden tabindex="-1">
+        <span class="done-ico" aria-hidden="true">&#10003;</span>
+
+        <div id="sendWrap">
+          <h2 class="t26">One tap and it is <em>in</em>.</h2>
+          <p class="small muted">Your details are ready to go. Pick whichever is faster and send
+            them, and the analysis gets recorded and sent back to you.</p>
+          <div class="done-row">
+            <a class="btn" id="sendMail" href="#">Send by email</a>
+            <a class="btn btn-wa" id="sendWa" href="#" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2.01a9.9 9.9 0 0 0-8.53 14.86L2 22.06l5.33-1.4a9.9 9.9 0 0 0 4.71 1.2h.01a9.9 9.9 0 0 0 9.9-9.9 9.84 9.84 0 0 0-2.9-7.01 9.84 9.84 0 0 0-7.01-2.94Zm0 18.15h-.01a8.22 8.22 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1 12.73-10.1 8.15 8.15 0 0 1 2.4 5.81 8.23 8.23 0 0 1-8.15 8.15Zm4.5-6.15c-.24-.12-1.46-.72-1.69-.8-.22-.09-.39-.13-.55.12-.17.25-.64.81-.78.97-.15.17-.29.19-.53.07-.25-.13-1.05-.39-1.99-1.24-.74-.65-1.24-1.46-1.38-1.71-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.09-.16.04-.31-.02-.43-.06-.13-.55-1.35-.76-1.84-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.55c.13.16 1.74 2.66 4.22 3.73.59.25 1.05.4 1.4.52.59.18 1.13.16 1.56.1.47-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.17-.47-.29Z"/></svg>
+              <span>Send on WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+        <div id="sentWrap" hidden>
+          <h2 class="t26">That is <em>everything</em> we need.</h2>
+          <p class="small muted">We will record your personalized analysis and send it to the
+            address below. Nothing else for you to do.</p>
+        </div>
+
+        <dl class="recap" id="recap"></dl>
+
+        <!-- their /main-ty "Skip The Work" block -->
+        <div class="skip">
+          <span class="pill">Skip the work</span>
+          <h3 class="t26">Want Us To Do This For <em>you</em>?</h3>
+          <p class="small muted">The analysis will get you started, but ranking in the top 3
+            takes a full strategy.</p>
+          <ul class="skip-list">
+            <li>Google Business Profile optimization</li>
+            <li>Website and area pages</li>
+            <li>Citations and local authority</li>
+          </ul>
+          <p class="small muted">We handle all of it. If you would rather skip the work and let
+            us take care of it, click the link below.</p>
+          <a class="btn" href="book-a-call.html">See How We Get You to The Top 3</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ 2. LOGO MARQUEE ============ -->
+<div class="rail">
+  <div class="marq-wrap">
+    <span class="marq-lbl">Working with...</span>
+    <div class="marq">
+      <div class="marq-track">
+        <div class="marq-item"><img src="assets/logos/marquee/local-movers.png" alt="Local Movers Ltd logo" width="287" height="140" decoding="async"></div>
+        <div class="marq-item"><img src="assets/logos/marquee/always-best-moving.png" alt="Always Best Moving logo" width="472" height="140" decoding="async"></div>
+        <div class="marq-item"><img src="assets/logos/marquee/co-painting.png" alt="Co Painting logo" width="126" height="140" decoding="async"></div>
+        <div class="marq-item"><img src="assets/logos/marquee/picasshome-painting.png" alt="Picasshome Painting logo" width="140" height="140" decoding="async"></div>
+        <div class="marq-item"><img src="assets/logos/marquee/mamba-drainage.png" alt="Mamba Drainage logo" width="121" height="140" decoding="async"></div>
+        <div class="marq-item"><img src="assets/logos/marquee/western-provincial-movers.png" alt="Western Provincial Movers logo" width="305" height="140" decoding="async"></div>
+        <div class="marq-item"><img src="assets/logos/marquee/everfinish.png" alt="Everfinish logo" width="358" height="140" decoding="async"></div>
+        <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/local-movers.png" alt="" width="287" height="140" decoding="async"></div>
+        <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/always-best-moving.png" alt="" width="472" height="140" decoding="async"></div>
+        <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/co-painting.png" alt="" width="126" height="140" decoding="async"></div>
+        <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/picasshome-painting.png" alt="" width="140" height="140" decoding="async"></div>
+        <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/mamba-drainage.png" alt="" width="121" height="140" decoding="async"></div>
+        <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/western-provincial-movers.png" alt="" width="305" height="140" decoding="async"></div>
+        <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/everfinish.png" alt="" width="358" height="140" decoding="async"></div>
+        <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/local-movers.png" alt="" width="287" height="140" decoding="async"></div>
+        <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/always-best-moving.png" alt="" width="472" height="140" decoding="async"></div>
+        <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/co-painting.png" alt="" width="126" height="140" decoding="async"></div>
+        <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/picasshome-painting.png" alt="" width="140" height="140" decoding="async"></div>
+        <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/mamba-drainage.png" alt="" width="121" height="140" decoding="async"></div>
+        <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/western-provincial-movers.png" alt="" width="305" height="140" decoding="async"></div>
+        <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/everfinish.png" alt="" width="358" height="140" decoding="async"></div>
+        <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/local-movers.png" alt="" width="287" height="140" decoding="async"></div>
+        <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/always-best-moving.png" alt="" width="472" height="140" decoding="async"></div>
+        <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/co-painting.png" alt="" width="126" height="140" decoding="async"></div>
+        <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/picasshome-painting.png" alt="" width="140" height="140" decoding="async"></div>
+        <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/mamba-drainage.png" alt="" width="121" height="140" decoding="async"></div>
+        <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/western-provincial-movers.png" alt="" width="305" height="140" decoding="async"></div>
+        <div class="marq-item" aria-hidden="true"><img src="assets/logos/marquee/everfinish.png" alt="" width="358" height="140" decoding="async"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 3. WHAT IS IN THE VIDEO ============ -->
+<section>
+  <div class="rail">
+    <div class="head mid">
+      <span class="pill">What you get</span>
+      <h2 class="t40">What is in the <em>video</em>.</h2>
+      <p class="lede">Three minutes, screen recorded, your profile on screen
+        the whole time. Here is the running order.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <span class="ico" aria-hidden="true">&#9632;</span>
+        <h3 class="t26">The grid</h3>
+        <p class="small muted">We check your rank at every point on a grid
+          laid over your area. You see the pockets where you already win and the pockets where
+          nobody has ever seen you.</p>
+      </div>
+      <div class="card">
+        <span class="ico" aria-hidden="true">&#9650;</span>
+        <h3 class="t26">The gap</h3>
+        <p class="small muted">The businesses holding the top 3 where you
+          are losing, side by side with yours. Categories, review counts, services, photos, the
+          lot.</p>
+      </div>
+      <div class="card">
+        <span class="ico" aria-hidden="true">&#9679;</span>
+        <h3 class="t26">The fix list</h3>
+        <p class="small muted">The exact things that need to happen, in
+          order of impact. Profile first, then the site, then citations. Take it and run it
+          yourself if you want to.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. A REAL SCAN, BEFORE AND AFTER ============
+     Was a hand drawn SVG grid captioned "Your data" on every row. Replaced
+     2026-09-16 (Roham: "show a real heat map before and after instead of the
+     fake one"). Both images are untouched LeadSnap exports straight out of
+     assets/leadsnap/. Every figure printed beside a screenshot is legible IN
+     that screenshot: nothing is derived, averaged, rounded, or carried over
+     from another scan or another client. Metric order matches the case
+     studies: position, share, top 3 coverage. ========================= -->
+<section>
+  <div class="rail">
+    <div class="head mid">
+      <span class="pill">A real scan</span>
+      <h2 class="t40">The same 169 points, <em>three months</em> apart.</h2>
+      <p class="lede">Every dot is one search run from one spot on the map. Green is a top 3
+        placing, yellow is further down page one, red is nowhere. This is Mamba Drainage
+        Services on "drainage vancouver", a 13 by 13 grid of 169 points, scanned in March and
+        scanned again in July. Both reads are Local Pack, the same search, which is the only
+        way two scans can be set beside each other. The March grid covers 79.84 km&sup2; and
+        the July grid covers 118.08 km&sup2;, so the later read is measured over more ground,
+        not less. Yours comes back in this exact format.</p>
+    </div>
+
+    <div class="scans">
+      <div class="card scan-pane">
+        <div class="scan-hd">
+          <span class="scan-tag">Before</span>
+          <span class="tiny muted">21 March 2026</span>
+        </div>
+        <div class="mrow"><span class="mrow-l">Position in market</span><span class="badge">4th of 57</span></div>
+        <div class="mrow"><span class="mrow-l">Market share</span><span class="badge">62.13%</span></div>
+        <div class="mrow"><span class="mrow-l">Top 3 coverage</span><span class="badge">37.87%</span></div>
+        <div class="scan-shot panx" tabindex="0">
+          <img class="shot" src="assets/leadsnap/mamba-BEFORE-2026-03-21.jpg"
+               width="1400" height="939" loading="lazy" decoding="async"
+               alt="LeadSnap heatmap for Mamba Drainage Services on 21 March 2026, keyword drainage vancouver, ranking source Local Pack, market share 62.13% placing 4th of 57 tracked competitors, top 3 coverage 37.87%, on a 13 by 13 grid of 169 points covering 79.84 square kilometres.">
+        </div>
+      </div>
+
+      <div class="card scan-pane">
+        <div class="scan-hd">
+          <span class="scan-tag">After</span>
+          <span class="tiny muted">2 July 2026</span>
+        </div>
+        <div class="mrow"><span class="mrow-l">Position in market</span><span class="badge good">1st</span></div>
+        <div class="mrow"><span class="mrow-l">Market share</span><span class="badge good">100.00%</span></div>
+        <div class="mrow"><span class="mrow-l">Top 3 coverage</span><span class="badge good">42.6%</span></div>
+        <div class="scan-shot panx" tabindex="0">
+          <img class="shot" src="assets/leadsnap/mamba-AFTER-2026-07-02.jpg"
+               width="1400" height="869" loading="lazy" decoding="async"
+               alt="LeadSnap heatmap for Mamba Drainage Services on 2 July 2026, keyword drainage vancouver, average ranking 4.50 placing 1st, top 3 coverage 42.6%, market share 100.00%, on a 13 by 13 grid of 169 points.">
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-note">
+      <p class="small muted">Tenth to first, same keyword, the same 13 by 13 grid of 169
+        points at both ends. The full
+        read is on the <a href="case-studies/mamba-drainage.html">Mamba Drainage case
+        study</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. HOW IT RUNS ============ -->
+<section>
+  <div class="rail">
+    <div class="head mid">
+      <span class="pill">How it runs</span>
+      <h2 class="t40">Three steps, no <em>meeting</em>.</h2>
+    </div>
+
+    <div class="rows">
+      <div class="row step">
+        <div class="step-t"><span class="num">01.</span>You fill out the form</div>
+        <p class="small muted">Name, business email, phone number, website, company name and your
+          Google Maps link. That is the whole form above.</p>
+      </div>
+      <div class="row step">
+        <div class="step-t"><span class="num">02.</span>We run the scan</div>
+        <p class="small muted">We map your area, run the ranking grid, then pull your Google
+          Business Profile, your website and your citations and check all three against the
+          businesses beating you.</p>
+      </div>
+      <div class="row step">
+        <div class="step-t"><span class="num">03.</span>The video lands in your inbox</div>
+        <p class="small muted">About 3 minutes. Watch it, act on it, ignore us if you
+          want.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. FAQ (open by default, project ledger rule) ============ -->
+<section>
+  <div class="rail">
+    <div class="head mid">
+      <span class="pill">Questions</span>
+      <h2 class="t40">Frequently Asked <em>Questions</em></h2>
+    </div>
+
+    <div class="rows">
+      <details open>
+        <summary>Is this actually free?</summary>
+        <p>Yes. No costs, no obligations, no annoying sales pitch. You get the video, you keep the
+          fix list, and you are free to run it yourself.</p>
+      </details>
+      <details open>
+        <summary>Do I have to get on a call?</summary>
+        <p>No. The video goes to your inbox. If you want to talk after watching it you can book a
+          call. If you do not, we leave you alone.</p>
+      </details>
+      <details open>
+        <summary>How do I know you can actually get me into the top 3?</summary>
+        <p>We do this for movers, painters, drainage companies and cabinet refinishers across BC,
+          Ontario and Alberta. We only take on businesses we know we can rank. Local Movers Ltd
+          holds 2nd on the Surrey movers board and 100% market share on "movers surrey", with
+          45.56% of the grid in the top 3. That is the LeadSnap read of 4 September 2026 and it
+          is published on their case study page. Before anything starts we audit your market
+          and only take it on if we are confident.</p>
+      </details>
+      <details open>
+        <summary>What do you actually work on?</summary>
+        <p>Three things. The Google Business Profile gets optimized, categorized and posted to.
+          The website gets the service and area pages it is missing, written off real local
+          research. The citations get matched across the directory set Google reads. It runs
+          month to month with no long contract, and it all lives on your own accounts.</p>
+      </details>
+      <details open>
+        <summary>Will this work for my specific type of business?</summary>
+        <p>If you are a Canadian local business with a real service area, yes. We have ranked
+          movers, painters, drainage companies and cabinet refinishers. The system works for any
+          local service business. In the video we tell you straight up if your market is too
+          competitive or if there is something that would stop us ranking you.</p>
+      </details>
+      <details open>
+        <summary>How long until I actually see results?</summary>
+        <p>Local Movers now reads 45.56% of the Surrey grid in the top 3, scanned
+          4 September 2026. You notice you are climbing in the maps first. Once you are in the top 3 the
+          phone starts ringing. That is where the real return is, not in the rankings, but in
+          the customers booking with you instead of your competitors.</p>
+      </details>
+      <details open>
+        <summary>How much of my time does this require?</summary>
+        <p>One onboarding call. We get access to your Google Business Profile and gather some info
+          about your business. After that we handle everything: optimization, reviews, posts,
+          citations, all of it. You will not need to touch anything or learn anything technical.
+          You just keep running your business while we get you ranked.</p>
+      </details>
+      <details open>
+        <summary>Who records the video?</summary>
+        <p>Roham does, one business at a time. It is a screen recording of your real profile and
+          your real grid, not a template with your name dropped into it.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. CTA BAND ============ -->
+<section>
+  <div class="rail">
+    <div class="band">
+      <div class="band-in">
+        <img src="assets/logos/marquee/rg-mark-dark.png" alt="" style="height:26px;width:auto" width="404" height="260">
+        <span class="pill">Get started</span>
+        <h2 class="t56">Stop being invisible on <em>Google</em>.</h2>
+        <p class="muted">Fill out the form and we will record your personalized analysis with the
+          exact things that need to happen so you can rank in the top 3 within your area.</p>
+        <div class="band-btns">
+          <a class="btn" href="#start">Get my free analysis</a>
+          <a class="btn btn-wa" href="https://wa.me/19022790345" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2.01a9.9 9.9 0 0 0-8.53 14.86L2 22.06l5.33-1.4a9.9 9.9 0 0 0 4.71 1.2h.01a9.9 9.9 0 0 0 9.9-9.9 9.84 9.84 0 0 0-2.9-7.01 9.84 9.84 0 0 0-7.01-2.94Zm0 18.15h-.01a8.22 8.22 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1 12.73-10.1 8.15 8.15 0 0 1 2.4 5.81 8.23 8.23 0 0 1-8.15 8.15Zm4.5-6.15c-.24-.12-1.46-.72-1.69-.8-.22-.09-.39-.13-.55.12-.17.25-.64.81-.78.97-.15.17-.29.19-.53.07-.25-.13-1.05-.39-1.99-1.24-.74-.65-1.24-1.46-1.38-1.71-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.09-.16.04-.31-.02-.43-.06-.13-.55-1.35-.76-1.84-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.55c.13.16 1.74 2.66 4.22 3.73.59.25 1.05.4 1.4.52.59.18 1.13.16 1.56.1.47-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.17-.47-.29Z"/></svg>
+            <span>WhatsApp us</span><span class="wa-num">902 279 0345</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER (identical on every page, styles in assets/site.css) ============ -->
+<footer>
+  <div class="rail">
+
+    <div class="foot">
+
+      <div class="foot-brand">
+        <a class="mark" href="index.html" aria-label="RG Marketing home">
+          <img src="assets/logos/marquee/rg-mark-dark.png" alt="RG" width="404" height="260">
+          <span>Marketing</span>
+        </a>
+        <h2 class="t26 foot-tag">Dominate Your Local <em>Market</em>.</h2>
+        <p class="small muted">Built for local businesses in Canada.</p>
+      </div>
+
+      <div class="foot-col">
+        <h3>Navigate</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="case-studies.html">Case studies</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h3>Case studies</h3>
+        <ul>
+          <li><a href="case-studies/local-movers.html">Local Movers Ltd</a></li>
+          <li><a href="case-studies/co-painting.html">Co Painting</a></li>
+          <li><a href="case-studies/everfinish.html">Everfinish</a></li>
+          <li><a href="case-studies/mamba-drainage.html">Mamba Drainage</a></li>
+          <li><a href="case-studies/always-best-moving.html">Always Best Moving</a></li>
+          <li><a href="case-studies/picasshome.html">Picasshome Painting</a></li>
+          <li><a href="case-studies/serve-ninja.html">Serve Ninja Legal Support</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h3>Get started</h3>
+        <ul>
+          <li><a href="free-analysis.html">Free analysis</a></li>
+          <li><a href="book-a-call.html">Book a call</a></li>
+          <li><a href="terms.html">Terms and privacy</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h3>Contact</h3>
+        <a class="btn btn-wa btn-wa-sm" href="https://wa.me/19022790345" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2.01a9.9 9.9 0 0 0-8.53 14.86L2 22.06l5.33-1.4a9.9 9.9 0 0 0 4.71 1.2h.01a9.9 9.9 0 0 0 9.9-9.9 9.84 9.84 0 0 0-2.9-7.01 9.84 9.84 0 0 0-7.01-2.94Zm0 18.15h-.01a8.22 8.22 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1 12.73-10.1 8.15 8.15 0 0 1 2.4 5.81 8.23 8.23 0 0 1-8.15 8.15Zm4.5-6.15c-.24-.12-1.46-.72-1.69-.8-.22-.09-.39-.13-.55.12-.17.25-.64.81-.78.97-.15.17-.29.19-.53.07-.25-.13-1.05-.39-1.99-1.24-.74-.65-1.24-1.46-1.38-1.71-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.09-.16.04-.31-.02-.43-.06-.13-.55-1.35-.76-1.84-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.55c.13.16 1.74 2.66 4.22 3.73.59.25 1.05.4 1.4.52.59.18 1.13.16 1.56.1.47-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.17-.47-.29Z"/></svg>
+          <span>WhatsApp us</span>
+        </a>
+        <p class="foot-num">902 279 0345</p>
+        <ul>
+          <li><a href="mailto:roham@rghiasi.com">roham@rghiasi.com</a></li>
+          <li><a href="https://rgresults.ca">rgresults.ca</a></li>
+          <li>Canada</li>
+        </ul>
+      </div>
+
+    </div>
+
+
+    <div class="foot-btm">
+      <p class="tiny">&copy; <span id="yr">2026</span> RG Marketing. All rights reserved.</p>
+      <p class="tiny">Canada</p>
+    </div>
+
+  </div>
+</footer>
+
+<!-- sticky mobile CTA, shown under 880px by site.css -->
+<div class="tapbar">
+  <a class="btn btn-wa" href="https://wa.me/19022790345" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2.01a9.9 9.9 0 0 0-8.53 14.86L2 22.06l5.33-1.4a9.9 9.9 0 0 0 4.71 1.2h.01a9.9 9.9 0 0 0 9.9-9.9 9.84 9.84 0 0 0-2.9-7.01 9.84 9.84 0 0 0-7.01-2.94Zm0 18.15h-.01a8.22 8.22 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1 12.73-10.1 8.15 8.15 0 0 1 2.4 5.81 8.23 8.23 0 0 1-8.15 8.15Zm4.5-6.15c-.24-.12-1.46-.72-1.69-.8-.22-.09-.39-.13-.55.12-.17.25-.64.81-.78.97-.15.17-.29.19-.53.07-.25-.13-1.05-.39-1.99-1.24-.74-.65-1.24-1.46-1.38-1.71-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.09-.16.04-.31-.02-.43-.06-.13-.55-1.35-.76-1.84-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.55c.13.16 1.74 2.66 4.22 3.73.59.25 1.05.4 1.4.52.59.18 1.13.16 1.56.1.47-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.17-.47-.29Z"/></svg>
+    <span>WhatsApp us</span><span class="wa-num">902 279 0345</span>
+  </a>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Is this actually free?","acceptedAnswer":{"@type":"Answer","text":"Yes. No costs, no obligations, no annoying sales pitch. You get the video, you keep the fix list, and you are free to run it yourself."}},
+    {"@type":"Question","name":"Do I have to get on a call?","acceptedAnswer":{"@type":"Answer","text":"No. The video goes to your inbox. If you want to talk after watching it you can book a call. If you do not, we leave you alone."}},
+    {"@type":"Question","name":"How do I know you can actually get me into the top 3?","acceptedAnswer":{"@type":"Answer","text":"We do this for movers, painters, drainage companies and cabinet refinishers across BC, Ontario and Alberta. We only take on businesses we know we can rank. Local Movers Ltd holds 2nd on the Surrey movers board and 100% market share on movers surrey, with 45.56% of the grid in the top 3. That is the LeadSnap read of 4 September 2026 and it is published on their case study page. Before anything starts we audit your market and only take it on if we are confident."}},
+    {"@type":"Question","name":"What do you actually work on?","acceptedAnswer":{"@type":"Answer","text":"Three things. The Google Business Profile gets optimized, categorized and posted to. The website gets the service and area pages it is missing, written off real local research. The citations get matched across the directory set Google reads. It runs month to month with no long contract, and it all lives on your own accounts."}},
+    {"@type":"Question","name":"Will this work for my specific type of business?","acceptedAnswer":{"@type":"Answer","text":"If you are a Canadian local business with a real service area, yes. We have ranked movers, painters, drainage companies and cabinet refinishers. The system works for any local service business. In the video we tell you straight up if your market is too competitive or if there is something that would stop us ranking you."}},
+    {"@type":"Question","name":"How long until I actually see results?","acceptedAnswer":{"@type":"Answer","text":"Local Movers now reads 45.56% of the Surrey grid in the top 3, scanned 4 September 2026. You notice you are climbing in the maps first. Once you are in the top 3 the phone starts ringing. That is where the real return is, not in the rankings, but in the customers booking with you instead of your competitors."}},
+    {"@type":"Question","name":"How much of my time does this require?","acceptedAnswer":{"@type":"Answer","text":"One onboarding call. We get access to your Google Business Profile and gather some info about your business. After that we handle everything: optimization, reviews, posts, citations, all of it. You will not need to touch anything or learn anything technical. You just keep running your business while we get you ranked."}},
+    {"@type":"Question","name":"Who records the video?","acceptedAnswer":{"@type":"Answer","text":"Roham does, one business at a time. It is a screen recording of your real profile and your real grid, not a template with your name dropped into it."}}
+  ]
+}
+</script>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ------------------------------------------------------------------
+     WHERE THE LEADS GO.  Paste one URL between the quotes and the form
+     stops handing off to the visitor's mail app and posts silently in
+     the background instead.  The "we have it" screen only appears on a
+     2xx; any other response falls straight back to the Email / WhatsApp
+     buttons, so a broken endpoint still cannot swallow a lead.
+
+       window.RGM_FORM_ENDPOINT = "https://formsubmit.co/ajax/roham@rghiasi.com";
+
+     That one needs no account - the first submission emails a one-time
+     activation link to that address.  Formspree, Getform and a
+     Cloudflare Pages function all take the same JSON POST, so any of
+     them drops in here unchanged.  Left empty on purpose: an endpoint
+     that is not live yet would show "sent" for a lead that never
+     arrived, which is worse than asking the visitor to press send.
+     ------------------------------------------------------------------ */
+  window.RGM_FORM_ENDPOINT = window.RGM_FORM_ENDPOINT || "";
+
+  var form     = document.getElementById("faForm");
+  var steps    = Array.prototype.slice.call(form.querySelectorAll(".fstep"));
+  var nextBtn  = document.getElementById("nextBtn");
+  var backBtn  = document.getElementById("backBtn");
+  var fill     = document.getElementById("progFill");
+  var stepNow  = document.getElementById("stepNow");
+  var stepName = document.getElementById("stepName");
+  var formWrap = document.getElementById("formWrap");
+  var doneWrap = document.getElementById("doneWrap");
+  var recap    = document.getElementById("recap");
+  var total    = steps.length;
+  var at       = 0;
+
+  document.getElementById("yr").textContent = new Date().getFullYear();
+
+  /* radio cards: reflect checked state on the label */
+  var choices = Array.prototype.slice.call(document.querySelectorAll(".choice"));
+  choices.forEach(function (c) {
+    c.querySelector("input").addEventListener("change", function () {
+      choices.forEach(function (o) {
+        o.classList.toggle("is-on", o.querySelector("input").checked);
+      });
+      clearErr("timing");
+    });
+  });
+
+  function setErr(key, msg) {
+    var slot = form.querySelector('[data-err="' + key + '"]');
+    if (slot) { slot.textContent = msg; }
+    var fieldEl = document.getElementById(key);
+    if (fieldEl) { fieldEl.classList.add("bad"); fieldEl.setAttribute("aria-invalid", "true"); }
+    if (key === "timing") { document.getElementById("timeGroup").classList.add("bad"); }
+  }
+
+  function clearErr(key) {
+    var slot = form.querySelector('[data-err="' + key + '"]');
+    if (slot) { slot.textContent = ""; }
+    var fieldEl = document.getElementById(key);
+    if (fieldEl) { fieldEl.classList.remove("bad"); fieldEl.removeAttribute("aria-invalid"); }
+    if (key === "timing") { document.getElementById("timeGroup").classList.remove("bad"); }
+  }
+
+  ["fullname", "bemail", "code", "phone", "site", "biz", "gmaps"].forEach(function (id) {
+    var el = document.getElementById(id);
+    el.addEventListener("input", function () { clearErr(id); });
+  });
+
+  function val(id) { return document.getElementById(id).value.trim(); }
+
+  function validate(index) {
+    var ok = true;
+
+    if (index === 0) {
+      if (val("fullname").length < 2) { setErr("fullname", "Tell us your name."); ok = false; }
+      var mail = val("bemail");
+      if (!mail) {
+        setErr("bemail", "We need somewhere to send the video.");
+        ok = false;
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(mail)) {
+        setErr("bemail", "Check that email address.");
+        ok = false;
+      }
+    }
+
+    if (index === 1) {
+      if (!val("code")) { setErr("code", "Your country code, +1 in Canada."); ok = false; }
+      var num = val("phone").replace(/[^0-9]/g, "");
+      if (num.length < 7) { setErr("phone", "That does not look like a phone number."); ok = false; }
+    }
+
+    if (index === 2) {
+      var site = val("site");
+      if (!site) {
+        setErr("site", "Your website address.");
+        ok = false;
+      } else if (site.indexOf(".") === -1 || site.length < 4) {
+        setErr("site", "That does not look like a web address.");
+        ok = false;
+      }
+      if (val("biz").length < 2) { setErr("biz", "Tell us the company name."); ok = false; }
+      var gm = val("gmaps");
+      if (!gm) {
+        setErr("gmaps", "Paste the link to your Google Maps listing.");
+        ok = false;
+      } else if (gm.indexOf(".") === -1 || gm.length < 8) {
+        setErr("gmaps", "That does not look like a Google Maps link.");
+        ok = false;
+      }
+    }
+
+    if (index === 3) {
+      if (!form.querySelector('input[name="timing"]:checked')) {
+        setErr("timing", "Pick the one that fits best.");
+        ok = false;
+      }
+    }
+
+    return ok;
+  }
+
+  function show(index, focusIt) {
+    steps.forEach(function (s, i) { s.hidden = (i !== index); });
+    at = index;
+    fill.style.width = Math.round(((index + 1) / total) * 100) + "%";
+    stepNow.textContent = "Step " + (index + 1) + " of " + total;
+    stepName.textContent = steps[index].getAttribute("data-name");
+    backBtn.hidden = (index === 0);
+    nextBtn.textContent = (index === total - 1) ? "Submit" : "Continue";
+    if (focusIt) {
+      var first = steps[index].querySelector("input");
+      if (first) { first.focus({ preventScroll: true }); }
+    }
+  }
+
+  backBtn.addEventListener("click", function () {
+    if (at > 0) { show(at - 1, true); }
+  });
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (!validate(at)) {
+      var bad = steps[at].querySelector(".bad, .choices.bad input");
+      if (bad && bad.focus) { bad.focus({ preventScroll: true }); }
+      return;
+    }
+    if (at < total - 1) { show(at + 1, true); return; }
+
+    /* last step. No backend on this build: swap to the success state locally.
+       Wire the collected object below to a real endpoint before launch. */
+    var picked = form.querySelector('input[name="timing"]:checked');
+    var data = {
+      fullname: val("fullname"),
+      email:    val("bemail"),
+      phone:    val("code") + " " + val("phone"),
+      website:  val("site"),
+      company:  val("biz"),
+      gmaps:    val("gmaps"),
+      timing:   picked ? picked.value : ""
+    };
+
+    recap.innerHTML = "";
+    [["Name", data.fullname],
+     ["Business email", data.email],
+     ["Phone", data.phone],
+     ["Website", data.website],
+     ["Company", data.company],
+     ["Google Maps", data.gmaps],
+     ["Wants it solved", data.timing]].forEach(function (pair) {
+      var row = document.createElement("div");
+      var dt  = document.createElement("dt");
+      var dd  = document.createElement("dd");
+      dt.textContent = pair[0];
+      dd.textContent = pair[1];
+      row.appendChild(dt);
+      row.appendChild(dd);
+      recap.appendChild(row);
+    });
+
+    /* Hand the details somewhere real. With window.RGM_FORM_ENDPOINT set we POST
+       there and only show the success state on a 2xx. Without it we prefill the
+       visitor's own email and WhatsApp so the submission still reaches a person
+       instead of dying in the page. */
+    var lines = [
+      "Free analysis request",
+      "",
+      "Name: "         + data.fullname,
+      "Business: "     + data.company,
+      "Email: "        + data.email,
+      "Phone: "        + data.phone,
+      "Website: "      + data.website,
+      "Google Maps: "  + data.gmaps,
+      "Wants it solved: " + data.timing
+    ].join("\n");
+
+    function reveal(sent) {
+      var sendWrap = document.getElementById("sendWrap");
+      var sentWrap = document.getElementById("sentWrap");
+      if (sendWrap) { sendWrap.hidden = !!sent; }
+      if (sentWrap) { sentWrap.hidden = !sent; }
+      formWrap.hidden = true;
+      doneWrap.hidden = false;
+      doneWrap.focus();
+    }
+
+    var endpoint = window.RGM_FORM_ENDPOINT;
+    if (endpoint) {
+      nextBtn.disabled = true;
+      fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      }).then(function (r) {
+        if (!r.ok) { throw new Error(r.status); }
+        reveal(true);
+      }).catch(function () {
+        nextBtn.disabled = false;
+        reveal(false);
+      });
+      return;
+    }
+
+    var mail = document.getElementById("sendMail");
+    var wa   = document.getElementById("sendWa");
+    if (mail) {
+      mail.href = "mailto:roham@rghiasi.com"
+        + "?subject=" + encodeURIComponent("Free analysis - " + (data.company || data.fullname))
+        + "&body="    + encodeURIComponent(lines);
+    }
+    if (wa) {
+      wa.href = "https://wa.me/19022790345?text=" + encodeURIComponent(lines);
+    }
+    reveal(false);
+  });
+
+  /* Carry the email typed on the home page straight into the form, and skip
+     the step it satisfies. */
+  (function () {
+    var passed;
+    try { passed = new URLSearchParams(window.location.search).get("email"); }
+    catch (e) { passed = null; }
+    if (!passed) { return; }
+    passed = passed.trim();
+    var box = document.getElementById("bemail");
+    if (!box || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(passed)) { return; }
+    box.value = passed;
+  })();
+
+  show(0, false);
+})();
+</script>
+
+</body>
+</html>

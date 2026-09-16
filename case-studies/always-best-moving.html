@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="../assets/logos/marquee/rg-favicon.png" sizes="any">
+<title>Always Best Moving case study | RG Marketing</title>
+<meta name="description" content="How RG Marketing runs local search for Always Best Moving, a moving company in Vancouver, BC. Clicks from organic search went from 22 to 100 a month across two matched 28 day windows.">
+<link rel="canonical" href="https://rgresults.ca/case-studies/always-best-moving">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="RG Marketing">
+<meta property="og:title" content="Always Best Moving case study">
+<meta property="og:description" content="22 to 100 clicks from Google a month for a Vancouver moving company.">
+<meta property="og:url" content="https://rgresults.ca/case-studies/always-best-moving">
+<meta property="og:image" content="https://rgresults.ca/assets/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Source+Serif+4:ital,wght@1,500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../assets/site.css">
+
+<style>
+/* ---- page-specific only. everything else comes from site.css ---- */
+
+/* centred CMS detail hero */
+.logotile{display:inline-flex;align-items:center;justify-content:center;
+  background:var(--card);border:0;border-radius:12px;
+  padding:18px 26px}
+.logotile img{max-height:54px;width:auto;display:block}
+.metaline{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+
+/* 3-cell details strip with dividers (COMPONENTS 13b.2) */
+.details{display:grid;grid-template-columns:repeat(3,1fr);
+  border:0;border-radius:12px;background:var(--card);overflow:hidden}
+.details div{padding:22px 24px}
+.details div+div{border-left:1px solid var(--ink-10)}
+.details dt{font-size:14px;color:var(--ink-48);margin:0 0 7px}
+.details dd{margin:0;font-size:16px;line-height:1.45}
+
+/* labelled content blocks */
+.prose{max-width:64ch;display:grid;gap:16px}
+.prose p{color:var(--ink-56);font-size:18px}
+.prose p strong{color:var(--ink);font-weight:500}
+
+/* ---- the profile header inside the comparison card, same block as the home
+   page and the other three case studies ---- */
+.biz{display:flex;align-items:center;gap:11px;padding-bottom:16px}
+.biz-mk{width:36px;height:36px;border-radius:8px;flex:none;
+  background:var(--ink-04);color:var(--ink-56);display:grid;place-items:center}
+.biz-n{font-size:16px;font-weight:500;line-height:1.25}
+/* the read date sits inside the panel with the rows it belongs to, so it is
+   never a caption under the screenshot */
+.scan-src{margin-top:10px;font-size:14px;line-height:1.45;color:var(--ink-48)}
+.scan-when{margin-top:16px;font-size:14px;color:var(--ink-48);
+  font-variant-numeric:tabular-nums}
+
+/* ---- ROOT CAUSE. A 1400px LeadSnap export cannot live in .cmp's middle
+   column. At 1440 that column is 544px, so the export rendered 500px wide -
+   a 35.7% linear scale - and the figures this page publishes came out 3.6 to
+   5.0px tall in the source's own pixels. Illegible at 1x is the same thing as
+   unsourced, and the rule on this site is that every published figure is
+   legible in the screenshot beside it.
+
+   The card is .cmp-wide now (site.css): the panel stacks above at its own
+   width and the export takes the whole rail, 1024px, a 73.1% linear scale -
+   the same read co-painting, everfinish, local-movers and picasshome already
+   get. .shot-box is the shared white plate and .panx hands the export its own
+   horizontal scroll under 700px, so the phone reads it at 100% instead of
+   332px (23.7%), with no pan at all on this page.
+
+   The frame carries NO aspect-ratio. It used to be pinned to the taller of
+   two exports with object-fit:contain, which letterboxed the shorter one. The
+   page ships ONE export now, 1400x865, so the frame simply takes that
+   export's own height. Nothing is cropped, nothing is letterboxed, nothing is
+   scaled to a ratio that is not its own. ---- */
+.shot-fig{margin:0;width:100%}
+.shot-frame{width:100%}
+.shot-frame img{display:block;width:100%;height:auto;border-radius:6px}
+
+
+/* ---- 2-up stats row, value / suffix / label / caption (COMPONENTS 8).
+   This carries the Search Console block, the second set of figures on the
+   page. Two tiles, not three: the two 28 day click counts are the only
+   figures this client publishes off Search Console. Same component the other
+   case studies use. ---- */
+.stats-row{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;
+  margin-top:var(--head-end)}
+.stat{background:var(--card);border:0;border-radius:12px;
+  padding:26px 22px;display:grid;gap:8px;justify-items:center;align-content:start;
+  text-align:center}
+/* value and suffix share one baseline row so a suffix cannot make a tile taller
+   than its neighbours */
+.stat-val{display:flex;align-items:baseline;justify-content:center;gap:3px;min-height:52px}
+.stat-num{font-size:clamp(34px,3.6vw,48px);font-weight:500;line-height:52px;letter-spacing:-.06em;
+  font-variant-numeric:tabular-nums}
+.stat-suf{font-size:26px;font-weight:500;line-height:52px;letter-spacing:-.06em;color:var(--ink-24)}
+.stat h3{font-size:18px}
+.stat .cap{font-size:14px;color:var(--ink-48);max-width:28ch}
+/* a short sourcing line under the tiles, on the grid's own gutter */
+.after-row{margin-top:var(--gutter)}
+
+.band-in img{height:30px;width:auto}
+
+@media (max-width:880px){
+  .details,.stats-row{grid-template-columns:1fr}
+  .details div+div{border-left:0;border-top:1px solid var(--ink-10)}
+  .details{margin-top:40px}
+}
+@media (max-width:460px){
+  .csbar{gap:12px}
+  .logotile{padding:14px 18px}
+  .logotile img{max-height:38px}
+  .stats-row{gap:10px}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="nav-in">
+    <a class="mark" href="../index.html">
+      <img src="../assets/logos/marquee/rg-mark-dark.png" alt="RG" width="404" height="260">
+      <span>Marketing</span>
+    </a>
+    <a class="btn btn-sm" href="../free-analysis.html">Get my free analysis</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- 1. back link -->
+  <div class="rail csbar">
+    <a href="../case-studies.html">&#8592; All case studies</a>
+    <a href="../book-a-call.html">Book a call &#8594;</a>
+  </div>
+
+  <!-- 2. centred CMS detail hero -->
+  <section class="cshero">
+    <div class="rail">
+      <div class="logotile">
+        <img src="../assets/logos/marquee/always-best-moving.png"
+             width="472" height="140"
+             alt="Always Best Moving Vancouver BC moving company logo">
+      </div>
+      <div class="metaline">
+        <span class="pill">Moving company</span>
+        <span class="pill">Vancouver, BC</span>
+        <span class="pill">Local SEO</span>
+      </div>
+      <h1 class="t56">22 clicks a month turned into <em>100</em></h1>
+      <p class="lede">Always Best Moving is a Vancouver moving company. We run its local search.
+        Here is where the profile stands on the Vancouver map on one dated scan, and what the
+        clicks from organic search did over the summer.</p>
+
+      <dl class="details">
+        <div>
+          <dt>Services engaged</dt>
+          <dd>Local SEO and Google Business Profile</dd>
+        </div>
+        <div>
+          <dt>Keyword scanned</dt>
+          <dd>best movers vancouver, 13 by 13 grid, 169 points</dd>
+        </div>
+        <div>
+          <dt>Scan date</dt>
+          <dd>4 September 2026, Google Maps, 43.01 km&sup2;</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============ 3. THE RESULT: one dated snapshot =======================
+       This section ships ONE dated read. The before / after pair that used to
+       sit here was retired on 2026-09-16 because the two scans did not cover
+       the same ground, and every metric on a heatmap is a percentage of the
+       ground it covers. A before and after only holds when the keyword, the
+       listing, the ranking source AND the grid area match at both ends.
+
+       What ships is the 4 September 2026 export on its own, and only the
+       figures legible in it: 3rd, market share 20.12%, top 3% 20.12%,
+       Avg Ranking 5.73, Grid Size 13x13 (169 Points), Area 43.01 km2,
+       Ranking Source Google Maps, dated Sep 4th 2026. The competitor count is
+       NOT readable in this export, so this page never writes "of N". Do not
+       re-add the retired earlier export, do not draw a substitute map, and do
+       not crop the screenshot. ========================================= -->
+  <section>
+    <div class="rail">
+      <div class="block">
+        <p class="pill lbl">The result</p>
+        <h2 class="t40">Third in the Vancouver <em>moving market</em></h2>
+        <div class="prose">
+          <p>A heatmap scan drops a grid of search points over the city and reads the ranking at
+            every one of them. Local rank is not one number. It is 169 of them.</p>
+          <p>This is one dated read of <strong>best movers vancouver</strong>, run on a 13 by 13
+            grid, 169 points, off the Google Maps layer on 4 September 2026 over 43.01 km&sup2; of
+            Vancouver. Always Best Moving sits <strong>3rd</strong> on that board, behind Best Ever
+            Movers at 1.04 and Let&rsquo;s Get Moving at 2.36. It holds <strong>20.12%</strong> of
+            the market and shows in the top 3 on <strong>20.12%</strong> of the grid, both of those
+            placing 4th, on an average ranking of 5.73.</p>
+          <p>One scan, not a before and after. Two scans only compare when the keyword, the
+            business, the ranking source and the ground they cover are the same at both ends, and
+            the area is the first thing worth checking. That is why the area scanned, 43.01
+            km&sup2;, sits in the panel below as a row of its own.</p>
+        </div>
+      </div>
+
+      <div class="cmp cmp-wide">
+        <div class="cmp-l">
+          <div class="biz">
+            <span class="biz-mk" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            </span>
+            <span>
+              <span class="biz-n">Always Best Moving Vancouver</span><br>
+              <span class="tiny muted">422 Richards St, Vancouver, British Columbia</span>
+            </span>
+          </div>
+
+          <div class="mrow"><span class="mrow-l">Position in market</span><span class="badge slot">3rd</span></div>
+          <div class="mrow"><span class="mrow-l">Market share</span><span class="badge slot">20.12%</span></div>
+          <div class="mrow"><span class="mrow-l">Grid in the top 3</span><span class="badge slot">20.12%</span></div>
+          <div class="mrow"><span class="mrow-l">Average rank</span><span class="badge slot">5.73</span></div>
+          <div class="mrow"><span class="mrow-l">Area scanned</span><span class="badge slot">43.01 km&sup2;</span></div>
+
+          <p class="scan-when">Scanned 4 September 2026</p>
+          <p class="scan-src">Position in market is the place LeadSnap prints beside Avg Ranking.
+            On this scan market share and top 3 coverage both place 4th.</p>
+        </div>
+
+        <figure class="shot-fig shot-box panx" tabindex="0">
+          <div class="shot-frame">
+              <img src="../assets/leadsnap/abm-AFTER-2026-09-04.jpg"
+                   alt="LeadSnap heatmap export for Always Best Moving Vancouver, keyword best movers vancouver, 4 September 2026. Average ranking 5.73 placing 3rd behind Best Ever Movers at 1.04 and Let&#39;s Get Moving at 2.36, top 3 coverage 20.12 percent and market share 20.12 percent both placing 4th, on a 13 by 13 grid of 169 points covering 43.01 square kilometres."
+                   width="1400" height="865" decoding="async">
+          </div>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4. THE SECOND SET OF FIGURES: Search Console ============
+       Not off the map. These come from the alwaysbestmoving.ca Search Console
+       property, two matched 28 day windows: 18 May to 14 June 2026 against
+       9 August to 5 September 2026. The source of record is
+       content/METRICS-DECISION.md section 3.6, which publishes ONE stat for
+       this client, 22 to 100 clicks a month. The impressions tile that used to
+       sit beside it is struck in that file and does not come back, as a
+       headline or as a secondary metric, and this stat is never paired with a
+       ranking claim. The client runs no Google Ads, so the block says organic
+       search in its own words. ======================================== -->
+  <section>
+    <div class="rail">
+      <div class="block">
+        <p class="pill lbl">And the traffic</p>
+        <h2 class="t40">Clicks from Google, read in <em>Search Console</em></h2>
+        <div class="prose">
+          <p>Search Console on the alwaysbestmoving.ca property, organic search only. Two matched
+            28 day windows: 18 May to 14 June 2026 against 9 August to 5 September 2026.</p>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat">
+            <p class="stat-val"><span class="stat-num">100</span></p>
+            <h3>Clicks from Google</h3>
+            <p class="cap">The 28 days to 5 September 2026</p>
+          </div>
+          <div class="stat">
+            <p class="stat-val"><span class="stat-num">22</span></p>
+            <h3>Clicks from Google</h3>
+            <p class="cap">The matched 28 days to 14 June 2026</p>
+          </div>
+        </div>
+
+        <div class="prose after-row">
+          <p>That 100 and the 22 beside it are the two counts the headline at the top of this page
+            uses. Both are read off the same Search Console property, over the two matched 28 day
+            windows named above. Always Best Moving does not run Google Ads. Every click counted
+            here came from organic search.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5-6. content blocks -->
+  <section>
+    <div class="rail">
+
+      <div class="block">
+        <p class="pill lbl">The challenge</p>
+        <h2 class="t40">Vancouver is a <em>crowded</em> map</h2>
+        <div class="prose">
+          <p>When somebody needs a truck they open Google, look at the businesses sitting at the
+            top of the map, and call one of them. For a moving company that block is not a nice
+            to have, it is the channel. Everything below it gets a fraction of the attention.</p>
+          <p>Moving is one of the hardest local categories there is. National brands, franchise operators and lead brokers chase the same searches. They have years of reviews behind them. A lot of them buy the top of the page as well. An independent
+            has to earn the position on relevance, proximity and prominence instead.</p>
+          <p>Vancouver adds its own problem on top of that. Local rank is not one number. It is measured cell by cell across a grid. A profile that looks fine at its own address can fall away completely fifteen minutes up the road. On a grid that deep, the fastest thing to move is not the headline position at
+            all. It is how many of those cells you show up in, and how many people click when
+            you do.</p>
+          <p>That is why this page leads with market position and share. A business can pass a long list of competitors on a grid like this and still shift only a few places overall. That is because the ranking is counting everyone in the city
+            at once. Clicks are what the owner feels.</p>
+        </div>
+      </div>
+
+      <div class="block">
+        <p class="pill lbl">What we did</p>
+        <h2 class="t40">The same levers, worked <em>every week</em></h2>
+        <div class="prose">
+          <p><strong>The Google Business Profile first.</strong> Primary category, secondary
+            categories, service list, service area, hours, description. All of it set the way
+            Google reads it, not the way an owner would write it.
+            Photos go up on a schedule. Posts go out on a schedule. The profile gets worked every week, not filled in once and left alone. The profile is what the map pack ranks.</p>
+          <p><strong>Then the website.</strong> A page for every service the company really
+            sells, and a page for every area it really covers. Area pages get written from real
+            research into the neighbourhood. Never spun from a template with the name swapped
+            out. Near duplicate pages do not rank and do not convert. Schema and a clean
+            title and description go on every one of them.</p>
+          <p><strong>Then the interlinking.</strong> Service pages point at the areas they serve.
+            Area pages point back at the services. The whole set hangs off the locations hub in
+            one silo, not as orphans nobody can reach. Every finished page gets submitted for indexing the day it ships, then checked again after. A page Google has not crawled is worth nothing.</p>
+          <p><strong>Then the citations.</strong> Name, address and phone get matched across the
+            directory set so nothing on the open web contradicts the profile. Inconsistent
+            listings are quiet drag on a local ranking and they are cheap to clear once the
+            profile itself is settled.</p>
+          <p><strong>And then it repeats.</strong> None of this is a one off project. The profile
+            gets posts and photos, the site gets the next batch of pages, the citations get
+            audited again. The numbers at the top of this page are what a few months of that
+            looked like for this client.</p>
+        </div>
+      </div>
+
+    </div>
+    <!-- back to the index. One markup for one job on all seven case studies.
+         It lives INSIDE the last content section, not between two sections:
+         as a bare top-level rail it made that one boundary 176px against the
+         page's 112 (VISUAL-QA root cause 6). Attached, it reads --stack under
+         its own section and the section's own --sect still pays half of the
+         112 into the CTA band. -->
+    <div class="rail csbar">
+      <a href="../case-studies.html">&#8592; Back to all case studies</a>
+    </div>
+  </section>
+
+  <!-- 7. CTA band -->
+  <section>
+    <div class="rail">
+      <div class="band">
+        <div class="band-in">
+          <img src="../assets/logos/marquee/rg-mark-dark.png" alt="" width="404" height="260">
+          <span class="pill">Get started</span>
+          <h2 class="t56">Stop being invisible on <em>Google</em></h2>
+          <p class="muted">Send us your business. You get back a free three minute video: where you
+            sit on the local map, and what is holding the position down.</p>
+          <div class="band-btns">
+            <a class="btn" href="../free-analysis.html">Get my free analysis</a>
+            <a class="btn btn-wa" href="https://wa.me/19022790345" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2.01a9.9 9.9 0 0 0-8.53 14.86L2 22.06l5.33-1.4a9.9 9.9 0 0 0 4.71 1.2h.01a9.9 9.9 0 0 0 9.9-9.9 9.84 9.84 0 0 0-2.9-7.01 9.84 9.84 0 0 0-7.01-2.94Zm0 18.15h-.01a8.22 8.22 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1 12.73-10.1 8.15 8.15 0 0 1 2.4 5.81 8.23 8.23 0 0 1-8.15 8.15Zm4.5-6.15c-.24-.12-1.46-.72-1.69-.8-.22-.09-.39-.13-.55.12-.17.25-.64.81-.78.97-.15.17-.29.19-.53.07-.25-.13-1.05-.39-1.99-1.24-.74-.65-1.24-1.46-1.38-1.71-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.09-.16.04-.31-.02-.43-.06-.13-.55-1.35-.76-1.84-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.55c.13.16 1.74 2.66 4.22 3.73.59.25 1.05.4 1.4.52.59.18 1.13.16 1.56.1.47-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.17-.47-.29Z"/></svg>
+              <span>WhatsApp us</span><span class="wa-num">902 279 0345</span>
+            </a>
+          </div>
+          <p class="small muted">One business per category per service area. No long term contract.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER (identical on every page, styles in assets/site.css) ============ -->
+<footer>
+  <div class="rail">
+
+    <div class="foot">
+
+      <div class="foot-brand">
+        <a class="mark" href="../index.html" aria-label="RG Marketing home">
+          <img src="../assets/logos/marquee/rg-mark-dark.png" alt="RG" width="404" height="260">
+          <span>Marketing</span>
+        </a>
+        <h2 class="t26 foot-tag">Dominate Your Local <em>Market</em>.</h2>
+        <p class="small muted">Built for local businesses in Canada.</p>
+      </div>
+
+      <div class="foot-col">
+        <h3>Navigate</h3>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../case-studies.html">Case studies</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h3>Case studies</h3>
+        <ul>
+          <li><a href="../case-studies/local-movers.html">Local Movers Ltd</a></li>
+          <li><a href="../case-studies/co-painting.html">Co Painting</a></li>
+          <li><a href="../case-studies/everfinish.html">Everfinish</a></li>
+          <li><a href="../case-studies/mamba-drainage.html">Mamba Drainage</a></li>
+          <li><a href="../case-studies/always-best-moving.html">Always Best Moving</a></li>
+          <li><a href="../case-studies/picasshome.html">Picasshome Painting</a></li>
+          <li><a href="../case-studies/serve-ninja.html">Serve Ninja Legal Support</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h3>Get started</h3>
+        <ul>
+          <li><a href="../free-analysis.html">Free analysis</a></li>
+          <li><a href="../book-a-call.html">Book a call</a></li>
+          <li><a href="../terms.html">Terms and privacy</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h3>Contact</h3>
+        <a class="btn btn-wa btn-wa-sm" href="https://wa.me/19022790345" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2.01a9.9 9.9 0 0 0-8.53 14.86L2 22.06l5.33-1.4a9.9 9.9 0 0 0 4.71 1.2h.01a9.9 9.9 0 0 0 9.9-9.9 9.84 9.84 0 0 0-2.9-7.01 9.84 9.84 0 0 0-7.01-2.94Zm0 18.15h-.01a8.22 8.22 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1 12.73-10.1 8.15 8.15 0 0 1 2.4 5.81 8.23 8.23 0 0 1-8.15 8.15Zm4.5-6.15c-.24-.12-1.46-.72-1.69-.8-.22-.09-.39-.13-.55.12-.17.25-.64.81-.78.97-.15.17-.29.19-.53.07-.25-.13-1.05-.39-1.99-1.24-.74-.65-1.24-1.46-1.38-1.71-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.09-.16.04-.31-.02-.43-.06-.13-.55-1.35-.76-1.84-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.55c.13.16 1.74 2.66 4.22 3.73.59.25 1.05.4 1.4.52.59.18 1.13.16 1.56.1.47-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.17-.47-.29Z"/></svg>
+          <span>WhatsApp us</span>
+        </a>
+        <p class="foot-num">902 279 0345</p>
+        <ul>
+          <li><a href="mailto:roham@rghiasi.com">roham@rghiasi.com</a></li>
+          <li><a href="https://rgresults.ca">rgresults.ca</a></li>
+          <li>Canada</li>
+        </ul>
+      </div>
+
+    </div>
+
+
+    <div class="foot-btm">
+      <p class="tiny">&copy; <span id="yr">2026</span> RG Marketing. All rights reserved.</p>
+      <p class="tiny">Canada</p>
+    </div>
+
+  </div>
+</footer>
+
+<!-- sticky mobile CTA, shown under 880px by site.css -->
+<div class="tapbar">
+  <a class="btn btn-wa" href="https://wa.me/19022790345" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2.01a9.9 9.9 0 0 0-8.53 14.86L2 22.06l5.33-1.4a9.9 9.9 0 0 0 4.71 1.2h.01a9.9 9.9 0 0 0 9.9-9.9 9.84 9.84 0 0 0-2.9-7.01 9.84 9.84 0 0 0-7.01-2.94Zm0 18.15h-.01a8.22 8.22 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1 12.73-10.1 8.15 8.15 0 0 1 2.4 5.81 8.23 8.23 0 0 1-8.15 8.15Zm4.5-6.15c-.24-.12-1.46-.72-1.69-.8-.22-.09-.39-.13-.55.12-.17.25-.64.81-.78.97-.15.17-.29.19-.53.07-.25-.13-1.05-.39-1.99-1.24-.74-.65-1.24-1.46-1.38-1.71-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.09-.16.04-.31-.02-.43-.06-.13-.55-1.35-.76-1.84-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.55c.13.16 1.74 2.66 4.22 3.73.59.25 1.05.4 1.4.52.59.18 1.13.16 1.56.1.47-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.17-.47-.29Z"/></svg>
+    <span>WhatsApp us</span><span class="wa-num">902 279 0345</span>
+  </a>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://rgresults.ca/"},
+        {"@type":"ListItem","position":2,"name":"Case studies","item":"https://rgresults.ca/case-studies"},
+        {"@type":"ListItem","position":3,"name":"Always Best Moving"}
+      ]
+    },
+    {
+      "@type": "Article",
+      "headline": "22 clicks a month turned into 100",
+      "description": "How RG Marketing runs local search for Always Best Moving, a moving company in Vancouver, BC.",
+      "datePublished": "2026-09-15",
+      "image": "https://rgresults.ca/assets/leadsnap/abm-AFTER-2026-09-04.jpg",
+      "mainEntityOfPage": "https://rgresults.ca/case-studies/always-best-moving",
+      "author": {
+        "@type": "Organization",
+        "name": "RG Marketing",
+        "url": "https://rgresults.ca"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "RG Marketing",
+        "url": "https://rgresults.ca"
+      },
+      "about": {
+        "@type": "MovingCompany",
+        "name": "Always Best Moving",
+        "areaServed": "Vancouver, British Columbia, Canada"
+      }
+    }
+  ]
+}
+</script>
+
+<script>
+(function () {
+  "use strict";
+
+  /* year */
+  var yr = document.getElementById("yr");
+  if (yr) { yr.textContent = String(new Date().getFullYear()); }
+
+  /* The before / after toggle that used to live here was removed on
+     2026-09-16 with the pair it drove, because the two scans did not cover
+     the same ground. The panel is one dated read now, its figures are static
+     in the markup, and every one of them is legible in the single export
+     beside it. Do not re-add a toggle unless a second scan lands on the same
+     keyword, listing, ranking source AND grid area. */
+})();
+</script>
+
+</body>
+</html>

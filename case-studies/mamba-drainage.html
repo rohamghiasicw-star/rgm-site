@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="../assets/logos/marquee/rg-favicon.png" sizes="any">
+<title>Mamba Drainage case study | RG Marketing</title>
+<meta name="description" content="Mamba Drainage went from 4th of 57 Vancouver drainage companies to 1st on the map. Two real LeadSnap Local Pack scans, 21 March 2026 and 2 July 2026, keyword drainage vancouver, same 13 by 13 grid of 169 points.">
+<link rel="canonical" href="https://rgresults.ca/case-studies/mamba-drainage">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="RG Marketing">
+<meta property="og:title" content="Mamba Drainage case study">
+<meta property="og:description" content="4th of 57 to 1st in the market on the keyword drainage vancouver. Two real LeadSnap Local Pack scans, 21 March 2026 against 2 July 2026.">
+<meta property="og:url" content="https://rgresults.ca/case-studies/mamba-drainage">
+<meta property="og:image" content="https://rgresults.ca/assets/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Source+Serif+4:ital,wght@1,500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../assets/site.css">
+
+<style>
+/* ---- page-local only. Everything else comes from ../assets/site.css ---- */
+
+/* ---- centred CMS detail hero (COMPONENTS 4d / 13b.1) ---- */
+.logotile{display:inline-flex;align-items:center;justify-content:center;
+  background:var(--card);border:0;border-radius:12px;padding:18px 26px}
+.logotile img{max-height:64px;width:auto;display:block}
+.csname{font-size:16px;color:var(--ink-48);margin:0}
+.metaline{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+
+/* ---- 3-cell details strip with dividers (COMPONENTS 13b.2) ---- */
+.details{display:grid;grid-template-columns:repeat(3,1fr);
+  border:0;border-radius:12px;background:var(--card);overflow:hidden}
+.details>div{padding:22px 24px}
+.details>div+div{border-left:1px solid var(--ink-10)}
+.details dt{font-size:14px;color:var(--ink-48);margin:0 0 7px}
+.details dd{margin:0;font-size:16px;font-weight:500;line-height:1.45;letter-spacing:-.04em}
+
+/* ---- labelled content block (COMPONENTS 13b.3) ---- */
+.prose{max-width:64ch;display:grid;gap:16px}
+.prose p{color:var(--ink-56);font-size:18px;letter-spacing:-.05em}
+.prose p strong{color:var(--ink);font-weight:500}
+
+/* ---- the profile header inside the comparison card, same shape as the
+   homepage widget ---- */
+.biz{display:flex;align-items:center;gap:11px;padding-bottom:16px}
+.biz-mk{width:36px;height:36px;border-radius:8px;flex:none;
+  background:var(--ink-04);color:var(--ink-56);display:grid;place-items:center}
+.biz-n{font-size:16px;font-weight:500;line-height:1.25}
+.scan-src{margin-top:14px;font-size:14px;line-height:1.45;color:var(--ink-48)}
+
+/* ---- the scan window inside the comparison card.
+   The two screenshots are NOT the same shape: the March scan is 1400x939
+   and the July one is 1400x869. A single fixed ratio would crop one of them,
+   and cropping a scan is the one thing this page cannot do. So the box locks
+   to the TALLER of the two and the shorter scan centres inside it. Nothing is
+   ever clipped, at any width, and the card does not jump height when the
+   toggle flips. ---- */
+/* ---- ROOT CAUSE. A 1400px LeadSnap export cannot live in .cmp's middle
+   column. At 1440 that column is 544px, so the export rendered 500px wide -
+   a 35.7% linear scale - and the figures this page publishes came out 3.6 to
+   5.0px tall in the source's own pixels. Illegible at 1x is the same thing as
+   unsourced, and the rule on this site is that every published figure is
+   legible in the screenshot beside it.
+
+   The card is .cmp-wide now (site.css): the panel stacks above at its own
+   width and the export takes the whole rail, 1024px, a 73.1% linear scale -
+   the same read co-painting, everfinish, local-movers and picasshome already
+   get. .shot-box is the shared white plate and .panx hands the export its own
+   horizontal scroll under 700px, so the phone reads it at 100% instead of
+   312px (22.3%).
+
+   The frame carries NO aspect-ratio. It used to be pinned to the taller of
+   the two exports with object-fit:contain, which letterboxed the shorter one
+   - the 1400x869 July export sat in a taller box, off its own ratio. Only one export is in flow at a time (the other
+   carries [hidden]), so the frame simply takes the height of the export on
+   screen. Nothing is cropped, nothing is letterboxed, nothing is scaled to a
+   ratio that is not its own. ---- */
+/* padding comes from .shot-box, the shared plate, so the export sits on the
+   same 12px margin it does on every other case study */
+.scan{min-width:0}
+.scan-box{width:100%}
+.scan-box img{display:block;width:100%;height:auto;border-radius:6px}
+
+
+/* ---- 3-up stats row, value + label + caption (COMPONENTS 8) ---- */
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gutter);
+  margin-top:var(--head-end)}
+.stat{background:var(--card);border:0;border-radius:12px;padding:28px 24px;
+  display:grid;gap:8px;justify-items:center;align-content:start;text-align:center}
+.stat-v{display:flex;align-items:baseline;justify-content:center;gap:6px;flex-wrap:wrap;
+  font-size:clamp(28px,3.2vw,40px);font-weight:500;line-height:1.1;letter-spacing:-.06em;
+  font-variant-numeric:tabular-nums}
+.stat-sfx{font-size:16px;font-weight:500;color:var(--ink-36);letter-spacing:-.04em}
+.stat-l{font-size:16px;font-weight:500;letter-spacing:-.04em}
+.stat-c{font-size:14px;color:var(--ink-48);line-height:1.4;max-width:28ch;text-wrap:balance}
+
+.band-in img{height:30px;width:auto}
+
+@media (max-width:880px){
+  .details,.stats-row{grid-template-columns:1fr}
+  .details>div+div{border-left:0;border-top:1px solid var(--ink-10)}
+  .stats-row{margin-top:var(--head-end)}
+  /* stacked, the map gets the full rail, so it no longer needs to reserve
+     the taller scan's height */
+  .scan{padding:16px}
+  .scan-box{aspect-ratio:auto}
+}
+@media (max-width:460px){
+  .csbar{gap:12px}
+  .logotile{padding:14px 18px}
+  .logotile img{max-height:52px}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ============ NAV (shared) ============ -->
+<header class="nav">
+  <div class="nav-in">
+    <a class="mark" href="../index.html">
+      <img src="../assets/logos/marquee/rg-mark-dark.png" alt="RG" width="404" height="260">
+      <span>Marketing</span>
+    </a>
+    <a class="btn btn-sm" href="../free-analysis.html">Get my free analysis</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ 1. BACK LINK ============ -->
+  <div class="rail csbar">
+    <a href="../case-studies.html">&#8592; All case studies</a>
+    <a href="../book-a-call.html">Book a call &#8594;</a>
+  </div>
+
+  <!-- ============ 2. HERO ============ -->
+  <section class="cshero">
+    <div class="rail">
+      <div class="logotile">
+        <img src="../assets/logos/marquee/mamba-drainage.png" width="121" height="140"
+             alt="Mamba Drainage Vancouver BC drainage company logo">
+      </div>
+      <p class="csname">Mamba Drainage</p>
+      <div class="metaline">
+        <span class="pill">Drainage</span>
+        <span class="pill">Vancouver, British Columbia</span>
+        <span class="pill">SEO and Google Ads</span>
+      </div>
+      <h1 class="t56">Fourth of 57 in the market to <em>first</em></h1>
+      <p class="lede">In March 2026 Mamba Drainage placed 4th of 57 drainage companies on the
+        Vancouver map. By July it placed 1st, on all three measures, with 100.00% market share.
+        Both scans are below, straight out of LeadSnap, both on the Local Pack layer. Flip between
+        them.</p>
+    </div>
+  </section>
+
+  <!-- ============ 3. DETAILS STRIP ============ -->
+  <section>
+    <div class="rail">
+      <dl class="details">
+        <div>
+          <dt>Services engaged</dt>
+          <dd>Local SEO, Google Business Profile, Google Ads</dd>
+        </div>
+        <div>
+          <dt>Keyword scanned</dt>
+          <dd>drainage vancouver, Local Pack, 13 by 13 grid, 169 points</dd>
+        </div>
+        <div>
+          <dt>Scans compared</dt>
+          <dd>21 March 2026 against 2 July 2026</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============ 4. THE RESULT: the real before / after pair ============
+       Two real LeadSnap screenshots, the same keyword and the same 13x13 grid
+       at both ends. The toggle swaps the image AND the four rows beside it.
+       Every number in SCAN below is legible in the matching screenshot. Do not
+       add a figure that is not in the image, do not draw a substitute map, and
+       do not crop either screenshot. ================================== -->
+  <section>
+    <div class="rail">
+      <div class="block">
+        <p class="pill lbl">The result</p>
+        <h2 class="t40">The same grid, <em>March to July</em></h2>
+        <div class="prose">
+          <p>A heatmap scan drops a grid of search points over the city and checks the ranking at
+            every one of them. Local rank is not one number. It is 169 of them.</p>
+          <p>Both scans below run the keyword <strong>drainage vancouver</strong> over the same 13
+            by 13 grid of 169 points, and both read the same search layer: the March export prints
+            Search Type Local pack and the July export prints Ranking Source Local Pack. Google
+            Maps and Local Pack are two different searches, so a before and after that mixes them
+            proves nothing.</p>
+          <p>The one thing that is not identical is the area the grid covers, and the later scan is
+            the bigger of the two: <strong>79.84 km&sup2;</strong> on 21 March 2026 against
+            <strong>118.08 km&sup2;</strong> on 2 July 2026. The July result is held over more of
+            Vancouver, not less. Both areas are printed on the exports below.</p>
+        </div>
+      </div>
+
+      <div class="toggle" role="tablist" aria-label="Before or after scan">
+        <button type="button" role="tab" id="tabBefore" aria-selected="true" tabindex="0" aria-controls="cmpPanel">Before</button>
+        <button type="button" role="tab" id="tabAfter" aria-selected="false" tabindex="-1" aria-controls="cmpPanel">After</button>
+      </div>
+
+      <div class="cmp cmp-wide" id="cmpPanel" role="tabpanel" aria-labelledby="tabBefore">
+        <div class="cmp-l">
+          <div class="biz">
+            <span class="biz-mk" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            </span>
+            <span>
+              <span class="biz-n">Mamba Drainage Services</span><br>
+              <span class="tiny muted">drainage vancouver, Local Pack, scanned <span id="scanDate">21 March 2026</span></span>
+            </span>
+          </div>
+
+          <div class="mrow"><span class="mrow-l">Position in market</span><span class="badge" data-metric="pos">4th</span></div>
+          <div class="mrow"><span class="mrow-l">Market share</span><span class="badge" data-metric="share">62.13%</span></div>
+          <div class="mrow"><span class="mrow-l">Top 3 coverage</span><span class="badge" data-metric="top3">37.87%</span></div>
+          <div class="mrow"><span class="mrow-l">Average rank</span><span class="badge" data-metric="rank">5.10</span></div>
+          <p class="scan-src">Position in market is the place LeadSnap prints beside Avg Ranking.
+            On the March scan all three measures place 4th, out of the 57 businesses the scan
+            counted; on the July scan all three place 1st. The July export is cut above its own
+            entries line, so this page says 4th of 57 to 1st and does not put a competitor count on
+            the July end.</p>
+        </div>
+
+        <div class="scan shot-box panx" tabindex="0">
+          <div class="scan-box">
+            <img id="scanBefore" src="../assets/leadsnap/mamba-BEFORE-2026-03-21.jpg"
+                 width="1400" height="939" decoding="async"
+                 alt="LeadSnap Local Pack heatmap for Mamba Drainage on 21 March 2026, keyword drainage vancouver, 13x13 grid of 169 points over 79.84 square kilometres, average ranking 5.10 placing 4th, top 3% 37.87%, market share 62.13%, showing 1 to 25 of 57 entries.">
+            <img id="scanAfter" src="../assets/leadsnap/mamba-AFTER-2026-07-02.jpg"
+                 width="1400" height="869" decoding="async" hidden
+                 alt="LeadSnap Local Pack heatmap for Mamba Drainage on 2 July 2026, keyword drainage vancouver, 13x13 grid of 169 points over 118.08 square kilometres, average ranking 4.50 placing 1st, top 3% 42.6%, market share 100.00%.">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5. IN NUMBERS ============
+       Three tiles, in the order content/PUBLISH-STATS.md sets: position first,
+       then share, then top 3 coverage. Average rank is supporting detail and
+       stays in the panel above, never on a tile. ======================== -->
+  <section>
+    <div class="rail">
+      <div class="block">
+        <p class="pill lbl">In numbers</p>
+        <h2 class="t40">Three figures off the <em>same scan</em></h2>
+
+        <div class="stats-row">
+          <div class="stat">
+            <p class="stat-v">1st</p>
+            <p class="stat-l">Position in market</p>
+            <p class="stat-c">4th of 57 on 21 March 2026, 1st on 2 July 2026. This is the place
+              LeadSnap prints beside Avg Ranking, and share and top 3 place there too.</p>
+          </div>
+          <div class="stat">
+            <p class="stat-v">100.00<span class="stat-sfx">%</span></p>
+            <p class="stat-l">Market share</p>
+            <p class="stat-c">62.13% on 21 March 2026</p>
+          </div>
+          <div class="stat">
+            <p class="stat-v">42.6<span class="stat-sfx">%</span></p>
+            <p class="stat-l">Top 3 coverage</p>
+            <p class="stat-c">37.87% of the grid on 21 March 2026</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 6. CONTENT BLOCKS ============ -->
+  <section>
+    <div class="rail">
+
+      <div class="block">
+        <p class="pill lbl">The challenge</p>
+        <h2 class="t40">Drainage work is bought in a <em>hurry</em></h2>
+        <div class="prose">
+          <p>Nobody researches a drainage company for a fortnight. A basement is taking water, or
+            a line is backing up. The person holding the phone calls one of the first businesses
+            Google shows them. The map block at the top of the page takes most of that attention,
+            and everything under it takes the rest.</p>
+          <p>Vancouver makes that a harder problem than a compact town does. A profile can look
+            healthy at its own address and fall away completely for somebody searching from a
+            neighbourhood twenty minutes away. That is exactly what the March scan shows. Three
+            drainage companies averaging above them, and the top row of the grid still reading
+            8 to 12 while points in the south of it read 1 and 2.</p>
+          <p>The category is crowded too. Franchise operators, plumbing groups and lead brokers
+            all chase the same searches, and most of them outspend an independent.</p>
+        </div>
+      </div>
+
+      <div class="block">
+        <p class="pill lbl">What we did</p>
+        <h2 class="t40">The same levers, in the <em>same order</em></h2>
+        <div class="prose">
+          <p><strong>Google Business Profile first.</strong> Primary category, secondary
+            categories, services, service area, hours, description. All of it set the way Google
+            reads it, not the way an owner would write it. Photos go up on a schedule. Posts go
+            out on a schedule. The profile gets worked every week instead of being filled in once
+            and left alone.</p>
+          <p><strong>Service and area pages second.</strong> A page for every service the company
+            actually sells, and a page for every neighbourhood it actually covers. Area pages are
+            written from real research into the neighbourhood. Never spun from one template with
+            the name swapped out. Near duplicate pages do not rank and do not convert. Schema and
+            index submission are part of the build, not a later cleanup.</p>
+          <p><strong>Citations third.</strong> Name, address and phone get matched across the
+            directory set so nothing on the open web contradicts the profile. Inconsistent
+            listings are quiet drag and they are cheap to fix once the profile is settled.</p>
+          <p><strong>Interlinking holds it together.</strong> Services link to the areas they are
+            sold in, areas link back to the services they need, and both hang off the locations
+            hub. That is what stops a new page sitting alone with nothing pointing at it.</p>
+          <p><strong>Google Ads runs alongside it.</strong> Exact match only, tightly themed ad
+            groups, rebuilt bidding. Ads cover the searches organic has not reached yet and give
+            an early read on which terms are worth building a page for.</p>
+          <p><strong>What the bidding rebuild did on Mamba's own Google Ads account.</strong>
+            From 20 August to 7 September 2026 the account took <strong>33 clicks for
+            CA$440.16</strong>. In the 19 days before it, 1 to 19 August 2026, the same account
+            took <strong>19 clicks for CA$602.80</strong>. Same daily budget in both windows. Two
+            matched 19 day reads, either side of the rebuild. If you want ads on your own account,
+            message us on WhatsApp and we will talk it through.</p>
+        </div>
+      </div>
+
+      <div class="block">
+        <p class="pill lbl">How we report</p>
+        <h2 class="t40">Nothing here is <em>estimated</em></h2>
+        <div class="prose">
+          <p>Every ranking figure on this page is legible in one of the two screenshots above, with
+            the scan date printed on it. Same keyword at both ends, same Local Pack layer, same 13
+            by 13 grid, same 169 points, and the grid area of each scan is stated above rather than
+            left for you to find. No ranking figure goes on this page without the scan it came
+            off.</p>
+          <p>A scan whose search layer cannot be read off the export does not get published here,
+            whatever it says. If the layer is not printed on screen, the pair cannot be shown to be
+            a like for like read, so it does not go up.</p>
+          <p>That is also why no client's result on this site is a drawing. If a scan exists you
+            see the scan. If it does not exist yet, we say so on that client's page. The only
+            drawn grid anywhere on the site is the before and after panel on the home page, which
+            is a worked example carrying no client's data, and it says so.</p>
+        </div>
+      </div>
+
+    </div>
+    <!-- back to the index. One markup for one job on all seven case studies.
+         It lives INSIDE the last content section, not between two sections:
+         as a bare top-level rail it made that one boundary 176px against the
+         page's 112 (VISUAL-QA root cause 6). Attached, it reads --stack under
+         its own section and the section's own --sect still pays half of the
+         112 into the CTA band. -->
+    <div class="rail csbar">
+      <a href="../case-studies.html">&#8592; Back to all case studies</a>
+    </div>
+  </section>
+
+  <!-- ============ 7. CTA BAND ============ -->
+  <section>
+    <div class="rail">
+      <div class="band">
+        <div class="band-in">
+          <img src="../assets/logos/marquee/rg-mark-dark.png" alt="" width="404" height="260">
+          <span class="pill">Get started</span>
+          <h2 class="t56">Stop being invisible on <em>Google</em></h2>
+          <p class="muted">Send us your business. You get back a free three minute video: where you
+            sit on the local map, and what is holding the position down.</p>
+          <div class="band-btns">
+            <a class="btn" href="../free-analysis.html">Get my free analysis</a>
+            <a class="btn btn-wa" href="https://wa.me/19022790345" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2.01a9.9 9.9 0 0 0-8.53 14.86L2 22.06l5.33-1.4a9.9 9.9 0 0 0 4.71 1.2h.01a9.9 9.9 0 0 0 9.9-9.9 9.84 9.84 0 0 0-2.9-7.01 9.84 9.84 0 0 0-7.01-2.94Zm0 18.15h-.01a8.22 8.22 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1 12.73-10.1 8.15 8.15 0 0 1 2.4 5.81 8.23 8.23 0 0 1-8.15 8.15Zm4.5-6.15c-.24-.12-1.46-.72-1.69-.8-.22-.09-.39-.13-.55.12-.17.25-.64.81-.78.97-.15.17-.29.19-.53.07-.25-.13-1.05-.39-1.99-1.24-.74-.65-1.24-1.46-1.38-1.71-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.09-.16.04-.31-.02-.43-.06-.13-.55-1.35-.76-1.84-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.55c.13.16 1.74 2.66 4.22 3.73.59.25 1.05.4 1.4.52.59.18 1.13.16 1.56.1.47-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.17-.47-.29Z"/></svg>
+              <span>WhatsApp us</span><span class="wa-num">902 279 0345</span>
+            </a>
+          </div>
+          <p class="small muted">One business per category per service area. No long term contract.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER (identical on every page, styles in assets/site.css) ============ -->
+<footer>
+  <div class="rail">
+
+    <div class="foot">
+
+      <div class="foot-brand">
+        <a class="mark" href="../index.html" aria-label="RG Marketing home">
+          <img src="../assets/logos/marquee/rg-mark-dark.png" alt="RG" width="404" height="260">
+          <span>Marketing</span>
+        </a>
+        <h2 class="t26 foot-tag">Dominate Your Local <em>Market</em>.</h2>
+        <p class="small muted">Built for local businesses in Canada.</p>
+      </div>
+
+      <div class="foot-col">
+        <h3>Navigate</h3>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../case-studies.html">Case studies</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h3>Case studies</h3>
+        <ul>
+          <li><a href="../case-studies/local-movers.html">Local Movers Ltd</a></li>
+          <li><a href="../case-studies/co-painting.html">Co Painting</a></li>
+          <li><a href="../case-studies/everfinish.html">Everfinish</a></li>
+          <li><a href="../case-studies/mamba-drainage.html">Mamba Drainage</a></li>
+          <li><a href="../case-studies/always-best-moving.html">Always Best Moving</a></li>
+          <li><a href="../case-studies/picasshome.html">Picasshome Painting</a></li>
+          <li><a href="../case-studies/serve-ninja.html">Serve Ninja Legal Support</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h3>Get started</h3>
+        <ul>
+          <li><a href="../free-analysis.html">Free analysis</a></li>
+          <li><a href="../book-a-call.html">Book a call</a></li>
+          <li><a href="../terms.html">Terms and privacy</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h3>Contact</h3>
+        <a class="btn btn-wa btn-wa-sm" href="https://wa.me/19022790345" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2.01a9.9 9.9 0 0 0-8.53 14.86L2 22.06l5.33-1.4a9.9 9.9 0 0 0 4.71 1.2h.01a9.9 9.9 0 0 0 9.9-9.9 9.84 9.84 0 0 0-2.9-7.01 9.84 9.84 0 0 0-7.01-2.94Zm0 18.15h-.01a8.22 8.22 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1 12.73-10.1 8.15 8.15 0 0 1 2.4 5.81 8.23 8.23 0 0 1-8.15 8.15Zm4.5-6.15c-.24-.12-1.46-.72-1.69-.8-.22-.09-.39-.13-.55.12-.17.25-.64.81-.78.97-.15.17-.29.19-.53.07-.25-.13-1.05-.39-1.99-1.24-.74-.65-1.24-1.46-1.38-1.71-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.09-.16.04-.31-.02-.43-.06-.13-.55-1.35-.76-1.84-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.55c.13.16 1.74 2.66 4.22 3.73.59.25 1.05.4 1.4.52.59.18 1.13.16 1.56.1.47-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.17-.47-.29Z"/></svg>
+          <span>WhatsApp us</span>
+        </a>
+        <p class="foot-num">902 279 0345</p>
+        <ul>
+          <li><a href="mailto:roham@rghiasi.com">roham@rghiasi.com</a></li>
+          <li><a href="https://rgresults.ca">rgresults.ca</a></li>
+          <li>Canada</li>
+        </ul>
+      </div>
+
+    </div>
+
+
+    <div class="foot-btm">
+      <p class="tiny">&copy; <span id="yr">2026</span> RG Marketing. All rights reserved.</p>
+      <p class="tiny">Canada</p>
+    </div>
+
+  </div>
+</footer>
+
+<!-- sticky mobile CTA, shown under 880px by site.css -->
+<div class="tapbar">
+  <a class="btn btn-wa" href="https://wa.me/19022790345" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2.01a9.9 9.9 0 0 0-8.53 14.86L2 22.06l5.33-1.4a9.9 9.9 0 0 0 4.71 1.2h.01a9.9 9.9 0 0 0 9.9-9.9 9.84 9.84 0 0 0-2.9-7.01 9.84 9.84 0 0 0-7.01-2.94Zm0 18.15h-.01a8.22 8.22 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1 12.73-10.1 8.15 8.15 0 0 1 2.4 5.81 8.23 8.23 0 0 1-8.15 8.15Zm4.5-6.15c-.24-.12-1.46-.72-1.69-.8-.22-.09-.39-.13-.55.12-.17.25-.64.81-.78.97-.15.17-.29.19-.53.07-.25-.13-1.05-.39-1.99-1.24-.74-.65-1.24-1.46-1.38-1.71-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.09-.16.04-.31-.02-.43-.06-.13-.55-1.35-.76-1.84-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.55c.13.16 1.74 2.66 4.22 3.73.59.25 1.05.4 1.4.52.59.18 1.13.16 1.56.1.47-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.17-.47-.29Z"/></svg>
+    <span>WhatsApp us</span><span class="wa-num">902 279 0345</span>
+  </a>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://rgresults.ca/"},
+        {"@type":"ListItem","position":2,"name":"Case studies","item":"https://rgresults.ca/case-studies"},
+        {"@type":"ListItem","position":3,"name":"Mamba Drainage"}
+      ]
+    },
+    {
+      "@type": "Article",
+      "headline": "Fourth of 57 in the market to first",
+      "description": "Two LeadSnap Local Pack heatmap scans for Mamba Drainage on the keyword drainage vancouver, a 13 by 13 grid of 169 points. On 21 March 2026, over 79.84 square kilometres: 4th of 57 in market, market share 62.13%, top 3% 37.87%, average rank 5.10. On 2 July 2026, over 118.08 square kilometres: 1st in market, market share 100.00%, top 3% 42.6%, average rank 4.50.",
+      "datePublished": "2026-09-16",
+      "mainEntityOfPage": "https://rgresults.ca/case-studies/mamba-drainage",
+      "author": {
+        "@type": "Organization",
+        "name": "RG Marketing",
+        "url": "https://rgresults.ca"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "RG Marketing",
+        "url": "https://rgresults.ca"
+      },
+      "about": {
+        "@type": "LocalBusiness",
+        "name": "Mamba Drainage",
+        "areaServed": "Vancouver, British Columbia, Canada"
+      }
+    }
+  ]
+}
+</script>
+
+<script>
+(function () {
+  "use strict";
+
+  /* year */
+  var yr = document.getElementById("yr");
+  if (yr) { yr.textContent = String(new Date().getFullYear()); }
+
+  /* ---- before / after scan toggle ----------------------------------
+     Same component and the same behaviour as the homepage widget. The
+     values below are read off the two screenshots this page ships. If a
+     screenshot is ever replaced, these change with it. ---------------- */
+  var tabB  = document.getElementById("tabBefore");
+  var tabA  = document.getElementById("tabAfter");
+  var panel = document.getElementById("cmpPanel");
+  var date  = document.getElementById("scanDate");
+  var imgB  = document.getElementById("scanBefore");
+  var imgA  = document.getElementById("scanAfter");
+
+  var SCAN = {
+    before: {
+      date: "21 March 2026",
+      val: { pos: "4th", share: "62.13%", top3: "37.87%", rank: "5.10" }
+    },
+    after: {
+      date: "2 July 2026",
+      val: { pos: "1st", share: "100.00%", top3: "42.6%", rank: "4.50" }
+    }
+  };
+
+  function show(el, on) {
+    if (!el) { return; }
+    if (on) { el.removeAttribute("hidden"); } else { el.setAttribute("hidden", ""); }
+  }
+
+  function paint(state) {
+    var d = SCAN[state] || SCAN.before;
+    var after = state === "after";
+    var rows = document.querySelectorAll("#cmpPanel .badge[data-metric]");
+    for (var i = 0; i < rows.length; i++) {
+      var key = rows[i].getAttribute("data-metric");
+      if (d.val[key]) { rows[i].textContent = d.val[key]; }
+      rows[i].className = after ? "badge good" : "badge";
+    }
+    if (date) { date.textContent = d.date; }
+    show(imgB, !after);
+    show(imgA, after);
+    tabB.setAttribute("aria-selected", after ? "false" : "true");
+    tabA.setAttribute("aria-selected", after ? "true" : "false");
+    tabB.setAttribute("tabindex", after ? "-1" : "0");
+    tabA.setAttribute("tabindex", after ? "0" : "-1");
+    panel.setAttribute("aria-labelledby", after ? "tabAfter" : "tabBefore");
+  }
+
+  if (tabB && tabA) {
+    paint("before");            /* explicit initial state, never inherit the markup */
+    tabB.addEventListener("click", function () { paint("before"); });
+    tabA.addEventListener("click", function () { paint("after"); });
+    [tabB, tabA].forEach(function (t) {
+      t.addEventListener("keydown", function (e) {
+        if (e.key !== "ArrowRight" && e.key !== "ArrowLeft" &&
+            e.key !== "Home" && e.key !== "End") { return; }
+        e.preventDefault();
+        var next = (e.key === "Home") ? tabB
+                 : (e.key === "End")  ? tabA
+                 : (t === tabB ? tabA : tabB);
+        paint(next === tabA ? "after" : "before");
+        next.focus();
+      });
+    });
+  }
+})();
+</script>
+
+</body>
+</html>

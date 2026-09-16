@@ -1,0 +1,861 @@
+/* RG Marketing - shared stylesheet
+   Spec taken from the profresults.com capture in ../capture/profresults/DESIGN-SYSTEM.md
+   System A only: Inter 500 throughout + Source Serif 4 500 italic accents.
+   No bold anywhere. Two radii by role: 50px pills for nav/CTA, 8px inside forms. */
+
+:root{
+  /* ground + surfaces. no brand accent colour exists in this system. */
+  --ground:#efebe5;
+  --surface:#f7f2ea;   /* alt band, one step lighter than the ground (DS 1) */
+  --card:#fff;         /* DS 1: "Card / input surface" */
+  --ink:#000;          /* DS 1: "Primary text + every button fill" */
+
+  /* fixed alpha ramps, the only "colours" the system has. DS 1 black ramp. */
+  --ink-04:rgba(0,0,0,.04);
+  --ink-08:rgba(0,0,0,.08);
+  --ink-10:rgba(0,0,0,.10);
+  --ink-12:rgba(0,0,0,.12);
+  --ink-24:rgba(0,0,0,.24);
+  --ink-36:rgba(0,0,0,.36);
+  --ink-48:rgba(0,0,0,.48);
+  --ink-56:rgba(0,0,0,.56);
+
+  /* the one saturated colour on the whole site: the before/after stat badge */
+  --stat-bad:#c0392b;
+  --stat-mid:#e08b2f;
+  --stat-good:#239452;
+
+  --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+
+  /* 1120 - 2x24 gutter = 1072px of CONTENT, which is what DS 6 measures. */
+  --rail:1120px;
+  --pill:50px;      /* nav + every CTA */
+  --field:8px;      /* anything inside a form, plus chips */
+
+  /* ---- SPACING SCALE. Every vertical value on the site comes from this set.
+     TIGHTENED 2026-09-16 (Roham: "too spread out, it feels a little bit
+     unnatural"). The old set was measured off profresults.com at 80/64/32/96,
+     which on our shorter sections left each block floating as its own island.
+     Pulled down one step each so the page reads as one continuous document.
+     Sections stay clearly separated: 56px top + 56px bottom is still 112px
+     of air between two blocks, and that 112 is the measured boundary on
+     every top level seam of all 15 pages.
+
+     On the 8px grid: the SECTION scale, 56 / 64 / 40, and the mobile
+     step-down, 40 / 48 / 32. Deliberately between steps: --head-gap and
+     --stack at 20 and --list-gap at 12, which are intra-block steps where
+     a 24 reads loose and a 16 reads cramped. Do not "correct" those three
+     to multiples of 8 without looking at a rendered page first.
+     Nothing in between gets invented. */
+  --sect:56px;      /* section padding-block, every section, every page */
+  --hero-top:64px;  /* hero only. Nav is 73px and in flow, so 64 clears it
+                       without the old 96px gulf, and stays on the 8px grid. */
+  --head-gap:20px;  /* chip -> heading -> body inside a section head */
+  --head-end:40px;  /* section head -> the content it introduces */
+  --hero-gap:24px;  /* hero copy column, 4-6 items so one step under the head */
+  --stack:20px;     /* narrow centred column: CTA card, small groups */
+  --gutter:24px;    /* card grid gutter */
+  --list-gap:12px;  /* row list + FAQ list */
+
+  /* ---- THE BOUNDARY. One number for every gap between two top-level
+     units of a page, so the rhythm never changes meaning halfway down.
+     A <section> pays half from each side (56 + 56), which is where 112
+     comes from, and --sect steps to 40 on a phone so this follows to 80
+     without a second declaration.
+
+     Root causes 6, 7, 8 and 9 in VISUAL-QA.md were all the same disease:
+     four different things sitting at a section boundary and paying four
+     different prices - a bare back-link rail at 176, a .block at 40, the
+     logo strip at 56, against a page standard of 112. Anything that sits
+     at a boundary now reads THIS. Nothing invents its own. ---- */
+  --boundary:calc(var(--sect) * 2);   /* 112 desktop / 80 phone */
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--ground);color:var(--ink);
+  font-family:var(--sans);font-size:16px;font-weight:500;line-height:1.5;
+  letter-spacing:-.04em;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;height:auto}
+/* no link colour exists in this system either: every anchor inherits the ink
+   of the text around it and is marked by its underline. Without this the UA
+   blue leaked through on the legal page, in .prose and in the details strip,
+   which is why one page had already patched .details dd a by hand. */
+a{color:inherit}
+
+/* ---- type scale. Inter 500 only, never bold. ---- */
+h1,h2,h3,h4{
+  margin:0;font-family:var(--sans);font-weight:500;
+  line-height:1.1;letter-spacing:-.06em;text-wrap:balance;
+}
+.t70{font-size:clamp(40px,5.6vw,70px)}
+.t56{font-size:clamp(36px,4.6vw,56px)}
+.t48{font-size:clamp(32px,4vw,48px)}
+.t40{font-size:clamp(28px,3.3vw,40px)}
+.t32{font-size:clamp(24px,2.6vw,32px)}
+.t26{font-size:clamp(20px,2.1vw,26px)}
+
+/* THE signature move: payoff word swaps to italic serif at the same size,
+   tracking loosened from -0.06em to -0.08em. */
+em,.accent{
+  font-family:var(--serif);font-style:italic;font-weight:500;
+  letter-spacing:-.08em;
+}
+
+/* ---- ROOT CAUSE 18. line-height:1.1 is shorter than the serif italic's
+   ink, so the accent word hung up to 0.1375em below its heading box (7.4px
+   out of an h1.t56, 5.5px out of an h2.t40) and 0.1346em above it. Nothing
+   clips today because the whole chain is overflow:visible, but the first
+   wrapper that gains overflow:hidden would slice the signature word.
+
+   The fix has to buy the ink room WITHOUT moving anything: the 110% look of
+   the sans headings is locked. So the heading gains .18em of padding on
+   each side - comfortably past the 0.1375em measured worst case - and gives
+   the same .18em straight back as a negative margin. The border box grows,
+   the outer box does not move by a pixel, and line-height stays 1.1.
+
+   Scoped to the display sizes that actually carry the accent, at (0,2,0),
+   so the per-page `.card h3` / `.skip h3` / `.doc h2` margin rules at
+   (0,1,1) cannot cancel half of the pair and leave the other half. ---- */
+:is(.t70,.t56,.t48,.t40,.t32,.t26):has(:is(em,.accent)){
+  padding-block:.18em;margin-block:-.18em;
+}
+
+p{margin:0;line-height:1.5}
+.lede{color:var(--ink-56);font-size:18px;letter-spacing:-.05em}
+.muted{color:var(--ink-56)}
+.small{font-size:14px}
+.tiny{font-size:14px;color:var(--ink-48)}
+
+/* ---- layout ---- */
+.rail{max-width:var(--rail);margin:0 auto;padding-inline:24px}
+section{padding-block:var(--sect)}
+
+/* ---- ROOT CAUSE 8 + 6. A <section> is not the only thing that can sit at
+   the top level of <main>: the logo strip on about and free-analysis and
+   the utility bar on the case studies are bare rails. They still stand at a
+   boundary, so they still owe it --sect from their own side, exactly like a
+   section. Before this they paid whatever padding their inner component
+   happened to carry (24 for .marq-wrap, 20 for .csbar), which is why the
+   strip boundaries measured 56 and the back-link boundary measured 176 on
+   pages whose every other boundary measured 112. ---- */
+main>.rail:not(.csbar){padding-block:var(--sect)}
+/* the page opens on --hero-top on every page. On the case studies the first
+   thing in <main> is the utility bar rather than a hero, so it carries the
+   opening number and hands the hero the attached --stack below it. */
+main>.csbar:first-child{padding-block:var(--hero-top) 0}
+.stack{display:grid;gap:var(--stack)}
+.center{text-align:center;--jc:center;--mi:auto}
+
+/* Hero padding is shared, never redeclared per page - six pages had six
+   different values (64/56, 64/36, 56/40, 52/72, 64/24, 64/36). */
+.hero{padding-block:var(--hero-top) var(--sect)}
+.hero .stack,.hero-copy,.hero-l{gap:var(--hero-gap)}
+
+/* ---- section head: chip -> heading -> body, then the content it introduces.
+       One class for all eight pages. It replaces .head (14/34), .sect-head
+       (20/34) and a bare .stack with an inline margin-bottom:28px. ---- */
+.head,.head.mid,.sect-head,.cs-head,.study-head{
+  display:grid;gap:var(--head-gap);justify-items:center;text-align:center;
+  --jc:center;--mi:auto;
+  max-width:640px;margin-inline:auto;margin-bottom:var(--head-end);
+}
+/* the chip is an inline-block. Blockified as a grid item it would stretch
+   across the whole 640 column, so it is pinned back to its own width, and
+   so is the plain div some pages wrap it in. */
+.head>.pill,.head>div{justify-self:center}
+.head>p{max-width:62ch}
+
+/* ---- chip eyebrow. DS 5.2 / COMPONENTS 3: 8px, black 4% fill, no border.
+       The 50px radius is reserved for nav + CTA buttons. ---- */
+.pill{
+  display:inline-block;font-size:14px;font-weight:500;color:var(--ink-56);
+  background:var(--ink-04);border:0;
+  border-radius:var(--field);padding:6px 12px;
+}
+
+/* ---- buttons. solid black only. no ghost/outline/secondary variant exists. ---- */
+.btn{
+  display:inline-block;font-family:var(--sans);font-size:14px;font-weight:500;
+  letter-spacing:-.04em;text-decoration:none;cursor:pointer;border:0;
+  background:var(--ink);color:#fff;
+  border-radius:var(--pill);padding:16px 32px;transition:opacity .2s;
+}
+.btn:hover{opacity:.86}
+.btn-sm{padding:8px 16px;font-size:14px}
+/* DS 5.3 third button role: the square form submit, 8px like the fields it sits with. */
+.btn-form{border-radius:var(--field);padding:15px 26px}
+/* DS 5.3: "Link-style CTAs are plain underlined text."
+   These are standalone link CTAs, not links inside a sentence, so they carry
+   the 44px minimum tap target. Left as bare text they measured 21px, half the
+   minimum, and none of them exist on the approved homepage to be baselined
+   against. inline-flex keeps them shrink-to-fit so they still centre or sit
+   left exactly where the surrounding layout puts them. */
+.linkcta,.tlink,.backrow>a,.csbar>a,.pager>a{
+  display:inline-flex;align-items:center;min-height:44px}
+.linkcta{font-size:14px;font-weight:500;color:var(--ink);text-underline-offset:3px}
+
+/* ---- WhatsApp button --------------------------------------------------
+   #25D366 is WhatsApp's OWN brand green. It is a DELIBERATE, CLIENT
+   REQUESTED exception to the "there is no brand accent colour" rule in
+   DESIGN-SYSTEM.md section 1. The client asked for full WhatsApp green by
+   name and overruled an earlier monochrome proposal. It is a recognised
+   third party brand colour marking a third party channel, not an RG
+   Marketing accent. DO NOT "correct" this back to black, grey or
+   monochrome on a later design pass.
+
+   Everything else stays inside the system: it carries .btn, so it is the
+   same 50px pill, the same Inter 500 / 14px label and the same padding as
+   every other button on the site. ------------------------------------- */
+.btn-wa{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  background:#25D366;color:#fff;
+}
+.btn-wa:hover{background:#1EBE5A;opacity:1}
+.btn-wa svg{flex:none;width:18px;height:18px;display:block;fill:#fff}
+.btn-wa .wa-num{color:#fff;opacity:.82;white-space:nowrap}
+/* narrow slots: the footer contact column and any tight row */
+.btn-wa-sm{padding:12px 20px}
+
+/* ---- nav: wordmark lockup + one black pill. no link list, no hamburger. ---- */
+.nav{position:sticky;top:0;z-index:60;background:var(--ground)}
+.nav-in{
+  max-width:var(--rail);margin:0 auto;padding:18px 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+/* DS 5.1: glyph + wordmark text sitting on the ground. No fill, no pill.
+   The mark PNG was a 94x59 1-bit key cropped flush to the ink: no alpha
+   ramp and no bleed, so every curve hit the file edge and the glyph read
+   clipped at 22px. Re-cut 2026-09-16 from the 500x500 master at 404x260
+   (8-bit alpha, 3px of transparent bleed a side, 4x for DPR 3). The bleed
+   is ~9% of the height, so the box goes 22 -> 24 to hold the same optical
+   size. flex:none so a tight nav row can never squeeze it. */
+.mark{display:inline-flex;align-items:center;gap:5px;text-decoration:none;flex:none}
+.mark img{height:24px;width:auto;flex:none;display:block}
+.mark span{font-size:26px;font-weight:500;color:var(--ink);letter-spacing:-.06em;line-height:1.1}
+
+/* ---- cards. DS 5.4: white fill, no border, no shadow. ---- */
+.card{background:var(--card);border:0;border-radius:12px;padding:24px;
+  display:flex;flex-direction:column}
+/* ---- ONE card-heading rule, for every card on the site. It used to be
+   declared four different ways and never here: index 18px/9px,
+   book-a-call 18px/8px, .t26 plus an inline margin-top:10px on about and
+   free-analysis, an inline margin-bottom:14px on about's facts card. A
+   card whose page forgot the rule got nothing, so about's "Three ways to
+   get found" h3s fell back to the UA 18.72px with 0.0px between the
+   title and its body copy. The size is :where()d to zero specificity so
+   a card that opts into the type scale (.t26) still wins; the gap is
+   stated once and belongs to every card. ---- */
+:where(.card) h3{font-size:18px}
+.card h3+*{margin-top:10px}
+/* ---- EVERY CARD IN A ROW IS THE SAME HEIGHT. Roham, 2026-09-16:
+   "make sure cards are the same size", said twice in one message
+   ("too much info, cards not the same size"). This rule used to be
+   align-items:start on the reasoning that a stretched card carries dead
+   space under its last line. He has looked at both and ruled: ragged
+   card bottoms read as broken, uneven whitespace does not. Stretch, and
+   the card lays its own children out in a column so the copy still
+   starts at the top and only the surface grows. DO NOT REVERT. ---- */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gutter);align-items:stretch}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--gutter);align-items:stretch}
+.ico{width:34px;height:34px;border-radius:var(--field);background:var(--ink-08);
+  display:grid;place-items:center;margin-bottom:16px;flex:none}
+/* ---- The glyph is 18px inside a 34px tile, everywhere. Roham, 2026-09-16:
+   "these texts are bolded and weird". An <svg> with a viewBox and no width
+   attribute fills its box, so index's icons drew at the full 34px while
+   about's, which carry width="17", drew at half that: the same three cards
+   on two pages, one set airy and one set heavy. A 24-unit viewBox blown to
+   34px also multiplies stroke-width 1.7 to 2.4 effective pixels, which is
+   what read as bold. Stated once here so no page can drift again. ---- */
+.ico svg{width:18px;height:18px;display:block}
+
+/* ---- forms: 8px radius, never pills ---- */
+.field{
+  font-family:var(--sans);font-size:16px;font-weight:500;letter-spacing:-.04em;
+  background:var(--card);
+  border:1px solid var(--ink-12);border-radius:var(--field);
+  padding:13px 16px;color:var(--ink);width:100%;
+}
+.field::placeholder{color:var(--ink-36)}
+.inline-form{display:flex;gap:10px;flex-wrap:wrap}
+.inline-form .field{flex:1;min-width:200px}
+
+/* ---- logo marquee. greyscale + fade at rest, hover reveals the colour.
+
+   OPTICAL SIZING, not one pixel height for everything. A single
+   max-height made the wide wordmarks (Always Best Moving, Everfinish)
+   read far heavier than the compact marks (Mamba, Co Painting), because
+   equal height on a 3.4:1 wordmark is roughly triple the ink of equal
+   height on a square mark. Each logo instead declares its own rendered
+   height in --lh: heights are area-equalised against the file's aspect
+   ratio, then nudged for ink density (sparse line art up, dense solid
+   blocks down). Result is 34-62px tall and 49-118px wide, the same
+   spread ProfResults runs (38-70 tall, 117 widest).
+
+   Spacing lives on the item, never as a track gap, so one run is exactly
+   half the track and the -50% keyframe loops with a 0px seam. The run is
+   authored twice per half (4 sets of 7) so half the track always
+   overflows the viewport, the way ProfResults repeats its 8 logos 4x. ---- */
+.marq-wrap{display:flex;align-items:center;gap:24px}
+.marq-lbl{font-size:14px;color:var(--ink-48);flex:none;white-space:nowrap}
+.marq{
+  flex:1;min-width:0;overflow:hidden;
+  /* ---- ROOT CAUSE 11. The fade has to be AT LEAST as long as the widest
+     logo, or a logo reaches full opacity while part of it is still outside
+     the strip - which is a wordmark with its end sliced off, drawn at 100%
+     opacity, and it is the client's "there's cutoff issues, like, in my
+     logo". The old fade was a flat 48px against a widest item of 117.6px
+     (everfinish.png at --lh:46), so 69.6px - 59.2% of that wordmark - was
+     fully opaque before it met the fade.
+
+     128px is the widest rendered logo (117.6) plus headroom, so the moment
+     any item is opaque its left edge is already inside the strip. It scales
+     on --ls with everything else in the component, so the small-screen
+     value can never drift out of step with the small-screen logos:
+     .68 * 128 = 87px against a widest item of 79.9px there. If a wider
+     logo is ever added, raise --fade to match it and nothing else. ---- */
+  --fade:calc(128px * var(--ls,1));
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 var(--fade),#000 calc(100% - var(--fade)),transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 var(--fade),#000 calc(100% - var(--fade)),transparent);
+}
+.marq-track{display:flex;align-items:center;width:max-content;
+  animation:marq 82s linear infinite;
+  /* half-track is 1825px, so 82s holds the same 22px/s as before.
+     --ls shrinks the whole strip on small screens; scaling the duration
+     with it keeps the speed identical there too. */
+  animation-duration:calc(82s * var(--ls,1))}
+.marq:hover .marq-track{animation-play-state:paused}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marq-item{flex:none;display:flex;align-items:center;justify-content:center;
+  height:calc(70px * var(--ls,1));margin-right:calc(48px * var(--ls,1))}
+/* explicit height + width:auto, NOT height:100% + max-width - that crops the logo */
+.marq-item img{
+  height:calc(var(--lh,44px) * var(--ls,1));width:auto;max-width:none;object-fit:contain;
+  filter:grayscale(1) contrast(1.3) brightness(.5);opacity:.45;
+  transition:filter .3s,opacity .3s;
+}
+.marq:hover .marq-item img{filter:none;opacity:1}
+
+/* Per-logo optical height. Keyed off the filename so index, about and
+   free-analysis cannot drift apart. Comment shows rendered w x h. */
+.marq-item img[src$="local-movers.png"]             {--lh:47px} /*  96 x 47 */
+.marq-item img[src$="always-best-moving.png"]       {--lh:34px} /* 115 x 34 */
+.marq-item img[src$="co-painting.png"]              {--lh:54px} /*  49 x 54 */
+.marq-item img[src$="picasshome-painting.png"]      {--lh:62px} /*  62 x 62 */
+.marq-item img[src$="mamba-drainage.png"]           {--lh:58px} /*  50 x 58 */
+.marq-item img[src$="western-provincial-movers.png"]{--lh:40px} /*  87 x 40 */
+.marq-item img[src$="everfinish.png"]               {--lh:46px} /* 118 x 46 */
+
+/* Local Movers' artwork is pale gold on transparent (mean ink luminance
+   190/255 against ~100 for the rest), so the shared rest-state filter
+   left it washed out while the dark marks held. Bump the opacity, keep
+   the shared brightness, and it sits at the same grey as its neighbours.
+   Hover still reveals the true colours. */
+.marq-item img[src$="local-movers.png"]{opacity:.72}
+
+/* ---- before/after comparison ---- */
+.toggle{display:inline-flex;background:var(--ink-04);
+  border-radius:var(--field);padding:3px;gap:3px;margin-bottom:var(--stack)}
+.toggle button{font-family:var(--sans);font-size:14px;font-weight:500;letter-spacing:-.04em;
+  border:0;cursor:pointer;
+  padding:8px 15px;border-radius:var(--field);background:transparent;color:var(--ink-56);transition:.2s}
+.toggle button[aria-selected="true"]{background:var(--ink);color:#fff}
+/* ---- the split card: a spec rail on the left, the map on the page axis.
+   Two tracks - fit-content(264px) + minmax(0,1fr) - put the map track's
+   centre at (W+L)/2. On the 1072px rail that is x=852 while the section
+   head, the Before/After toggle and the page axis all sit on 720, so the
+   map drew 132px right of everything stacked above it. That is the "center
+   it bro" the client called on 2026-09-16. The same declaration's default
+   align-items:stretch is the other half of the complaint: it held the white
+   panel at 264x484 around 219x214 of content on everfinish, 113px of dead
+   white above and below, 44% inked, which is the card that reads "way too
+   big".
+
+   Three tracks fix both faults with one geometry. The third track is the
+   left rail's MIRROR. It holds nothing. It exists so the map track is
+   flanked by two equal tracks, which makes the map's centre the card's
+   centre, which is the rail centre and the page axis - symmetric by
+   construction, not by an offset that has to be re-derived every time the
+   panel re-wraps. Both flanks read one stated width, --cmp-rail, so they
+   can never drift apart; a page may retune that one number and the map
+   stays centred. It also sizes the map track to 544px instead of 808, a
+   track the graphic fills rather than one that soaks up what is left over.
+
+   align-items:start is the rest: the panel takes its own height. ---- */
+/* ---- Roham, 2026-09-16: "make the heatmap fit better".
+   The panel used to run three tracks - 264px | 1fr | 264px - where the
+   third track was empty and existed only to optically centre the map
+   against the left rail. At the 1072px content width that spent 264px,
+   a quarter of the card, on nothing, and squeezed the map into a 544px
+   middle track it filled at 500px. The card read as a big white slab
+   with a small grid floating in it.
+   Two tracks now: the panel, then everything else. The map centres in
+   its own track and takes up to 600px, and the panel centres against
+   the map's height instead of stranding white space beneath itself. ---- */
+.cmp{--cmp-rail:300px;
+  position:relative;background:var(--card);border:0;border-radius:12px;
+  overflow:hidden;display:grid;align-items:center;
+  grid-template-columns:var(--cmp-rail) minmax(0,1fr)}
+/* the rule the panel's border-right used to draw. It moves onto the card
+   because a panel that stops at its own content no longer reaches the
+   bottom of the card, and a half-height divider reads as a mistake.
+   Absolutely positioned, so it is out of flow and never claims a track. */
+.cmp::before{content:"";position:absolute;top:0;bottom:0;left:var(--cmp-rail);
+  width:1px;background:var(--ink-10)}
+/* ---- .cmp-wide: the same widget, for pages whose right half is a REAL
+   1400px LeadSnap export rather than a 440px drawn SVG.
+
+   The three-track card is right for index, where the graphic is an SVG that
+   scales to any size. It is wrong for a screenshot. At 1440 the middle track
+   is 544px, so a 1400px export rendered 500px wide - a 35.7% linear scale -
+   and figures that measure 10 to 14px tall in the source JPG came out at
+   3.6 to 5.0px on the page. That breaks the one rule this site cannot break:
+   every published figure has to be legible in the screenshot beside it.
+
+   .cmp-wide stacks instead: the panel sits above at its own width, centred
+   on the page axis, and the export takes the whole rail. 1024px of a 1400px
+   source is a 73.1% linear scale - the same read the four case studies that
+   already pass (co-painting, everfinish, local-movers, picasshome) get from
+   .shot-box, so all seven pages now show evidence at one size.
+
+   The card surface moves onto the two children, because a stacked panel and
+   a stacked screenshot are two objects, not one split card. ---- */
+.cmp.cmp-wide{display:block;align-items:initial;background:transparent;overflow:visible;border-radius:0}
+.cmp.cmp-wide::before{display:none}
+.cmp.cmp-wide>.cmp-l{width:336px;max-width:100%;margin:0 auto var(--gutter);
+  background:var(--card);border-radius:12px}
+/* no justify-content: there is no leftover air to distribute any more. */
+.cmp-l{padding:22px;min-width:0;display:flex;flex-direction:column}
+[hidden]{display:none!important}
+.mrow{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:11px 0;border-top:1px solid var(--ink-10)}
+.mrow-l{font-size:14px;color:var(--ink-56);flex:none}
+.badge{font-size:14px;font-weight:500;color:#fff;background:var(--stat-bad);
+  border-radius:var(--field);padding:4px 11px;min-width:46px;text-align:center;
+  font-variant-numeric:tabular-nums;transition:background .3s}
+.badge.good{background:var(--stat-good)}
+.badge.slot{background:transparent;color:var(--ink-48);border:1px solid var(--ink-12);font-weight:500}
+/* The map half is part of the white card, not a second surface. It used to be
+   filled with var(--ground) - the exact colour of the page behind it - so the
+   card's right half dissolved into the background and the whole thing read as
+   two disconnected boxes: a tall white "Your Company" slab and a floating map.
+   Transparent lets the one card show through, so the split card reads as a
+   single object and the left panel stops looking oversized beside it.
+   min-height went too: the map's own aspect ratio sets the height now. */
+.heat{background:transparent;display:grid;place-items:center;padding:24px;min-height:0}
+.hgrid{display:grid;grid-template-columns:repeat(9,1fr);gap:5px;width:100%;max-width:min(480px,100%)}
+.pin{aspect-ratio:1;border-radius:50%;background:var(--stat-bad);display:grid;place-items:center;
+  font-size:9px;font-weight:500;color:#fff;transition:background .35s}
+.pin.off{background:transparent}
+.pin.mid{background:var(--stat-mid)}
+.pin.top{background:var(--stat-good)}
+.pin.home{background:var(--ink);outline:2px solid var(--ink-24);outline-offset:1px}
+
+/* ---- rows: process steps + FAQ ---- */
+.rows{display:grid;gap:var(--list-gap)}
+.row{background:var(--card);border:0;border-radius:12px;padding:20px 24px}
+.step{display:grid;grid-template-columns:minmax(0,min(240px,30%)) minmax(0,1fr);
+  column-gap:var(--gutter);row-gap:8px;align-items:start}
+.step-t{font-size:16px;font-weight:500}
+.step-t b,.step-t .num{font-weight:500;color:var(--ink-36);margin-right:6px}
+/* the FAQ answer measure. The description column is 808px wide on the rail,
+   which is 100ch of 16px text: the widest line on the page by a long way. */
+.step-d{color:var(--ink-56);font-size:16px;max-width:72ch}
+details{background:var(--card);border:0;border-radius:12px;padding:20px 24px}
+summary{font-size:18px;font-weight:500;cursor:pointer;list-style:none;
+  display:flex;justify-content:space-between;align-items:center;gap:18px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:20px;color:var(--ink-36);flex:none;line-height:1}
+/* hyphen, never an en dash - project ledger rule 5 */
+details[open] summary::after{content:"-"}
+details p{margin-top:12px;color:var(--ink-56);font-size:16px;max-width:72ch}
+
+/* ---- CTA band: the one component closing every page.
+       DS 5.8 gives it padding 80px 64px, but on profresults that padding is
+       INSIDE a filled #F7F2EA card. Ours is transparent, so the same 80px
+       stacked on the section's own 80px and read as 240px of dead air above
+       the closing CTA. The section supplies the 80/80; the band supplies none.
+       Horizontal gutter comes from the .rail it always sits inside. ---- */
+.band{background:transparent;color:var(--ink);padding:0;text-align:center}
+/* grid-template-columns is STATED, never left to `auto`. .band-btns below is
+   width:max-content, so its min-content contribution (474.6px) blew the single
+   auto track out past the 416px container on all fifteen pages. Every child
+   then centred in a 474.6 track that started at the container's left edge, so
+   the whole closing CTA column - eyebrow, heading, lede, buttons, note - drew
+   29px right of the page centre. That is the "center it bro" the client
+   called on 2026-09-16. minmax(0,1fr) pins the track to the container. */
+/* 520, not the 416 of DS 5.8. .band-btns is width:max-content and measures
+   474.6px on eleven pages, 475.2 on book-a-call and 483.3 on about, so a
+   416px column reported clientWidth 416 against scrollWidth 445 on 13 of 15
+   pages and the row hung 29.3px past each edge of its own container. The
+   column now states a width that holds its widest child, which also stops
+   the 416 cap wrapping a CTA heading onto three lines inside a 1072px band.
+   Anything added to this column has to fit 520 or wrap. */
+.band-in{max-width:520px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr);
+  gap:var(--stack);justify-items:center}
+/* DS: the CTA column runs 20 / 20 / 32 - body to button is the one wider step.
+   Grid row-gap cannot vary per row; a grid item's margin never collapses, so
+   this is deterministic, not a stacked-margin fight. */
+.band-in>.btn{margin-top:12px}
+/* The primary black button and the WhatsApp button sit on ONE row. The band
+   copy column is 416px (DS 5.8) and two pills need about 460, so the button
+   row alone is allowed to break out of the text column, centred, capped so it
+   never touches the gutter. Below that cap it wraps to two centred rows.
+   margin-inline:auto CANNOT do that centring: auto margins resolve to zero the
+   moment the element is wider than its container, which pinned the row to the
+   left edge and let it overflow right only. justify-self:center is the grid
+   alignment that does overflow symmetrically. */
+.band-btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:12px;
+  width:max-content;max-width:min(540px,calc(100vw - 48px));justify-self:center}
+
+/* ---- footer. DS 5.9: a link grid inside the 1120px rail. Brand block with
+   the tagline on the left, then the full site map: Navigate, Case studies,
+   Get started, Contact. The nav bar deliberately carries no link list (DS
+   5.1), so the footer is the ONLY sitemap on the site and every page has to
+   be reachable from it in one click.
+
+   TOP EDGE: align-items:start plus one shared h4 metric and one shared
+   column gap means every link column head sits on exactly the same edge.
+   Column blocks own their rhythm through grid-gap, never through per-item
+   margins, so nothing can rag. ---- */
+footer{border-top:1px solid var(--ink-10);padding-block:var(--sect) 24px}
+.foot{display:grid;
+  grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1.25fr) minmax(0,1fr) minmax(0,1.2fr);
+  gap:48px 24px;align-items:start}
+.foot-brand,.foot-col{display:grid;gap:12px;align-content:start;justify-items:start;min-width:0}
+.foot-brand{max-width:30ch}
+.foot-tag{max-width:16ch}
+.foot h4{font-size:14px;font-weight:500;line-height:1.5;letter-spacing:-.04em;margin:0}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.foot a,.foot li{font-size:14px;font-weight:500;color:var(--ink-56);text-decoration:none}
+.foot a:hover{color:var(--ink)}
+/* the WhatsApp button is white on green: the generic footer link colour
+   must not reach it. */
+.foot .btn-wa,.foot .btn-wa:hover{color:#fff}
+.foot-num{font-size:14px;color:var(--ink-56);margin:0}
+.foot-note{font-size:14px;color:var(--ink-48);margin:40px 0 0;max-width:72ch}
+/* 40 + 24 = the 64 profresults runs between its footer grid and its
+   copyright line. Seven pages had seven values here before this. */
+.foot-btm{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;
+  margin-top:24px;padding-top:24px;border-top:1px solid var(--ink-10)}
+.foot-btm p{margin:0}
+
+/* footer reflow. 5 columns -> 2 with the brand across the top -> 1. */
+@media (max-width:1040px){
+  .foot{grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 32px}
+  .foot-brand{grid-column:1/-1;max-width:52ch}
+  .foot-note{margin-top:32px}
+}
+@media (max-width:560px){
+  .foot{grid-template-columns:minmax(0,1fr);gap:32px}
+}
+
+/* ---- sticky mobile CTA. Under 880px this is the WhatsApp button, on the
+   client's direct instruction: a phone visitor reaches him in one tap. The
+   green is the same documented brand exception as .btn-wa above. ---- */
+.tapbar{display:none}
+
+/* ---- skip link, shared by every page ---- */
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:24px;top:12px;z-index:200;position:fixed;
+  background:var(--ink);color:#fff;padding:10px 18px;border-radius:var(--pill);
+  font-size:14px;font-weight:500;text-decoration:none}
+
+/* outline already follows each element's own radius - do not restate one here */
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,
+textarea:focus-visible,select:focus-visible{
+  outline:2px solid var(--ink);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+@media (max-width:880px){
+  /* The SCALE steps down, not the individual rules. Every consumer follows,
+     including the handful of inline padding-block:var(--sect) styles that a
+     separate .hero / section override would have left stranded at 80px. */
+  :root{--sect:40px;--hero-top:48px;--head-gap:16px;--head-end:32px}
+  .grid-3,.grid-2,.cmp,.step{grid-template-columns:1fr}
+  /* 0,2,0 so a page-scoped `.x .step` cannot keep two columns on a phone */
+  .rows .step,.row .step{grid-template-columns:minmax(0,1fr)}
+  /* stacked: the rail and its mirror are gone, so the vertical divider goes
+     with them and the split becomes a horizontal one. */
+  .cmp::before{display:none}
+  .cmp-l{border-bottom:1px solid var(--ink-10)}
+  /* .cmp-wide is already stacked and its panel is already its own card, so
+     it does not want the divider that joins two halves of one card. */
+  .cmp.cmp-wide>.cmp-l{border-bottom:0}
+  .mark span{font-size:20px}
+  .marq-wrap{flex-direction:column;align-items:flex-start;gap:var(--stack)}
+  .marq{width:100%}
+  /* the strip scales as one unit: item box, gap, logo height and the
+     animation duration all read --ls, so the 22px/s speed is unchanged
+     and the two halves stay exactly equal. */
+  .marq-wrap{--ls:.82}
+  /* 24px of real air plus clearance for the sticky tap bar */
+  footer{padding-block:var(--sect) 96px}
+  .tapbar{display:block;position:fixed;left:0;right:0;bottom:0;z-index:99;
+    background:var(--ground);border-top:1px solid var(--ink-10);
+    padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px))}
+  .tapbar .btn-wa{display:flex;width:100%;padding:14px 20px;font-size:16px}
+  .tapbar .btn-wa svg{width:20px;height:20px}
+}
+
+/* --ls shrinks the logos; --fade is already calc()'d off --ls, so the fade
+   shrinks with them by itself. It must NOT be re-declared shorter here -
+   that is what let a 79.9px logo sit opaque against a 24px fade at 400px. */
+@media (max-width:560px){
+  .marq-wrap{--ls:.68}
+}
+
+/* ---- CENTRED LAYOUT --------------------------------------------------
+   Every number below is measured off index.html, the only page the client
+   signed off on (capture/profresults/HOMEPAGE-REFERENCE-MEASURED.md):
+
+     section padding-block ......... 80 / 80    (page hero 96 / 80)
+     rail .......................... 1120 outer, 1072 of content
+     section head .................. 640 wide, centred, 216 left = 216 right
+     chip -> heading -> lede ....... 32
+     head -> content ............... 64
+     content block ................. the full 1072, its text reading left
+
+   Client call 2026-09-16: "all of the pages have formatting issues, dont
+   fall naturally centered". They did not, because seven pages carried
+   seven sets of head widths, hero widths and section paddings in their own
+   <style> blocks. Those are gone; every page resolves to the numbers above
+   through the selectors here. Sections centre by default and the opt-out
+   list below puts cards, prose, rows, FAQ answers and the footer back on
+   the left, which is what ProfResults does too.
+   -------------------------------------------------------------------- */
+section,.band-out,.band,.band-in,.narrow{text-align:center;--jc:center;--mi:auto}
+section>.rail>p{margin-inline:auto;max-width:62ch}
+
+/* ---- the page hero on every inner page: the same centred column as the
+   section head, on the hero's own 24px rhythm. The section padding pays
+   for the air underneath, so the hero column carries no margin. ---- */
+.hero .stack,.hero .hero-in,.cshero .rail{
+  display:grid;gap:var(--hero-gap);justify-items:center;text-align:center;
+  margin-inline:auto;--jc:center;--mi:auto;
+  /* these three ARE the centred column: justify-items already centres what
+     is in them, so they must not also distribute their own track, or the
+     column shifts by whatever it overflows its rail by (1.8px on index's
+     hero at 400px). --jc still passes centre down to their children. */
+  justify-content:normal;
+}
+.hero .stack{max-width:640px}
+.hero .hero-in>:is(h1,h2,p),.cshero .rail>:is(h1,h2,p){max-width:640px}
+/* index is the one two-column hero on the site and its two columns are
+   divs, so only a div may take the full column width. A chip, heading,
+   paragraph or button sitting loose in a hero centres at its own width
+   instead of being stretched across the rail. That stretch is what
+   rendered the eyebrow on book-a-call 612px wide and the "See the work"
+   button on case-studies 600px wide. */
+.hero .hero-in>.hero-copy,.hero .hero-in>div:has(>.vsl){justify-self:stretch;width:100%}
+.cshero .rail>:is(dl,.details,.stats-row,.cmp,.panel,.resultpanel){
+  justify-self:stretch;width:100%}
+/* the 3-cell details strip is a <dl>: kill the UA block margin so the only
+   spacing it has is the one the layout gives it. */
+.details{margin:0}
+/* The utility bar above it carries the page-opening --hero-top, so the hero
+   opens on the attached --stack: bar and hero read as one opening unit and
+   the first real boundary on the page is cshero -> next section, at
+   --boundary like every other boundary on the site. */
+.cshero{padding-block:var(--stack) var(--sect)}
+.cshero .details{margin-top:calc(var(--head-end) - var(--hero-gap));margin-bottom:0}
+/* the utility row above it (back link + pager) is the same on all seven.
+   nowrap is deliberate: six pages wrapped the forward link in <nav class="pager">
+   and carried a per-page mobile override (.pager{width:100%} + .pager a{flex:1})
+   that forced the bar to two rows and left an orphan full-rail 21px link strip
+   under the back link. Those six measured 86px where local-movers measured 53.
+   The pager is two short links; it never needs to wrap.
+   padding-top is 20 (--stack), not 32 (--head-gap): the links inside now carry
+   the 44px minimum tap target instead of rendering as bare 21px text, and 20+22
+   puts the link's optical centre back within a pixel of where 32+10.5 put it,
+   so the bar reads at exactly the height it always did. */
+.csbar{display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding-block:var(--stack) 0;flex-wrap:nowrap}
+/* a .csbar carrying one link only (the bottom back-link row on all seven) */
+.csbar>a{font-size:14px;color:var(--ink-56);text-decoration:none;flex:none}
+/* ROOT CAUSE 9. space-between with a single child is not a layout, it is a
+   left-align: the lone back-link measured 457.8px left of the page axis on
+   all seven case studies while every other thing on those pages centred.
+   An auto inline margin beats justify-content in flex, so the two-child bar
+   keeps its space-between and the one-child bar centres, with no :has() and
+   no second class to remember. */
+.csbar>a:only-child{margin-inline:auto}
+.csbar>a:hover{color:var(--ink)}
+.pager{display:flex;align-items:center;gap:16px;flex:none}
+.pager>a{font-size:14px;color:var(--ink-56);text-decoration:none}
+.pager>a:hover{color:var(--ink)}
+/* .csbar is a flex row, so the shared text-align:left opt-out below does not
+   reach it; a <p class="csbar"> would still inherit section centring. */
+.csbar{text-align:left}
+
+/* ---- the labelled content block on the case studies: chip -> heading ->
+   content. It is a section head with full-width content hanging off it, so
+   it runs the same 32 / 64 rhythm rather than the 16 / 20 it used to. ---- */
+.block{display:grid;gap:var(--head-gap);text-align:center;--jc:center;--mi:auto}
+/* ROOT CAUSE 7. A .block is the same visual unit as a section head with its
+   content: chip, heading, body. It used to get --head-end (40) when it
+   followed another block and --boundary (112) when the same unit happened
+   to be wrapped in its own <section>. One unit, one boundary. The 40 stays
+   where it belongs, on head -> content INSIDE a block, never between two. */
+.block+.block{margin-top:var(--boundary)}
+.block>:is(.pill,.lbl){justify-self:center}
+.block>:is(h2,h3){max-width:640px;margin-inline:auto}
+/* grid row-gap cannot vary per row, so the third child takes the 32 that
+   turns the head gap into the 64 head-to-content step */
+.block>:is(.pill,.lbl)+:is(h2,h3)+*{margin-top:calc(var(--head-end) - var(--head-gap))}
+/* .prose is centred by the shared --mi rule at the foot of this file,
+   not by a name on a list. */
+/* a .block that introduces a full-width panel sitting beside it in the rail
+   owes that panel the same 64 a .head owes its content */
+.rail>.block+:not(.block){margin-top:var(--head-end)}
+
+/* ---- a rail that carries more than one content block under a single
+   head. The blocks stack on the card gutter; the head keeps its 64 by
+   handing the gutter back out of its own margin, so head -> content is
+   still exactly var(--head-end) and grid margins never collapse. ---- */
+.blocks{display:grid;gap:var(--gutter)}
+.blocks>.head{margin-bottom:calc(var(--head-end) - var(--gutter));width:100%}
+/* margin-inline:auto on a grid item shrinks it to fit-content, so the head
+   states its width or a two word heading wraps inside a 227px box */
+
+/* ---- narrow centred columns: the confirmation page, the legal page. The
+   column centres, the text inside it still reads left where it is prose. */
+.narrow{max-width:640px;margin-inline:auto}
+.doc{max-width:720px;margin-inline:auto}
+
+/* ---- opt back out: content that reads left ---- */
+.card,.cs-card,.post,.prose,.row,.row.step,details,summary,.doc,
+footer,.foot,.foot-col,.foot-brand,.foot-btm,
+.cmp,.cmp-l,.biz,.mrow,.stat,.stats-row,.marq-wrap,.nav-in,
+.field,form,.inline-form,li,.letter,.letter-in,.pk,.recap,.ticks{
+  text-align:left;
+  --jc:normal;
+}
+.card *,.cs-card *,.post *,.prose *,.row *,details *,footer *,
+.cmp-l *,.stat *,.doc *,.letter *,.pk *{text-align:inherit}
+/* the box itself still centres in the column that holds it (.prose is the
+   one that needs it); only what is INSIDE it reads and sits left. */
+:is(.card,.cs-card,.post,.prose,.row,details,summary,.doc,footer,.foot,.foot-col,
+.cmp,.cmp-l,.biz,.mrow,.stat,.stats-row,.marq-wrap,.nav-in,.field,form,
+.inline-form,li,.letter,.letter-in,.pk,.recap,.ticks,.csbar,.board) *{--mi:0}
+
+/* ---- CENTRING IS A RULE, NOT AN ALLOWLIST ---------------------------
+   This was `.band-btns,.soc-row,.metaline,.legend,.slot-row
+   {justify-content:center}` plus `.block>.prose{margin-inline:auto}`: a
+   list of five component names and one child selector. Anything a page
+   added afterwards that was a flex row inheriting centred text but
+   keeping justify-content:normal, or a capped block with no auto inline
+   margins, silently pinned left inside a centred column.
+   always-best-moving is what that costs: .rp-fig, the headline figure,
+   sat 125.7px left of its column centre with 251.5px of slack, and
+   .rp-sub, capped at 454.272px with margin-left/right 0, sat 86.9px
+   left, in a card whose third child was centred. book-a-call's
+   .call-meta is the same pattern waiting for a second child.
+   Now every column states which way it reads exactly once, in the two
+   lists above, and --jc / --mi carry that decision down by inheritance.
+   A component is centred because of WHERE IT SITS, not because someone
+   remembered to name it here. :where(*) is zero specificity, so any
+   component that states its own justify-content still wins.
+   The grid-auto-columns half is the safety catch. justify-content is a
+   flex property AND a grid property, and on a grid it resizes tracks: an
+   implicit auto column stops stretching the moment justify-content is
+   anything but normal, which narrowed the FAQ list from 1072 to 791.3,
+   the numbered step rows to 936.8, the Calendly slot to 640 and
+   everfinish's stat row to 914.8 the first time this rule was measured.
+   An implicit column of minmax(auto,1fr) always eats the free space, so
+   there is nothing left for justify-content to distribute and every grid
+   keeps the width it has today. Flex ignores grid-auto-columns, so flex
+   rows still centre. Nothing in this codebase sets grid-auto-flow:column
+   or grid-auto-columns, checked. ---- */
+:where(*){justify-content:var(--jc,normal);grid-auto-columns:var(--gac,minmax(auto,1fr))}
+:is(section,.band-out,.band,.band-in,.narrow,.block,.head,.center,.hero,.cshero)
+  :is(p,h1,h2,h3,h4,h5,h6,ul,ol,dl,figure,blockquote){margin-inline:var(--mi,0)}
+/* ---- the one component in the left-reading list that is not left-reading.
+   .stat is a centred card on all eight pages that use it (every .stat rule
+   in the build sets justify-items:center or align-items:center plus
+   text-align:center, checked). Sitting in the opt-out list above, it was
+   handing --jc:normal down to its own value rows, so serve-ninja's three
+   .stat-val and all fifteen .stat on case-studies computed
+   justify-content:normal. They measure 0.0px off axis today only because
+   they happen to be shrink-wrapped to their content - which is exactly the
+   state always-best-moving's .rp-fig was in before a second child pushed it
+   125.7px off centre. The card states its axis once, here, so a stat row
+   that grows a second child cannot repeat that.
+   case-studies.html's own row-direction .stat at <=560px declares its own
+   justify-content:flex-start, and a declared value still beats :where(*). */
+.stat{text-align:center;--jc:center;--mi:auto}
+.stat *{text-align:inherit}
+
+/* a layout container states its own axis, the way .narrow and .doc already do.
+   This replaces `.block>.prose{margin-inline:auto}`, which only reached a .prose
+   that happened to be a direct child of a .block. */
+.prose{margin-inline:auto}
+/* a single qualifying line under a card grid, on the grid's own gutter */
+.grid-note{margin-top:var(--gutter)}
+/* inside a .blocks grid the 24px row gap already pays for it */
+.blocks>.grid-note{margin-top:0}
+
+/* justify-items:center on a grid shrinks each item to its content width.
+   Anything that has to fill its column says so here. */
+.vsl,.cmp,.marq{justify-self:stretch;width:100%}
+/* ---- the map box fills its track's width but ALIGNS centre. It used to be
+   in the line above, and justify-self:stretch on a box that also carries a
+   max-width degrades to START: index's 440px box sat flush left in its
+   500px track and drew the graphic 30px left of the page axis even after
+   the card's own geometry was made symmetric. A page-level
+   margin-inline:auto used to paper over that, and inline margins are not
+   the mechanism any more - the centring rules above zero them inside a
+   card - so the alignment states it here, once, for every map box. ---- */
+.heat-box{width:100%;justify-self:center}
+.vsl{min-height:200px}
+
+/* ---- real LeadSnap screenshot, shown as-is -------------------------- */
+.shot-box{width:100%;background:var(--card);border-radius:12px;padding:12px;overflow:hidden}
+.shot{display:block;width:100%;height:auto;border-radius:6px}
+
+/* ---- ROOT CAUSE 14. A 1400px LeadSnap export renders at 23.4% linear
+   scale on a phone (1400 -> 328), and the box clips, so the ranking numbers
+   that are the entire reason for publishing a real export are illegible and
+   there is no pan and no zoom to recover them. .panx hands the box its
+   horizontal scroll back and lets the export sit at its own natural width:
+   100% scale, the reader pans, nothing is letterboxed smaller. Same
+   mechanism .board-wrap already uses for the leaderboard table, so this is
+   not a new interaction on the site. Desktop is untouched - above 700px the
+   export already fits the card at 74.9% and reads.
+
+   The selectors are structural rather than a list of page class names, so
+   this works whatever a page wrapped its export in: an aspect-ratio plate,
+   an absolutely positioned before/after stack, or a one-cell grid all
+   flatten back into normal flow so the scroller measures the image's own
+   width. :not([hidden]) is what carries the specificity over the page-local
+   .stack .shot rules, and it is also true: only the visible export is laid
+   out. ---- */
+@media (max-width:700px){
+  .panx{overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain}
+  .panx>*:not(img){position:static;display:block;width:max-content;
+    max-width:none;height:auto;aspect-ratio:auto;min-width:0}
+  .panx img:not([hidden]){position:static;width:auto;max-width:none;
+    height:auto;object-fit:fill}
+}
+/* a scrollable region is a keyboard stop, so it gets the same ring every
+   other focusable element on the site gets */
+.panx:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+
+/* ---- competitor leaderboard ------------------------------------------
+   The Location / Avg Rank / Place list read straight off a LeadSnap
+   screenshot. It is genuinely tabular, so it is a table with real column
+   headers rather than a stack of rows. One component for this job on every
+   case study: local-movers and co-painting both use it. */
+.board{width:100%;border-collapse:collapse;
+  background:var(--card);border-radius:12px;overflow:hidden}
+.board th,.board td{text-align:left;padding:14px 20px;font-size:14px;font-weight:500;
+  letter-spacing:-.04em;border-top:1px solid var(--ink-10)}
+.board thead th{border-top:0;color:var(--ink-48)}
+.board td{font-variant-numeric:tabular-nums}
+.board tr.is-client th,.board tr.is-client td{color:var(--ink)}
+.board tr.is-client{background:var(--ink-04)}
+.board-wrap{overflow-x:auto}
