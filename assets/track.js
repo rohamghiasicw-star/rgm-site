@@ -147,14 +147,71 @@ RGM.CONFIG = {
     }
   }, true);
 
-  /* ---- Calendly posts a message when a booking completes --------------
-     Only book-a-call.html embeds it, but listening here costs nothing on
-     the pages that do not.                                               */
+  /* ---- the booking, and where Schedule actually fires -----------------
+
+     Schedule is the event the whole Facebook campaign is optimised on, so this
+     is the most load-bearing code in the file. Read before changing.
+
+     THE SHAPE: the embed page catches Calendly's postMessage, marks the
+     session as booked, and hands off to /booked. Schedule then fires ON PAGE
+     LOAD there. A page-load fire cannot be raced by an unload the way a fire
+     immediately followed by a navigation can.
+
+     WHY WE NAVIGATE OURSELVES INSTEAD OF USING CALENDLY'S REDIRECT SETTING:
+     Calendly's redirect is configured in their dashboard, invisible from this
+     repo, and for an inline embed it is not obvious whether it moves the top
+     window or just the iframe. Doing it here means it is readable, testable,
+     and definitely the top window. It also means the Calendly event type can
+     stay on "Display confirmation page" and nobody has to sequence a settings
+     change against a deploy.
+
+     WHY THE FIRE IS GATED ON A FLAG: /booked is also reachable from a plain
+     link on book-a-call.html. Firing on every load of that page would invent a
+     conversion every time somebody browsed to it. It only fires for a session
+     that actually completed a booking.
+
+     The once-guard survives a refresh and the back button, so neither can
+     double count.
+
+     WHY "/booked.html" AND NOT THE PRETTY "/booked": the extensionless form
+     only resolves because the host rewrites it. GitHub Pages does today and
+     the local preview server does not, which is how this was caught. The
+     single most important conversion path on the site is not going to depend
+     on a URL rewrite. The file always resolves; the canonical tag on the page
+     still declares /booked, so nothing about indexing changes.             */
+
+  var BOOKED_FLAG = "rgm_booked";
+  var FIRED_FLAG  = "rgm_sched_fired";
+  var onBookedPage = /\/booked(\.html)?$/.test(location.pathname);
+
+  /* sessionStorage throws in private mode and with site data blocked. If it is
+     unavailable we must still not lose the booking, hence the fallbacks. */
+  function ssGet(k) { try { return window.sessionStorage.getItem(k); } catch (err) { return null; } }
+  function ssSet(k, v) { try { window.sessionStorage.setItem(k, v); return true; } catch (err) { return false; } }
+
+  function fireSchedule(where) {
+    if (ssGet(FIRED_FLAG) === "1") { log("schedule already fired, skipping", where); return; }
+    ssSet(FIRED_FLAG, "1");
+    RGM.track("booking_complete", "booking", { method: "calendly", fired_on: where });
+  }
+
+  if (onBookedPage && ssGet(BOOKED_FLAG) === "1") { fireSchedule("booked_page"); }
+
   window.addEventListener("message", function (e) {
     if (!e.data || typeof e.data !== "object") { return; }
-    if (e.data.event === "calendly.event_scheduled") {
-      RGM.track("booking_complete", "booking", { method: "calendly" });
-    }
+    if (e.data.event !== "calendly.event_scheduled") { return; }
+
+    var marked = ssSet(BOOKED_FLAG, "1");
+    if (onBookedPage) { fireSchedule("booked_page"); return; }
+
+    /* No sessionStorage means the flag will not survive the hop, so /booked
+       could never fire. Fire here instead and give the beacon room to leave. */
+    if (!marked) { fireSchedule("no_storage"); setTimeout(function () { location.href = "/booked.html"; }, 1200); return; }
+
+    setTimeout(function () { location.href = "/booked.html"; }, 150);
+    /* If that navigation never happens, do not lose the conversion. Harmless
+       when it does happen: the page is gone long before this runs. */
+    setTimeout(function () { fireSchedule("embed_fallback"); }, 5000);
   });
 
   /* ---- the intake form ------------------------------------------------

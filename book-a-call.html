@@ -89,7 +89,7 @@
      whichever comes last. With the widget script blocked, the empty frame
      hides and the link-out shows in its place. -->
 <noscript><style>.cal{display:none}.cal-fallback{display:grid}</style></noscript>
-<script src="assets/track.js"></script>
+<script src="assets/track.js?v=2026-09-17b"></script>
 </head>
 <body>
 
@@ -232,7 +232,8 @@
           name ready.</span>
       </p>
 
-      <!-- booked.html is Calendly's redirect target. The link also keeps the page
+      <!-- booked.html is where assets/track.js sends people after a booking, on a
+           delay so the Schedule beacon gets out first. The link also keeps the page
            reachable from real navigation instead of leaving it orphaned. -->
       <p class="tiny">
         Already booked the meeting?

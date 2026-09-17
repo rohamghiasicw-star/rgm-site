@@ -56,8 +56,25 @@
     .det{width:100%}
     .det .mrow{align-items:flex-start;gap:24px}
   }
+
+/* THE ASK. Deliberately the loudest block on the page after the confirmation:
+   it is the only thing here that changes how the call goes. */
+.ask{padding-block:0}
+.ask-card{padding:clamp(24px,4vw,40px);text-align:left}
+.ask-card h2{margin:10px 0 14px;letter-spacing:-.05em}
+.ask-card p{margin:0 0 12px;color:var(--ink-56);font-size:17px;line-height:1.5}
+.ask-card p:last-child{margin-bottom:0}
+.ask-eg{
+  display:inline-block;font-family:var(--mono,ui-monospace,SFMono-Regular,Menlo,monospace);
+  font-size:16px;color:var(--ink)!important;background:var(--ink-04);
+  border-radius:var(--field);padding:10px 16px;margin:2px 0 16px!important;
+}
+.wait{padding-block:var(--sect) 0}
+.wait-v{max-width:680px;margin:0 auto}
+.wait-v video{display:block;width:100%;height:auto;border-radius:14px;background:#000;
+  box-shadow:0 20px 44px -26px rgba(0,0,0,.5)}
 </style>
-<script src="assets/track.js"></script>
+<script src="assets/track.js?v=2026-09-17b"></script>
 </head>
 <body>
 
@@ -100,6 +117,28 @@
     </div>
   </section>
 
+  <!-- THE ASK. The only thing on this page that changes the outcome of the
+       call. Two jobs: handing something over raises commitment, which lifts
+       show rate, and it means the call opens with their map already pulled
+       instead of Roham discovering their market live. That prep is the actual
+       differentiator and right now it happens after the call, not before it.
+       It sits directly under the confirmation on purpose, while they are at
+       their most committed. -->
+  <section class="ask">
+    <div class="rail">
+      <div class="card ask-card">
+        <span class="pill">One thing before we talk</span>
+        <h2 class="t32">Reply to that email with the search you want to <em>win</em></h2>
+        <p>Hit reply on the confirmation that just landed and send me the exact words a
+          customer would type into Google to find a business like yours.</p>
+        <p class="ask-eg">plumbers Manchester</p>
+        <p>That is all I need. I will have your map pulled and your competitors scored
+          before we speak, so the twenty minutes goes on what to do about it instead of
+          on me asking you questions.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- 2. What happens next, 3 steps -->
   <section class="next">
     <div class="rail">
@@ -120,9 +159,10 @@
         <div class="row">
           <div class="step">
             <p class="step-t"><span class="num">02.</span>We look before we talk</p>
-            <p class="step-d">Before the call we go through your Google Business Profile,
-              the website behind it, and the local authority that makes the two agree.
-              Those are the three levers. The call starts with findings, not questions.</p>
+            <p class="step-d">Send that search term over and we scan it before the call: your
+              Google Business Profile, the website behind it, and the local authority that
+              makes the two agree. Those are the three levers. The call starts with
+              findings, not questions.</p>
           </div>
         </div>
 
@@ -139,12 +179,34 @@
     </div>
   </section>
 
+  <!-- PRE-SELL while they wait. Same recording as the landing page. It does a
+       different job here: on /uk it is trying to earn the booking, here it is
+       warming someone who has already booked so they arrive knowing the pitch.
+       preload="none" so nobody pulls 12MB they did not ask for.
+       NO text track: captions are burned into the pixels, and a track would
+       either double-paint or create a third copy of the cue timings to drift. -->
+  <section class="wait">
+    <div class="rail">
+      <div class="head mid">
+        <h2 class="t32">While you <em>wait</em></h2>
+        <p class="lede">Two minutes on how the top 3 actually works, so none of it is new
+          when we speak.</p>
+      </div>
+      <div class="wait-v">
+        <video controls playsinline preload="none"
+               poster="assets/vsl/vsl-poster.jpg" width="1280" height="720">
+          <source src="assets/vsl/rgm-vsl-720.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+
   <!-- 3. Back home -->
   <section class="close">
     <div class="rail">
       <div class="stack center">
-        <p class="lede">Nothing to prepare between now and then. Just have your business
-          name ready and we will take it from there.</p>
+        <p class="lede">Send that one search term over and there is nothing else to do.
+          Turn up and we will take it from there.</p>
         <div class="band-btns">
           <a class="btn" href="index.html">Back to the home page</a>
           <a class="btn btn-wa" href="https://wa.me/19022790345" target="_blank" rel="noopener">
