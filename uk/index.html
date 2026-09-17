@@ -146,22 +146,6 @@
     <p class="cta-sub">Free 20 minute audit. No obligation.</p>
   </section>
 
-  <!-- The VSL sits directly under the first CTA, not above it. The campaign
-       spec said above, but the ad is paying for the first screen and a 720p
-       player pushes the only ask below the fold on a phone. The CTA stays up
-       top and the video does the convincing for anyone who scrolls.
-       preload="none" so a phone on mobile data never pulls 12MB before it is
-       asked for; the 125KB poster does the selling.
-       NO text track on purpose: the captions are burned into the video pixels
-       already, so adding one either double-paints or creates a THIRD copy of
-       the cue timings to drift. See the warning in index.html. -->
-  <section class="lp lp-video">
-    <video controls playsinline preload="none"
-           poster="../assets/vsl/vsl-poster.jpg" width="1280" height="720">
-      <source src="../assets/vsl/rgm-vsl-720.mp4" type="video/mp4">
-    </video>
-  </section>
-
   <!-- THE BOOKING SECTION IS AN INLINE EMBED AND HAS TO STAY ONE.
        The Facebook ad set optimises for the standard event Schedule, and
        assets/track.js fires that from the calendly.event_scheduled postMessage
@@ -183,6 +167,22 @@
         <a href="https://calendly.com/rg-rohamresults/free-20-min-audit-how-to-rank-in-the-top-3-on-google" target="_blank" rel="noopener">Open it in a new tab</a>.</p>
     </div>
   </section>
+
+  <!-- The VSL sits BELOW the calendar. Roham's call, and the order is
+       deliberate: anyone already sold by the ad can book without scrolling past
+       a video, and the VSL is there for anyone who needs convincing first.
+       preload="none" so a phone on mobile data never pulls 12MB before it is
+       asked for; the 125KB poster does the selling.
+       NO text track on purpose: the captions are burned into the video pixels
+       already, so adding one either double-paints or creates a THIRD copy of
+       the cue timings to drift. See the warning in index.html. -->
+  <section class="lp lp-video">
+    <video controls playsinline preload="none"
+           poster="../assets/vsl/vsl-poster.jpg" width="1280" height="720">
+      <source src="../assets/vsl/rgm-vsl-720.mp4" type="video/mp4">
+    </video>
+  </section>
+
 
   <!-- PROOF. Every figure is legible in the screenshot beside it. These are
        Canadian clients and the page says so: "Surrey" is written out as
