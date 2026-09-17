@@ -101,6 +101,7 @@
 .cap strong{color:var(--ink);font-weight:500}
 
 .row3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gutter);margin-top:32px;align-items:stretch}
+.solo{max-width:380px;margin:30px auto 0}
 .mini{display:flex;flex-direction:column;background:var(--card);border-radius:12px;overflow:hidden}
 .mini img{display:block;width:100%;height:auto;background:#202124;border-bottom:1px solid var(--ink-10)}
 .mini .mb{padding:16px 18px 18px}
@@ -170,64 +171,6 @@
     </video>
   </section>
 
-  <!-- PROOF. Every figure is legible in the screenshot beside it. These are
-       Canadian clients and the page says so: "Surrey" is written out as
-       Surrey, British Columbia, because a UK reader would otherwise take it
-       for Surrey, England and the page would be claiming work in the wrong
-       country. -->
-  <section class="lp-wide proof">
-    <span class="eyebrow">Results</span>
-
-    <div class="proof-card panx-uk" tabindex="0">
-      <img src="../assets/leadsnap/local-movers-2026-09-05.jpg" width="1400" height="875"
-           loading="lazy" decoding="async"
-           alt="LeadSnap heatmap for a moving company in Surrey, British Columbia, keyword movers surrey, ranking source Google Maps, 4 September 2026. Market share 100.00% placing 1st, top 3 coverage 45.56% placing 1st, on a 13 by 13 grid of 169 points covering 229.76 square kilometres.">
-    </div>
-    <p class="cap"><strong>1st on the map</strong> for &ldquo;movers surrey&rdquo;, in the top 3
-      across 45.56% of the grid. A moving company in Surrey, British Columbia, scanned
-      4 September 2026.</p>
-
-    <div class="row3">
-      <article class="mini">
-        <img src="../assets/gbp/local-movers-interactions.jpg" width="1200" height="654" loading="lazy" decoding="async"
-             alt="Google Business Profile performance screen showing 730 Business Profile interactions from April to September 2026, peaking at 181 in August.">
-        <div class="mb">
-          <p class="n">730</p>
-          <p class="l">Business Profile interactions</p>
-          <p class="w">Surrey BC mover &middot; Apr to Sept 2026</p>
-        </div>
-      </article>
-      <article class="mini">
-        <img src="../assets/gbp/local-movers-calls.jpg" width="1200" height="654" loading="lazy" decoding="async"
-             alt="Google Business Profile Calls tab showing 205 calls made from the profile between April and September 2026, peaking at 66 in August.">
-        <div class="mb">
-          <p class="n">205</p>
-          <p class="l">Calls straight from the profile</p>
-          <p class="w">Same mover &middot; Apr to Sept 2026</p>
-        </div>
-      </article>
-      <article class="mini">
-        <img src="../assets/gbp/always-best-moving-website-clicks.jpg" width="1200" height="654" loading="lazy" decoding="async"
-             alt="Google Business Profile Website clicks tab showing 121 website clicks made from the profile between April and September 2026, peaking at 38 in August.">
-        <div class="mb">
-          <p class="n">121</p>
-          <p class="l">Website clicks from the profile</p>
-          <p class="w">Vancouver BC mover &middot; Apr to Sept 2026</p>
-        </div>
-      </article>
-    </div>
-
-    <p class="cap" style="margin-top:22px">Straight off Google, exactly as it reports them.
-      Nothing here is redrawn.</p>
-  </section>
-
-  <section class="lp">
-    <div class="spots"><span>Only 4 spots a month.</span></div>
-    <div class="center mt32">
-      <a class="btn cta" href="#book">Yes, I want more customers from Google</a>
-    </div>
-  </section>
-
   <!-- THE BOOKING SECTION IS AN INLINE EMBED AND HAS TO STAY ONE.
        The Facebook ad set optimises for the standard event Schedule, and
        assets/track.js fires that from the calendly.event_scheduled postMessage
@@ -249,6 +192,69 @@
         <a href="https://calendly.com/rg-rohamresults/free-20-min-audit-how-to-rank-in-the-top-3-on-google" target="_blank" rel="noopener">Open it in a new tab</a>.</p>
     </div>
   </section>
+
+  <!-- PROOF. Every figure is legible in the screenshot beside it. These are
+       Canadian clients and the page says so: "Surrey" is written out as
+       Surrey, British Columbia, because a UK reader would otherwise take it
+       for Surrey, England and the page would be claiming work in the wrong
+       country. -->
+  <section class="lp-wide proof">
+    <span class="eyebrow">Results</span>
+
+    <!-- HERO PROOF IS THE OUTCOME, NOT THE RANKING. The ad's primary text is
+         "The top 3 on Google Maps get most of the calls", so the first thing a
+         visitor sees here has to be calls. The heatmap explains HOW and comes
+         second. TNY leads on a call count for the same reason.
+         730 interactions was cut deliberately: "interactions" is the vaguest
+         unit on the list, and a bigger-but-vaguer number sitting near 205 makes
+         the hero look smaller. Do not put it back next to this. -->
+    <div class="proof-card">
+      <img src="../assets/gbp/local-movers-calls.jpg" width="1200" height="654"
+           loading="lazy" decoding="async"
+           alt="Google Business Profile Calls tab for Local Movers Surrey Ltd showing 205 calls made from the profile between April and September 2026, peaking at 66 in August.">
+    </div>
+    <p class="cap"><strong>205 calls straight from Google in six months</strong>, peaking at 66 in
+      a single month. Local Movers Surrey Ltd, in Surrey, British Columbia.</p>
+
+    <p class="cap" style="margin-top:32px">And this is why.</p>
+
+    <div class="proof-card panx-uk" tabindex="0" style="margin-top:12px">
+      <img src="../assets/leadsnap/local-movers-2026-09-05.jpg" width="1400" height="875"
+           loading="lazy" decoding="async"
+           alt="LeadSnap heatmap for Local Movers Surrey Ltd, keyword movers surrey, ranking source Google Maps, 4 September 2026. Market share 100.00% placing 1st, top 3 coverage 45.56% placing 1st, on a 13 by 13 grid of 169 points covering 229.76 square kilometres.">
+    </div>
+    <!-- Caption claims only what is legible in the image above it: the badges
+         read 1st on market share and 1st on top 3 coverage at 45.56%. It does
+         NOT claim top 3 everywhere, because 45.56% is not everywhere. -->
+    <p class="cap"><strong>1st on the map</strong> for &ldquo;movers surrey&rdquo;, and in the
+      top 3 across 45.56% of the grid. Scanned 4 September 2026.</p>
+
+    <!-- The second client is here to make the page read as a pattern rather
+         than one lucky account. Different business, different city. That is its
+         job, not the size of the number. -->
+    <div class="solo">
+      <article class="mini">
+        <img src="../assets/gbp/always-best-moving-website-clicks.jpg" width="1200" height="654" loading="lazy" decoding="async"
+             alt="Google Business Profile Website clicks tab for Always Best Moving showing 121 website clicks made from the profile between April and September 2026, peaking at 38 in August.">
+        <div class="mb">
+          <p class="n">121</p>
+          <p class="l">Website clicks from the profile</p>
+          <p class="w">Always Best Moving, Vancouver BC &middot; Apr to Sept 2026</p>
+        </div>
+      </article>
+    </div>
+    <p class="cap" style="margin-top:16px">A different business, a different city. Same method.
+      Straight off Google, nothing redrawn.</p>
+  </section>
+
+  <section class="lp">
+    <div class="spots"><span>Only 4 spots a month.</span></div>
+    <div class="center mt32">
+      <a class="btn cta" href="#book">Yes, I want more customers from Google</a>
+      <p class="cta-sub">Takes you back up to the calendar.</p>
+    </div>
+  </section>
+
 
 </main>
 
