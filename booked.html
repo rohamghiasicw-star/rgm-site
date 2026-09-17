@@ -87,7 +87,12 @@
 }
 .wait{padding-block:var(--sect) 0}
 .wait .head{margin-bottom:28px}
-.wait-v{max-width:680px;margin:0 auto}
+.cs-link{display:flex;flex-direction:column;gap:4px;padding:22px 24px;text-decoration:none;
+  transition:transform .15s ease,box-shadow .15s ease}
+.cs-link:hover{transform:translateY(-2px);box-shadow:0 18px 34px -24px rgba(0,0,0,.45)}
+.cs-n{font-size:26px;font-weight:500;letter-spacing:-.05em;line-height:1.1;color:var(--stat-good)}
+.cs-l{font-size:15px;color:var(--ink-56);line-height:1.35}
+.cs-go{margin-top:8px;font-size:14px;color:var(--ink-48)}
 .wait-v video{display:block;width:100%;height:auto;border-radius:14px;background:#000;
   box-shadow:0 20px 44px -26px rgba(0,0,0,.5)}
 </style>
@@ -146,12 +151,10 @@
       <div class="card ask-card">
         <span class="pill">One thing before we talk</span>
         <h2 class="t32">Reply to that email with the search you want to <em>win</em></h2>
-        <p>Hit reply on the confirmation that just landed and send me the exact words a
-          customer would type into Google to find a business like yours.</p>
+        <p>Hit reply on the confirmation that just landed and send me the search term you'd
+          want to show up for.</p>
         <p class="ask-eg">plumbers Manchester</p>
-        <p>That is all I need. I will have your map pulled and your competitors scored
-          before we speak, so the twenty minutes goes on what to do about it instead of
-          on me asking you questions.</p>
+        <p>That is all I need. I'll have your map pulled before we speak.</p>
       </div>
     </div>
   </section>
@@ -167,28 +170,24 @@
         <div class="row">
           <div class="step">
             <p class="step-t"><span class="num">01.</span>Check your inbox</p>
-            <p class="step-d">The confirmation is landing now with the time and the call
-              link. Add it to your calendar so it does not get buried. If it is not there
-              in a few minutes, look in spam and promotions.</p>
+            <p class="step-d">It is landing now with the time and the call link. If it is not
+              there in a few minutes, check spam.</p>
           </div>
         </div>
 
         <div class="row">
           <div class="step">
             <p class="step-t"><span class="num">02.</span>We look before we talk</p>
-            <p class="step-d">Send that search term over and we scan it before the call: your
-              Google Business Profile, the website behind it, and the local authority that
-              makes the two agree. Those are the three levers. The call starts with
-              findings, not questions.</p>
+            <p class="step-d">We scan your profile, your site and your local authority before
+              we speak. You get findings, not questions.</p>
           </div>
         </div>
 
         <div class="row">
           <div class="step">
             <p class="step-t"><span class="num">03.</span>You get the plan in writing</p>
-            <p class="step-d">On the call we walk through what is holding your ranking
-              back and what we would do about it. After, you get it written down. Run it
-              yourself for free, or we handle all of it. No pressure either way.</p>
+            <p class="step-d">What is holding your ranking back, and what we would do about it.
+              Run it yourself for free, or we handle it.</p>
           </div>
         </div>
 
@@ -196,27 +195,37 @@
     </div>
   </section>
 
-  <!-- PRE-SELL while they wait. Same recording as the landing page. It does a
-       different job here: on /uk it is trying to earn the booking, here it is
-       warming someone who has already booked so they arrive knowing the pitch.
-       preload="none" so nobody pulls 12MB they did not ask for.
-       NO text track: captions are burned into the pixels, and a track would
-       either double-paint or create a third copy of the cue timings to drift. -->
+  <!-- WAS THE VSL. Roham: "don't need vsl again", and he is right. They have
+       just watched it on the landing page; playing the same pitch at someone who
+       has already said yes is selling past the close. Real work instead, which
+       is the thing that actually warms a booked lead. -->
   <section class="wait">
     <div class="rail">
       <div class="head mid">
         <h2 class="t32">While you <em>wait</em></h2>
-        <p class="lede">Two minutes on how the top 3 actually works, so none of it is new
-          when we speak.</p>
       </div>
-      <div class="wait-v">
-        <video controls playsinline preload="none"
-               poster="assets/vsl/vsl-poster.jpg" width="1280" height="720">
-          <source src="assets/vsl/rgm-vsl-720.mp4" type="video/mp4">
-        </video>
+      <div class="grid-3">
+        <a class="card cs-link" href="case-studies/local-movers.html">
+          <p class="cs-n">1st</p>
+          <p class="cs-l">on the Surrey movers map</p>
+          <p class="cs-go">Local Movers Ltd &rarr;</p>
+        </a>
+        <a class="card cs-link" href="case-studies/mamba-drainage.html">
+          <p class="cs-n">4th to 1st</p>
+          <p class="cs-l">of 57 in the Vancouver market</p>
+          <p class="cs-go">Mamba Drainage &rarr;</p>
+        </a>
+        <a class="card cs-link" href="case-studies/always-best-moving.html">
+          <p class="cs-n">22 to 100</p>
+          <p class="cs-l">clicks a month from Google</p>
+          <p class="cs-go">Always Best Moving &rarr;</p>
+        </a>
       </div>
+      <p class="cap" style="margin-top:22px">Or read the
+        <a href="blog.html" style="text-decoration:underline;text-underline-offset:3px">blog</a>.</p>
     </div>
   </section>
+
 
   <!-- 3. Back home -->
   <section class="close">
