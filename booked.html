@@ -59,17 +59,34 @@
 
 /* THE ASK. Deliberately the loudest block on the page after the confirmation:
    it is the only thing here that changes how the call goes. */
+/* The card is capped at a readable measure. Left to the 1120px rail its body
+   text ran 1052px wide on desktop, which is roughly double a comfortable line
+   and the reason this section read as a wall. */
 .ask{padding-block:0}
-.ask-card{padding:clamp(24px,4vw,40px);text-align:left}
-.ask-card h2{margin:10px 0 14px;letter-spacing:-.05em}
-.ask-card p{margin:0 0 12px;color:var(--ink-56);font-size:17px;line-height:1.5}
-.ask-card p:last-child{margin-bottom:0}
+/* Laid out with flex on purpose. site.css gives any heading containing an <em>
+   a -.18em block margin (a leading trim, so the serif italic does not clip).
+   That rule out-specifies a plain `.ask-card h2` and was silently eating about
+   5px off the gap above AND below the heading. Flex with a stated gap, and the
+   trim kept where it belongs, means the spacing here is one number instead of
+   an argument between three rules. */
+.ask-card{
+  max-width:720px;margin-inline:auto;padding:clamp(28px,4vw,44px);
+  display:flex;flex-direction:column;align-items:flex-start;gap:18px;text-align:left;
+}
+.ask-card > *{margin:0}
+/* Specificity has to beat :is(.t70,...):has(:is(em,.accent)) in site.css, which
+   is (0,2,0). `.ask-card h2.t32` is (0,2,1). Only the negative margin is
+   cancelled: the .18em padding that stops the serif italic clipping stays, and
+   it usefully gives the heading a touch more air than the body gaps. */
+.ask-card h2.t32{margin-block:0;letter-spacing:-.05em;line-height:1.16}
+.ask-card p{color:var(--ink-56);font-size:17px;line-height:1.6}
 .ask-eg{
-  display:inline-block;font-family:var(--mono,ui-monospace,SFMono-Regular,Menlo,monospace);
-  font-size:16px;color:var(--ink)!important;background:var(--ink-04);
-  border-radius:var(--field);padding:10px 16px;margin:2px 0 16px!important;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:16px;line-height:1.3;color:var(--ink)!important;background:var(--ink-04);
+  border-radius:var(--field);padding:12px 18px;
 }
 .wait{padding-block:var(--sect) 0}
+.wait .head{margin-bottom:28px}
 .wait-v{max-width:680px;margin:0 auto}
 .wait-v video{display:block;width:100%;height:auto;border-radius:14px;background:#000;
   box-shadow:0 20px 44px -26px rgba(0,0,0,.5)}
@@ -234,7 +251,13 @@
           <span>Marketing</span>
         </a>
         <h2 class="t26 foot-tag">Dominate Your Local <em>Market</em>.</h2>
-        <p class="small muted">Built for local businesses in Canada.</p>
+        <!-- Geo-neutral ON THIS PAGE ONLY. Every other page is Canada-facing by
+             design and stays that way. booked.html is now the landing spot for
+             the Manchester campaign as well, and "Built for local businesses in
+             Canada" tells a UK lead who has just booked a call that the service
+             is not for them. The rest of the footer, including the Canada line
+             in the address block, is untouched. -->
+        <p class="small muted">Built for local businesses.</p>
       </div>
 
       <div class="foot-col">
