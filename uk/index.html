@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="../assets/logos/marquee/rg-favicon.png" sizes="any">
+<title>Top 3 on Google in 90 days | RG Marketing</title>
+<meta name="description" content="I will get your business into the top 3 on Google in 90 days. If I don't, I work for free until you're there. Book a free 20 minute audit.">
+
+<!-- noindex on purpose. This is a paid-traffic landing page for one Facebook
+     campaign. Letting a thin single-offer page compete in organic against the
+     real pages would be a bad look for a company that sells local SEO. It is
+     deliberately NOT in sitemap.xml either. follow is kept so the links out to
+     the case studies still pass. Flip this if the page is ever used organically. -->
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://rgresults.ca/uk">
+
+<meta property="og:title" content="Top 3 on Google in 90 days">
+<meta property="og:description" content="If I don't, I work for free until you're there.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rgresults.ca/uk">
+<meta property="og:image" content="https://rgresults.ca/assets/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="preconnect" href="https://assets.calendly.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;family=Source+Serif+4:ital,wght@1,500&amp;display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+/* -------------------------------------------------------------------
+   PAGE-SPECIFIC ONLY. The system lives in ../assets/site.css.
+   This is a single-column landing page, so it does not use the site nav,
+   the marquee or the footer link columns. Everything here is either a
+   layout the shared sheet has no class for, or the .gbp-* card set, which
+   lives inline on index.html rather than in site.css and therefore has to
+   be repeated here. If those cards ever move into site.css, delete the
+   block below rather than letting two copies drift.
+   ------------------------------------------------------------------- */
+
+.lp{max-width:860px;margin:0 auto;padding-inline:24px}
+.lp-top{padding-block:28px;text-align:center}
+.lp-top img{display:block;margin:0 auto;height:52px;width:auto}
+
+.lp-hero{text-align:center;padding-block:8px 40px}
+.lp-hero h1{letter-spacing:-.05em;line-height:1.04;margin:0}
+.lp-guar{margin:18px auto 0;max-width:22ch;font-size:clamp(20px,2.2vw,26px);
+  letter-spacing:-.045em;line-height:1.2;font-family:var(--serif);font-style:italic}
+.lp-small{margin-top:22px;font-size:15px;color:var(--ink-56);letter-spacing:-.03em}
+
+/* the CTA. Full width on a phone, hugging on desktop, and never below the
+   44px tap minimum the rest of the site holds to. */
+.cta-wrap{text-align:center;margin-block:30px}
+.cta{display:inline-block;max-width:100%;font-size:17px;padding:19px 38px;line-height:1.25}
+.cta-note{margin-top:12px;font-size:14px;color:var(--ink-48)}
+
+.spots{text-align:center;margin-block:8px 0}
+.spots p{display:inline-block;font-size:clamp(18px,2vw,22px);letter-spacing:-.04em;
+  background:var(--ink-04);border-radius:var(--field);padding:12px 22px}
+
+.res-head{text-align:center;margin-bottom:26px}
+.res-head h2{letter-spacing:-.05em;margin:0}
+.res-head p{margin-top:12px;color:var(--ink-56);font-size:17px;letter-spacing:-.04em}
+
+.gbp-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch;margin-top:22px}
+.gbp-card{background:var(--card);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.gbp-shot{display:block;width:100%;height:auto;background:#202124;border-bottom:1px solid var(--ink-10)}
+.gbp-body{padding:18px 20px 20px}
+.gbp-n{font-size:30px;font-weight:500;letter-spacing:-.06em;line-height:1.05;color:var(--stat-good)}
+.gbp-l{margin-top:6px;font-size:15px;color:var(--ink-56)}
+.gbp-w{margin-top:2px;font-size:14px;color:var(--ink-36)}
+
+.book-head{text-align:center;margin-bottom:20px}
+.book-head h2{letter-spacing:-.05em;margin:0}
+.calendly-inline-widget{width:100%;max-width:100%;min-width:320px;height:700px}
+
+.lp-foot{text-align:center;padding-block:34px 44px;color:var(--ink-48);font-size:14px}
+.lp-foot a{color:var(--ink-48)}
+
+@media (max-width:880px){ .gbp-grid{grid-template-columns:minmax(0,1fr)} }
+@media (max-width:700px){
+  .calendly-inline-widget{min-width:0;height:1000px}
+  .cta{display:block;padding-inline:20px}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#book">Skip to booking</a>
+
+<header class="lp lp-top">
+  <img src="../assets/logos/marquee/rg-mark-dark.png" alt="RG Marketing" width="404" height="260">
+</header>
+
+<main>
+
+  <section class="lp lp-hero" style="padding-block:8px 24px">
+    <h1 class="t56">I'll get your business into the top 3 on Google in 90 days</h1>
+    <p class="lp-guar">If I don't, I work for free until you're there.</p>
+    <p class="lp-small">Book your free audit</p>
+  </section>
+
+  <!-- VSL sits above the first CTA, per the campaign spec.
+       preload="none" so a phone on mobile data never pulls 12MB before
+       someone asks for it. The 125KB poster does the selling.
+       NO text track here on purpose: the captions are burned into the video
+       pixels already, so adding one either double-paints or creates a THIRD
+       copy of the cue timings to drift. See the warning in index.html. -->
+  <section class="lp" style="padding-block:0">
+    <div class="vsl">
+      <video controls playsinline preload="none"
+             poster="../assets/vsl/vsl-poster.jpg"
+             width="1280" height="720"
+             style="display:block;width:100%;height:auto;border-radius:12px;background:#000">
+        <source src="../assets/vsl/rgm-vsl-720.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="cta-wrap">
+      <a class="btn cta" href="#book">Yes, I want more customers from Google</a>
+      <p class="cta-note">Free 20 minute audit. No obligation.</p>
+    </div>
+  </section>
+
+  <!-- RESULTS. Every figure below is legible in the screenshot beside it.
+       These are Canadian clients. "Surrey" is spelled out as British Columbia
+       because a UK reader would otherwise read it as Surrey, England, and that
+       would be an accidental lie about where the work was done. -->
+  <section class="lp" style="padding-block:34px">
+    <div class="res-head">
+      <span class="pill">Straight off Google</span>
+      <h2 class="t40" style="margin-top:14px">Real businesses, <em>real calls</em></h2>
+      <p>These are the actual dashboards, exactly as Google and LeadSnap show them.
+        Nothing here is redrawn.</p>
+    </div>
+
+    <figure class="shot-box panx" tabindex="0" style="margin:0">
+      <img class="shot" src="../assets/leadsnap/local-movers-2026-09-05.jpg"
+           width="1400" height="875" loading="lazy" decoding="async"
+           alt="LeadSnap heatmap for a moving company in Surrey, British Columbia, keyword movers surrey, ranking source Google Maps, 4 September 2026. Market share 100.00% placing 1st, top 3 coverage 45.56% placing 1st, on a 13 by 13 grid of 169 points covering 229.76 square kilometres.">
+    </figure>
+    <p style="text-align:center;margin-top:12px;color:var(--ink-56);font-size:15px">
+      A mover in Surrey, British Columbia. 1st on market share, in the top 3 across
+      45.56% of the map. Scanned 4 September 2026.</p>
+
+    <div class="gbp-grid">
+      <article class="gbp-card">
+        <img class="gbp-shot" src="../assets/gbp/local-movers-interactions.jpg" width="1200" height="654"
+             alt="Google Business Profile performance screen showing 730 Business Profile interactions from April to September 2026, peaking at 181 in August." loading="lazy" decoding="async">
+        <div class="gbp-body">
+          <p class="gbp-n">730</p>
+          <p class="gbp-l">Business Profile interactions</p>
+          <p class="gbp-w">Surrey BC mover &middot; Apr to Sept 2026</p>
+        </div>
+      </article>
+      <article class="gbp-card">
+        <img class="gbp-shot" src="../assets/gbp/local-movers-calls.jpg" width="1200" height="654"
+             alt="Google Business Profile Calls tab showing 205 calls made from the profile between April and September 2026, peaking at 66 in August." loading="lazy" decoding="async">
+        <div class="gbp-body">
+          <p class="gbp-n">205</p>
+          <p class="gbp-l">Calls made from the profile</p>
+          <p class="gbp-w">Same mover &middot; Apr to Sept 2026</p>
+        </div>
+      </article>
+      <article class="gbp-card">
+        <img class="gbp-shot" src="../assets/gbp/always-best-moving-website-clicks.jpg" width="1200" height="654"
+             alt="Google Business Profile Website clicks tab showing 121 website clicks made from the profile between April and September 2026, peaking at 38 in August." loading="lazy" decoding="async">
+        <div class="gbp-body">
+          <p class="gbp-n">121</p>
+          <p class="gbp-l">Website clicks from the profile</p>
+          <p class="gbp-w">Vancouver BC mover &middot; Apr to Sept 2026</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="lp" style="padding-block:10px 0">
+    <div class="spots"><p>Only 4 spots a month.</p></div>
+    <div class="cta-wrap" style="margin-top:22px">
+      <a class="btn cta" href="#book">Yes, I want more customers from Google</a>
+    </div>
+  </section>
+
+  <!-- THE BOOKING SECTION IS AN INLINE EMBED AND HAS TO STAY ONE.
+       The Facebook ad set optimises for the standard event Schedule, and
+       assets/track.js fires that from the calendly.event_scheduled postMessage
+       in THIS window. Turn these CTAs into outbound links to calendly.com and
+       the message is posted on Calendly's own page instead, this page never
+       hears it, and Schedule silently never fires for the whole campaign.
+       The slug is the original one: Calendly keeps the old slug after a rename,
+       and the "appear-first" variant 404s. -->
+  <section id="book" class="lp" style="padding-block:34px">
+    <div class="book-head">
+      <h2 class="t32">Pick a time</h2>
+    </div>
+    <div class="calendly-inline-widget"
+         data-url="https://calendly.com/rg-rohamresults/free-20-min-audit-how-to-rank-in-the-top-3-on-google?hide_gdpr_banner=1"></div>
+    <p style="text-align:center;margin-top:14px;font-size:14px;color:var(--ink-48)">
+      Calendar not loading?
+      <a href="https://calendly.com/rg-rohamresults/free-20-min-audit-how-to-rank-in-the-top-3-on-google" target="_blank" rel="noopener">Open it in a new tab</a>.
+    </p>
+  </section>
+
+</main>
+
+<footer class="lp-foot">
+  <p>RG Marketing &middot; Canada</p>
+  <p style="margin-top:6px"><a href="../index.html">rgresults.ca</a></p>
+</footer>
+
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<!-- One tracking file for the whole site. Loads the Meta pixel 835961859444225,
+     maps booking_complete -> Schedule and generate_lead -> Lead. Do not add a
+     second pixel snippet to this page, it would double-count every event. -->
+<script src="../assets/track.js"></script>
+</body>
+</html>
