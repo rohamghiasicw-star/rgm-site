@@ -7,9 +7,8 @@
 <title>Top 3 on Google in 90 days | RG Marketing</title>
 <meta name="description" content="I'll get your business into the top 3 on Google in 90 days. If I don't, I work for free until you're there. Free video audit of your Google Business Profile.">
 
-<!-- noindex on purpose, same as /uk. Paid-traffic page for one Toronto
-     campaign. A thin single-offer page competing in organic would be a bad
-     look for a company that sells local SEO. Deliberately NOT in sitemap.xml. -->
+<!-- noindex on purpose, same as /uk. Paid-traffic page for one campaign, not
+     a page that should compete with the site in search. -->
 <meta name="robots" content="noindex,follow">
 <link rel="canonical" href="https://rgresults.ca/top3">
 
@@ -22,137 +21,322 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;family=Source+Serif+4:ital,wght@1,500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Source+Serif+4:ital,wght@1,500&amp;display=swap">
 <link rel="stylesheet" href="../assets/site.css">
 <style>
 /* =====================================================================
-   /top3, the Toronto campaign landing page.
+   /top3, the paid campaign landing page.
 
-   SHAPE is /uk's, which is TNY's: logo only and no nav, one centred column,
-   the offer as the headline with the guarantee directly under it, one loud
-   CTA inside the first screen, proof, then the ask. THEME is ours, from
-   assets/site.css. The difference from /uk is the ask itself: /uk books a
-   call, this one collects a qualifying form so the audit is recorded first.
+   DESIGN BRIEF, Roham 2026-09-26: "keep it like the tony one just different
+   mechanism". The reference is tnymarketing.com/seo/ro, measured, not
+   guessed. What that page does and this one now copies:
 
-   THE FORM CHROME (.prog, .fstep, .choice, .dot, .err, .recap) is lifted
-   from free-analysis.html rather than reinvented, so the two multi-step
-   forms on this site behave and look identically. If that chrome ever moves
-   into site.css, delete it from both pages rather than letting three copies
-   drift.
+     - one centred column, logo only, no nav, nothing to click but the ask
+     - a HEAVY headline (TNY: 47.9px / 800 / -0.02em / 1.1) instead of the
+       site's restrained 500
+     - exactly ONE saturated accent, on ONE phrase of the headline, carried
+       by a 4px underline under it
+     - one loud gradient pill as the only button shape on the page, with a
+       coloured glow under it (TNY: 100px radius, 23px/30px padding, 23.2px,
+       weight 800, shadow rgba(...,.55) 0 14px 30px -6px + white inset)
+     - a bold "start here" line with an arrow pointing down at the ask
+     - proof as ONE big screenshot with a caption, then a row of small ones
+     - tight vertical rhythm, whole page short
+
+   TWO DELIBERATE DEPARTURES from TNY, both because of Roham's earlier
+   correction on /uk ("keeping our theme and quality"):
+
+   1. The accent is OUR red, --stat-bad #c0392b, which already exists in
+      site.css as the before/after stat colour. Not TNY's #D92D1E. Same
+      mechanic, our palette.
+   2. The ground stays the site's beige and the type stays Inter + Source
+      Serif 4. TNY is white + system-ui.
+
+   AND ONE KNOWING RULE BREAK: site.css says "Inter 500 only, never bold".
+   Weight is the single biggest reason TNY's page hits and this one did not,
+   so the H1, the section heads and the buttons run 600-700 HERE ONLY. This
+   is scoped to the campaign pages. Do not carry it into the main site.
+
+   THE MECHANISM IS THE FORM, not TNY's calendar. So the form sits where
+   TNY's CTA button sits, inside the first screen, and the red gradient pill
+   is its submit button rather than a scroll link. The form chrome (.prog,
+   .fstep, .choice, .dot, .err) is still free-analysis.html's, restyled.
    ===================================================================== */
 
-.lp{max-width:840px;margin:0 auto;padding-inline:24px}
-.lp-wide{max-width:1000px;margin:0 auto;padding-inline:24px}
-
-.lp-top{padding-block:30px 4px;text-align:center}
-.lp-top img{display:block;margin:0 auto;height:46px;width:auto}
-
-.lp-hero{text-align:center;padding-block:6px 0}
-.lp-hero h1{margin:0;letter-spacing:-.05em;line-height:1.06}
-.lp-guar{
-  margin:16px auto 0;max-width:26ch;
-  font-family:var(--serif);font-style:italic;font-weight:500;
-  font-size:clamp(20px,2.3vw,26px);line-height:1.3;letter-spacing:-.02em;
+/* the one saturated accent. --stat-bad is already in site.css; aliased here
+   so every use on this page reads as "the accent", not "the bad stat". */
+.lp-scope, body{
+  --hot:#c0392b;
+  --hot-grad:linear-gradient(135deg,#dd5342 0%,#c0392b 52%,#98271b 100%);
+  --hot-glow:0 14px 30px -6px rgba(192,57,43,.45), inset 0 1px 0 rgba(255,255,255,.32);
 }
-.lp-sub{margin:18px auto 0;max-width:44ch;font-size:16px;line-height:1.5;color:var(--ink-56)}
-.cta{font-size:clamp(16px,1.9vw,19px);padding:20px 36px;line-height:1.25;max-width:100%;
-  box-shadow:0 14px 30px -14px rgba(0,0,0,.55)}
-.cta-sub{margin-top:13px;font-size:14px;color:var(--ink-48)}
-.center{text-align:center}
-.mt30{margin-top:30px}
 
-.eyebrow{display:block;text-align:center;margin:0 0 18px;font-size:12px;font-weight:500;
-  letter-spacing:.18em;text-transform:uppercase;color:var(--ink-36)}
+.lp{max-width:820px;margin:0 auto;padding-inline:24px}
+.lp-wide{max-width:1040px;margin:0 auto;padding-inline:24px}
 
-/* ---- proof ---------------------------------------------------------- */
-.proof{padding-block:52px 0}
-.proof-card{background:var(--card);border-radius:14px;padding:10px;overflow:hidden;
-  box-shadow:0 22px 46px -30px rgba(0,0,0,.5)}
-.proof-card img{display:block;width:100%;height:auto;border-radius:8px}
-.cap{margin:15px auto 0;max-width:58ch;text-align:center;font-size:16px;line-height:1.45;color:var(--ink-56)}
-.cap strong{color:var(--ink);font-weight:500}
+.lp-top{padding-block:28px 0;text-align:center}
+.lp-top img{display:block;margin:0 auto;height:44px;width:auto}
 
-/* PLACEHOLDER, not a design element. Roham is taking the "painters north york"
-   screenshots when the business is open. This box exists so the slot is
-   impossible to miss and impossible to ship by accident: it says what belongs
-   here, and nothing on this page should go live while it is still visible. */
-.slot{background:var(--ink-04);border:2px dashed var(--ink-24);border-radius:14px;
-  padding:clamp(28px,5vw,52px);text-align:center}
-.slot h3{margin:0 0 10px;font-size:18px;letter-spacing:-.04em}
-.slot p{margin:0 auto;max-width:52ch;font-size:15px;line-height:1.5;color:var(--ink-56)}
+/* ---- hero ----------------------------------------------------------- */
+/* the radial is the only thing standing in for TNY's white ground: it lifts
+   the top of the page off the beige so the headline has somewhere to sit. */
+/* FULL BLEED. The wash goes on the section, the 820px column goes on a .lp
+   INSIDE it. Painted on the same element as the max-width it reads as a white
+   box with hard edges behind the headline. */
+.lp-hero{
+  text-align:center;padding-block:18px 0;
+  background:radial-gradient(120% 74% at 50% 0,rgba(255,255,255,.8) 0,rgba(255,255,255,0) 64%);
+}
+.lp-hero h1{
+  margin:0 auto;max-width:18ch;
+  font-size:clamp(37px,6.4vw,62px);font-weight:800;
+  letter-spacing:-.042em;line-height:.99;
+}
+/* TNY's headline device, exactly: the payoff phrase in the accent with a
+   thick underline under it. This is what makes the headline read as a claim
+   instead of a sentence. */
+.lp-hero h1 .hot{
+  color:var(--hot);font-style:normal;
+  text-decoration:underline;text-decoration-thickness:5px;text-underline-offset:8px;
+  text-decoration-skip-ink:none;
+}
+.lp-guar{
+  margin:22px auto 0;max-width:26ch;
+  font-family:var(--serif);font-style:italic;font-weight:500;
+  font-size:clamp(21px,2.7vw,29px);line-height:1.25;letter-spacing:-.02em;
+}
+.lp-sub{margin:16px auto 0;max-width:42ch;font-size:16px;line-height:1.5;color:var(--ink-56)}
 
-/* ---- how it works --------------------------------------------------- */
-.how{padding-block:56px 0}
-.steps3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gutter);margin-top:30px}
-.step3{background:var(--card);border-radius:12px;padding:24px 22px}
-.step3 .num{display:block;font-size:14px;color:var(--ink-36);margin-bottom:10px}
-.step3 h3{margin:0 0 8px;font-size:18px;letter-spacing:-.04em}
-.step3 p{margin:0;font-size:15px;line-height:1.5;color:var(--ink-56)}
+/* the "start here" line. TNY uses a 👇 emoji; a drawn arrow keeps it in the
+   type system and still points at the ask. */
+.point{
+  display:flex;align-items:center;justify-content:center;gap:11px;
+  margin:32px auto 0;font-size:clamp(17px,2.2vw,21px);font-weight:700;letter-spacing:-.03em;
+}
+.point svg{flex:none;width:21px;height:21px;stroke:var(--hot);animation:nudge 1.9s ease-in-out infinite}
+@keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+@media (prefers-reduced-motion:reduce){.point svg{animation:none}}
 
-/* ---- guarantee ------------------------------------------------------ */
-.guar{padding-block:56px 0}
-.guar-card{background:var(--card);border-radius:14px;padding:clamp(26px,4vw,44px);
-  max-width:720px;margin-inline:auto;text-align:center}
-.guar-card h2{margin:12px 0 16px;letter-spacing:-.05em}
-.guar-card p{margin:0 auto;max-width:52ch;font-size:17px;line-height:1.55;color:var(--ink-56)}
+/* ---- the accent pill. The only button shape on the page. -------------- */
+.btn-hot{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  border:0;cursor:pointer;text-decoration:none;
+  background:var(--hot-grad);color:#fff;
+  border-radius:100px;padding:21px 34px;
+  font-family:var(--sans);font-size:clamp(17px,2.1vw,21px);font-weight:700;
+  letter-spacing:-.03em;line-height:1.15;
+  box-shadow:var(--hot-glow);
+  transition:transform .15s ease,box-shadow .15s ease,filter .15s ease;
+}
+.btn-hot:hover{transform:translateY(-2px);filter:saturate(1.06);
+  box-shadow:0 20px 38px -8px rgba(192,57,43,.5), inset 0 1px 0 rgba(255,255,255,.32)}
+.btn-hot:active{transform:translateY(0)}
+.btn-hot:disabled{opacity:.6;cursor:default;transform:none}
+.btn-hot-sub{margin-top:13px;font-size:14px;color:var(--ink-48);text-align:center}
+.btn-ghost{
+  display:inline-flex;align-items:center;justify-content:center;
+  background:none;border:1px solid var(--ink-24);border-radius:100px;
+  padding:19px 26px;font-family:var(--sans);font-size:16px;font-weight:600;
+  letter-spacing:-.03em;color:var(--ink);cursor:pointer;
+}
+.btn-ghost:hover{border-color:var(--ink)}
 
-/* ---- the form ------------------------------------------------------- */
-.audit{padding-block:26px 0}
-.audit-card{background:var(--card);border-radius:14px;padding:clamp(24px,4vw,40px);
-  max-width:720px;margin-inline:auto}
-.audit-card h2{margin:0 0 8px;letter-spacing:-.05em;text-align:center}
-.audit-card .lede{margin:0 auto 26px;max-width:44ch;text-align:center}
+/* ---- section heads --------------------------------------------------- */
+.eyebrow{display:block;text-align:center;margin:0 0 16px;font-size:12px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--hot)}
+.h-sect{margin:0 auto;max-width:21ch;text-align:center;
+  font-size:clamp(30px,4.6vw,47px);font-weight:800;letter-spacing:-.04em;line-height:1.02}
+.h-sect .hot{color:var(--hot);font-style:normal}
+.sub-sect{margin:18px auto 0;max-width:40ch;text-align:center;
+  font-size:clamp(18px,2.3vw,23px);font-weight:500;line-height:1.4;
+  letter-spacing:-.03em;color:rgba(0,0,0,.66)}
+
+/* ---- the form -------------------------------------------------------- */
+.audit{padding-block:22px 0;scroll-margin-top:16px}
+.audit-card{background:var(--card);border-radius:18px;padding:clamp(22px,3.6vw,38px);
+  max-width:660px;margin-inline:auto;
+  box-shadow:0 30px 60px -34px rgba(0,0,0,.42), 0 0 0 1px var(--ink-04)}
+.audit-card h2{margin:0 0 10px;text-align:center;
+  font-size:clamp(25px,3.2vw,34px);font-weight:800;letter-spacing:-.04em;line-height:1.08}
+.audit-card h2 .hot{color:var(--hot);font-style:normal}
+.audit-card .lede{margin:0 auto 26px;max-width:38ch;text-align:center;
+  font-size:17px;line-height:1.45;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
 
 .prog{display:grid;gap:9px;margin-bottom:22px}
-.prog-track{height:3px;border-radius:3px;background:var(--ink-10);overflow:hidden}
-.prog-fill{height:100%;width:25%;background:var(--ink);border-radius:3px;transition:width .3s ease}
-.prog-lbl{display:flex;justify-content:space-between;gap:12px;font-size:14px;color:var(--ink-48)}
+.prog-track{height:4px;border-radius:4px;background:var(--ink-08);overflow:hidden}
+.prog-fill{height:100%;width:25%;background:var(--hot-grad);border-radius:4px;transition:width .3s ease}
+.prog-lbl{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:var(--ink-48)}
 .fstep{display:grid;gap:16px}
 .fgrid{display:grid;gap:16px}
-.frow{display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px}
-.qlab{font-size:15px;font-weight:500;letter-spacing:-.04em;margin:0 0 10px}
+.frow{display:grid;grid-template-columns:92px minmax(0,1fr);gap:10px}
+.qlab{font-size:15px;font-weight:600;letter-spacing:-.035em;margin:0 0 10px}
 .choices{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .choice{position:relative;display:flex;align-items:center;gap:10px;cursor:pointer;
   background:var(--card);border:1px solid var(--ink-12);border-radius:var(--field);
-  padding:13px 15px;font-size:14px;letter-spacing:-.04em;transition:border-color .18s,background .18s}
+  padding:13px 15px;font-size:14px;letter-spacing:-.035em;transition:border-color .18s,background .18s}
 .choice input{position:absolute;opacity:0;width:0;height:0}
 .dot{flex:none;width:16px;height:16px;border-radius:50%;border:1px solid var(--ink-24);
   display:grid;place-items:center;transition:border-color .18s}
-.dot::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--ink);
+.dot::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--hot);
   transform:scale(0);transition:transform .18s}
-.choice.is-on{border-color:var(--ink);background:var(--ink-04)}
-.choice.is-on .dot{border-color:var(--ink)}
+/* the accent marks the answer they picked, which is the only state on this
+   page worth a colour besides the headline and the button. */
+.choice.is-on{border-color:var(--hot);background:rgba(192,57,43,.05)}
+.choice.is-on .dot{border-color:var(--hot)}
 .choice.is-on .dot::after{transform:scale(1)}
-.choice:focus-within{outline:2px solid var(--ink);outline-offset:3px}
-.field.bad,.choices.bad .choice{border-color:var(--ink)}
-.err{font-size:14px;font-weight:500;margin-top:7px}
+.choice:focus-within{outline:2px solid var(--hot);outline-offset:3px}
+.field:focus{outline:2px solid var(--hot);outline-offset:2px}
+.field.bad,.choices.bad .choice{border-color:var(--hot)}
+.err{font-size:13px;font-weight:600;margin-top:7px;color:var(--hot)}
 .err:empty{display:none}
-.fnav{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-top:22px}
-.hint{font-size:14px;color:var(--ink-48);margin:6px 0 0}
+.fnav{display:flex;gap:10px;align-items:center;justify-content:center;
+  flex-wrap:wrap;margin-top:24px}
+.fnav .btn-hot{flex:1 1 auto;min-width:min(100%,280px)}
+.hint{font-size:13px;color:var(--ink-48);margin:7px 0 0;line-height:1.45}
+.trust{display:flex;align-items:center;justify-content:center;gap:7px;
+  margin:14px 0 0;font-size:13px;color:var(--ink-48)}
+.trust svg{flex:none;width:14px;height:14px;stroke:var(--ink-48)}
 
 .done{text-align:center}
-.done h3{margin:0 0 10px;letter-spacing:-.05em}
+.done h3{margin:0 0 10px;font-size:22px;font-weight:700;letter-spacing:-.035em}
 .handoff{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
 
-/* ---- who it's for + faq --------------------------------------------- */
-.fit{padding-block:56px 0}
-.fit-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gutter);margin-top:26px}
-.fit-card{background:var(--card);border-radius:12px;padding:24px 22px}
-.fit-card h3{margin:0 0 12px;font-size:17px;letter-spacing:-.04em}
-.fit-card ul{margin:0;padding-left:18px;color:var(--ink-56);font-size:15px;line-height:1.6}
+/* ---- the numbers strip ---------------------------------------------- */
+/* TNY's proof row, in numbers rather than thumbnails: the one dark band on
+   the page, directly under the ask, so a visitor who scrolls past the form
+   hits results before they hit anything else.
 
-.faq{padding-block:56px 0}
-.faq-item{background:var(--card);border-radius:12px;padding:22px 24px;margin-top:12px}
-.faq-item h3{margin:0 0 8px;font-size:17px;letter-spacing:-.04em}
+   NO HEATMAPS HERE. Roham's ruling for cold paid traffic: "no biz owner has
+   a fucking clue what that is". The before/after grids live on /top3/thanks,
+   post-conversion. These four figures are the same ones that page carries and
+   its header comment holds every source. If a number changes there it changes
+   here in the same commit. Position and market share lead; never average rank. */
+.strip{margin-top:64px;padding-block:54px;background:#111;color:#f7f2ea;
+  position:relative;overflow:hidden}
+.strip::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(80% 130% at 50% 0,rgba(192,57,43,.3) 0,transparent 64%)}
+.strip > *{position:relative;z-index:1}
+.strip .eyebrow{color:#ff8b7a}
+.strip .h-sect{color:#f7f2ea}
+.strip .sub-sect{color:rgba(247,242,234,.62)}
+.nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:40px}
+.num-c{text-align:center;padding:22px 14px;border-radius:14px;
+  background:rgba(255,255,255,.055);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.num-n{display:block;font-size:clamp(28px,3.6vw,42px);font-weight:800;
+  letter-spacing:-.045em;line-height:1;color:#ff8b7a}
+.num-l{display:block;margin-top:11px;font-size:14px;line-height:1.35;
+  color:rgba(247,242,234,.66)}
+
+/* ---- proof ----------------------------------------------------------- */
+/* TNY's proof block: one big screenshot with a caption under it, then a row
+   of small ones. Roham's ruling holds inside it: no LeadSnap heatmaps, plain
+   position language, no grid coverage percentages in words either. */
+.proof{padding-block:60px 0}
+.proof-card{background:var(--card);border-radius:16px;padding:9px;overflow:hidden;
+  box-shadow:0 26px 52px -32px rgba(0,0,0,.48), 0 0 0 1px var(--ink-04)}
+.proof-card img{display:block;width:100%;height:auto;border-radius:10px}
+.cap{margin:16px auto 0;max-width:56ch;text-align:center;font-size:16px;line-height:1.45;color:var(--ink-56)}
+.cap strong{color:var(--ink);font-weight:600}
+
+/* two columns, not three: there are exactly two spare real screenshots.
+   A third card would mean pairing a real number with the wrong image. */
+.mini{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-auto-rows:1fr;gap:16px;margin-top:34px}
+.mini a{display:flex;flex-direction:column;background:var(--card);border-radius:14px;
+  padding:9px;text-decoration:none;box-shadow:0 0 0 1px var(--ink-04);
+  transition:transform .15s ease,box-shadow .15s ease}
+.mini a:hover{transform:translateY(-3px);box-shadow:0 22px 40px -26px rgba(0,0,0,.45),0 0 0 1px var(--ink-08)}
+.mini img{display:block;width:100%;height:auto;border-radius:8px}
+.mini .m-n{margin:13px 12px 0;font-size:21px;font-weight:700;letter-spacing:-.035em;
+  line-height:1.1;color:var(--hot)}
+.mini .m-l{margin:5px 12px 13px;font-size:13px;line-height:1.4;color:var(--ink-56)}
+
+/* PLACEHOLDER, not a design element. Roham is taking the "painters north york"
+   screenshots when the business is open. This box says what belongs here, and
+   nothing on this page should go live while it is still visible. */
+.slot{background:var(--ink-04);border:2px dashed var(--ink-24);border-radius:16px;
+  padding:clamp(28px,5vw,52px);text-align:center}
+.slot h3{margin:0 0 10px;font-size:18px;font-weight:700;letter-spacing:-.035em}
+.slot p{margin:0 auto;max-width:52ch;font-size:15px;line-height:1.5;color:var(--ink-56)}
+
+/* ---- how it works ---------------------------------------------------- */
+.how{padding-block:62px 0}
+.steps3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  grid-auto-rows:1fr;gap:16px;margin-top:32px}
+.step3{background:var(--card);border-radius:14px;padding:26px 24px;
+  box-shadow:0 0 0 1px var(--ink-04)}
+.step3 .num{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;
+  background:var(--hot-grad);color:#fff;font-size:13px;font-weight:700;
+  letter-spacing:0;margin-bottom:14px}
+.step3 h3{margin:0 0 8px;font-size:17px;font-weight:600;letter-spacing:-.035em}
+.step3 p{margin:0;font-size:15px;line-height:1.5;color:var(--ink-56)}
+
+/* ---- guarantee ------------------------------------------------------- */
+/* the one dark band on the page, so the promise does not read as another card */
+.guar{padding-block:62px 0}
+.guar-card{position:relative;overflow:hidden;background:#111;color:#f7f2ea;
+  border-radius:20px;padding:clamp(30px,4.4vw,52px);max-width:760px;
+  margin-inline:auto;text-align:center}
+.guar-card::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(90% 120% at 50% 0,rgba(192,57,43,.34) 0,transparent 66%)}
+.guar-card > *{position:relative;z-index:1}
+.guar-card .pill{background:rgba(255,255,255,.12);color:#f7f2ea}
+.guar-card h2{margin:16px 0 16px;font-size:clamp(24px,3.1vw,34px);font-weight:700;
+  letter-spacing:-.035em;line-height:1.1}
+.guar-card h2 .hot{color:#ff8b7a;font-style:normal}
+.guar-card p{margin:0 auto;max-width:50ch;font-size:16px;line-height:1.6;
+  color:rgba(247,242,234,.66)}
+
+/* ---- who it's for + faq ---------------------------------------------- */
+.fit{padding-block:62px 0}
+.fit-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-auto-rows:1fr;gap:16px;margin-top:30px}
+.fit-card{background:var(--card);border-radius:14px;padding:26px 24px;
+  box-shadow:0 0 0 1px var(--ink-04)}
+.fit-card h3{margin:0 0 14px;font-size:16px;font-weight:700;letter-spacing:-.035em}
+.fit-card ul{margin:0;padding:0;list-style:none;display:grid;gap:11px}
+.fit-card li{display:grid;grid-template-columns:18px minmax(0,1fr);gap:10px;
+  font-size:15px;line-height:1.45;color:var(--ink-56)}
+.fit-card svg{width:18px;height:18px;margin-top:1px}
+.fit-yes svg{stroke:#239452}
+.fit-no svg{stroke:var(--ink-24)}
+
+.faq{padding-block:62px 0}
+
+/* ---- LEFT-ALIGN THE CARDS. site.css line 663 sets text-align:center on
+   EVERY <section> on the site, so anything dropped inside one inherits it.
+   That is right for a centred hero and wrong for a card you have to read:
+   the FAQ answers, the fit lists and the step copy all came out centred.
+   Each card that holds more than a couple of words says left explicitly.
+   Do not "simplify" this away; the inheritance comes back the moment you do. */
+.step3,.faq-item,.fit-card,.qlab,.hint{text-align:left}
+
+.faq-item{background:var(--card);border-radius:14px;padding:22px 24px;margin-top:12px;
+  box-shadow:0 0 0 1px var(--ink-04)}
+.faq-item h3{margin:0 0 8px;font-size:16px;font-weight:700;letter-spacing:-.035em}
 .faq-item p{margin:0;font-size:15px;line-height:1.55;color:var(--ink-56)}
 
-.lp-foot{text-align:center;padding-block:44px 42px;color:var(--ink-48);font-size:14px}
+/* ---- closing --------------------------------------------------------- */
+.close{padding-block:66px 0;text-align:center}
+.close .lp-guar{margin-top:0}
+
+.lp-foot{text-align:center;padding-block:46px 42px;color:var(--ink-48);font-size:14px}
 .lp-foot a{color:var(--ink-48)}
 
-@media (max-width:820px){
+@media (max-width:880px){ .nums{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:860px){
+  .mini{grid-template-columns:minmax(0,1fr)}
   .steps3,.fit-grid{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:640px){
   .choices{grid-template-columns:minmax(0,1fr)}
-  .cta{display:block;padding-inline:24px}
+  .lp-hero h1{max-width:100%}
+  .btn-hot{width:100%;padding-inline:22px}
+  .fnav{flex-direction:column-reverse;align-items:stretch}
+  .btn-ghost{width:100%}
+  .proof,.how,.guar,.fit,.faq{padding-block:46px 0}
+  .strip{margin-top:48px;padding-block:42px}
+  .close{padding-block:50px 0}
 }
 </style>
 </head>
@@ -170,18 +354,26 @@
        has to be in the first screen on mobile, not buried under sections. So
        there is no scroll-to CTA here, because the thing it would scroll to is
        already the next element, and no competing links above the form. -->
-  <section class="lp lp-hero">
-    <h1 class="t48">I'll get your business into the top 3 on Google
-      <em>in 90 days</em></h1>
+  <section class="lp-hero">
+    <div class="lp">
+    <h1>I'll get your business into the top 3 on Google
+      <span class="hot">in 90 days</span></h1>
     <p class="lp-guar">If I don't, I work for free until you're there.</p>
-    <p class="lp-sub">Start with a free video audit of your Google Business Profile,
-      recorded by hand for your business.</p>
+    <p class="point">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"
+           stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 5v14M6 13l6 6 6-6"></path>
+      </svg>
+      Start with a free audit of your profile
+    </p>
+    </div>
   </section>
 
   <section id="audit" class="lp audit">
     <div class="audit-card">
-      <h2 class="t32">Get your free <em>audit</em></h2>
-      <p class="lede">For established GTA businesses with a Google Business Profile.</p>
+      <h2>Get your free <span class="hot">audit</span></h2>
+      <p class="lede">A hand-recorded read of your Google Business Profile. Two minutes to
+        ask for it, no call needed.</p>
 
       <div id="formWrap">
         <div class="prog">
@@ -235,12 +427,12 @@
             <div class="fgrid">
               <div>
                 <p class="qlab">What do you want to show up for?</p>
-                <input class="field" id="kw" name="keyword" type="text" placeholder="e.g. water damage restoration toronto *">
+                <input class="field" id="kw" name="keyword" type="text" placeholder="The search you want to win *">
                 <p class="err" data-err="kw"></p>
               </div>
               <div>
                 <p class="qlab">Which areas do you serve?</p>
-                <input class="field" id="area" name="area" type="text" placeholder="e.g. North York, Etobicoke, Mississauga *">
+                <input class="field" id="area" name="area" type="text" placeholder="The towns and neighbourhoods you cover *">
                 <p class="err" data-err="area"></p>
               </div>
             </div>
@@ -279,14 +471,22 @@
           </div>
 
           <div class="fnav">
-            <button class="btn btn-form" id="backBtn" type="button" hidden>Back</button>
-            <button class="btn btn-form" id="nextBtn" type="submit">Continue</button>
+            <button class="btn-ghost" id="backBtn" type="button" hidden>Back</button>
+            <button class="btn-hot" id="nextBtn" type="submit">Continue</button>
           </div>
+          <p class="trust">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                 stroke-linejoin="round" aria-hidden="true">
+              <rect x="4" y="10" width="16" height="10" rx="2"></rect>
+              <path d="M8 10V7a4 4 0 0 1 8 0v3"></path>
+            </svg>
+            Goes straight to me. No list, no spam, no call required.
+          </p>
         </form>
       </div>
 
       <div id="doneWrap" class="done" hidden tabindex="-1">
-        <h3 class="t26">Send it to me directly</h3>
+        <h3>Send it to me directly</h3>
         <p class="lede" id="doneMsg">The form couldn't reach my inbox just then. Nothing is lost,
           send the same details straight over and I'll pick it up.</p>
         <div class="handoff">
@@ -297,14 +497,41 @@
     </div>
   </section>
 
-  <!-- PROOF. Roham's ruling: no LeadSnap heatmaps, "no biz owner has a fucking
-       clue what that is". So proof here is a real Google search and a real
-       Google dashboard, and the copy uses plain position language. Do not
-       reintroduce grid coverage percentages: that is the same idea in words. -->
-  <section class="lp-wide proof" id="proof">
-    <span class="eyebrow">Proof</span>
+  <section class="strip">
+    <div class="lp-wide">
+      <span class="eyebrow">Results</span>
+      <h2 class="h-sect">This is what the top 3 does to a local business.</h2>
+      <p class="sub-sect">Four clients. Real scans, real Google dashboards. Nothing redrawn.</p>
+      <div class="nums">
+        <div class="num-c">
+          <span class="num-n">13th to 1st</span>
+          <span class="num-l">of the businesses ranking for movers surrey</span>
+        </div>
+        <div class="num-c">
+          <span class="num-n">4th to 1st</span>
+          <span class="num-l">of the businesses ranking for drainage vancouver</span>
+        </div>
+        <div class="num-c">
+          <span class="num-n">205 calls</span>
+          <span class="num-l">straight off Google in six months</span>
+        </div>
+        <div class="num-c">
+          <span class="num-n">22 to 100</span>
+          <span class="num-l">website clicks a month from Google</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <div class="slot">
+  <!-- PROOF. Roham's ruling: no LeadSnap heatmaps, "no biz owner has a fucking
+       clue what that is". So proof here is a real Google search and real Google
+       dashboards, and the copy uses plain position language. Do not reintroduce
+       grid coverage percentages: that is the same idea in words. -->
+  <section class="lp-wide proof" id="proof">
+    <span class="eyebrow">See it</span>
+    <h2 class="h-sect">What the top 3 actually <span class="hot">looks like</span>.</h2>
+
+    <div class="slot" style="margin-top:30px">
       <h3>SLOT: the &ldquo;painters north york&rdquo; screenshot</h3>
       <p>Roham's dark-mode Google search showing his client in the top 3, with
         &ldquo;You manage this Business Profile&rdquo; visible. Same image as the ad, so the page
@@ -312,7 +539,7 @@
         while this box is still here.</strong></p>
     </div>
 
-    <p class="cap" style="margin-top:34px">And this is what being there is worth.</p>
+    <p class="cap" style="margin-top:36px">And this is what being there is worth.</p>
 
     <div class="proof-card" style="margin-top:14px">
       <img src="../assets/gbp/local-movers-calls.jpg" width="1200" height="654"
@@ -322,24 +549,42 @@
     <p class="cap"><strong>205 calls straight from Google in six months</strong>, peaking at 66
       in a single month. A moving company I took to 1st on the map in its area.
       Straight off Google, nothing redrawn.</p>
+
+    <div class="mini">
+      <a href="../case-studies/local-movers.html">
+        <img src="../assets/gbp/local-movers-interactions.jpg" width="1200" height="654"
+             loading="lazy" decoding="async"
+             alt="Google Business Profile performance chart for Local Movers Surrey Ltd showing 730 total interactions between April and September 2026.">
+        <p class="m-n">730 interactions</p>
+        <p class="m-l">in six months on the profile. Local Movers Ltd, Surrey BC.</p>
+      </a>
+      <a href="../case-studies/always-best-moving.html">
+        <img src="../assets/gbp/always-best-moving-website-clicks.jpg" width="1200" height="654"
+             loading="lazy" decoding="async"
+             alt="Google Business Profile website clicks chart for Always Best Moving showing 121 website clicks between April and September 2026.">
+        <p class="m-n">22 to 100 a month</p>
+        <p class="m-l">website clicks from Google. Always Best Moving, Vancouver.</p>
+      </a>
+    </div>
   </section>
 
   <section class="lp-wide how">
-    <h2 class="t40 center">How it <em>works</em>.</h2>
+    <span class="eyebrow">How it works</span>
+    <h2 class="h-sect">Three steps, and the first one is <span class="hot">free</span>.</h2>
     <div class="steps3">
       <div class="step3">
-        <span class="num">01.</span>
+        <span class="num">1</span>
         <h3>You fill in the form</h3>
         <p>Two minutes. Your details, your Google Maps link, and the search you want to win.</p>
       </div>
       <div class="step3">
-        <span class="num">02.</span>
+        <span class="num">2</span>
         <h3>I record your audit</h3>
         <p>Where you rank across your area, the businesses sitting above you, and what to fix
           first. In your inbox within 48 hours.</p>
       </div>
       <div class="step3">
-        <span class="num">03.</span>
+        <span class="num">3</span>
         <h3>If you want it done, we talk</h3>
         <p>Run it yourself for free, or I handle it. No obligation either way.</p>
       </div>
@@ -353,69 +598,71 @@
   <section class="lp guar">
     <div class="guar-card">
       <span class="pill">The guarantee</span>
-      <h2 class="t32">Top 3, or I keep working for <em>free</em></h2>
+      <h2>Top 3, or I keep working for <span class="hot">free</span></h2>
       <p>Top 3 for your main keyword, in your service area, within 90 days of starting.
         If we're not there, I keep working at no charge until we are. The keyword and the
         area are agreed with you in writing before anything begins.</p>
     </div>
   </section>
 
-
   <section class="lp-wide fit">
-    <h2 class="t40 center">Who this is <em>for</em>.</h2>
+    <span class="eyebrow">Fit</span>
+    <h2 class="h-sect">Who this is <span class="hot">for</span>.</h2>
     <div class="fit-grid">
-      <div class="fit-card">
+      <div class="fit-card fit-yes">
         <h3>This is for you if</h3>
         <ul>
-          <li>You're in Toronto or the GTA</li>
-          <li>You already have a Google Business Profile</li>
-          <li>You already spend on marketing and want it working harder</li>
-          <li>You can decide, or you're the one who signs off</li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 5.5"></path></svg><span>You already have a Google Business Profile</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 5.5"></path></svg><span>You serve a real area and get work from it</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 5.5"></path></svg><span>You already spend on marketing and want it working harder</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 5.5"></path></svg><span>You can decide, or you're the one who signs off</span></li>
         </ul>
       </div>
-      <div class="fit-card">
+      <div class="fit-card fit-no">
         <h3>This isn't for you if</h3>
         <ul>
-          <li>You're brand new with no profile yet</li>
-          <li>You want leads tomorrow. This is 90 days.</li>
-          <li>You're looking for the cheapest option</li>
-          <li>You're outside the GTA</li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 5.5 14.5 14.5M14.5 5.5 5.5 14.5"></path></svg><span>You're brand new with no profile yet</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 5.5 14.5 14.5M14.5 5.5 5.5 14.5"></path></svg><span>You want leads tomorrow. This is 90 days.</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 5.5 14.5 14.5M14.5 5.5 5.5 14.5"></path></svg><span>You're looking for the cheapest option</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 5.5 14.5 14.5M14.5 5.5 5.5 14.5"></path></svg><span>You sell nationally with no local service area</span></li>
         </ul>
       </div>
     </div>
   </section>
 
   <section class="lp faq">
-    <h2 class="t40 center">Questions.</h2>
-    <div class="faq-item">
-      <h3>Is the audit really free?</h3>
-      <p>Yes, and there's no call required to get it. You fill in the form, I record the audit
-        and send it. If you never reply, that's fine.</p>
-    </div>
-    <div class="faq-item">
-      <h3>What happens after the audit?</h3>
-      <p>Nothing automatic. Watch it, run the fixes yourself if you want to. If you'd rather I
-        did it, reply and we'll talk it through on a short call.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Why do you ask what I spend?</h3>
-      <p>Because I record these by hand and I only take on businesses I'm confident I can rank.
-        The questions tell me whether that's you before I spend an hour on it.</p>
-    </div>
-    <div class="faq-item">
-      <h3>How do you actually get me there?</h3>
-      <p>Your Google Business Profile, the website behind it, and the local authority that makes
-        the two agree. Those are the three levers. The audit shows you which one is holding you
-        back.</p>
+    <span class="eyebrow">Questions</span>
+    <h2 class="h-sect">The ones I get <span class="hot">every time</span>.</h2>
+    <div style="margin-top:28px">
+      <div class="faq-item">
+        <h3>Is the audit really free?</h3>
+        <p>Yes, and there's no call required to get it. You fill in the form, I record the audit
+          and send it. If you never reply, that's fine.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What happens after the audit?</h3>
+        <p>Nothing automatic. Watch it, run the fixes yourself if you want to. If you'd rather I
+          did it, reply and we'll talk it through on a short call.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Why do you ask what I spend?</h3>
+        <p>Because I record these by hand and I only take on businesses I'm confident I can rank.
+          The questions tell me whether that's you before I spend an hour on it.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How do you actually get me there?</h3>
+        <p>Your Google Business Profile, the website behind it, and the local authority that makes
+          the two agree. Those are the three levers. The audit shows you which one is holding you
+          back.</p>
+      </div>
     </div>
   </section>
 
-  <section class="lp" style="padding-block:56px 0">
-    <div class="center">
-      <p class="lp-guar" style="margin-top:0">Top 3 on Google in 90 days.<br>If I don't, I work
-        for free until you're there.</p>
-      <p class="mt30"><a class="btn cta" href="#audit">Get my free audit</a></p>
-    </div>
+  <section class="lp close">
+    <h2 class="h-sect">Top 3 on Google <span class="hot">in 90 days</span>.</h2>
+    <p class="lp-guar">If I don't, I work for free until you're there.</p>
+    <p style="margin:30px 0 0"><a class="btn-hot" href="#audit">Get my free audit</a></p>
+    <p class="btn-hot-sub">Two minutes. No call required.</p>
   </section>
 
 </main>
@@ -423,7 +670,6 @@
 <footer class="lp-foot">
   <p>RG Marketing &middot; Canada &middot; <a href="../index.html">rgresults.ca</a></p>
 </footer>
-
 <script src="../assets/track.js?v=2026-09-17b"></script>
 <script>
 (function () {

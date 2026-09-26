@@ -12,82 +12,226 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link rel="preconnect" href="https://assets.calendly.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;family=Source+Serif+4:ital,wght@1,500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Source+Serif+4:ital,wght@1,500&amp;display=swap">
 <link rel="stylesheet" href="../../assets/site.css">
 <style>
 /* =====================================================================
-   /top3/thanks, the nurture half of the Toronto funnel.
+   /top3/thanks, the nurture half of the funnel.
 
    The lead is already captured by the time anyone sees this, so nothing
-   here is a second ask for their details. Its jobs, in order: confirm the
-   audit is coming and when, offer a call for the minority who want to talk
-   now, then prove the offer with real client work while they wait.
+   here is a second ask for their details. Its job is to make the wait for
+   the audit feel like a good decision. Roham, 2026-09-26: "this should be
+   caked in my results and heatmap results", then "this needs to read less
+   boring and explode, clear writing big headlines, big subheads".
 
-   NO VSL. Roham: "get rid of my vsl on the page", and that applies to this
-   page too. Do not add it back as a "while you wait" block.
+   So: every number on this page is a real scan or a real dashboard, and
+   the type runs a full step heavier and larger than the main site.
+
+   WHY THE HEATMAPS ARE HERE AND NOT ON /top3
+   Roham ruled heatmaps OFF the landing page: "no biz owner has a fucking
+   clue what that is". That ruling stands for cold paid traffic. This page
+   is post-conversion, they have already asked for the audit, and the audit
+   itself IS a heatmap read, so the pair here is a preview of the thing
+   they just requested. Do not copy this block onto /top3.
+
+   EVERY NUMBER'S SOURCE
+   Lifted verbatim from the live case studies, which read them off the
+   LeadSnap exports. Nothing here is recomputed, averaged or rounded.
+     - Local Movers: build/case-studies/local-movers.html
+       27 May 2026, movers surrey, Google Maps, 13x13 / 169 points,
+       172.96 sq km: market share 5.21% = 13th of 76, top 3 coverage 2.96%.
+       4 Sept 2026, same keyword and source, 229.76 sq km: market share
+       100.00% = 1st, top 3 coverage 45.56%.
+     - Mamba: build/case-studies/mamba-drainage.html
+       21 Mar 2026, drainage vancouver, 13x13 / 169 points, 79.84 sq km:
+       average 5.10 = 4th of 57, market share 62.13%.
+       2 July 2026, same keyword, 118.08 sq km: average 4.50 = 1st,
+       market share 100.00%. The July export is cut above its own entries
+       line, which is why the AFTER end carries no competitor count.
+   Position and market share are the headline figures, never average rank
+   on its own. The two scans in each pair share one keyword and one
+   ranking source, which is what makes them a pair rather than two shots.
+
+   NO VSL. Roham: "get rid of my vsl on the page", and that applies here.
+   Do not add it back as a "while you wait" block.
+
+   DESIGN is /top3's, and /top3's header comment holds the reasoning:
+   tnymarketing.com/seo/ro's mechanics (heavy type, ONE saturated accent on
+   ONE phrase, one gradient pill, tight rhythm) in our palette and fonts.
+   Accent or weights change on /top3, they change here in the same commit,
+   or the funnel visibly breaks in half.
    ===================================================================== */
 
+body{
+  --hot:#c0392b;
+  --hot-grad:linear-gradient(135deg,#dd5342 0%,#c0392b 52%,#98271b 100%);
+  --hot-glow:0 14px 30px -6px rgba(192,57,43,.45), inset 0 1px 0 rgba(255,255,255,.32);
+}
+
 .lp{max-width:840px;margin:0 auto;padding-inline:24px}
-.lp-wide{max-width:1000px;margin:0 auto;padding-inline:24px}
-.lp-top{padding-block:30px 4px;text-align:center}
-.lp-top img{display:block;margin:0 auto;height:46px;width:auto}
+.lp-wide{max-width:1120px;margin:0 auto;padding-inline:24px}
+.lp-top{padding-block:26px 0;text-align:center}
+.lp-top img{display:block;margin:0 auto;height:42px;width:auto}
+.hot{color:var(--hot);font-style:normal}
 
-.hero{text-align:center;padding-block:18px 0}
-.tick{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;
-  background:var(--ink);margin:0 auto 18px}
-.hero h1{margin:0;letter-spacing:-.05em;line-height:1.08}
-.hero .lede{margin:18px auto 0;max-width:46ch}
+/* ---- TYPE. A full step up from site.css, which is the whole point of the
+   brief: "big headlines, big subheads". Weights run 700/800 here, against
+   the site's 500. Scoped to this page and /top3. ---- */
+.xl{margin:0 auto;max-width:20ch;font-size:clamp(37px,6.4vw,62px);font-weight:800;
+  letter-spacing:-.042em;line-height:.99}
+.lg{margin:0 auto;max-width:21ch;font-size:clamp(30px,4.6vw,47px);font-weight:800;
+  letter-spacing:-.04em;line-height:1.02}
+.subhead{margin:20px auto 0;max-width:40ch;font-size:clamp(18px,2.3vw,23px);
+  font-weight:500;line-height:1.4;letter-spacing:-.03em;color:rgba(0,0,0,.66)}
+.eyebrow{display:block;text-align:center;margin:0 0 16px;font-size:12px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--hot)}
+.center{text-align:center}
 
-.when{max-width:520px;margin:26px auto 0;background:var(--card);border-radius:12px;
-  padding:18px 22px;display:flex;justify-content:space-between;align-items:baseline;gap:16px}
-.when dt{color:var(--ink-56);font-size:15px}
-.when dd{margin:0;font-weight:500;letter-spacing:-.04em;text-align:right}
+/* ---- hero ----------------------------------------------------------- */
+/* FULL BLEED. The wash goes on the section, the 840px column on a .lp inside
+   it. Painted on the element that also carries the max-width it reads as a
+   white box with hard edges behind the headline. */
+.hero{text-align:center;padding-block:22px 0;
+  background:radial-gradient(120% 74% at 50% 0,rgba(255,255,255,.8) 0,rgba(255,255,255,0) 64%)}
+/* green, not the page accent: this mark means "done", and red is spoken for. */
+.tick{display:grid;place-items:center;width:58px;height:58px;border-radius:50%;
+  background:#239452;margin:0 auto 22px;box-shadow:0 12px 26px -10px rgba(35,148,82,.5)}
+.hero .xl .hot{text-decoration:underline;text-decoration-thickness:5px;
+  text-underline-offset:8px;text-decoration-skip-ink:none}
+.when{max-width:540px;margin:30px auto 0;background:var(--card);border-radius:14px;
+  padding:17px 22px;display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+  box-shadow:0 0 0 1px var(--ink-04)}
+.when dt{color:var(--ink-56);font-size:14px}
+.when dd{margin:0;font-size:16px;font-weight:700;letter-spacing:-.035em;text-align:right}
 
-.call{background:var(--surface);margin-top:56px;padding-block:52px}
-.call h2{margin:0 0 10px;text-align:center;letter-spacing:-.05em}
-.call .sub{margin:0 auto 26px;max-width:48ch;text-align:center;color:var(--ink-56);font-size:17px}
-.cal-card{background:var(--card);border-radius:14px;overflow:hidden;
-  box-shadow:0 22px 46px -30px rgba(0,0,0,.45)}
+/* ---- the numbers strip ---------------------------------------------- */
+/* four real results, straight off the scans and dashboards named in the
+   header comment. This is the "caked in results" the brief asked for: the
+   first thing under the confirmation is proof, not a paragraph. */
+.strip{margin-top:64px;padding-block:52px;background:#111;color:#f7f2ea;
+  position:relative;overflow:hidden}
+.strip::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(80% 130% at 50% 0,rgba(192,57,43,.3) 0,transparent 64%)}
+.strip > *{position:relative;z-index:1}
+.strip .eyebrow{color:#ff8b7a}
+.strip .lg{color:#f7f2ea}
+.strip .subhead{color:rgba(247,242,234,.62)}
+.nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:40px}
+.num-c{text-align:center;padding:22px 14px;border-radius:14px;
+  background:rgba(255,255,255,.055);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.num-n{display:block;font-size:clamp(28px,3.6vw,42px);font-weight:800;
+  letter-spacing:-.045em;line-height:1;color:#ff8b7a}
+.num-l{display:block;margin-top:11px;font-size:14px;line-height:1.35;
+  color:rgba(247,242,234,.66)}
+
+/* ---- the heatmap pairs ---------------------------------------------- */
+.maps{padding-block:66px 0}
+.pair{margin-top:44px}
+
+/* ---- LEFT-ALIGN THE CARDS. site.css line 663 sets text-align:center on
+   EVERY <section> on the site, so anything dropped inside one inherits it.
+   That is right for a centred hero and wrong for a card you have to read:
+   the FAQ answers, the fit lists and the step copy all came out centred.
+   Each card that holds more than a couple of words says left explicitly.
+   Do not "simplify" this away; the inheritance comes back the moment you do. */
+.pair-head,.ba figcaption,.dash-c,.cs-link,.read{text-align:left}
+
+.pair-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;
+  gap:10px 18px;margin-bottom:16px}
+.pair-who{margin:0;font-size:clamp(20px,2.5vw,26px);font-weight:800;letter-spacing:-.04em}
+.pair-kw{margin:0;font-size:14px;color:var(--ink-48)}
+.pair-kw code{font-family:var(--sans);font-size:14px;background:var(--ink-04);
+  border-radius:5px;padding:2px 7px}
+.ba{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.ba figure{margin:0;background:var(--card);border-radius:16px;padding:9px;
+  box-shadow:0 24px 48px -32px rgba(0,0,0,.44), 0 0 0 1px var(--ink-04)}
+.ba img{display:block;width:100%;height:auto;border-radius:10px}
+.ba figcaption{padding:14px 12px 8px}
+.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;padding:5px 11px;border-radius:50px}
+.tag-b{background:var(--ink-08);color:var(--ink-56)}
+.tag-a{background:var(--hot-grad);color:#fff}
+.ba .pos{margin:12px 0 0;font-size:clamp(23px,2.8vw,31px);font-weight:800;
+  letter-spacing:-.04em;line-height:1.05}
+.ba .pos-a{color:var(--hot)}
+.ba .meta{margin:7px 0 0;font-size:14px;line-height:1.45;color:var(--ink-56)}
+.pair-note{margin:16px auto 0;max-width:62ch;text-align:center;font-size:14px;
+  line-height:1.5;color:var(--ink-48)}
+
+/* ---- the dashboards ------------------------------------------------- */
+.dash{padding-block:66px 0}
+.dash-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-auto-rows:1fr;gap:18px;margin-top:40px}
+.dash-c{display:flex;flex-direction:column;background:var(--card);border-radius:16px;
+  padding:9px;box-shadow:0 0 0 1px var(--ink-04)}
+.dash-c img{display:block;width:100%;height:auto;border-radius:10px}
+.dash-n{margin:15px 13px 0;font-size:clamp(21px,2.4vw,26px);font-weight:800;
+  letter-spacing:-.04em;line-height:1.05;color:var(--hot)}
+.dash-l{margin:7px 13px 15px;font-size:14px;line-height:1.45;color:var(--ink-56)}
+
+/* ---- the call -------------------------------------------------------- */
+.call{background:var(--surface);margin-top:66px;padding-block:58px}
+.cal-card{background:var(--card);border-radius:16px;overflow:hidden;margin-top:34px;
+  box-shadow:0 26px 52px -32px rgba(0,0,0,.45), 0 0 0 1px var(--ink-04)}
 .calendly-inline-widget{width:100%;min-width:320px;height:700px}
 .cap{margin:15px auto 0;max-width:58ch;text-align:center;font-size:14px;line-height:1.45;color:var(--ink-48)}
 
-.work{padding-block:56px 0}
-.work h2{text-align:center;letter-spacing:-.05em;margin:0 0 6px}
-.work .sub{margin:0 auto 28px;max-width:46ch;text-align:center;color:var(--ink-56);font-size:17px}
+/* ---- studies + reads ------------------------------------------------- */
+.work{padding-block:66px 0}
 /* grid-auto-rows:1fr so all four match, not just the two in each row.
    Roham's standing rule is that cards are the same size; by default a grid
    sizes each ROW to its own content and these came out 130/130/150/150. */
-.cs-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
-  grid-auto-rows:1fr;gap:var(--gutter)}
-.cs-link{display:flex;flex-direction:column;gap:4px;background:var(--card);border-radius:12px;
-  padding:22px 24px;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease}
-.cs-link:hover{transform:translateY(-2px);box-shadow:0 18px 34px -24px rgba(0,0,0,.45)}
-.cs-n{font-size:26px;font-weight:500;letter-spacing:-.05em;line-height:1.1;color:var(--stat-good)}
-.cs-l{font-size:15px;color:var(--ink-56);line-height:1.35}
-.cs-go{margin-top:8px;font-size:14px;color:var(--ink-48)}
+.cs-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  grid-auto-rows:1fr;gap:14px;margin-top:38px}
+.cs-link{display:flex;flex-direction:column;gap:5px;background:var(--card);border-radius:14px;
+  padding:22px 20px;text-decoration:none;box-shadow:0 0 0 1px var(--ink-04);
+  transition:transform .15s ease,box-shadow .15s ease}
+.cs-link:hover{transform:translateY(-3px);
+  box-shadow:0 22px 40px -26px rgba(0,0,0,.45),0 0 0 1px var(--ink-08)}
+.cs-n{margin:0;font-size:24px;font-weight:800;letter-spacing:-.04em;line-height:1.05;color:var(--hot)}
+.cs-l{margin:0;font-size:14px;color:var(--ink-56);line-height:1.4}
+.cs-go{margin:auto 0 0;padding-top:12px;font-size:13px;font-weight:600;color:var(--ink-48)}
 
-.reads{padding-block:52px 0}
-.reads h2{text-align:center;letter-spacing:-.05em;margin:0 0 24px}
-.read{display:block;background:var(--card);border-radius:12px;padding:20px 24px;
-  margin-top:12px;text-decoration:none}
+.reads{padding-block:66px 0}
+.read{display:flex;align-items:center;justify-content:space-between;gap:18px;
+  background:var(--card);border-radius:14px;padding:22px 24px;margin-top:12px;
+  text-decoration:none;box-shadow:0 0 0 1px var(--ink-04);transition:background .15s ease}
 .read:hover{background:var(--surface)}
-.read h3{margin:0 0 5px;font-size:17px;letter-spacing:-.04em}
-.read p{margin:0;font-size:14px;color:var(--ink-48)}
+.read h3{margin:0;font-size:17px;font-weight:700;letter-spacing:-.035em;line-height:1.3}
+.read span{flex:none;font-size:20px;color:var(--hot)}
 
-.offer{padding-block:60px 0;text-align:center}
-.offer p{margin:0 auto;max-width:24ch;font-family:var(--serif);font-style:italic;font-weight:500;
-  font-size:clamp(20px,2.4vw,27px);line-height:1.3;letter-spacing:-.02em}
+/* ---- closing --------------------------------------------------------- */
+.offer{padding-block:70px 0;text-align:center}
+.guar-line{margin:20px auto 0;max-width:26ch;font-family:var(--serif);font-style:italic;
+  font-weight:500;font-size:clamp(21px,2.7vw,29px);line-height:1.25;letter-spacing:-.02em}
+.btn-hot{display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  border:0;cursor:pointer;text-decoration:none;background:var(--hot-grad);color:#fff;
+  border-radius:100px;padding:21px 34px;font-family:var(--sans);
+  font-size:clamp(17px,2.1vw,21px);font-weight:700;letter-spacing:-.03em;line-height:1.15;
+  box-shadow:var(--hot-glow);transition:transform .15s ease,box-shadow .15s ease,filter .15s ease}
+.btn-hot:hover{transform:translateY(-2px);filter:saturate(1.06);
+  box-shadow:0 20px 38px -8px rgba(192,57,43,.5), inset 0 1px 0 rgba(255,255,255,.32)}
+.btn-hot-sub{margin-top:13px;font-size:14px;color:var(--ink-48)}
 
-.lp-foot{text-align:center;padding-block:44px 42px;color:var(--ink-48);font-size:14px}
+.lp-foot{text-align:center;padding-block:48px 42px;color:var(--ink-48);font-size:14px}
 .lp-foot a{color:var(--ink-48)}
 
-@media (max-width:820px){ .cs-grid{grid-template-columns:minmax(0,1fr)} }
+@media (max-width:1000px){ .cs-grid{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:880px){ .nums{grid-template-columns:repeat(2,minmax(0,1fr))} }
 @media (max-width:700px){
+  /* the pair stacks, and BEFORE stays above AFTER so the story still reads
+     top to bottom. Never reverse this to put the win first. */
+  .ba,.dash-grid{grid-template-columns:minmax(0,1fr)}
   .calendly-inline-widget{min-width:0;height:1020px}
-  .call{padding-block:40px}
+  .strip{margin-top:48px;padding-block:42px}
+  .maps,.dash,.work,.reads{padding-block:48px 0}
+  .call{margin-top:48px;padding-block:44px}
+  .offer{padding-block:52px 0}
   .when{flex-direction:column;gap:4px}
   .when dd{text-align:left}
+  .btn-hot{width:100%;padding-inline:22px}
 }
+@media (max-width:480px){ .cs-grid{grid-template-columns:minmax(0,1fr)} }
 </style>
 </head>
 <body>
@@ -98,23 +242,145 @@
 
 <main>
 
-  <section class="lp hero">
+  <section class="hero">
+    <div class="lp">
     <span class="tick" aria-hidden="true">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#f7f2ea"
-           stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <svg width="23" height="23" viewBox="0 0 20 20" fill="none" stroke="#fff"
+           stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
         <path d="M4 10.5 L8 14.5 L16 5.5"></path>
       </svg>
     </span>
-    <span class="pill">Got it</span>
-    <h1 class="t48" id="head">Your audit is <em>next</em>.</h1>
-    <p class="lede">I record these by hand, one business at a time. Yours lands in your inbox
-      within 48 hours: where you rank across your area, who is sitting above you, and what to
-      fix first.</p>
+    <h1 class="xl" id="head">Your audit is <span class="hot">next</span>.</h1>
+    <p class="subhead">I record these by hand, one business at a time. Yours is in your
+      inbox within 48 hours.</p>
 
     <dl class="when">
       <dt>Where it arrives</dt>
       <dd id="whereTo">The email you just gave me</dd>
     </dl>
+    </div>
+  </section>
+
+  <!-- THE NUMBERS. Every one of these four is sourced in the header comment.
+       If a number changes on a case study it changes here in the same commit. -->
+  <section class="strip">
+    <div class="lp-wide center">
+      <span class="eyebrow">What you just put your name down for</span>
+      <h2 class="lg">This is what the top 3 does to a local business.</h2>
+      <p class="subhead">Four clients. Real scans, real Google dashboards. Nothing redrawn.</p>
+      <div class="nums">
+        <div class="num-c">
+          <span class="num-n">13th to 1st</span>
+          <span class="num-l">of the businesses ranking for movers surrey</span>
+        </div>
+        <div class="num-c">
+          <span class="num-n">4th to 1st</span>
+          <span class="num-l">of the businesses ranking for drainage vancouver</span>
+        </div>
+        <div class="num-c">
+          <span class="num-n">205 calls</span>
+          <span class="num-l">straight off Google in six months</span>
+        </div>
+        <div class="num-c">
+          <span class="num-n">22 to 100</span>
+          <span class="num-l">website clicks a month from Google</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE HEATMAP PAIRS. Post-conversion only. See the header comment for why
+       these are here and banned on /top3, and for where every figure comes
+       from. Each pair is ONE keyword and ONE ranking source across two dates,
+       which is the only thing that makes a pair honest. -->
+  <section class="lp-wide maps">
+    <span class="eyebrow">The map, before and after</span>
+    <h2 class="lg center">Green is you winning. Red is you invisible.</h2>
+    <p class="subhead center">This is the same scan your free audit is built on. Each dot is a
+      real search from a real spot on the map.</p>
+
+    <div class="pair">
+      <div class="pair-head">
+        <p class="pair-who">Local Movers Ltd, Surrey BC</p>
+        <p class="pair-kw"><code>movers surrey</code> on Google Maps, 169 search points</p>
+      </div>
+      <div class="ba">
+        <figure>
+          <img src="../../assets/leadsnap/local-movers-BEFORE-2026-05-27.jpg"
+               width="1400" height="865" loading="lazy" decoding="async"
+               alt="LeadSnap heatmap for Local Movers Ltd, keyword movers surrey, ranking source Google Maps, 27 May 2026. Market share 5.21% placing 13th, top 3 coverage 2.96% placing 13th, average ranking 15.50 placing 19th, on a 13 by 13 grid of 169 points covering 172.96 square kilometres. The competitor table is showing 1 to 25 of 76 entries.">
+          <figcaption>
+            <span class="tag tag-b">Before &middot; 27 May 2026</span>
+            <p class="pos">13th of 76</p>
+            <p class="meta">Market share 5.21%. In the top 3 on just 2.96% of the map.</p>
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="../../assets/leadsnap/local-movers-2026-09-05.jpg"
+               width="1400" height="875" loading="lazy" decoding="async"
+               alt="LeadSnap heatmap for Local Movers Surrey Ltd, keyword movers surrey, ranking source Google Maps, 4 September 2026. Market share 100.00% placing 1st, top 3 coverage 45.56% placing 1st, average ranking 5.43 placing 2nd, on a 13 by 13 grid of 169 points covering 229.76 square kilometres.">
+          <figcaption>
+            <span class="tag tag-a">After &middot; 4 Sept 2026</span>
+            <p class="pos pos-a">1st</p>
+            <p class="meta">Market share 100.00%. In the top 3 on 45.56% of the map, over
+              more ground than the first scan covered.</p>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-head">
+        <p class="pair-who">Mamba Drainage, Vancouver</p>
+        <p class="pair-kw"><code>drainage vancouver</code>, 169 search points</p>
+      </div>
+      <div class="ba">
+        <figure>
+          <img src="../../assets/leadsnap/mamba-BEFORE-2026-03-21.jpg"
+               width="1400" height="939" loading="lazy" decoding="async"
+               alt="LeadSnap Local Pack heatmap for Mamba Drainage on 21 March 2026, keyword drainage vancouver, 13x13 grid of 169 points over 79.84 square kilometres, average ranking 5.10 placing 4th, top 3% 37.87%, market share 62.13%, showing 1 to 25 of 57 entries.">
+          <figcaption>
+            <span class="tag tag-b">Before &middot; 21 Mar 2026</span>
+            <p class="pos">4th of 57</p>
+            <p class="meta">Market share 62.13%. In the top 3 on 37.87% of the map.</p>
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="../../assets/leadsnap/mamba-AFTER-2026-07-02.jpg"
+               width="1400" height="869" loading="lazy" decoding="async"
+               alt="LeadSnap Local Pack heatmap for Mamba Drainage on 2 July 2026, keyword drainage vancouver, 13x13 grid of 169 points over 118.08 square kilometres, average ranking 4.50 placing 1st, top 3% 42.6%, market share 100.00%.">
+          <figcaption>
+            <span class="tag tag-a">After &middot; 2 July 2026</span>
+            <p class="pos pos-a">1st</p>
+            <p class="meta">Market share 100.00%. In the top 3 on 42.6% of the map.</p>
+          </figcaption>
+        </figure>
+      </div>
+      <p class="pair-note">The July export is cut above its own entries line, so this says
+        4th of 57 to 1st and puts no competitor count on the July end.</p>
+    </div>
+  </section>
+
+  <section class="lp-wide dash">
+    <span class="eyebrow">What it turns into</span>
+    <h2 class="lg center">Positions are nice. Phone calls pay you.</h2>
+    <p class="subhead center">Straight out of the clients' own Google dashboards.</p>
+    <div class="dash-grid">
+      <div class="dash-c">
+        <img src="../../assets/gbp/local-movers-calls.jpg" width="1200" height="654"
+             loading="lazy" decoding="async"
+             alt="Google Business Profile Calls tab for Local Movers Surrey Ltd showing 205 calls made from the profile between April and September 2026, peaking at 66 in August.">
+        <p class="dash-n">205 calls in six months</p>
+        <p class="dash-l">Peaking at 66 in a single month. Local Movers Ltd, Surrey BC.</p>
+      </div>
+      <div class="dash-c">
+        <img src="../../assets/gbp/always-best-moving-website-clicks.jpg" width="1200" height="654"
+             loading="lazy" decoding="async"
+             alt="Google Business Profile website clicks chart for Always Best Moving showing 121 website clicks between April and September 2026.">
+        <p class="dash-n">22 to 100 clicks a month</p>
+        <p class="dash-l">To the website, from the profile. Always Best Moving, Vancouver.</p>
+      </div>
+    </div>
   </section>
 
   <!-- OPTIONAL CALL. Inline embed on purpose, same Calendly event as /uk, so
@@ -127,10 +393,11 @@
        you want" ask. That is deliberate and it is the same page /uk bookings
        land on, so the show-rate ask is not duplicated here. -->
   <section class="call">
-    <div class="lp-wide">
-      <h2 class="t32">Want to go through it <em>together</em>?</h2>
-      <p class="sub">Optional. If you would rather I walked you through the audit live, grab
-        twenty minutes. If not, just wait for the video.</p>
+    <div class="lp-wide center">
+      <span class="eyebrow">Optional</span>
+      <h2 class="lg">Want me to walk you through it live?</h2>
+      <p class="subhead">Twenty minutes, and only if you want it. Otherwise just wait for
+        the video.</p>
       <div class="cal-card">
         <div class="calendly-inline-widget"
              data-url="https://calendly.com/rg-rohamresults/free-20-min-audit-how-to-rank-in-the-top-3-on-google?hide_gdpr_banner=1"></div>
@@ -141,50 +408,56 @@
   </section>
 
   <section class="lp-wide work">
-    <h2 class="t40">While you wait, the <em>receipts</em>.</h2>
-    <p class="sub">Real clients, real dashboards. Each one opens the full study.</p>
+    <span class="eyebrow">The full stories</span>
+    <h2 class="lg center">Every number above, shown the long way.</h2>
     <div class="cs-grid">
-      <a class="cs-link" href="../../case-studies/co-painting.html">
-        <p class="cs-n">1st / 5th</p>
-        <p class="cs-l">for painters north york, across two same-day reads of the map</p>
-        <p class="cs-go">Co Painting, North York &rarr;</p>
-      </a>
       <a class="cs-link" href="../../case-studies/local-movers.html">
-        <p class="cs-n">205 calls</p>
-        <p class="cs-l">straight from Google in six months, peaking at 66 in a month</p>
-        <p class="cs-go">Local Movers Ltd, Surrey BC &rarr;</p>
+        <p class="cs-n">13th to 1st</p>
+        <p class="cs-l">of the businesses ranking for movers surrey, and 205 calls off the back of it</p>
+        <p class="cs-go">Local Movers Ltd &rarr;</p>
       </a>
       <a class="cs-link" href="../../case-studies/mamba-drainage.html">
         <p class="cs-n">4th to 1st</p>
-        <p class="cs-l">of the 57 businesses ranking for the term in Vancouver</p>
+        <p class="cs-l">of the 57 businesses ranking for drainage vancouver</p>
         <p class="cs-go">Mamba Drainage &rarr;</p>
+      </a>
+      <a class="cs-link" href="../../case-studies/co-painting.html">
+        <p class="cs-n">1st / 5th</p>
+        <p class="cs-l">for painters north york, across two same-day reads of the map</p>
+        <p class="cs-go">Co Painting &rarr;</p>
       </a>
       <a class="cs-link" href="../../case-studies/always-best-moving.html">
         <p class="cs-n">22 to 100</p>
-        <p class="cs-l">clicks a month from Google, across two matched 28 day windows</p>
-        <p class="cs-go">Always Best Moving, Vancouver &rarr;</p>
+        <p class="cs-l">clicks a month, across two matched 28 day windows</p>
+        <p class="cs-go">Always Best Moving &rarr;</p>
       </a>
     </div>
   </section>
 
   <section class="lp reads">
-    <h2 class="t32">Worth ten minutes.</h2>
-    <a class="read" href="../../post/why-these-3-letters-will-beat-your-local-competition-every-single-time/index.html">
-      <h3>Why these 3 letters will beat your local competition every single time</h3>
-      <p>Read it &rarr;</p>
-    </a>
-    <a class="read" href="../../post/why-you-re-losing-business-every-morning/index.html">
-      <h3>Why you're losing business every morning</h3>
-      <p>Read it &rarr;</p>
-    </a>
-    <a class="read" href="../../post/why-following-up-turns-leads-into-clients/index.html">
-      <h3>Why following up turns leads into clients</h3>
-      <p>Read it &rarr;</p>
-    </a>
+    <span class="eyebrow">Worth ten minutes</span>
+    <h2 class="lg center">Read these while you wait.</h2>
+    <div style="margin-top:34px">
+      <a class="read" href="../../post/why-these-3-letters-will-beat-your-local-competition-every-single-time/index.html">
+        <h3>Why these 3 letters will beat your local competition every single time</h3>
+        <span aria-hidden="true">&rarr;</span>
+      </a>
+      <a class="read" href="../../post/why-you-re-losing-business-every-morning/index.html">
+        <h3>Why you're losing business every morning</h3>
+        <span aria-hidden="true">&rarr;</span>
+      </a>
+      <a class="read" href="../../post/why-following-up-turns-leads-into-clients/index.html">
+        <h3>Why following up turns leads into clients</h3>
+        <span aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
   </section>
 
   <section class="lp offer">
-    <p>Top 3 on Google in 90 days.<br>If I don't, I work for free until you're there.</p>
+    <h2 class="lg">Top 3 on Google <span class="hot">in 90 days</span>.</h2>
+    <p class="guar-line">If I don't, I work for free until you're there.</p>
+    <p style="margin:32px 0 0"><a class="btn-hot" href="../../index.html">See the rest of my work</a></p>
+    <p class="btn-hot-sub">No second form. Your audit is already on its way.</p>
   </section>
 
 </main>
@@ -213,10 +486,13 @@
   if (!/^[\p{L}][\p{L}\p{M}'\- ]{0,39}$/u.test(name)) { return; }
   var h = document.getElementById("head");
   if (h) {
-    var em = document.createElement("em");
+    /* rebuilt as a <span class="hot">, matching the markup this heading ships
+       with. An <em> here would lose the accent colour and the underline. */
+    var hot = document.createElement("span");
+    hot.className = "hot";
+    hot.textContent = "next";
     h.textContent = name + ", your audit is ";
-    em.textContent = "next";
-    h.appendChild(em);
+    h.appendChild(hot);
     h.appendChild(document.createTextNode("."));
   }
 })();
