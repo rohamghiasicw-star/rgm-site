@@ -168,7 +168,7 @@ body{background:var(--ground)}
 .audit-card{background:var(--card);border-radius:18px;padding:clamp(22px,3.6vw,38px);
   max-width:660px;margin-inline:auto;
   box-shadow:0 30px 60px -34px rgba(0,0,0,.42), 0 0 0 1px var(--ink-04)}
-.audit-card h2{margin:0 0 10px;text-align:center;
+.audit-card h2{margin:0 0 20px;text-align:center;
   font-size:clamp(25px,3.2vw,34px);font-weight:800;letter-spacing:-.04em;line-height:1.08}
 .audit-card h2 .hot{color:var(--hot);font-style:normal}
 .audit-card .lede{margin:0 auto 26px;max-width:38ch;text-align:center;
@@ -313,7 +313,7 @@ body{background:var(--ground)}
   background:radial-gradient(90% 120% at 50% 0,rgba(192,57,43,.34) 0,transparent 66%)}
 .guar-card > *{position:relative;z-index:1}
 .guar-card .pill{background:rgba(255,255,255,.12);color:#f7f2ea}
-.guar-card h2{margin:16px 0 16px;font-size:clamp(24px,3.1vw,34px);font-weight:700;
+.guar-card h2{margin:0 0 20px;font-size:clamp(24px,3.1vw,34px);font-weight:700;
   letter-spacing:-.035em;line-height:1.1}
 .guar-card h2 .hot{color:#ff8b7a;font-style:normal}
 .guar-card p{margin:0 auto;max-width:50ch;font-size:16px;line-height:1.6;
@@ -350,7 +350,11 @@ body{background:var(--ground)}
 
 /* ---- closing --------------------------------------------------------- */
 .close{padding-block:66px 0;text-align:center}
-.close .lp-guar{margin-top:0}
+/* No margin-top:0 here. This section opened with the guarantee line once, so
+   that line was zeroed; a heading went in above it later and the zero stayed,
+   leaving the two touching. Spacing belongs to the gap, not the element. */
+.close > * + *{margin-top:20px}
+.close .btn-wrap{margin-top:34px}
 
 .lp-foot{text-align:center;padding-block:46px 42px;color:var(--ink-48);font-size:14px}
 .lp-foot a{color:var(--ink-48)}
@@ -731,7 +735,7 @@ body{background:var(--ground)}
       No cost, no obligation. If you want to work together I'll tell you exactly how that works,
       if you don't want to work together that's fine too. No hard selling, no pressure, no
       annoying sales tactics.</p>
-    <p style="margin:30px 0 0"><a class="btn-hot" href="#audit">Get my free video</a></p>
+    <p class="btn-wrap"><a class="btn-hot" href="#audit">Get my free video</a></p>
   </section>
 
 </main>
