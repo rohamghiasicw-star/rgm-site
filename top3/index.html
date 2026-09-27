@@ -74,19 +74,35 @@
 .lp{max-width:820px;margin:0 auto;padding-inline:24px}
 .lp-wide{max-width:1040px;margin:0 auto;padding-inline:24px}
 
-.lp-top{padding-block:28px 0;text-align:center}
+.lp-top{padding-block:28px 0;text-align:center;background:none}
 .lp-top img{display:block;margin:0 auto;height:44px;width:auto}
 
 /* ---- hero ----------------------------------------------------------- */
 /* the radial is the only thing standing in for TNY's white ground: it lifts
    the top of the page off the beige so the headline has somewhere to sit. */
-/* FULL BLEED. The wash goes on the section, the 820px column goes on a .lp
-   INSIDE it. Painted on the same element as the max-width it reads as a white
-   box with hard edges behind the headline. */
-.lp-hero{
-  text-align:center;padding-block:18px 0;
-  background:radial-gradient(120% 74% at 50% 0,rgba(255,255,255,.8) 0,rgba(255,255,255,0) 64%);
+/* ---- THE WASH GOES ON body, NOT ON THE HERO --------------------------
+   It used to sit on .lp-hero, which starts BELOW the logo header. The header
+   kept the flat --ground and the hero started the white wash at its own top
+   edge, so the page rendered a hard horizontal seam right under the RG mark.
+   Roham: "improve the colouring on this why is is split".
+
+   Painting it on body makes one continuous field from the very top of the
+   page through the logo and the headline. The vertical radius is in PIXELS
+   on purpose: a percentage resolves against the whole page height, and these
+   pages run several thousand pixels, which would stretch the wash over the
+   entire document instead of pooling behind the headline. */
+body{
+  background:
+    radial-gradient(150% 760px at 50% -60px,
+      rgba(255,255,255,.92) 0,
+      rgba(255,255,255,.55) 38%,
+      rgba(255,255,255,0) 100%),
+    var(--ground);
+  background-repeat:no-repeat;
+  background-attachment:scroll;
 }
+
+.lp-hero{text-align:center;padding-block:18px 0}
 .lp-hero h1{
   margin:0 auto;max-width:18ch;
   font-size:clamp(37px,6.4vw,62px);font-weight:800;
@@ -142,8 +158,10 @@
 .btn-ghost:hover{border-color:var(--ink)}
 
 /* ---- section heads --------------------------------------------------- */
-.eyebrow{display:block;text-align:center;margin:0 0 16px;font-size:12px;font-weight:700;
-  letter-spacing:.2em;text-transform:uppercase;color:var(--hot)}
+/* No eyebrows and no tagline lines above sections. Roham rejects them by
+   name: "dont like the purple tagline, i told you to stop trying to sell
+   people and be more practical with this page". Section heads are plain
+   statements now, so there is nothing for a label to introduce. */
 .h-sect{margin:0 auto;max-width:21ch;text-align:center;
   font-size:clamp(30px,4.6vw,47px);font-weight:800;letter-spacing:-.04em;line-height:1.02}
 .h-sect .hot{color:var(--hot);font-style:normal}
@@ -201,63 +219,40 @@
 .done h3{margin:0 0 10px;font-size:22px;font-weight:700;letter-spacing:-.035em}
 .handoff{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
 
-/* ---- the numbers strip ---------------------------------------------- */
-/* TNY's proof row, in numbers rather than thumbnails: the one dark band on
-   the page, directly under the ask, so a visitor who scrolls past the form
-   hits results before they hit anything else.
+/* ---- proof ------------------------------------------------------------
+   Roham 2026-09-26: "i didnt ask for ai cards, i asked you to showcase more
+   of my resukts man". There was a dark strip of four stat tiles here with
+   numbers typed into them. His own rule, from his swipe file: "Your landing
+   page should prove one thing and one thing only; my thing works and here's
+   proof of it." A tile with a number I typed proves nothing. Every proof on
+   this page is now a real screenshot.
 
-   NO HEATMAPS HERE. Roham's ruling for cold paid traffic: "no biz owner has
-   a fucking clue what that is". The before/after grids live on /top3/thanks,
-   post-conversion. These four figures are the same ones that page carries and
-   its header comment holds every source. If a number changes there it changes
-   here in the same commit. Position and market share lead; never average rank. */
-.strip{margin-top:64px;padding-block:54px;background:#111;color:#f7f2ea;
-  position:relative;overflow:hidden}
-.strip::after{content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(80% 130% at 50% 0,rgba(192,57,43,.3) 0,transparent 64%)}
-.strip > *{position:relative;z-index:1}
-.strip .eyebrow{color:#ff8b7a}
-.strip .h-sect{color:#f7f2ea}
-.strip .sub-sect{color:rgba(247,242,234,.62)}
-.nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:40px}
-.num-c{text-align:center;padding:22px 14px;border-radius:14px;
-  background:rgba(255,255,255,.055);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
-.num-n{display:block;font-size:clamp(28px,3.6vw,42px);font-weight:800;
-  letter-spacing:-.045em;line-height:1;color:#ff8b7a}
-.num-l{display:block;margin-top:11px;font-size:14px;line-height:1.35;
-  color:rgba(247,242,234,.66)}
+   Still NO HEATMAPS here. His ruling for cold paid traffic stands: "no biz
+   owner has a fucking clue what that is". The before/after grids live on
+   /top3/thanks, after they have converted. What a stranger understands on
+   sight is a Google search page and a Google dashboard, so that is what this
+   page shows.
+   ---------------------------------------------------------------------- */
+.proof{padding-block:62px 0}
+.proof-lead{margin:0 auto 34px;max-width:20ch;text-align:center;
+  font-size:clamp(28px,4.2vw,44px);font-weight:800;letter-spacing:-.04em;line-height:1.04}
+
+.shot{background:var(--card);border-radius:16px;padding:9px;margin-top:20px;
+  box-shadow:0 26px 52px -32px rgba(0,0,0,.48), 0 0 0 1px var(--ink-04)}
+.shot img{display:block;width:100%;height:auto;border-radius:10px}
+.shot figcaption{padding:14px 12px 6px;text-align:left;
+  font-size:15px;line-height:1.45;color:var(--ink-56)}
+.shot figcaption b{display:block;font-weight:700;font-size:17px;letter-spacing:-.035em;
+  color:var(--ink);margin-bottom:3px}
+
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-auto-rows:1fr;gap:18px;margin-top:20px}
+.two .shot{margin-top:0;display:flex;flex-direction:column}
 
 /* ---- proof ----------------------------------------------------------- */
 /* TNY's proof block: one big screenshot with a caption under it, then a row
    of small ones. Roham's ruling holds inside it: no LeadSnap heatmaps, plain
    position language, no grid coverage percentages in words either. */
-.proof{padding-block:60px 0}
-.proof-card{background:var(--card);border-radius:16px;padding:9px;overflow:hidden;
-  box-shadow:0 26px 52px -32px rgba(0,0,0,.48), 0 0 0 1px var(--ink-04)}
-.proof-card img{display:block;width:100%;height:auto;border-radius:10px}
-.cap{margin:16px auto 0;max-width:56ch;text-align:center;font-size:16px;line-height:1.45;color:var(--ink-56)}
-.cap strong{color:var(--ink);font-weight:600}
-
-/* two columns, not three: there are exactly two spare real screenshots.
-   A third card would mean pairing a real number with the wrong image. */
-.mini{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
-  grid-auto-rows:1fr;gap:16px;margin-top:34px}
-.mini a{display:flex;flex-direction:column;background:var(--card);border-radius:14px;
-  padding:9px;text-decoration:none;box-shadow:0 0 0 1px var(--ink-04);
-  transition:transform .15s ease,box-shadow .15s ease}
-.mini a:hover{transform:translateY(-3px);box-shadow:0 22px 40px -26px rgba(0,0,0,.45),0 0 0 1px var(--ink-08)}
-.mini img{display:block;width:100%;height:auto;border-radius:8px}
-.mini .m-n{margin:13px 12px 0;font-size:21px;font-weight:700;letter-spacing:-.035em;
-  line-height:1.1;color:var(--hot)}
-.mini .m-l{margin:5px 12px 13px;font-size:13px;line-height:1.4;color:var(--ink-56)}
-
-/* PLACEHOLDER, not a design element. Roham is taking the "painters north york"
-   screenshots when the business is open. This box says what belongs here, and
-   nothing on this page should go live while it is still visible. */
-.slot{background:var(--ink-04);border:2px dashed var(--ink-24);border-radius:16px;
-  padding:clamp(28px,5vw,52px);text-align:center}
-.slot h3{margin:0 0 10px;font-size:18px;font-weight:700;letter-spacing:-.035em}
-.slot p{margin:0 auto;max-width:52ch;font-size:15px;line-height:1.5;color:var(--ink-56)}
 
 /* ---- how it works ---------------------------------------------------- */
 .how{padding-block:62px 0}
@@ -323,9 +318,8 @@
 .lp-foot{text-align:center;padding-block:46px 42px;color:var(--ink-48);font-size:14px}
 .lp-foot a{color:var(--ink-48)}
 
-@media (max-width:880px){ .nums{grid-template-columns:repeat(2,minmax(0,1fr))} }
 @media (max-width:860px){
-  .mini{grid-template-columns:minmax(0,1fr)}
+  .two{grid-template-columns:minmax(0,1fr)}
   .steps3,.fit-grid{grid-template-columns:minmax(0,1fr)}
 }
 @media (max-width:640px){
@@ -335,12 +329,10 @@
   .fnav{flex-direction:column-reverse;align-items:stretch}
   .btn-ghost{width:100%}
   .proof,.how,.guar,.fit,.faq{padding-block:46px 0}
-  .strip{margin-top:48px;padding-block:42px}
   .close{padding-block:50px 0}
 }
 </style>
-</head>
-<body>
+</head><body>
 
 <a class="skip" href="#audit">Skip to the audit form</a>
 
@@ -350,30 +342,45 @@
 
 <main>
 
-  <!-- HERO IS DELIBERATELY SHORT. Roham: the form is the page's main event and
-       has to be in the first screen on mobile, not buried under sections. So
-       there is no scroll-to CTA here, because the thing it would scroll to is
-       already the next element, and no competing links above the form. -->
+  <!-- COPY RULE FOR THIS WHOLE PAGE, from Roham's own writing (extracted from
+       his blog posts, ad copy and swipe file 2026-09-27):
+         - his words verbatim wherever a line of his already exists. Do not
+           tighten them. "it reads ai and you removed quotation marks,
+           probably better to just write it exactly as i had it."
+         - one idea per line, hard break between beats
+         - emphasis is ONE word in CAPS, never bold, never italics
+         - no taglines, no label lines above a section
+         - no dashes as punctuation, anywhere
+         - sell the end result, never the process
+         - he is talking to someone with high intent. Do not re-sell them.
+           "obviously someone who searches this keyword doesnt need to be sold
+           again, you are dealing with hiugh intent searches"
+       Full rules: ~/.claude/skills/profresults-sop/docs/writing-guidelines.md
+       and ~/rg-content/bank/voice.md -->
+
   <section class="lp-hero">
     <div class="lp">
-    <h1>I'll get your business into the top 3 on Google
-      <span class="hot">in 90 days</span></h1>
-    <p class="lp-guar">If I don't, I work for free until you're there.</p>
-    <p class="point">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"
-           stroke-linejoin="round" aria-hidden="true">
-        <path d="M12 5v14M6 13l6 6 6-6"></path>
-      </svg>
-      Start with a free audit of your profile
-    </p>
+      <h1>I'll get your business into the top 3 on Google
+        <span class="hot">in 90 days</span></h1>
+      <p class="lp-guar">If I don't, I work for free until you're there.</p>
+      <p class="point">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"
+             stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 5v14M6 13l6 6 6-6"></path>
+        </svg>
+        Start with the free video
+      </p>
     </div>
   </section>
 
   <section id="audit" class="lp audit">
     <div class="audit-card">
-      <h2>Get your free <span class="hot">audit</span></h2>
-      <p class="lede">A hand-recorded read of your Google Business Profile. Two minutes to
-        ask for it, no call needed.</p>
+      <!-- his own headline for this exact offer, word for word -->
+      <h2>Rank higher on Google <span class="hot">in 3 minutes</span></h2>
+      <!-- his own audit copy, word for word. Do not rewrite it. -->
+      <p class="lede">I'll personally record a 3 minute video showing you 3 simple steps your
+        business can take today to rank higher on Google. Completely free. Fill in your
+        details below so I can personalise your video.</p>
 
       <div id="formWrap">
         <div class="prog">
@@ -496,81 +503,67 @@
       </div>
     </div>
   </section>
-
-  <section class="strip">
-    <div class="lp-wide">
-      <span class="eyebrow">Results</span>
-      <h2 class="h-sect">This is what the top 3 does to a local business.</h2>
-      <p class="sub-sect">Four clients. Real scans, real Google dashboards. Nothing redrawn.</p>
-      <div class="nums">
-        <div class="num-c">
-          <span class="num-n">13th to 1st</span>
-          <span class="num-l">of the businesses ranking for movers surrey</span>
-        </div>
-        <div class="num-c">
-          <span class="num-n">4th to 1st</span>
-          <span class="num-l">of the businesses ranking for drainage vancouver</span>
-        </div>
-        <div class="num-c">
-          <span class="num-n">205 calls</span>
-          <span class="num-l">straight off Google in six months</span>
-        </div>
-        <div class="num-c">
-          <span class="num-n">22 to 100</span>
-          <span class="num-l">website clicks a month from Google</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROOF. Roham's ruling: no LeadSnap heatmaps, "no biz owner has a fucking
-       clue what that is". So proof here is a real Google search and real Google
-       dashboards, and the copy uses plain position language. Do not reintroduce
-       grid coverage percentages: that is the same idea in words. -->
+  <!-- PROOF. Real screenshots only. See the CSS header comment for why the
+       four stat tiles that used to sit here are gone. -->
   <section class="lp-wide proof" id="proof">
-    <span class="eyebrow">See it</span>
-    <h2 class="h-sect">What the top 3 actually <span class="hot">looks like</span>.</h2>
+    <p class="proof-lead">The top 3 are getting most of the calls.</p>
 
-    <div class="slot" style="margin-top:30px">
-      <h3>SLOT: the &ldquo;painters north york&rdquo; screenshot</h3>
-      <p>Roham's dark-mode Google search showing his client in the top 3, with
-        &ldquo;You manage this Business Profile&rdquo; visible. Same image as the ad, so the page
-        continues the click instead of restarting it. <strong>This page does not go live
-        while this box is still here.</strong></p>
-    </div>
+    <figure class="shot">
+      <img src="../assets/serp/mamba-drainage-vancouver-rank1.jpg" width="1400" height="797"
+           loading="lazy" decoding="async"
+           alt="Google search results for drainage vancouver on 17 September 2026, showing Mamba Drainage Services in first place in the local businesses pack above Impero Drainage and Leak Busters.">
+      <figcaption>
+        <b>Mamba Drainage, Vancouver. First for drainage vancouver.</b>
+        Straight off Google. Nothing redrawn.
+      </figcaption>
+    </figure>
 
-    <p class="cap" style="margin-top:36px">And this is what being there is worth.</p>
+    <figure class="shot">
+      <img src="../assets/serp/local-movers-movers-surrey-rank2.jpg" width="1400" height="774"
+           loading="lazy" decoding="async"
+           alt="Google search results for movers surrey, showing Local Movers Ltd in second place in the local businesses pack with a 5.0 star rating from 370 reviews.">
+      <figcaption>
+        <b>Local Movers, Surrey. Second for movers surrey.</b>
+        Same search a customer runs when they need a mover.
+      </figcaption>
+    </figure>
 
-    <div class="proof-card" style="margin-top:14px">
+    <p class="proof-lead" style="margin-top:56px">And this is what being there is worth.</p>
+
+    <figure class="shot">
       <img src="../assets/gbp/local-movers-calls.jpg" width="1200" height="654"
            loading="lazy" decoding="async"
            alt="Google Business Profile Calls tab for Local Movers Surrey Ltd showing 205 calls made from the profile between April and September 2026, peaking at 66 in August.">
-    </div>
-    <p class="cap"><strong>205 calls straight from Google in six months</strong>, peaking at 66
-      in a single month. A moving company I took to 1st on the map in its area.
-      Straight off Google, nothing redrawn.</p>
+      <figcaption>
+        <b>205 calls in six months.</b>
+        66 of them in August alone. That is their phone, from their Google profile.
+      </figcaption>
+    </figure>
 
-    <div class="mini">
-      <a href="../case-studies/local-movers.html">
+    <div class="two">
+      <figure class="shot">
         <img src="../assets/gbp/local-movers-interactions.jpg" width="1200" height="654"
              loading="lazy" decoding="async"
              alt="Google Business Profile performance chart for Local Movers Surrey Ltd showing 730 total interactions between April and September 2026.">
-        <p class="m-n">730 interactions</p>
-        <p class="m-l">in six months on the profile. Local Movers Ltd, Surrey BC.</p>
-      </a>
-      <a href="../case-studies/always-best-moving.html">
+        <figcaption>
+          <b>730 interactions.</b>
+          Same business, same six months.
+        </figcaption>
+      </figure>
+      <figure class="shot">
         <img src="../assets/gbp/always-best-moving-website-clicks.jpg" width="1200" height="654"
              loading="lazy" decoding="async"
-             alt="Google Business Profile website clicks chart for Always Best Moving showing 121 website clicks between April and September 2026.">
-        <p class="m-n">22 to 100 a month</p>
-        <p class="m-l">website clicks from Google. Always Best Moving, Vancouver.</p>
-      </a>
+             alt="Google Business Profile website clicks chart for Always Best Moving showing 121 website clicks between April and September 2026, peaking at 38 in August.">
+        <figcaption>
+          <b>22 clicks a month became 100.</b>
+          Always Best Moving, Vancouver.
+        </figcaption>
+      </figure>
     </div>
   </section>
 
   <section class="lp-wide how">
-    <span class="eyebrow">How it works</span>
-    <h2 class="h-sect">Three steps, and the first one is <span class="hot">free</span>.</h2>
+    <h2 class="h-sect">How it works.</h2>
     <div class="steps3">
       <div class="step3">
         <span class="num">1</span>
@@ -579,35 +572,32 @@
       </div>
       <div class="step3">
         <span class="num">2</span>
-        <h3>I record your audit</h3>
-        <p>Where you rank across your area, the businesses sitting above you, and what to fix
-          first. In your inbox within 48 hours.</p>
+        <h3>I record your video</h3>
+        <p>3 minutes. Where you rank, who is above you, and what to fix first.</p>
       </div>
       <div class="step3">
         <span class="num">3</span>
-        <h3>If you want it done, we talk</h3>
-        <p>Run it yourself for free, or I handle it. No obligation either way.</p>
+        <h3>You run it, or I do</h3>
+        <p>Do it yourself for free, or I handle it. Either way the video is yours.</p>
       </div>
     </div>
   </section>
 
-  <!-- GUARANTEE WORDING IS NOT FINAL. This is the plan's section 2.4 draft.
-       It is a commercial promise, so the exact words are Roham's call, not
-       mine and not the ads session's. Marked here so it cannot ship by
-       default the way an unreviewed line otherwise would. -->
+  <!-- GUARANTEE WORDING IS NOT FINAL. It is a commercial promise, so the exact
+       words are Roham's call. The first line is his, word for word, from his
+       own offer copy. -->
   <section class="lp guar">
     <div class="guar-card">
       <span class="pill">The guarantee</span>
-      <h2>Top 3, or I keep working for <span class="hot">free</span></h2>
-      <p>Top 3 for your main keyword, in your service area, within 90 days of starting.
-        If we're not there, I keep working at no charge until we are. The keyword and the
-        area are agreed with you in writing before anything begins.</p>
+      <h2>Top 3 on Google in 90 days, or I work for <span class="hot">free</span> until you
+        get there</h2>
+      <p>Top 3 for your main keyword, in your service area. We agree the keyword and the area
+        in writing before anything starts.</p>
     </div>
   </section>
 
   <section class="lp-wide fit">
-    <span class="eyebrow">Fit</span>
-    <h2 class="h-sect">Who this is <span class="hot">for</span>.</h2>
+    <h2 class="h-sect">Who this is for.</h2>
     <div class="fit-grid">
       <div class="fit-card fit-yes">
         <h3>This is for you if</h3>
@@ -631,38 +621,40 @@
   </section>
 
   <section class="lp faq">
-    <span class="eyebrow">Questions</span>
-    <h2 class="h-sect">The ones I get <span class="hot">every time</span>.</h2>
+    <h2 class="h-sect">Questions.</h2>
     <div style="margin-top:28px">
       <div class="faq-item">
-        <h3>Is the audit really free?</h3>
-        <p>Yes, and there's no call required to get it. You fill in the form, I record the audit
-          and send it. If you never reply, that's fine.</p>
+        <h3>Is the video really free?</h3>
+        <p>Yes, and you don't need a call to get it. You fill in the form, I record it and send
+          it. If you never reply, that's fine.</p>
       </div>
       <div class="faq-item">
-        <h3>What happens after the audit?</h3>
-        <p>Nothing automatic. Watch it, run the fixes yourself if you want to. If you'd rather I
-          did it, reply and we'll talk it through on a short call.</p>
+        <h3>What happens after?</h3>
+        <p>Nothing automatic. Watch it, run the steps yourself if you want to. If you'd rather I
+          did it, reply and we'll talk.</p>
       </div>
       <div class="faq-item">
         <h3>Why do you ask what I spend?</h3>
-        <p>Because I record these by hand and I only take on businesses I'm confident I can rank.
+        <p>Because I record these myself and I only take on businesses I'm confident I can rank.
           The questions tell me whether that's you before I spend an hour on it.</p>
       </div>
       <div class="faq-item">
         <h3>How do you actually get me there?</h3>
-        <p>Your Google Business Profile, the website behind it, and the local authority that makes
-          the two agree. Those are the three levers. The audit shows you which one is holding you
-          back.</p>
+        <p>It's about your Google business profile. It's about your citations. It's about your
+          business name. The video shows you which one is holding you back.</p>
       </div>
     </div>
   </section>
 
   <section class="lp close">
-    <h2 class="h-sect">Top 3 on Google <span class="hot">in 90 days</span>.</h2>
-    <p class="lp-guar">If I don't, I work for free until you're there.</p>
-    <p style="margin:30px 0 0"><a class="btn-hot" href="#audit">Get my free audit</a></p>
-    <p class="btn-hot-sub">Two minutes. No call required.</p>
+    <h2 class="h-sect">Get your free video.</h2>
+    <!-- his soft close, word for word -->
+    <p class="lp-guar" style="font-family:var(--sans);font-style:normal;font-weight:500;
+       font-size:17px;line-height:1.6;max-width:52ch;letter-spacing:-.03em;color:rgba(0,0,0,.6)">
+      No cost, no obligation. If you want to work together I'll tell you exactly how that works,
+      if you don't want to work together that's fine too. No hard selling, no pressure, no
+      annoying sales tactics.</p>
+    <p style="margin:30px 0 0"><a class="btn-hot" href="#audit">Get my free video</a></p>
   </section>
 
 </main>
