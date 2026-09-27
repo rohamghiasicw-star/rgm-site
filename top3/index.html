@@ -435,7 +435,7 @@ body{background:var(--ground)}
         <div class="prog">
           <div class="prog-track"><div class="prog-fill" id="progFill"></div></div>
           <div class="prog-lbl">
-            <span>Step <span id="stepNow">1</span> of 4</span>
+            <span>Step <span id="stepNow">1</span> of 3</span>
             <span id="stepName">Your details</span>
           </div>
         </div>
@@ -481,46 +481,9 @@ body{background:var(--ground)}
           <div class="fstep" data-step="3" data-name="Your goal" hidden>
             <div class="fgrid">
               <div>
-                <p class="qlab">What do you want to show up for?</p>
+                <p class="qlab">What search do you want people to find you by on Google?</p>
                 <input class="field" id="kw" name="keyword" type="text" placeholder="The search you want to win *">
                 <p class="err" data-err="kw"></p>
-              </div>
-              <div>
-                <p class="qlab">Which areas do you serve?</p>
-                <input class="field" id="area" name="area" type="text" placeholder="The towns and neighbourhoods you cover *">
-                <p class="err" data-err="area"></p>
-              </div>
-            </div>
-          </div>
-
-          <div class="fstep" data-step="4" data-name="A few quick ones" hidden>
-            <div class="fgrid">
-              <div>
-                <p class="qlab">Are you the owner, or the person who decides?</p>
-                <div class="choices" id="ownerGroup">
-                  <label class="choice"><input type="radio" name="owner" value="Yes"><span class="dot" aria-hidden="true"></span><span>Yes</span></label>
-                  <label class="choice"><input type="radio" name="owner" value="No"><span class="dot" aria-hidden="true"></span><span>No</span></label>
-                </div>
-                <p class="err" data-err="owner"></p>
-              </div>
-              <div>
-                <p class="qlab">What do you spend on marketing a month?</p>
-                <div class="choices" id="spendGroup">
-                  <label class="choice"><input type="radio" name="spend" value="Under $500"><span class="dot" aria-hidden="true"></span><span>Under $500</span></label>
-                  <label class="choice"><input type="radio" name="spend" value="$500 to $1,000"><span class="dot" aria-hidden="true"></span><span>$500 to $1,000</span></label>
-                  <label class="choice"><input type="radio" name="spend" value="$1,000 to $2,500"><span class="dot" aria-hidden="true"></span><span>$1,000 to $2,500</span></label>
-                  <label class="choice"><input type="radio" name="spend" value="$2,500+"><span class="dot" aria-hidden="true"></span><span>$2,500+</span></label>
-                </div>
-                <p class="err" data-err="spend"></p>
-              </div>
-              <div>
-                <p class="qlab">When do you want this solved?</p>
-                <div class="choices" id="timeGroup">
-                  <label class="choice"><input type="radio" name="timing" value="Now"><span class="dot" aria-hidden="true"></span><span>Now</span></label>
-                  <label class="choice"><input type="radio" name="timing" value="This month"><span class="dot" aria-hidden="true"></span><span>This month</span></label>
-                  <label class="choice"><input type="radio" name="timing" value="Just looking"><span class="dot" aria-hidden="true"></span><span>Just looking</span></label>
-                </div>
-                <p class="err" data-err="timing"></p>
               </div>
             </div>
           </div>
@@ -703,11 +666,6 @@ body{background:var(--ground)}
           did it, reply and we'll talk.</p>
       </div>
       <div class="faq-item">
-        <h3>Why do you ask what I spend?</h3>
-        <p>Because I record every one myself. I only take on businesses I can rank, and your
-          answers tell me if that's you.</p>
-      </div>
-      <div class="faq-item">
         <h3>How do you actually get me there?</h3>
         <p>It's about your Google business profile. It's about your citations. It's about your
           business name. The video shows you which one is holding you back.</p>
@@ -811,7 +769,7 @@ body{background:var(--ground)}
     var grp = document.getElementById(key + "Group");
     if (grp) { grp.classList.remove("bad"); }
   }
-  ["fullname","bemail","phone","biz","gmaps","kw","area"].forEach(function (id) {
+  ["fullname","bemail","phone","biz","gmaps","kw"].forEach(function (id) {
     var el = document.getElementById(id);
     if (el) { el.addEventListener("input", function () { clearErr(id); }); }
   });
@@ -835,12 +793,6 @@ body{background:var(--ground)}
     }
     if (i === 2) {
       need("kw", "The search you want to win.");
-      need("area", "The areas you actually serve.");
-    }
-    if (i === 3) {
-      if (!picked("owner"))  { setErr("owner", "Pick one."); ok = false; }
-      if (!picked("spend"))  { setErr("spend", "Pick one."); ok = false; }
-      if (!picked("timing")) { setErr("timing", "Pick one."); ok = false; }
     }
     return ok;
   }
@@ -878,10 +830,6 @@ body{background:var(--ground)}
       gmaps:    val("gmaps"),
       website:  val("site"),
       keyword:  val("kw"),
-      area:     val("area"),
-      owner:    picked("owner"),
-      spend:    picked("spend"),
-      timing:   picked("timing"),
       _subject: "TOP3 audit request - " + (val("biz") || val("fullname"))
     };
 
@@ -893,11 +841,7 @@ body{background:var(--ground)}
       "Phone: "     + data.phone,
       "Google Maps: " + data.gmaps,
       "Website: "   + data.website,
-      "Keyword: "   + data.keyword,
-      "Areas: "     + data.area,
-      "Decision maker: " + data.owner,
-      "Monthly spend: "  + data.spend,
-      "Timing: "    + data.timing
+      "Keyword: "   + data.keyword
     ].join("\n");
 
     /* Arm the fallback FIRST and unconditionally. On free-analysis.html these
@@ -917,7 +861,7 @@ body{background:var(--ground)}
       if (!el || el.dataset.leadWired) { return; }
       el.dataset.leadWired = "1";
       el.addEventListener("click", function () {
-        RGM.track("generate_lead", "lead", { method: pair[1], spend: data.spend || null });
+        RGM.track("generate_lead", "lead", { method: pair[1] });
       });
     });
 
@@ -947,9 +891,7 @@ body{background:var(--ground)}
     }).then(function () {
       /* Lead fires ONCE, here, and only after the endpoint has agreed it took
          the submission. Never on click, never on a 200 that says success:false. */
-      RGM.track("generate_lead", "lead", {
-        method: "form_post", spend: data.spend || null, timing: data.timing || null
-      });
+      RGM.track("generate_lead", "lead", { method: "form_post" });
       nextBtn.textContent = "Done";
       /* The delay is the mechanism, not politeness: it gives the Lead beacon
          time to leave before the page unloads. Do not shorten it. */
