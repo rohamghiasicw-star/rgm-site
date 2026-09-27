@@ -344,6 +344,15 @@ body{background:var(--ground)}
 .faq-item h3{margin:0 0 8px;font-size:16px;font-weight:700;letter-spacing:-.035em}
 .faq-item p{margin:0;font-size:15px;line-height:1.55;color:var(--ink-56)}
 
+.reads{padding-block:62px 0}
+.read{display:flex;align-items:center;justify-content:space-between;gap:18px;
+  background:var(--card);border-radius:14px;padding:22px 24px;margin-top:12px;
+  text-decoration:none;text-align:left;box-shadow:0 0 0 1px var(--ink-04);
+  transition:background .15s ease}
+.read:hover{background:var(--ink-04)}
+.read h3{margin:0;font-size:17px;font-weight:700;letter-spacing:-.035em;line-height:1.3}
+.read span{flex:none;font-size:20px;color:var(--hot)}
+
 /* ---- closing --------------------------------------------------------- */
 .close{padding-block:66px 0;text-align:center}
 /* No margin-top:0 here. This section opened with the guarantee line once, so
@@ -417,9 +426,9 @@ body{background:var(--ground)}
       <h2>Rank higher on Google <span class="hot">in 3 minutes</span></h2>
       <!-- his own audit copy, word for word. Do not rewrite it. -->
       <ul class="benefits">
-        <li><svg viewBox="0 0 20 20" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 5.5"></path></svg><span>Where you rank, block by block</span></li>
+        <li><svg viewBox="0 0 20 20" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 5.5"></path></svg><span>Where you rank in your city</span></li>
         <li><svg viewBox="0 0 20 20" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 5.5"></path></svg><span>3 things you can fix this week</span></li>
-        <li><svg viewBox="0 0 20 20" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 5.5"></path></svg><span>My offer for your business</span></li>
+        <li><svg viewBox="0 0 20 20" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 5.5"></path></svg><span>How I can help you rank in the top 3</span></li>
       </ul>
 
       <div id="formWrap">
@@ -562,13 +571,11 @@ body{background:var(--ground)}
 
 
     <p class="proof-lead" style="margin-top:56px">This is what moving up looks like.</p>
-    <p class="map-lead">Each dot is a real search from a real spot in your area.
-      Red is you nowhere. Green is you in the top 3.</p>
 
     <div class="pair">
 <div class="pair-head">
         <p class="pair-who">Local Movers, Surrey BC</p>
-        <p class="pair-kw"><code>movers surrey</code> on Google Maps, 169 search points</p>
+        <p class="pair-kw"><code>movers surrey</code></p>
       </div>
       <div class="one">
         <figure>
@@ -581,7 +588,7 @@ body{background:var(--ground)}
     <div class="pair">
 <div class="pair-head">
         <p class="pair-who">Mamba Drainage, Vancouver</p>
-        <p class="pair-kw"><code>drainage vancouver</code> on the local pack, 169 search points</p>
+        <p class="pair-kw"><code>drainage vancouver</code></p>
       </div>
       <div class="one">
         <figure>
@@ -594,7 +601,7 @@ body{background:var(--ground)}
     <div class="pair">
 <div class="pair-head">
         <p class="pair-who">Serve Ninja, Calgary</p>
-        <p class="pair-kw"><code>process server calgary</code> on the local pack, 169 search points</p>
+        <p class="pair-kw"><code>process server calgary</code></p>
       </div>
       <div class="one">
         <figure>
@@ -667,7 +674,6 @@ body{background:var(--ground)}
         <h3>This is for you if</h3>
         <ul>
           <li><svg viewBox="0 0 20 20" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 5.5"></path></svg><span>You already have a Google Business Profile</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 5.5"></path></svg><span>You serve a real area and get work from it</span></li>
           <li><svg viewBox="0 0 20 20" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 5.5"></path></svg><span>You already spend on marketing and want it working harder</span></li>
           <li><svg viewBox="0 0 20 20" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 5.5"></path></svg><span>You can decide, or you're the one who signs off</span></li>
         </ul>
@@ -706,6 +712,24 @@ body{background:var(--ground)}
         <p>It's about your Google business profile. It's about your citations. It's about your
           business name. The video shows you which one is holding you back.</p>
       </div>
+    </div>
+  </section>
+
+  <section class="lp reads">
+    <h2 class="h-sect">Worth ten minutes.</h2>
+    <div style="margin-top:28px">
+      <a class="read" href="../post/why-these-3-letters-will-beat-your-local-competition-every-single-time/index.html">
+        <h3>Why these 3 letters will beat your local competition every single time</h3>
+        <span aria-hidden="true">&rarr;</span>
+      </a>
+      <a class="read" href="../post/why-you-re-losing-business-every-morning/index.html">
+        <h3>Why you're losing business every morning</h3>
+        <span aria-hidden="true">&rarr;</span>
+      </a>
+      <a class="read" href="../post/why-following-up-turns-leads-into-clients/index.html">
+        <h3>Why following up turns leads into clients</h3>
+        <span aria-hidden="true">&rarr;</span>
+      </a>
     </div>
   </section>
 
