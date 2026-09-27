@@ -228,6 +228,8 @@ body{background:var(--ground)}
    page shows.
    ---------------------------------------------------------------------- */
 .proof{padding-block:62px 0}
+.map-lead{margin:-18px auto 0;max-width:46ch;text-align:center;font-size:16px;
+  line-height:1.5;color:var(--ink-56)}
 .proof-lead{margin:0 auto 34px;max-width:20ch;text-align:center;
   font-size:clamp(28px,4.2vw,44px);font-weight:800;letter-spacing:-.04em;line-height:1.04}
 
@@ -247,6 +249,30 @@ body{background:var(--ground)}
 /* TNY's proof block: one big screenshot with a caption under it, then a row
    of small ones. Roham's ruling holds inside it: no LeadSnap heatmaps, plain
    position language, no grid coverage percentages in words either. */
+
+/* ---- the before/after pairs ------------------------------------------ */
+.pair{margin-top:44px}
+.pair-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;
+  gap:8px 18px;margin-bottom:14px;text-align:left}
+.pair-who{margin:0;font-size:clamp(19px,2.3vw,24px);font-weight:800;letter-spacing:-.04em}
+.pair-kw{margin:0;font-size:14px;color:var(--ink-48)}
+.pair-kw code{font-family:var(--sans);font-size:14px;background:var(--ink-04);
+  border-radius:5px;padding:2px 7px}
+.ba{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.ba figure{margin:0;background:var(--card);border-radius:16px;padding:9px;
+  box-shadow:0 24px 48px -32px rgba(0,0,0,.44), 0 0 0 1px var(--ink-04)}
+.ba img{display:block;width:100%;height:auto;border-radius:10px}
+.ba figcaption{padding:14px 12px 8px;text-align:left}
+.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;padding:5px 11px;border-radius:50px}
+.tag-b{background:var(--ink-08);color:var(--ink-56)}
+.tag-a{background:var(--hot-grad);color:#fff}
+.ba .pos{margin:12px 0 0;font-size:clamp(22px,2.7vw,30px);font-weight:800;
+  letter-spacing:-.04em;line-height:1.05}
+.ba .pos-a{color:var(--hot)}
+.ba .meta{margin:7px 0 0;font-size:14px;line-height:1.45;color:var(--ink-56)}
+.pair-note{margin:14px auto 0;max-width:64ch;text-align:center;font-size:13px;
+  line-height:1.5;color:var(--ink-48)}
 
 /* ---- how it works ---------------------------------------------------- */
 .how{padding-block:62px 0}
@@ -313,7 +339,8 @@ body{background:var(--ground)}
 .lp-foot a{color:var(--ink-48)}
 
 @media (max-width:860px){
-  .two{grid-template-columns:minmax(0,1fr)}
+  /* BEFORE stays above AFTER when it stacks. Never reverse it. */
+  .ba,.two{grid-template-columns:minmax(0,1fr)}
   .steps3,.fit-grid{grid-template-columns:minmax(0,1fr)}
 }
 @media (max-width:640px){
@@ -517,6 +544,107 @@ body{background:var(--ground)}
         <b>Local Movers, Surrey. Second for movers surrey.</b>
       </figcaption>
     </figure>
+
+
+    <p class="proof-lead" style="margin-top:56px">And this is the map.</p>
+    <p class="map-lead">Each dot is a real search from a real spot on the map.
+      Red is you nowhere. Green is you in the top 3.</p>
+
+<div class="pair">
+      <div class="pair-head">
+        <p class="pair-who">Local Movers, Surrey BC</p>
+        <p class="pair-kw"><code>movers surrey</code> on Google Maps, 169 search points</p>
+      </div>
+      <div class="ba">
+        <figure>
+          <img src="../assets/leadsnap/local-movers-BEFORE-2026-05-27.jpg"
+               width="1400" height="865" loading="lazy" decoding="async"
+               alt="LeadSnap heatmap for Local Movers Ltd, keyword movers surrey, ranking source Google Maps, 27 May 2026. Market share 5.21% placing 13th, top 3 coverage 2.96% placing 13th, average ranking 15.50 placing 19th, on a 13 by 13 grid of 169 points covering 172.96 square kilometres. The competitor table is showing 1 to 25 of 76 entries.">
+          <figcaption>
+            <span class="tag tag-b">Before &middot; 27 May 2026</span>
+            <p class="pos">13th of 76</p>
+            <p class="meta">Market share 5.21%. In the top 3 on 2.96% of a 172.96 sq km grid.</p>
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/leadsnap/local-movers-2026-09-05.jpg"
+               width="1400" height="875" loading="lazy" decoding="async"
+               alt="LeadSnap heatmap for Local Movers Surrey Ltd, keyword movers surrey, ranking source Google Maps, 4 September 2026. Market share 100.00% placing 1st, top 3 coverage 45.56% placing 1st, average ranking 5.43 placing 2nd, on a 13 by 13 grid of 169 points covering 229.76 square kilometres.">
+          <figcaption>
+            <span class="tag tag-a">After &middot; 4 Sept 2026</span>
+            <p class="pos pos-a">1st</p>
+            <p class="meta">Market share 100.00%. In the top 3 on 45.56% of a 229.76 sq km grid.</p>
+          </figcaption>
+        </figure>
+      </div>
+      <p class="pair-note">The September scan covers more ground than the May one, so the
+        comparison is position and market share, which are standings against the other
+        businesses. Coverage is not compared across two different grids. The business changed
+        its name from Local Movers Ltd to Local Movers Surrey Ltd between the two scans.</p>
+    </div>
+
+    <div class="pair">
+      <div class="pair-head">
+        <p class="pair-who">Mamba Drainage, Vancouver</p>
+        <p class="pair-kw"><code>drainage vancouver</code> on the local pack, 169 search points</p>
+      </div>
+      <div class="ba">
+        <figure>
+          <img src="../assets/leadsnap/mamba-BEFORE-2026-03-21.jpg"
+               width="1400" height="939" loading="lazy" decoding="async"
+               alt="LeadSnap Local Pack heatmap for Mamba Drainage on 21 March 2026, keyword drainage vancouver, 13x13 grid of 169 points over 79.84 square kilometres, average ranking 5.10 placing 4th, top 3% 37.87%, market share 62.13%, showing 1 to 25 of 57 entries.">
+          <figcaption>
+            <span class="tag tag-b">Before &middot; 21 Mar 2026</span>
+            <p class="pos">4th of 57</p>
+            <p class="meta">Market share 62.13%. In the top 3 on 37.87% of a 79.84 sq km grid.</p>
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/leadsnap/mamba-AFTER-2026-07-02.jpg"
+               width="1400" height="869" loading="lazy" decoding="async"
+               alt="LeadSnap Local Pack heatmap for Mamba Drainage on 2 July 2026, keyword drainage vancouver, 13x13 grid of 169 points over 118.08 square kilometres, average ranking 4.50 placing 1st, top 3% 42.6%, market share 100.00%.">
+          <figcaption>
+            <span class="tag tag-a">After &middot; 2 July 2026</span>
+            <p class="pos pos-a">1st</p>
+            <p class="meta">Market share 100.00%. In the top 3 on 42.6% of a 118.08 sq km grid.</p>
+          </figcaption>
+        </figure>
+      </div>
+      <p class="pair-note">The July scan covers more ground than the March one, and still went
+        to first. The July export is cut above its own entries line, so this says 4th of 57 to
+        1st and puts no competitor count on the July end.</p>
+    </div>
+
+    <div class="pair">
+      <div class="pair-head">
+        <p class="pair-who">Serve Ninja, Calgary</p>
+        <p class="pair-kw"><code>process server calgary</code> on the local pack, 169 search points</p>
+      </div>
+      <div class="ba">
+        <figure>
+          <img src="../assets/leadsnap/serve-ninja-BEFORE-2026-04-25.jpg"
+               width="1400" height="920" loading="lazy" decoding="async"
+               alt="LeadSnap Local Pack heatmap for Serve Ninja Legal Support on 25 April 2026, keyword process server calgary, 13 by 13 grid of 169 points over 665.37 square kilometres, market share 11.97% placing 6th, top 3% 11.83% placing 6th, average ranking 5.52 placing 5th.">
+          <figcaption>
+            <span class="tag tag-b">Before &middot; 25 Apr 2026</span>
+            <p class="pos">6th</p>
+            <p class="meta">Market share 11.97%. In the top 3 on 11.83% of a 665.37 sq km grid.</p>
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/leadsnap/serve-ninja-2026-06-22.jpg"
+               width="1400" height="831" loading="lazy" decoding="async"
+               alt="LeadSnap Local Pack heatmap for Serve Ninja Legal Support on 22 June 2026, keyword process server calgary, 13 by 13 grid of 169 points over 706.28 square kilometres, market share 39.64% placing 3rd, top 3% 39.64% placing 3rd, average ranking 4.11 placing 3rd.">
+          <figcaption>
+            <span class="tag tag-a">After &middot; 22 June 2026</span>
+            <p class="pos pos-a">3rd</p>
+            <p class="meta">Market share 39.64%. In the top 3 on 39.64% of a 706.28 sq km grid.</p>
+          </figcaption>
+        </figure>
+      </div>
+      <p class="pair-note">Closest matched pair here, 665 against 706 sq km. The June export is
+        cut above its entries line, so no competitor count sits on that end.</p>
+    </div>
 
     <p class="proof-lead" style="margin-top:56px">And this is what being there is worth.</p>
 
