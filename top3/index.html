@@ -225,6 +225,47 @@ body{background:var(--ground)}
 .done h3{margin:0 0 10px;font-size:22px;font-weight:700;letter-spacing:-.035em}
 .handoff{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
 
+/* ---- the PAS block ----------------------------------------------------
+   Roham 2026-09-27: "its very boring and not up to quality, we want marketing
+   aspects on landing page like not being too on the nose and pas elements".
+
+   He was right and the fault was structural, not decorative: the page opened
+   with the SOLUTION and never stated the PROBLEM, so there was no reason to
+   care before the ask. His own rule, voice.md: PAS on every piece of his
+   marketing, no exceptions.
+
+   Five of these six lines are his, verbatim and un-repunctuated. Four drafts
+   were written from four angles and scored by two judges; both judges
+   independently kept the same opening question, the same ghost line and the
+   same closing triad, which is why those three are untouched.
+
+   WHY IT SITS BELOW THE FORM. The form keeps the first screen on mobile, his
+   standing ruling. Anyone ready to convert never reads this. Anyone who
+   scrolled past the form instead now hits a reason to care before the first
+   screenshot, and the proof section below opens on "The top 3 are getting most
+   of the calls", which becomes the payoff rather than a brochure exhibit.
+
+   NO HEADING AND NO LABEL LINE ABOVE IT, deliberately. He bans those by name.
+   Line one carries the block at heading size and the rest step down.
+
+   The line "They called one of the three they could see" is the only sentence
+   here that is not his. It has to stay at position three: "They" resolves
+   against "your potential clients" directly above it, and moving it below the
+   website beat makes "they" read as the business owners instead. -------- */
+.pas{padding-block:64px 0;text-align:center}
+.pas p{margin:0 auto}
+.pas p + p{margin-top:24px}
+.pas .q{max-width:20ch;font-size:clamp(28px,4.2vw,44px);font-weight:800;
+  letter-spacing:-.04em;line-height:1.04}
+.pas .big{max-width:30ch;font-size:clamp(19px,2.4vw,24px);font-weight:500;
+  line-height:1.4;letter-spacing:-.03em;color:rgba(0,0,0,.72)}
+.pas .body{max-width:32ch;font-size:19px;line-height:1.45;letter-spacing:-.03em;
+  color:rgba(0,0,0,.62)}
+/* the three levers. Heavier and darker because this is the turn, and it is the
+   only place on the page that names what the work actually is. */
+.pas .turn{max-width:30ch;font-size:clamp(18px,2.2vw,21px);font-weight:700;
+  line-height:1.45;letter-spacing:-.035em;color:var(--ink);margin-top:34px}
+
 /* ---- proof ------------------------------------------------------------
    Roham 2026-09-26: "i didnt ask for ai cards, i asked you to showcase more
    of my resukts man". There was a dark strip of four stat tiles here with
@@ -546,6 +587,20 @@ body{background:var(--ground)}
       </div>
     </div>
   </section>
+  <!-- PAS. Problem, agitate, turn. Sources and reasoning in the CSS header
+       above. Do not add a heading or a label line to this block. -->
+  <section class="lp pas">
+    <p class="q">Are you visible on Google Maps?</p>
+    <p class="big">If you're not ranking in the top 3 on Google search, you're essentially a
+      ghost to your potential clients.</p>
+    <p class="body">They called one of the three they could see.</p>
+    <p class="body">Most biz owners make this SEO mistake before it's too late... They think
+      SEO = their website.</p>
+    <p class="body">So they pay for a new website and still don't rank.</p>
+    <p class="turn">It's about your Google business profile. It's about your citations. It's
+      about your business name.</p>
+  </section>
+
   <!-- PROOF. Real screenshots only. See the CSS header comment for why the
        four stat tiles that used to sit here are gone. -->
   <section class="lp-wide proof" id="proof">
@@ -721,8 +776,7 @@ body{background:var(--ground)}
       </div>
       <div class="faq-item">
         <h3>How do you actually get me there?</h3>
-        <p>It's about your Google business profile. It's about your citations. It's about your
-          business name. The video shows you which one is holding you back.</p>
+        <p>The video shows you which one of the three is holding you back.</p>
       </div>
     </div>
   </section>
