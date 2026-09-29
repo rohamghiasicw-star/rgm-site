@@ -432,16 +432,7 @@ body{background:var(--ground)}
       </ul>
 
       <div id="formWrap">
-        <div class="prog">
-          <div class="prog-track"><div class="prog-fill" id="progFill"></div></div>
-          <div class="prog-lbl">
-            <span>Step <span id="stepNow">1</span> of 3</span>
-            <span id="stepName">Your details</span>
-          </div>
-        </div>
-
         <form id="auditForm" novalidate>
-          <div class="fstep" data-step="1" data-name="Your details">
             <div class="fgrid">
               <div>
                 <input class="field" id="fullname" name="fullname" type="text" autocomplete="name" placeholder="Full name *">
@@ -458,11 +449,6 @@ body{background:var(--ground)}
                 </div>
                 <p class="err" data-err="phone"></p>
               </div>
-            </div>
-          </div>
-
-          <div class="fstep" data-step="2" data-name="Your business" hidden>
-            <div class="fgrid">
               <div>
                 <input class="field" id="biz" name="company" type="text" autocomplete="organization" placeholder="Business name *">
                 <p class="err" data-err="biz"></p>
@@ -475,22 +461,15 @@ body{background:var(--ground)}
               <div>
                 <input class="field" id="site" name="website" type="text" inputmode="url" autocomplete="url" placeholder="Website (optional)">
               </div>
-            </div>
-          </div>
-
-          <div class="fstep" data-step="3" data-name="Your goal" hidden>
-            <div class="fgrid">
               <div>
                 <p class="qlab">What search do you want people to find you by on Google?</p>
                 <input class="field" id="kw" name="keyword" type="text" placeholder="The search you want to win *">
                 <p class="err" data-err="kw"></p>
               </div>
             </div>
-          </div>
 
           <div class="fnav">
-            <button class="btn-ghost" id="backBtn" type="button" hidden>Back</button>
-            <button class="btn-hot" id="nextBtn" type="submit">Continue</button>
+            <button class="btn-hot" id="nextBtn" type="submit">Send it</button>
           </div>
           <p class="trust">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
@@ -726,32 +705,11 @@ body{background:var(--ground)}
   var THANKS   = "/top3/thanks/";
 
   var form    = document.getElementById("auditForm");
-  var steps   = Array.prototype.slice.call(form.querySelectorAll(".fstep"));
   var nextBtn = document.getElementById("nextBtn");
-  var backBtn = document.getElementById("backBtn");
-  var fill    = document.getElementById("progFill");
-  var stepNow = document.getElementById("stepNow");
-  var stepName= document.getElementById("stepName");
   var formWrap= document.getElementById("formWrap");
   var doneWrap= document.getElementById("doneWrap");
-  var total   = steps.length;
-  var at      = 0;
-
-  var choices = Array.prototype.slice.call(document.querySelectorAll(".choice"));
-  choices.forEach(function (c) {
-    c.querySelector("input").addEventListener("change", function () {
-      var nm = c.querySelector("input").name;
-      choices.forEach(function (o) {
-        if (o.querySelector("input").name === nm) {
-          o.classList.toggle("is-on", o.querySelector("input").checked);
-        }
-      });
-      clearErr(nm);
-    });
-  });
 
   function val(id) { var el = document.getElementById(id); return el ? el.value.trim() : ""; }
-  function picked(nm) { var p = form.querySelector('input[name="' + nm + '"]:checked'); return p ? p.value : ""; }
 
   function setErr(key, msg) {
     var slot = form.querySelector('[data-err="' + key + '"]');
@@ -774,53 +732,29 @@ body{background:var(--ground)}
     if (el) { el.addEventListener("input", function () { clearErr(id); }); }
   });
 
-  function validate(i) {
+  function validate() {
     var ok = true;
     function need(id, msg) {
       if (!val(id)) { setErr(id, msg); ok = false; }
     }
-    if (i === 0) {
-      need("fullname", "Your name, so the audit isn't addressed to nobody.");
-      var em = val("bemail");
-      if (!em) { setErr("bemail", "I need somewhere to send the audit."); ok = false; }
-      else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)) { setErr("bemail", "That address doesn't look right."); ok = false; }
-      need("phone", "A number, in case the audit needs a quick question.");
-    }
-    if (i === 1) {
-      need("biz", "The business name.");
-      var gm = val("gmaps");
-      if (!gm) { setErr("gmaps", "The audit is a read of your Google listing, so I need the link."); ok = false; }
-    }
-    if (i === 2) {
-      need("kw", "The search you want to win.");
-    }
+    need("fullname", "Your name, so the audit isn't addressed to nobody.");
+    var em = val("bemail");
+    if (!em) { setErr("bemail", "I need somewhere to send the audit."); ok = false; }
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)) { setErr("bemail", "That address doesn't look right."); ok = false; }
+    need("phone", "A number, in case the audit needs a quick question.");
+    need("biz", "The business name.");
+    need("gmaps", "The audit is a read of your Google listing, so I need the link.");
+    need("kw", "The search you want to win.");
     return ok;
   }
 
-  function show(i, forward) {
-    steps[at].hidden = true;
-    at = i;
-    steps[at].hidden = false;
-    fill.style.width = ((at + 1) / total * 100) + "%";
-    stepNow.textContent = String(at + 1);
-    stepName.textContent = steps[at].getAttribute("data-name");
-    backBtn.hidden = at === 0;
-    nextBtn.textContent = at === total - 1 ? "Send it" : "Continue";
-    if (forward) {
-      var f = steps[at].querySelector("input, select, textarea");
-      if (f && f.focus) { f.focus({ preventScroll: true }); }
-    }
-  }
-  backBtn.addEventListener("click", function () { if (at > 0) { show(at - 1, false); } });
-
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-    if (!validate(at)) {
-      var bad = steps[at].querySelector(".bad, .choices.bad input");
-      if (bad && bad.focus) { bad.focus({ preventScroll: true }); }
+    if (!validate()) {
+      var bad = form.querySelector(".bad");
+      if (bad && bad.focus) { bad.focus(); }
       return;
     }
-    if (at < total - 1) { show(at + 1, true); return; }
 
     var data = {
       fullname: val("fullname"),
@@ -906,8 +840,6 @@ body{background:var(--ground)}
       handoff();
     });
   });
-
-  show(0, false);
 })();
 </script>
 </body>
