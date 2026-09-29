@@ -454,12 +454,8 @@ body{background:var(--ground)}
                 <p class="err" data-err="biz"></p>
               </div>
               <div>
-                <input class="field" id="gmaps" name="gmaps" type="text" inputmode="url" placeholder="Link to your Google Maps listing *">
-                <p class="hint">No Google Business Profile yet? Set one up first, then come back.</p>
-                <p class="err" data-err="gmaps"></p>
-              </div>
-              <div>
-                <input class="field" id="site" name="website" type="text" inputmode="url" autocomplete="url" placeholder="Website (optional)">
+                <input class="field" id="site" name="website" type="text" inputmode="url" autocomplete="url" placeholder="Website *">
+                <p class="err" data-err="site"></p>
               </div>
               <div>
                 <p class="qlab">What search do you want people to find you by on Google?</p>
@@ -582,7 +578,7 @@ body{background:var(--ground)}
       <div class="step3">
         <span class="num">1</span>
         <h3>You fill in the form</h3>
-        <p>Two minutes. Your details, your Google Maps link, and the search you want to win.</p>
+        <p>One minute. Your details, your website, and the search you want to win.</p>
       </div>
       <div class="step3">
         <span class="num">2</span>
@@ -727,7 +723,7 @@ body{background:var(--ground)}
     var grp = document.getElementById(key + "Group");
     if (grp) { grp.classList.remove("bad"); }
   }
-  ["fullname","bemail","phone","biz","gmaps","kw"].forEach(function (id) {
+  ["fullname","bemail","phone","biz","site","kw"].forEach(function (id) {
     var el = document.getElementById(id);
     if (el) { el.addEventListener("input", function () { clearErr(id); }); }
   });
@@ -743,7 +739,7 @@ body{background:var(--ground)}
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)) { setErr("bemail", "That address doesn't look right."); ok = false; }
     need("phone", "A number, in case the audit needs a quick question.");
     need("biz", "The business name.");
-    need("gmaps", "The audit is a read of your Google listing, so I need the link.");
+    need("site", "Your website, so I know which business to look up.");
     need("kw", "The search you want to win.");
     return ok;
   }
@@ -761,7 +757,6 @@ body{background:var(--ground)}
       email:    val("bemail"),
       phone:    val("code") + " " + val("phone"),
       company:  val("biz"),
-      gmaps:    val("gmaps"),
       website:  val("site"),
       keyword:  val("kw"),
       _subject: "TOP3 audit request - " + (val("biz") || val("fullname"))
@@ -773,7 +768,6 @@ body{background:var(--ground)}
       "Business: "  + data.company,
       "Email: "     + data.email,
       "Phone: "     + data.phone,
-      "Google Maps: " + data.gmaps,
       "Website: "   + data.website,
       "Keyword: "   + data.keyword
     ].join("\n");
