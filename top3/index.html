@@ -443,24 +443,12 @@ body{background:var(--ground)}
                 <p class="err" data-err="bemail"></p>
               </div>
               <div>
-                <div class="frow">
-                  <input class="field" id="code" name="code" type="text" inputmode="tel" autocomplete="tel-country-code" value="+1" aria-label="Country code">
-                  <input class="field" id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="Phone number *">
-                </div>
-                <p class="err" data-err="phone"></p>
-              </div>
-              <div>
                 <input class="field" id="biz" name="company" type="text" autocomplete="organization" placeholder="Business name *">
                 <p class="err" data-err="biz"></p>
               </div>
               <div>
                 <input class="field" id="site" name="website" type="text" inputmode="url" autocomplete="url" placeholder="Website *">
                 <p class="err" data-err="site"></p>
-              </div>
-              <div>
-                <p class="qlab">What search do you want people to find you by on Google?</p>
-                <input class="field" id="kw" name="keyword" type="text" placeholder="The search you want to win *">
-                <p class="err" data-err="kw"></p>
               </div>
             </div>
 
@@ -578,7 +566,7 @@ body{background:var(--ground)}
       <div class="step3">
         <span class="num">1</span>
         <h3>You fill in the form</h3>
-        <p>One minute. Your details, your website, and the search you want to win.</p>
+        <p>One minute. Your name, your email, your business and its website.</p>
       </div>
       <div class="step3">
         <span class="num">2</span>
@@ -723,7 +711,7 @@ body{background:var(--ground)}
     var grp = document.getElementById(key + "Group");
     if (grp) { grp.classList.remove("bad"); }
   }
-  ["fullname","bemail","phone","biz","site","kw"].forEach(function (id) {
+  ["fullname","bemail","biz","site"].forEach(function (id) {
     var el = document.getElementById(id);
     if (el) { el.addEventListener("input", function () { clearErr(id); }); }
   });
@@ -737,10 +725,8 @@ body{background:var(--ground)}
     var em = val("bemail");
     if (!em) { setErr("bemail", "I need somewhere to send the audit."); ok = false; }
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)) { setErr("bemail", "That address doesn't look right."); ok = false; }
-    need("phone", "A number, in case the audit needs a quick question.");
     need("biz", "The business name.");
     need("site", "Your website, so I know which business to look up.");
-    need("kw", "The search you want to win.");
     return ok;
   }
 
@@ -755,10 +741,8 @@ body{background:var(--ground)}
     var data = {
       fullname: val("fullname"),
       email:    val("bemail"),
-      phone:    val("code") + " " + val("phone"),
       company:  val("biz"),
       website:  val("site"),
-      keyword:  val("kw"),
       _subject: "TOP3 audit request - " + (val("biz") || val("fullname"))
     };
 
@@ -767,9 +751,7 @@ body{background:var(--ground)}
       "Name: "      + data.fullname,
       "Business: "  + data.company,
       "Email: "     + data.email,
-      "Phone: "     + data.phone,
-      "Website: "   + data.website,
-      "Keyword: "   + data.keyword
+      "Website: "   + data.website
     ].join("\n");
 
     /* Arm the fallback FIRST and unconditionally. On free-analysis.html these
