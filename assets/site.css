@@ -357,7 +357,12 @@ main>.csbar:first-child{padding-block:var(--hero-top) 0}
   filter:grayscale(1) contrast(1.3) brightness(.5);opacity:.45;
   transition:filter .3s,opacity .3s;
 }
-.marq:hover .marq-item img{filter:none;opacity:1}
+/* Colour on hover AND once the belt has scrolled into view. The second one is
+   what Roham asked for; hover alone never fires on a phone and only fires on
+   desktop if the cursor happens to land on the belt. .marq-on is set by
+   assets/ui.js. */
+.marq:hover .marq-item img,
+.marq-on .marq-item img{filter:none;opacity:1}
 
 /* Per-logo optical height. Keyed off the filename so index, about and
    free-analysis cannot drift apart. Comment shows rendered w x h. */
@@ -368,6 +373,8 @@ main>.csbar:first-child{padding-block:var(--hero-top) 0}
 .marq-item img[src$="mamba-drainage.png"]           {--lh:58px} /*  50 x 58 */
 .marq-item img[src$="western-provincial-movers.png"]{--lh:40px} /*  87 x 40 */
 .marq-item img[src$="everfinish.png"]               {--lh:46px} /* 118 x 46 */
+.marq-item img[src$="ld-movers.png"]                {--lh:28px} /* 133 x 28 */
+.marq-item img[src$="toronto-restoration-services.png"]{--lh:28px} /* 129 x 28 */
 
 /* Local Movers' artwork is pale gold on transparent (mean ink luminance
    190/255 against ~100 for the rest), so the shared rest-state filter
