@@ -153,8 +153,8 @@ body{
 
 /* ---- studies + reads -------------------------------------------------- */
 .work{padding-block:66px 0}
-.cs-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:1fr;
-  gap:14px;margin-top:34px}
+.cs-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:34px}
+.cs-grid > *{flex:0 1 calc(33.333% - 10px);min-width:190px}
 .cs-link{display:grid;place-items:center;background:var(--card);
   border-radius:14px;padding:26px 22px;min-height:104px;text-decoration:none;
   box-shadow:0 0 0 1px var(--ink-04);transition:transform .15s ease,box-shadow .15s ease}
@@ -188,11 +188,12 @@ body{
 .lp-foot{text-align:center;padding-block:48px 42px;color:var(--ink-48);font-size:14px}
 .lp-foot a{color:var(--ink-48)}
 
-@media (max-width:980px){ .cs-grid{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:980px){ .cs-grid > *{flex-basis:calc(50% - 7px)} }
 @media (max-width:760px){
   /* the pair stacks with BEFORE above AFTER so the story still reads top to
      bottom. Never reverse this to put the win first. */
-  .ba,.two,.cs-grid{grid-template-columns:minmax(0,1fr)}
+  .ba,.two{grid-template-columns:minmax(0,1fr)}
+  .cs-grid > *{flex-basis:100%}
   .calendly-inline-widget{min-width:0;height:1020px}
   .proof,.work,.reads{padding-block:48px 0}
   .call{margin-top:48px;padding-block:44px}
@@ -369,6 +370,9 @@ body{
   <section class="lp-wide work">
     <h2 class="lg">The full stories.</h2>
     <div class="cs-grid">
+      <a class="cs-link" href="https://ld-movers.com/" target="_blank" rel="noopener">
+        <img src="../../assets/logos/marquee/ld-movers.png" alt="LD Movers" loading="lazy" decoding="async">
+      </a>
       <a class="cs-link" href="../../case-studies/local-movers.html">
         <img src="../../assets/logos/marquee/local-movers.png" alt="Local Movers Ltd" loading="lazy" decoding="async">
       </a>
