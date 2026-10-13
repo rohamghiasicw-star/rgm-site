@@ -443,8 +443,8 @@ body{background:var(--ground)}
                 <p class="err" data-err="bemail"></p>
               </div>
               <div>
-                <input class="field" id="site" name="website" type="text" inputmode="url" autocomplete="url" placeholder="Website *">
-                <p class="err" data-err="site"></p>
+                <input class="field" id="biz" name="company" type="text" autocomplete="organization" placeholder="Business name *">
+                <p class="err" data-err="biz"></p>
               </div>
             </div>
 
@@ -707,7 +707,7 @@ body{background:var(--ground)}
     var grp = document.getElementById(key + "Group");
     if (grp) { grp.classList.remove("bad"); }
   }
-  ["fullname","bemail","site"].forEach(function (id) {
+  ["fullname","bemail","biz"].forEach(function (id) {
     var el = document.getElementById(id);
     if (el) { el.addEventListener("input", function () { clearErr(id); }); }
   });
@@ -721,7 +721,7 @@ body{background:var(--ground)}
     var em = val("bemail");
     if (!em) { setErr("bemail", "I need somewhere to send the audit."); ok = false; }
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)) { setErr("bemail", "That address doesn't look right."); ok = false; }
-    need("site", "Your website, so I know which business to look up.");
+    need("biz", "The business name, so I know who to look up.");
     return ok;
   }
 
@@ -736,15 +736,15 @@ body{background:var(--ground)}
     var data = {
       fullname: val("fullname"),
       email:    val("bemail"),
-      website:  val("site"),
-      _subject: "TOP3 audit request - " + val("fullname")
+      company:  val("biz"),
+      _subject: "TOP3 audit request - " + (val("biz") || val("fullname"))
     };
 
     var lines = [
       "Top 3 audit request", "",
       "Name: "   + data.fullname,
       "Email: "  + data.email,
-      "Website: " + data.website
+      "Business: " + data.company
     ].join("\n");
 
     /* Arm the fallback FIRST and unconditionally. On free-analysis.html these
@@ -755,7 +755,7 @@ body{background:var(--ground)}
     var wa   = document.getElementById("sendWa");
     if (mail) {
       mail.href = "mailto:roham@rghiasi.com?subject="
-        + encodeURIComponent("Top 3 audit - " + data.fullname)
+        + encodeURIComponent("Top 3 audit - " + (data.company || data.fullname))
         + "&body=" + encodeURIComponent(lines);
     }
     if (wa) { wa.href = "https://wa.me/19022790345?text=" + encodeURIComponent(lines); }
