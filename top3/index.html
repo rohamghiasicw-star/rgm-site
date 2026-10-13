@@ -443,12 +443,9 @@ body{background:var(--ground)}
                 <p class="err" data-err="bemail"></p>
               </div>
               <div>
-                <input class="field" id="biz" name="company" type="text" autocomplete="organization" placeholder="Business name *">
-                <p class="err" data-err="biz"></p>
-              </div>
-              <div>
-                <input class="field" id="site" name="website" type="text" inputmode="url" autocomplete="url" placeholder="Website *">
-                <p class="err" data-err="site"></p>
+                <input class="field" id="gmaps" name="gmaps" type="text" inputmode="url" autocomplete="url" placeholder="Your Google Maps link *">
+                <p class="hint">Search your business on Google Maps, hit Share, copy the link.</p>
+                <p class="err" data-err="gmaps"></p>
               </div>
             </div>
 
@@ -711,7 +708,7 @@ body{background:var(--ground)}
     var grp = document.getElementById(key + "Group");
     if (grp) { grp.classList.remove("bad"); }
   }
-  ["fullname","bemail","biz","site"].forEach(function (id) {
+  ["fullname","bemail","gmaps"].forEach(function (id) {
     var el = document.getElementById(id);
     if (el) { el.addEventListener("input", function () { clearErr(id); }); }
   });
@@ -725,8 +722,15 @@ body{background:var(--ground)}
     var em = val("bemail");
     if (!em) { setErr("bemail", "I need somewhere to send the audit."); ok = false; }
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)) { setErr("bemail", "That address doesn't look right."); ok = false; }
-    need("biz", "The business name.");
-    need("site", "Your website, so I know which business to look up.");
+    /* Permissive on purpose. The job is to catch someone typing their
+       business NAME into a field that wants a link, not to police URL shapes:
+       Google hands out maps.app.goo.gl, g.co, goo.gl and the long
+       google.com/maps form, and rejecting a valid paste costs a lead. */
+    var gm = val("gmaps");
+    if (!gm) { setErr("gmaps", "The link to your Google listing."); ok = false; }
+    else if (!/^https?:\/\//i.test(gm) && !/\.[a-z]{2,}/i.test(gm)) {
+      setErr("gmaps", "That looks like a name, not a link. Share your Google Maps listing and paste it here."); ok = false;
+    }
     return ok;
   }
 
@@ -741,17 +745,15 @@ body{background:var(--ground)}
     var data = {
       fullname: val("fullname"),
       email:    val("bemail"),
-      company:  val("biz"),
-      website:  val("site"),
-      _subject: "TOP3 audit request - " + (val("biz") || val("fullname"))
+      gmaps:    val("gmaps"),
+      _subject: "TOP3 audit request - " + val("fullname")
     };
 
     var lines = [
       "Top 3 audit request", "",
-      "Name: "      + data.fullname,
-      "Business: "  + data.company,
-      "Email: "     + data.email,
-      "Website: "   + data.website
+      "Name: "   + data.fullname,
+      "Email: "  + data.email,
+      "Google: " + data.gmaps
     ].join("\n");
 
     /* Arm the fallback FIRST and unconditionally. On free-analysis.html these
@@ -762,7 +764,7 @@ body{background:var(--ground)}
     var wa   = document.getElementById("sendWa");
     if (mail) {
       mail.href = "mailto:roham@rghiasi.com?subject="
-        + encodeURIComponent("Top 3 audit - " + (data.company || data.fullname))
+        + encodeURIComponent("Top 3 audit - " + data.fullname)
         + "&body=" + encodeURIComponent(lines);
     }
     if (wa) { wa.href = "https://wa.me/19022790345?text=" + encodeURIComponent(lines); }
