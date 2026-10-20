@@ -145,23 +145,24 @@ body{
    Real counted leads, not a dashboard. See the markup comment for why this
    is HTML rather than an image. Numbers are ink, not the accent: red is the
    losing colour on every heatmap above it. */
-.ledger{background:var(--card);border-radius:16px;padding:clamp(22px,3.4vw,34px) clamp(22px,3.4vw,34px) 0;
-  margin-top:18px;overflow:hidden;box-shadow:0 1px 0 rgba(0,0,0,.04)}
-.ledger-lead{margin:0 0 4px;font-size:clamp(19px,2.3vw,23px);font-weight:800;letter-spacing:-.03em}
-.ledger-sub{margin:0 0 18px;font-size:15px;line-height:1.5;color:var(--ink-56);text-wrap:pretty}
-.led{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
-.led th{font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--ink-48);text-align:right;padding:0 0 10px;border-bottom:1px solid var(--ink-12)}
-.led th:first-child{text-align:left}
-.led td{padding:16px 0;border-bottom:1px solid var(--ink-12);font-size:17px;text-align:right;color:var(--ink)}
-.led td:first-child{text-align:left}
-.led td:nth-child(2){font-size:clamp(22px,2.6vw,26px);font-weight:800;letter-spacing:-.03em}
-.led td:nth-child(3){font-size:15px;font-weight:600;color:#9a3a1e;width:5.5em}
-.led tr:last-child td{border-bottom:0}
-.led-band{display:flex;align-items:baseline;justify-content:space-between;gap:16px;
-  margin:6px calc(-1*clamp(22px,3.4vw,34px)) 0;padding:22px clamp(22px,3.4vw,34px);
-  background:var(--hot);color:#fff}
-.led-band span{font-size:17px;font-weight:600}
-.led-band strong{font-size:clamp(28px,4vw,38px);font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+::selection{background:var(--hot);color:#fff}
+.tally{background:var(--card);border-radius:16px;padding:clamp(24px,3.4vw,36px) clamp(22px,3.4vw,34px) clamp(22px,3vw,30px);
+  margin-top:18px;text-align:center}
+.tally-lead{margin:0 0 6px;font-size:clamp(20px,2.4vw,24px);font-weight:800;letter-spacing:-.03em;text-wrap:balance}
+.tally-sub{margin:0 auto;max-width:46ch;font-size:15px;line-height:1.5;color:var(--ink-56);text-wrap:pretty}
+.tally-chart{--dot:11px;--gap:5px;--cell:calc(var(--dot) + var(--gap));--label:52px;position:relative;display:flex;justify-content:center;align-items:flex-end;
+  gap:clamp(40px,9vw,110px);margin-top:34px;padding-bottom:var(--label)}
+.tally-chart::after{content:"";position:absolute;left:0;right:0;bottom:var(--label);height:1px;background:var(--ink-12)}
+.tally-col{display:flex;flex-direction:column;align-items:center;position:relative}
+.tally-n{font-size:clamp(22px,2.6vw,26px);font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums;margin-bottom:10px}
+.tally-bar{display:block;width:calc(4 * var(--cell) - var(--gap));height:calc(var(--n) / 4 * var(--cell) - var(--gap));
+  background:radial-gradient(circle at calc(var(--dot) / 2) calc(var(--dot) / 2),var(--hot) 0 calc(var(--dot) / 2 - .5px),transparent calc(var(--dot) / 2 + .5px)) 0 0 / var(--cell) var(--cell);
+  transition:filter .15s ease}
+.tally-col:hover .tally-bar{filter:brightness(.9)}
+.tally-m{position:absolute;top:100%;left:50%;transform:translateX(-50%);width:max-content;padding-top:12px;
+  font-size:15px;font-weight:600;color:var(--ink);line-height:1.35}
+.tally-m small{display:block;font-size:13px;font-weight:500;color:var(--ink-48)}
+.tally-key{margin:18px 0 0;font-size:13px;color:var(--ink-48)}
 @media (max-width:560px){ .ledger dl{grid-template-columns:minmax(0,1fr)} }
 
 /* ---- call ------------------------------------------------------------ */
@@ -205,9 +206,9 @@ body{
 .btn-hot:hover{transform:translateY(-2px);filter:saturate(1.06);
   box-shadow:0 20px 38px -8px rgba(192,57,43,.5), inset 0 1px 0 rgba(255,255,255,.32)}
 .btn-whatsapp{display:inline-flex;align-items:center;justify-content:center;gap:10px;
-  background:#25D366;color:#fff;border-radius:100px;padding:19px 26px;
+  background:#128C7E;color:#fff;border-radius:100px;padding:19px 26px;
   font-family:var(--sans);font-size:17px;font-weight:700;letter-spacing:-.03em;text-decoration:none;
-  box-shadow:0 10px 24px rgba(37,211,102,.28);transition:transform .15s ease,filter .15s ease}
+  box-shadow:0 10px 24px rgba(18,140,126,.28);transition:transform .15s ease,filter .15s ease}
 .btn-whatsapp:hover{transform:translateY(-2px);filter:saturate(1.06)}
 .btn-whatsapp svg{flex:none}
 
@@ -224,6 +225,7 @@ body{
   .proof,.work,.reads{padding-block:48px 0}
   .call{margin-top:48px;padding-block:44px}
   .offer{padding-block:52px 56px}
+  .tally-chart{--dot:10px;--gap:4px;gap:34px}
   .when{flex-direction:column;gap:4px}
   .when dd{text-align:left}
   .btn-hot{width:100%;padding-inline:22px}
@@ -343,18 +345,15 @@ body{
            loading="lazy" decoding="async"
            alt="Google Business Profile Calls tab for Local Movers Surrey Ltd showing 205 calls made from the profile between April and September 2026, peaking at 66 in August.">
     </figure>
-    <div class="ledger">
-      <p class="ledger-lead">Local Movers, leads in the door</p>
-      <p class="ledger-sub">Website quote requests plus Yelp, counted one by one and deduped. Not from the ads.</p>
-      <table class="led">
-        <thead><tr><th>Month</th><th>Leads</th><th>Change</th></tr></thead>
-        <tbody>
-          <tr><td>July 2026</td><td>48</td><td></td></tr>
-          <tr><td>August 2026</td><td>52</td><td>up 8%</td></tr>
-          <tr><td>September 1 to 28</td><td>60</td><td>up 15%</td></tr>
-        </tbody>
-      </table>
-      <div class="led-band"><span>Three months</span><strong>160 leads</strong></div>
+    <div class="tally">
+      <p class="tally-lead">Local Movers, leads in the door</p>
+      <p class="tally-sub">Website quote requests plus Yelp, counted one by one and deduped. Not from the ads.</p>
+      <div class="tally-chart" role="img" aria-label="Leads per month. July 2026: 48. August 2026: 52. September 1 to 28, 2026: 60.">
+        <div class="tally-col" style="--n:48" title="July 2026: 48 leads"><span class="tally-n">48</span><span class="tally-bar"></span><span class="tally-m">July</span></div>
+        <div class="tally-col" style="--n:52" title="August 2026: 52 leads"><span class="tally-n">52</span><span class="tally-bar"></span><span class="tally-m">August</span></div>
+        <div class="tally-col" style="--n:60" title="September 1 to 28, 2026: 60 leads"><span class="tally-n">60</span><span class="tally-bar"></span><span class="tally-m">September<small>1 to 28</small></span></div>
+      </div>
+      <p class="tally-key">Each mark is one lead.</p>
     </div>
   </section>
 
