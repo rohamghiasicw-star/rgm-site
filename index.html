@@ -130,6 +130,7 @@
 .rmap-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;
   gap:6px 18px;margin-bottom:14px;text-align:left}
 .rmap-who{margin:0;font-size:clamp(18px,2.2vw,22px);font-weight:500;letter-spacing:-.05em}
+.rmap-when{margin:0;font-size:13px;color:var(--ink-56)}
 .rmap-ba{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
 .rmap-ba figure{margin:0;background:var(--card);border-radius:14px;padding:9px;
   box-shadow:0 22px 44px -30px rgba(0,0,0,.42), 0 0 0 1px var(--ink-04)}
@@ -444,25 +445,24 @@
     </div>
   </div>
 </section>
-<!-- RANK MAPS. His strongest proof, and it was on the two campaign pages and
-     nowhere on his own homepage until 2026-10-14. Before and After are the
-     only words under a map: he banned captions outright. Both grid areas are
-     in the head line because they are unreadable inside the screenshots, and
-     every pair says "different ground" because the grid centres moved as well
-     as the areas. Position here is market share, never a bare ordinal: the
-     screenshots' own tables sort by average rank and would contradict it. -->
+<!-- RANK MAPS. His strongest proof. Before and After are the only words
+     under a map: he banned captions outright. The head line carries the dates
+     and whether the grid is the same points; any pair on different ground has
+     to say so there (Mamba does). Every image is a real LeadSnap capture,
+     cropped, never redrawn. Position is market share, never a bare ordinal. -->
 <section id="maps">
   <div class="rail">
     <div class="head mid">
       <span class="pill">The map</span>
-      <h2 class="t40">Same search, <em>months apart</em></h2>
-      <p class="lede">Green pins mean top 3 on Google Maps. Every dot is one real search run
+      <h2 class="t40">Same search, <em>then and now</em></h2>
+      <p class="lede">Green pins mean top 3 on Google. Every dot is one real search run
         from one real spot in the service area.</p>
     </div>
 
       <div class="rmap">
         <div class="rmap-head">
           <p class="rmap-who">Local Movers, Surrey BC</p>
+          <p class="rmap-when">Jun 30 to Nov 3, same points</p>
         </div>
         <div class="rmap-ba">
           <figure class="panx" tabindex="0">
@@ -480,7 +480,27 @@
 
       <div class="rmap">
         <div class="rmap-head">
+          <p class="rmap-who">Toronto Restoration, Toronto</p>
+          <p class="rmap-when">Oct 9 to Nov 3, same points</p>
+        </div>
+        <div class="rmap-ba">
+          <figure class="panx" tabindex="0">
+            <img src="assets/leadsnap/ls-trs-BEFORE-2026-10-09.jpg" width="1000" height="1189" loading="lazy" decoding="async"
+                 alt="LeadSnap Local Pack heatmap for Toronto Restoration Services, keyword hardwood floor refinishing toronto, 9 October 2026. Market share 35.37% placing 4th, top 3 coverage 34.32%, on a 13 by 13 grid of 169 points covering 367.82 square kilometres.">
+            <figcaption><span class="rmap-tag">Before</span></figcaption>
+          </figure>
+          <figure class="panx" tabindex="0">
+            <img src="assets/leadsnap/ls-trs-AFTER-2026-11-03.jpg" width="1000" height="1189" loading="lazy" decoding="async"
+                 alt="LeadSnap Local Pack heatmap for Toronto Restoration Services, same keyword, 3 November 2026, on the same 169 points. Market share 100% placing 1st, top 3 coverage 88.76%.">
+            <figcaption><span class="rmap-tag is-after">After</span></figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="rmap">
+        <div class="rmap-head">
           <p class="rmap-who">Co Painting, North York</p>
+          <p class="rmap-when">Jul 9 to Nov 3, same points</p>
         </div>
         <div class="rmap-ba">
           <figure class="panx" tabindex="0">
@@ -489,8 +509,8 @@
             <figcaption><span class="rmap-tag">Before</span></figcaption>
           </figure>
           <figure class="panx" tabindex="0">
-            <img src="assets/leadsnap/ls-co-painting-AFTER-2026-08-14.jpg" width="745" height="722" loading="lazy" decoding="async"
-                 alt="LeadSnap Google Maps heatmap for Co Painting North York, same keyword and layer, 14 August 2026. Market share 100% placing 1st, top 3 coverage 84.62%, on a 13 by 13 grid of 169 points covering 121.11 square kilometres.">
+            <img src="assets/leadsnap/ls-co-painting-AFTER-2026-11-03.jpg" width="648" height="669" loading="lazy" decoding="async"
+                 alt="LeadSnap Google Maps heatmap for Co Painting North York, same keyword, 3 November 2026, on the same 169 points covering 132.53 square kilometres. Market share 100% placing 1st, top 3 coverage 84.02%.">
             <figcaption><span class="rmap-tag is-after">After</span></figcaption>
           </figure>
         </div>
@@ -499,6 +519,7 @@
       <div class="rmap">
         <div class="rmap-head">
           <p class="rmap-who">Mamba Drainage, Vancouver</p>
+          <p class="rmap-when">Mar 21 to Nov 2, grid widened from 80 to 120 km²</p>
         </div>
         <div class="rmap-ba">
           <figure class="panx" tabindex="0">
@@ -508,7 +529,45 @@
           </figure>
           <figure class="panx" tabindex="0">
             <img src="assets/leadsnap/ls-mamba-AFTER-2026-11-02.jpg" width="1198" height="1275" loading="lazy" decoding="async"
-                 alt="LeadSnap Local Pack heatmap for Mamba Drainage Services, keyword drainage vancouver, 2 November 2026. Market share 100% placing 1st, top 3 coverage 54.69%.">
+                 alt="LeadSnap Local Pack heatmap for Mamba Drainage Services, keyword drainage vancouver, 2 November 2026, on a wider grid of about 120 square kilometres. Market share 100% placing 1st, top 3 coverage 54.69%.">
+            <figcaption><span class="rmap-tag is-after">After</span></figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="rmap">
+        <div class="rmap-head">
+          <p class="rmap-who">Always Best Moving, Vancouver</p>
+          <p class="rmap-when">Oct 10 to Oct 15, same points</p>
+        </div>
+        <div class="rmap-ba">
+          <figure class="panx" tabindex="0">
+            <img src="assets/leadsnap/ls-abm-BEFORE-2026-10-10.jpg" width="628" height="759" loading="lazy" decoding="async"
+                 alt="LeadSnap Google Maps heatmap for Always Best Moving Vancouver, keyword best movers vancouver, 10 October 2026. Market share 10.84% placing 5th, top 3 coverage 10.65%, on a grid covering 186.25 square kilometres.">
+            <figcaption><span class="rmap-tag">Before</span></figcaption>
+          </figure>
+          <figure class="panx" tabindex="0">
+            <img src="assets/leadsnap/ls-abm-AFTER-2026-10-15.jpg" width="648" height="759" loading="lazy" decoding="async"
+                 alt="LeadSnap Google Maps heatmap for Always Best Moving Vancouver, same keyword, 15 October 2026, on the same points. Market share 36.52% placing 3rd, top 3 coverage 36.09%.">
+            <figcaption><span class="rmap-tag is-after">After</span></figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="rmap">
+        <div class="rmap-head">
+          <p class="rmap-who">LD Movers, Arlington Heights IL</p>
+          <p class="rmap-when">Oct 14 to Oct 28, same points</p>
+        </div>
+        <div class="rmap-ba">
+          <figure class="panx" tabindex="0">
+            <img src="assets/leadsnap/ls-ld-movers-BEFORE-2026-10-14.jpg" width="1000" height="1053" loading="lazy" decoding="async"
+                 alt="LeadSnap Local Pack heatmap for LD Movers, keyword movers arlington heights, 14 October 2026. Market share 66.07% placing 3rd, top 3 coverage 64.5%, on a 13 by 13 grid of 169 points covering 368.73 square kilometres.">
+            <figcaption><span class="rmap-tag">Before</span></figcaption>
+          </figure>
+          <figure class="panx" tabindex="0">
+            <img src="assets/leadsnap/ls-ld-movers-AFTER-2026-10-28.jpg" width="1000" height="1053" loading="lazy" decoding="async"
+                 alt="LeadSnap Local Pack heatmap for LD Movers, same keyword, 28 October 2026, on the same 169 points. Market share 84.62% placing 3rd, top 3 coverage 84.62%.">
             <figcaption><span class="rmap-tag is-after">After</span></figcaption>
           </figure>
         </div>
