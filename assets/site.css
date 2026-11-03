@@ -895,6 +895,13 @@ footer,.foot,.foot-col,.foot-brand,.foot-btm,
 /* a scrollable region is a keyboard stop, so it gets the same ring every
    other focusable element on the site gets */
 .panx:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+/* 2026-11-03: the ls-* exports are cropped to LeadSnap's own stats block and map,
+   with no competitor table, so the pins read at card width. On a phone they fit
+   the card instead of panning at 100% scale. */
+@media (max-width:700px){
+  .panx img[src*="/ls-"]:not([hidden]){width:100%;max-width:100%}
+  .panx:has(img[src*="/ls-"]){overflow-x:visible;padding-bottom:0}
+}
 
 /* ---- competitor leaderboard ------------------------------------------
    The Location / Avg Rank / Place list read straight off a LeadSnap
