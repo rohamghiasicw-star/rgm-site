@@ -156,8 +156,11 @@ body{
 .tally-chart::after{content:"";position:absolute;left:0;right:0;bottom:var(--label);height:1px;background:var(--ink-12)}
 .tally-col{display:flex;flex-direction:column;align-items:center;position:relative}
 .tally-n{font-size:clamp(22px,2.6vw,26px);font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums;margin-bottom:10px}
-.tally-bar{display:block;width:calc(4 * var(--cell) - var(--gap));height:calc(var(--n) / 4 * var(--cell) - var(--gap));
+.tally-bar{display:block;width:calc(4 * var(--cell) - var(--gap));height:calc(var(--rows, var(--n) / 4) * var(--cell) - var(--gap));
   background:radial-gradient(circle at calc(var(--dot) / 2) calc(var(--dot) / 2),var(--hot) 0 calc(var(--dot) / 2 - .5px),transparent calc(var(--dot) / 2 + .5px)) 0 0 / var(--cell) var(--cell);
+  --keep:calc(var(--n) - (var(--rows, var(--n) / 4) - 1) * 4);
+  -webkit-mask:linear-gradient(#000 0 0) 0 100% / 100% calc(100% - var(--cell)) no-repeat,linear-gradient(#000 0 0) 0 0 / calc(var(--keep) * var(--cell)) var(--cell) no-repeat;
+  mask:linear-gradient(#000 0 0) 0 100% / 100% calc(100% - var(--cell)) no-repeat,linear-gradient(#000 0 0) 0 0 / calc(var(--keep) * var(--cell)) var(--cell) no-repeat;
   transition:filter .15s ease}
 .tally-col:hover .tally-bar{filter:brightness(.9)}
 .tally-m{position:absolute;top:100%;left:50%;transform:translateX(-50%);width:max-content;padding-top:12px;
@@ -261,23 +264,24 @@ body{
     </div>
   </section>
 
-  <!-- PROOF. Nine real screenshots. Sources and rulings are in the header
+  <!-- PROOF. Real screenshots only. Pairs are the red-to-green three
+       (Local Movers, TRS, Co Painting); Mamba pair removed 2026-11-04. Sources and rulings are in the header
        comment at the top of this file. Nothing here is a tile with a number
        typed into it. -->
   <section class="lp-wide proof">
-    <h2 class="lg">Same search, three months apart.</h2>
+    <h2 class="lg">Same search, before and after.</h2>
     <p class="subhead" style="text-align:center">Green pins mean top 3 on Google.</p>
 
     <div class="pair">
       <div class="pair-head">
-        <p class="pair-who">Local Movers, Surrey BC</p>
+        <p class="pair-who">Local Movers Surrey Ltd</p>
         <p class="pair-when">Jun 30 to Nov 3, same points</p>
       </div>
       <div class="ba">
         <figure class="panx" tabindex="0">
           <img src="../../assets/leadsnap/ls-local-movers-BEFORE-2026-06-30.jpg"
                width="1033" height="1194" loading="lazy" decoding="async"
-               alt="LeadSnap Local Pack heatmap for Local Movers Ltd, keyword movers surrey, 30 June 2026. Market share 4.44% placing 12th, top 3 coverage 3.55%, on a 13 by 13 grid of 169 points covering 163.21 square kilometres.">
+               alt="LeadSnap Local Pack heatmap for Local Movers Surrey Ltd, then listed as Local Movers Ltd, keyword movers surrey, 30 June 2026. Market share 4.44% placing 12th, top 3 coverage 3.55%, on a 13 by 13 grid of 169 points covering 163.21 square kilometres.">
           <figcaption>
             <span class="tag tag-b">Before</span>
           </figcaption>
@@ -294,7 +298,7 @@ body{
     </div>
     <div class="pair">
       <div class="pair-head">
-        <p class="pair-who">Toronto Restoration, Toronto</p>
+        <p class="pair-who">Toronto Restoration Services</p>
         <p class="pair-when">Oct 9 to Nov 3, same points</p>
       </div>
       <div class="ba">
@@ -318,7 +322,7 @@ body{
     </div>
     <div class="pair">
       <div class="pair-head">
-        <p class="pair-who">Co Painting, North York</p>
+        <p class="pair-who">Co Painting</p>
         <p class="pair-when">Jul 9 to Nov 3, same points</p>
       </div>
       <div class="ba">
@@ -340,46 +344,22 @@ body{
         </figure>
       </div>
     </div>
-    <div class="pair">
-      <div class="pair-head">
-        <p class="pair-who">Mamba Drainage, Vancouver</p>
-        <p class="pair-when">Mar 21 to Nov 2, grid widened from 80 to 120 km²</p>
-      </div>
-      <div class="ba">
-        <figure class="panx" tabindex="0">
-          <img src="../../assets/leadsnap/ls-mamba-BEFORE-2026-03-21.jpg"
-               width="1026" height="1344" loading="lazy" decoding="async"
-               alt="LeadSnap Local Pack heatmap for Mamba Drainage Services, keyword drainage vancouver, 21 March 2026. Market share 62.13% placing 4th of 57, top 3 coverage 37.87%, on a 13 by 13 grid of 169 points covering 79.84 square kilometres.">
-          <figcaption>
-            <span class="tag tag-b">Before</span>
-          </figcaption>
-        </figure>
-        <figure class="panx" tabindex="0">
-          <img src="../../assets/leadsnap/ls-mamba-AFTER-2026-11-02.jpg"
-               width="1198" height="1275" loading="lazy" decoding="async"
-               alt="LeadSnap Local Pack heatmap for Mamba Drainage Services, keyword drainage vancouver, 2 November 2026, on a wider grid of about 120 square kilometres. Market share 100% placing 1st, top 3 coverage 54.69%.">
-          <figcaption>
-            <span class="tag tag-a">After</span>
-          </figcaption>
-        </figure>
-      </div>
-    </div>
   </section>
   <section class="lp-wide proof">
     <h2 class="lg">And this is what being there is worth.</h2>
 
     <figure class="shot">
-      <img src="../../assets/gbp/local-movers-calls.jpg" width="1200" height="654"
+      <img src="../../assets/gbp/local-movers-interactions-2026-10.jpg" width="1200" height="654"
            loading="lazy" decoding="async"
-           alt="Google Business Profile Calls tab for Local Movers Surrey Ltd showing 205 calls made from the profile between April and September 2026, peaking at 66 in August.">
+           alt="Google Business Profile Performance for Local Movers Surrey Ltd, 952 interactions May to October 2026, October 198">
     </figure>
     <div class="tally">
-      <p class="tally-lead">Local Movers, leads in the door</p>
-      <p class="tally-sub">Website quote requests plus Yelp, counted one by one and deduped. Not from the ads.</p>
-      <div class="tally-chart" role="img" aria-label="Leads per month. July 2026: 48. August 2026: 52. September 1 to 28, 2026: 60.">
-        <div class="tally-col" style="--n:48" title="July 2026: 48 leads"><span class="tally-n">48</span><span class="tally-bar"></span><span class="tally-m">July</span></div>
-        <div class="tally-col" style="--n:52" title="August 2026: 52 leads"><span class="tally-n">52</span><span class="tally-bar"></span><span class="tally-m">August</span></div>
-        <div class="tally-col" style="--n:60" title="September 1 to 28, 2026: 60 leads"><span class="tally-n">60</span><span class="tally-bar"></span><span class="tally-m">September<small>1 to 28</small></span></div>
+      <p class="tally-lead">Local Movers Surrey Ltd, leads in the door</p>
+      <p class="tally-sub">Website quote requests, ads included.</p>
+      <div class="tally-chart" role="img" aria-label="Leads per month. August 2026: 53. September 2026: 63. October 2026: 95.">
+        <div class="tally-col" style="--n:53;--rows:14" title="August 2026: 53 leads"><span class="tally-n">53</span><span class="tally-bar"></span><span class="tally-m">August</span></div>
+        <div class="tally-col" style="--n:63;--rows:16" title="September 2026: 63 leads"><span class="tally-n">63</span><span class="tally-bar"></span><span class="tally-m">September</span></div>
+        <div class="tally-col" style="--n:95;--rows:24" title="October 2026: 95 leads"><span class="tally-n">95</span><span class="tally-bar"></span><span class="tally-m">October</span></div>
       </div>
       <p class="tally-key">Each mark is one lead.</p>
     </div>
@@ -408,17 +388,17 @@ body{
   <section class="lp-wide work">
     <h2 class="lg">The full stories.</h2>
     <div class="cs-grid">
-      <a class="cs-link" href="https://ld-movers.com/" target="_blank" rel="noopener">
+      <a class="cs-link" href="../../case-studies/ld-movers.html">
         <img src="../../assets/logos/marquee/ld-movers.png" alt="LD Movers" loading="lazy" decoding="async">
       </a>
-      <a class="cs-link" href="https://www.torontors.com/" target="_blank" rel="noopener">
+      <a class="cs-link" href="../../case-studies/toronto-restoration.html">
         <img src="../../assets/logos/marquee/toronto-restoration-services.png" alt="Toronto Restoration Services" loading="lazy" decoding="async">
       </a>
       <a class="cs-link" href="../../case-studies/local-movers.html">
-        <img src="../../assets/logos/marquee/local-movers.png" alt="Local Movers Ltd" loading="lazy" decoding="async">
+        <img src="../../assets/logos/marquee/local-movers.png" alt="Local Movers Surrey Ltd" loading="lazy" decoding="async">
       </a>
       <a class="cs-link" href="../../case-studies/mamba-drainage.html">
-        <img src="../../assets/logos/marquee/mamba-drainage.png" alt="Mamba Drainage" loading="lazy" decoding="async">
+        <img src="../../assets/logos/marquee/mamba-drainage.png" alt="Mamba Drainage Services" loading="lazy" decoding="async">
       </a>
       <a class="cs-link" href="../../case-studies/serve-ninja.html">
         <img src="../../assets/logos/marquee/serve-ninja.png" alt="Serve Ninja" loading="lazy" decoding="async">
@@ -432,11 +412,14 @@ body{
       <a class="cs-link" href="../../case-studies/picasshome.html">
         <img src="../../assets/logos/marquee/picasshome-painting.png" alt="Picasshome Painting" loading="lazy" decoding="async">
       </a>
+      <a class="cs-link" href="../../case-studies/everfinish.html">
+        <img src="../../assets/logos/marquee/everfinish.png" alt="Everfinish Kitchen Cabinet Refinishing" loading="lazy" decoding="async">
+      </a>
     </div>
   </section>
 
   <section class="lp reads">
-    <h2 class="lg">Worth ten minutes while you wait.</h2>
+    <h2 class="lg">Worth ten minutes.</h2>
     <div style="margin-top:30px">
       <a class="read" href="../../post/why-these-3-letters-will-beat-your-local-competition-every-single-time/index.html">
         <h3>Why these 3 letters will beat your local competition every single time</h3>
